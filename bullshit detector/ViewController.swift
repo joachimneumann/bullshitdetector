@@ -20,6 +20,7 @@ class ViewController: UIViewController, CAAnimationDelegate, UIGestureRecognizer
     let distribution = GKGaussianDistribution(lowestValue: -100, highestValue: 100)
     var noiseTimer: Timer!
     var targetValue: Double = 0.3
+    let displayPointerFrameWidth: CGFloat = 10
     var value: Double {
         get {
             return 0
@@ -53,9 +54,10 @@ class ViewController: UIViewController, CAAnimationDelegate, UIGestureRecognizer
         noiseTimer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(noise), userInfo: nil, repeats: true)
 
         let tap = UITapGestureRecognizer(target: self, action: #selector(self.handleTap(_:)))
-        cover.addGestureRecognizer(tap)
-        cover.isUserInteractionEnabled = true
+        analyseButton.addGestureRecognizer(tap)
+        analyseButton.isUserInteractionEnabled = true
         analyseButton.layer.cornerRadius = 10
+        displayPointer.layer.cornerRadius = displayPointerFrameWidth/2;
     }
     
     
@@ -79,7 +81,6 @@ class ViewController: UIViewController, CAAnimationDelegate, UIGestureRecognizer
     
     
     override func viewDidLayoutSubviews() {
-        let displayPointerFrameWidth: CGFloat = 10
         let displayPointerFrame = CGRect(
             x: display.pointerCenter().x - displayPointerFrameWidth / 2.0,
             y: display.pointerCenter().y - display.maxRadius() + self.view.safeAreaInsets.top,
@@ -94,8 +95,10 @@ class ViewController: UIViewController, CAAnimationDelegate, UIGestureRecognizer
 
     // function which is triggered when handleTap is called
     @objc func handleTap(_ sender: UITapGestureRecognizer) {
-        let tabPosition = sender.location(in: cover).x / cover.frame.size.width
-        targetValue = Double(tabPosition)
+        let tabPosition = sender.location(in: analyseButton).x / analyseButton.frame.size.width
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+            self.targetValue = Double(tabPosition)
+        }
     }
     
     @objc func noise() {
