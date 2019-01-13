@@ -1,6 +1,11 @@
 Bullshit Detector
 
-The trick: press on the left for Bullshit, on the right for the truth. Have fun!
+The trick: press on the left side of the "Analyse" Button for Bullshit, on the right for the truth. 
+
+Have fun!
+
+License
+MIT-License
 
 Privacy policy of the bullshit detector
 
