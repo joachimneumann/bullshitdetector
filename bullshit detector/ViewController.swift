@@ -61,14 +61,16 @@ class ViewController: UIViewController, CAAnimationDelegate, UIGestureRecognizer
         noiseTimer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(noise), userInfo: nil, repeats: true)
         let tap = UITapGestureRecognizer(target: self, action: #selector(self.handleTap(_:)))
         analyseButton.addGestureRecognizer(tap)
-        analyseButton.isUserInteractionEnabled = true
         analyseButton.layer.cornerRadius = 10
+        analyseButton.setTitle("Analysing...", for: .disabled)
+        analyseButton.setTitle("Analyse", for: .normal)
         displayPointer.layer.cornerRadius = displayPointerFrameWidth/2;
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         let animatedWaveView = AnimatedWaveView(frame: animationView.bounds)
+        animationView.layer.cornerRadius = min(animationView.frame.size.height, animationView.frame.size.width) / 2
         waveView = animatedWaveView
         animationView.addSubview(animatedWaveView)
         waveView?.makeWaves()
@@ -108,15 +110,16 @@ class ViewController: UIViewController, CAAnimationDelegate, UIGestureRecognizer
 
     // function which is triggered when handleTap is called
     @objc func handleTap(_ sender: UITapGestureRecognizer) {
-        analyseButton.isEnabled = false
-        self.imageView.isHidden = true
+        imageView.isHidden = true
         animationView.isHidden = false
+        analyseButton.isEnabled = false
         let tabPosition = (analyseButton.frame.size.width - sender.location(in: analyseButton).x) / analyseButton.frame.size.width
-        DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 6) {
             self.animationView.isHidden = true
             self.targetValue = Double(tabPosition)
+            self.analyseButton.isEnabled = true
         }
-        DispatchQueue.main.asyncAfter(deadline: .now() + 3.5) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 6.5) {
             self.imageView.isHidden = false
             if tabPosition > 0.9 {
                 self.imageView.image = UIImage(named: "absolute bullshit")
@@ -124,10 +127,11 @@ class ViewController: UIViewController, CAAnimationDelegate, UIGestureRecognizer
                 self.imageView.image = UIImage(named: "bullshit")
             } else if tabPosition > 0.4 {
                 self.imageView.image = UIImage(named: "resonable")
+            } else if tabPosition > 0.25 {
+                self.imageView.image = UIImage(named: "mostly true")
             } else {
                 self.imageView.image = UIImage(named: "true")
             }
-            self.analyseButton.isEnabled = true
         }
     }
     

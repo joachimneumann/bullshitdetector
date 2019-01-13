@@ -15,10 +15,10 @@ public class AnimatedWaveView: UIView {
     // MARK: - Attributes
     
     // 7px between each wave
-    private let waveIntervals: CGFloat = 7
+    private let waveIntervals: CGFloat = 27
     
     // Timing ratio is 40 seconds for a diameter of 667
-    private let timingRatio: CFTimeInterval = 40.0 / 667.0
+    private let timingRatio: CFTimeInterval = 10.0 / 667.0
     
     // Scale of the final path's bounds in terms of the view's bounds
     private let scaleFactor: CGFloat = 1.75
