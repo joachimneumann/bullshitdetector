@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "bullshit detector/ViewController.swift"
-            timestampString = "569055647.927266"
+            timestampString = "569058792.02307"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "30"
-            endingLineNumber = "30"
+            startingLineNumber = "33"
+            endingLineNumber = "33"
             landmarkName = "value"
             landmarkType = "24">
          </BreakpointContent>

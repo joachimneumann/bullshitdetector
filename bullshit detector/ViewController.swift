@@ -11,11 +11,14 @@ import GameplayKit
 
 class ViewController: UIViewController, CAAnimationDelegate, UIGestureRecognizerDelegate {
 
+    @IBOutlet weak var animationView: UIView!
+    @IBOutlet weak var coverView: UIView!
     @IBOutlet weak var displayPointer: UIView!
     @IBOutlet weak var display: Display!
     @IBOutlet weak var analyseButton: UIButton!
     @IBOutlet weak var imageView: UIImageView!
     
+    var waveView: AnimatedWaveView?
     let random = GKRandomSource()
     let distribution = GKGaussianDistribution(lowestValue: -100, highestValue: 100)
     var noiseTimer: Timer!
@@ -50,9 +53,12 @@ class ViewController: UIViewController, CAAnimationDelegate, UIGestureRecognizer
     var v1 = 0.0
 
     override func viewDidLoad() {
+        animationView.isHidden = true
+        imageView.isHidden = true
+        coverView.backgroundColor = UIColor.white
+        animationView.backgroundColor = UIColor(red: 255.0/255.0, green: 166.0/255.0, blue: 161.0/255.0, alpha: 1.0)
         super.viewDidLoad()
         noiseTimer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(noise), userInfo: nil, repeats: true)
-
         let tap = UITapGestureRecognizer(target: self, action: #selector(self.handleTap(_:)))
         analyseButton.addGestureRecognizer(tap)
         analyseButton.isUserInteractionEnabled = true
@@ -60,7 +66,14 @@ class ViewController: UIViewController, CAAnimationDelegate, UIGestureRecognizer
         displayPointer.layer.cornerRadius = displayPointerFrameWidth/2;
     }
     
-    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        let animatedWaveView = AnimatedWaveView(frame: animationView.bounds)
+        waveView = animatedWaveView
+        animationView.addSubview(animatedWaveView)
+        waveView?.makeWaves()
+    }
+
     func setAnchorPoint(anchorPoint: CGPoint, forView view: UIView) {
         var newPoint = CGPoint(x: view.bounds.size.width * anchorPoint.x, y: view.bounds.size.height * anchorPoint.y)
         var oldPoint = CGPoint(x: view.bounds.size.width * view.layer.anchorPoint.x, y: view.bounds.size.height * view.layer.anchorPoint.y)
@@ -95,9 +108,12 @@ class ViewController: UIViewController, CAAnimationDelegate, UIGestureRecognizer
 
     // function which is triggered when handleTap is called
     @objc func handleTap(_ sender: UITapGestureRecognizer) {
+        analyseButton.isEnabled = false
         self.imageView.isHidden = true
+        animationView.isHidden = false
         let tabPosition = (analyseButton.frame.size.width - sender.location(in: analyseButton).x) / analyseButton.frame.size.width
         DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+            self.animationView.isHidden = true
             self.targetValue = Double(tabPosition)
         }
         DispatchQueue.main.asyncAfter(deadline: .now() + 3.5) {
@@ -111,7 +127,8 @@ class ViewController: UIViewController, CAAnimationDelegate, UIGestureRecognizer
             } else {
                 self.imageView.image = UIImage(named: "true")
             }
-       }
+            self.analyseButton.isEnabled = true
+        }
     }
     
     @objc func noise() {
