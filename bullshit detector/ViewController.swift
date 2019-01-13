@@ -13,7 +13,8 @@ class ViewController: UIViewController, CAAnimationDelegate, UIGestureRecognizer
     @IBOutlet weak var cover: UIView!
     @IBOutlet weak var displayPointer: UIView!
     @IBOutlet weak var display: Display!
-    
+    @IBOutlet weak var analyseButton: UIButton!
+   
     var value: Double {
         get {
             return 0
@@ -48,6 +49,7 @@ class ViewController: UIViewController, CAAnimationDelegate, UIGestureRecognizer
         let tap = UITapGestureRecognizer(target: self, action: #selector(self.handleTap(_:)))
         cover.addGestureRecognizer(tap)
         cover.isUserInteractionEnabled = true
+        analyseButton.layer.cornerRadius = 10
     }
     
     override func viewDidLayoutSubviews() {
@@ -61,13 +63,7 @@ class ViewController: UIViewController, CAAnimationDelegate, UIGestureRecognizer
         setAnchorPoint(anchorPoint: CGPoint(x: 0.5, y: 1.0), forView: displayPointer)
         v0 = Double(display.startAngle()) - 1.5 * .pi
         v1 = Double(display.endAngle())   - 1.5 * .pi
-
         value = 0.3
-    }
-    
-    func animationDidStop(_ anim: CAAnimation, finished flag: Bool) {
-        if let currentAngle = displayPointer.layer.presentation()?.value(forKeyPath: "transform.rotation") as? Double {
-        }
     }
     
     func setAnchorPoint(anchorPoint: CGPoint, forView view: UIView) {
