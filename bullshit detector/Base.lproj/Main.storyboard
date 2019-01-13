@@ -25,21 +25,39 @@
                                     <constraint firstAttribute="width" secondItem="3ki-0X-gGI" secondAttribute="height" multiplier="15:8" id="HR9-2w-rAX"/>
                                 </constraints>
                             </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LTY-Rh-FmH">
+                                <rect key="frame" x="181" y="193" width="13" height="281"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="slY-UC-N33" userLabel="Cover">
+                                <rect key="frame" x="0.0" y="370" width="375" height="297"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="LTY-Rh-FmH" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="173" id="DfX-Zg-apv"/>
+                            <constraint firstItem="LTY-Rh-FmH" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="G0d-Rw-c78"/>
+                            <constraint firstItem="LTY-Rh-FmH" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="GcU-px-NDJ"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="3ki-0X-gGI" secondAttribute="trailing" id="IkX-95-Jdo"/>
                             <constraint firstItem="3ki-0X-gGI" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="dFf-9g-m2j"/>
+                            <constraint firstItem="slY-UC-N33" firstAttribute="leading" secondItem="3ki-0X-gGI" secondAttribute="leading" id="f2W-JK-wlc"/>
                             <constraint firstItem="3ki-0X-gGI" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="150" id="pyo-Ua-Sya"/>
+                            <constraint firstItem="slY-UC-N33" firstAttribute="trailing" secondItem="3ki-0X-gGI" secondAttribute="trailing" id="t1s-qV-GcZ"/>
+                            <constraint firstItem="slY-UC-N33" firstAttribute="top" secondItem="3ki-0X-gGI" secondAttribute="bottom" id="t40-vl-BTx"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="slY-UC-N33" secondAttribute="bottom" id="ub7-EL-kHM"/>
+                            <constraint firstItem="LTY-Rh-FmH" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="181" id="yh2-jF-Zgb"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
                         <outlet property="display" destination="3ki-0X-gGI" id="V4T-nb-wfd"/>
+                        <outlet property="displayPointer" destination="LTY-Rh-FmH" id="lzA-Uq-oUO"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="140" y="133.5832083958021"/>
         </scene>
     </scenes>
 </document>
