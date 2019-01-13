@@ -11,11 +11,11 @@ import GameplayKit
 
 class ViewController: UIViewController, CAAnimationDelegate, UIGestureRecognizerDelegate {
 
-    @IBOutlet weak var cover: UIView!
     @IBOutlet weak var displayPointer: UIView!
     @IBOutlet weak var display: Display!
     @IBOutlet weak var analyseButton: UIButton!
-   
+    @IBOutlet weak var imageView: UIImageView!
+    
     let random = GKRandomSource()
     let distribution = GKGaussianDistribution(lowestValue: -100, highestValue: 100)
     var noiseTimer: Timer!
@@ -95,10 +95,23 @@ class ViewController: UIViewController, CAAnimationDelegate, UIGestureRecognizer
 
     // function which is triggered when handleTap is called
     @objc func handleTap(_ sender: UITapGestureRecognizer) {
-        let tabPosition = sender.location(in: analyseButton).x / analyseButton.frame.size.width
+        self.imageView.isHidden = true
+        let tabPosition = (analyseButton.frame.size.width - sender.location(in: analyseButton).x) / analyseButton.frame.size.width
         DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
             self.targetValue = Double(tabPosition)
         }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3.5) {
+            self.imageView.isHidden = false
+            if tabPosition > 0.9 {
+                self.imageView.image = UIImage(named: "absolute bullshit")
+            } else if tabPosition > 0.8 {
+                self.imageView.image = UIImage(named: "bullshit")
+            } else if tabPosition > 0.4 {
+                self.imageView.image = UIImage(named: "resonable")
+            } else {
+                self.imageView.image = UIImage(named: "true")
+            }
+       }
     }
     
     @objc func noise() {

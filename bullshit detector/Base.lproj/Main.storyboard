@@ -29,12 +29,12 @@
                                 <rect key="frame" x="181" y="193" width="13" height="281"/>
                                 <color key="backgroundColor" red="1" green="0.49327188729999999" blue="0.47399842739999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="slY-UC-N33" userLabel="Cover">
-                                <rect key="frame" x="0.0" y="220" width="375" height="447"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fj6-4L-L85">
+                                <rect key="frame" x="0.0" y="220" width="375" height="347"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4ji-Hs-27j">
-                                <rect key="frame" x="40" y="577" width="295" height="60"/>
+                                <rect key="frame" x="40" y="567" width="295" height="60"/>
                                 <color key="backgroundColor" red="1" green="0.49327188729999999" blue="0.47399842739999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="Odl-xA-EMh"/>
@@ -44,32 +44,39 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                             </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="8M0-Es-WDy">
+                                <rect key="frame" x="30" y="220" width="315" height="347"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <gestureRecognizers/>
                         <constraints>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="8M0-Es-WDy" secondAttribute="trailing" constant="30" id="3Mi-CU-dBc"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="fj6-4L-L85" secondAttribute="trailing" id="91E-zO-XsM"/>
                             <constraint firstItem="LTY-Rh-FmH" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="173" id="DfX-Zg-apv"/>
                             <constraint firstItem="LTY-Rh-FmH" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="G0d-Rw-c78"/>
                             <constraint firstItem="LTY-Rh-FmH" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="GcU-px-NDJ"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="3ki-0X-gGI" secondAttribute="trailing" id="IkX-95-Jdo"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="4ji-Hs-27j" secondAttribute="bottom" constant="30" id="MdL-z6-bhX"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="4ji-Hs-27j" secondAttribute="bottom" constant="40" id="MdL-z6-bhX"/>
+                            <constraint firstItem="fj6-4L-L85" firstAttribute="top" secondItem="3ki-0X-gGI" secondAttribute="bottom" id="XhD-Sw-br2"/>
+                            <constraint firstItem="fj6-4L-L85" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="ZGX-Ff-SIC"/>
+                            <constraint firstItem="4ji-Hs-27j" firstAttribute="top" secondItem="fj6-4L-L85" secondAttribute="bottom" id="bey-q2-dYt"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="4ji-Hs-27j" secondAttribute="trailing" constant="40" id="cRb-LF-7gk"/>
                             <constraint firstItem="3ki-0X-gGI" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="dFf-9g-m2j"/>
-                            <constraint firstItem="slY-UC-N33" firstAttribute="leading" secondItem="3ki-0X-gGI" secondAttribute="leading" id="f2W-JK-wlc"/>
+                            <constraint firstItem="8M0-Es-WDy" firstAttribute="top" secondItem="3ki-0X-gGI" secondAttribute="bottom" id="em6-3U-coq"/>
                             <constraint firstItem="4ji-Hs-27j" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="40" id="gqB-cO-b9S"/>
                             <constraint firstItem="3ki-0X-gGI" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="pyo-Ua-Sya"/>
-                            <constraint firstItem="slY-UC-N33" firstAttribute="trailing" secondItem="3ki-0X-gGI" secondAttribute="trailing" id="t1s-qV-GcZ"/>
-                            <constraint firstItem="slY-UC-N33" firstAttribute="top" secondItem="3ki-0X-gGI" secondAttribute="bottom" id="t40-vl-BTx"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="slY-UC-N33" secondAttribute="bottom" id="ub7-EL-kHM"/>
+                            <constraint firstItem="4ji-Hs-27j" firstAttribute="top" secondItem="8M0-Es-WDy" secondAttribute="bottom" id="srO-Fl-RuF"/>
+                            <constraint firstItem="8M0-Es-WDy" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="30" id="te9-pX-RTE"/>
                             <constraint firstItem="LTY-Rh-FmH" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="181" id="yh2-jF-Zgb"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
                         <outlet property="analyseButton" destination="4ji-Hs-27j" id="6zs-OX-Qu0"/>
-                        <outlet property="cover" destination="slY-UC-N33" id="TSo-TM-KpM"/>
                         <outlet property="display" destination="3ki-0X-gGI" id="V4T-nb-wfd"/>
                         <outlet property="displayPointer" destination="LTY-Rh-FmH" id="lzA-Uq-oUO"/>
+                        <outlet property="imageView" destination="8M0-Es-WDy" id="ClV-H5-xaK"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
