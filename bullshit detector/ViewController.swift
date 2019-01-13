@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import GameplayKit
 
 class ViewController: UIViewController, CAAnimationDelegate, UIGestureRecognizerDelegate {
 
@@ -15,6 +16,10 @@ class ViewController: UIViewController, CAAnimationDelegate, UIGestureRecognizer
     @IBOutlet weak var display: Display!
     @IBOutlet weak var analyseButton: UIButton!
    
+    let random = GKRandomSource()
+    let distribution = GKGaussianDistribution(lowestValue: -100, highestValue: 100)
+    var noiseTimer: Timer!
+    var targetValue: Double = 0.3
     var value: Double {
         get {
             return 0
@@ -45,26 +50,14 @@ class ViewController: UIViewController, CAAnimationDelegate, UIGestureRecognizer
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        noiseTimer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(noise), userInfo: nil, repeats: true)
+
         let tap = UITapGestureRecognizer(target: self, action: #selector(self.handleTap(_:)))
         cover.addGestureRecognizer(tap)
         cover.isUserInteractionEnabled = true
         analyseButton.layer.cornerRadius = 10
     }
     
-    override func viewDidLayoutSubviews() {
-        let displayPointerFrameWidth: CGFloat = 10
-        let displayPointerFrame = CGRect(
-            x: display.pointerCenter().x - displayPointerFrameWidth / 2.0,
-            y: display.pointerCenter().y - display.maxRadius() + self.view.safeAreaInsets.top,
-            width: displayPointerFrameWidth,
-            height: display.maxRadius())
-        displayPointer.frame = displayPointerFrame
-        setAnchorPoint(anchorPoint: CGPoint(x: 0.5, y: 1.0), forView: displayPointer)
-        v0 = Double(display.startAngle()) - 1.5 * .pi
-        v1 = Double(display.endAngle())   - 1.5 * .pi
-        value = 0.3
-    }
     
     func setAnchorPoint(anchorPoint: CGPoint, forView view: UIView) {
         var newPoint = CGPoint(x: view.bounds.size.width * anchorPoint.x, y: view.bounds.size.height * anchorPoint.y)
@@ -84,10 +77,33 @@ class ViewController: UIViewController, CAAnimationDelegate, UIGestureRecognizer
         view.layer.anchorPoint = anchorPoint
     }
     
+    
+    override func viewDidLayoutSubviews() {
+        let displayPointerFrameWidth: CGFloat = 10
+        let displayPointerFrame = CGRect(
+            x: display.pointerCenter().x - displayPointerFrameWidth / 2.0,
+            y: display.pointerCenter().y - display.maxRadius() + self.view.safeAreaInsets.top,
+            width: displayPointerFrameWidth,
+            height: display.maxRadius())
+        displayPointer.frame = displayPointerFrame
+        setAnchorPoint(anchorPoint: CGPoint(x: 0.5, y: 1.0), forView: displayPointer)
+        v0 = Double(display.startAngle()) - 1.5 * .pi
+        v1 = Double(display.endAngle())   - 1.5 * .pi
+        value = targetValue
+    }
+
     // function which is triggered when handleTap is called
     @objc func handleTap(_ sender: UITapGestureRecognizer) {
         let tabPosition = sender.location(in: cover).x / cover.frame.size.width
-        value = Double(tabPosition)
+        targetValue = Double(tabPosition)
+    }
+    
+    @objc func noise() {
+        let n = distribution.nextInt()
+        var newValue = targetValue + 0.001 * Double(n)
+        if newValue < 0.0 { newValue = 0.0 }
+        if newValue > 1.0 { newValue = 1.0 }
+        value = newValue
     }
 
 }
