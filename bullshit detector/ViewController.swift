@@ -23,7 +23,7 @@ class ViewController: UIViewController, CAAnimationDelegate, UIGestureRecognizer
     let distribution = GKGaussianDistribution(lowestValue: -100, highestValue: 100)
     var noiseTimer: Timer!
     var targetValue: Double = 0.3
-    let displayPointerFrameWidth: CGFloat = 10
+    let displayPointerFrameWidth: CGFloat = 6
     var value: Double {
         get {
             return 0
@@ -59,11 +59,16 @@ class ViewController: UIViewController, CAAnimationDelegate, UIGestureRecognizer
         animationView.backgroundColor = UIColor(red: 255.0/255.0, green: 166.0/255.0, blue: 161.0/255.0, alpha: 1.0)
         super.viewDidLoad()
         noiseTimer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(noise), userInfo: nil, repeats: true)
-        let tap = UITapGestureRecognizer(target: self, action: #selector(self.handleTap(_:)))
+        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(self.handleButtonTap(_:)))
         analyseButton.addGestureRecognizer(tap)
+        
+        let imageTap = UITapGestureRecognizer(target: self, action: #selector(self.handleImageTap(_:)))
+        imageView.addGestureRecognizer(imageTap)
+        imageView.isUserInteractionEnabled = true
         analyseButton.layer.cornerRadius = 10
         analyseButton.setTitle("Analysing...", for: .disabled)
-        analyseButton.setTitle("Analyse", for: .normal)
+        analyseButton.setTitle("Is that true?", for: .normal)
         displayPointer.layer.cornerRadius = displayPointerFrameWidth/2;
     }
     
@@ -108,18 +113,24 @@ class ViewController: UIViewController, CAAnimationDelegate, UIGestureRecognizer
         value = targetValue
     }
 
-    // function which is triggered when handleTap is called
-    @objc func handleTap(_ sender: UITapGestureRecognizer) {
+    @objc func handleButtonTap(_ sender: UITapGestureRecognizer) {
         imageView.isHidden = true
         animationView.isHidden = false
         analyseButton.isEnabled = false
         let tabPosition = (analyseButton.frame.size.width - sender.location(in: analyseButton).x) / analyseButton.frame.size.width
-        DispatchQueue.main.asyncAfter(deadline: .now() + 6) {
+
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+            self.targetValue = self.targetValue + 0.3*(Double(tabPosition)-self.targetValue)
+        }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 4) {
+            self.targetValue = self.targetValue + 0.6*(Double(tabPosition)-self.targetValue)
+        }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
             self.animationView.isHidden = true
             self.targetValue = Double(tabPosition)
             self.analyseButton.isEnabled = true
         }
-        DispatchQueue.main.asyncAfter(deadline: .now() + 6.5) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 5.2) {
             self.imageView.isHidden = false
             if tabPosition > 0.9 {
                 self.imageView.image = UIImage(named: "absolute bullshit")
@@ -134,7 +145,13 @@ class ViewController: UIViewController, CAAnimationDelegate, UIGestureRecognizer
             }
         }
     }
-    
+
+    @objc func handleImageTap(_ sender: UITapGestureRecognizer) {
+        imageView.isHidden = true
+        animationView.isHidden = true
+        targetValue = 0.3
+    }
+
     @objc func noise() {
         let n = distribution.nextInt()
         var newValue = targetValue + 0.001 * Double(n)
