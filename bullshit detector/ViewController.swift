@@ -8,13 +8,12 @@
 
 import UIKit
 
-class ViewController: UIViewController, CAAnimationDelegate {
+class ViewController: UIViewController, CAAnimationDelegate, UIGestureRecognizerDelegate {
 
+    @IBOutlet weak var cover: UIView!
     @IBOutlet weak var displayPointer: UIView!
     @IBOutlet weak var display: Display!
-//    private var _value = 0.0
-//    private var _angle = 0.0
-
+    
     var value: Double {
         get {
             return 0
@@ -22,7 +21,6 @@ class ViewController: UIViewController, CAAnimationDelegate {
         set(newValue) {
             var oldAngle = v0
             if let currentAngle = displayPointer.layer.presentation()?.value(forKeyPath: "transform.rotation") as? Double {
-                print("newValue \(currentAngle)")
                 oldAngle = currentAngle
             }
             displayPointer.layer.removeAllAnimations()
@@ -32,7 +30,7 @@ class ViewController: UIViewController, CAAnimationDelegate {
             let endAngle = v0 + newValue * (v1-v0)
             circularAnimation.fromValue = startAngle
             circularAnimation.toValue = endAngle
-            circularAnimation.duration = 1.0
+            circularAnimation.duration = 0.2
             circularAnimation.repeatCount = 1
             circularAnimation.fillMode = CAMediaTimingFillMode.forwards;
             circularAnimation.isRemovedOnCompletion = false
@@ -46,33 +44,29 @@ class ViewController: UIViewController, CAAnimationDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(self.handleTap(_:)))
+        cover.addGestureRecognizer(tap)
+        cover.isUserInteractionEnabled = true
     }
     
     override func viewDidLayoutSubviews() {
         let displayPointerFrameWidth: CGFloat = 10
         let displayPointerFrame = CGRect(
             x: display.pointerCenter().x - displayPointerFrameWidth / 2.0,
-            y: display.pointerCenter().y + self.view.safeAreaInsets.top, // nneded for correct center position
+            y: display.pointerCenter().y - display.maxRadius() + self.view.safeAreaInsets.top,
             width: displayPointerFrameWidth,
             height: display.maxRadius())
         displayPointer.frame = displayPointerFrame
         setAnchorPoint(anchorPoint: CGPoint(x: 0.5, y: 1.0), forView: displayPointer)
-        v0 = Double(.pi/2+display.startAngle())
-        v1 = Double(.pi/2+display.endAngle())
+        v0 = Double(display.startAngle()) - 1.5 * .pi
+        v1 = Double(display.endAngle())   - 1.5 * .pi
 
-
-        value = 1.0
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
-            self.value = 0.0
-        }
-//        DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
-//            self.value = 0.0
-//        }
+        value = 0.3
     }
     
     func animationDidStop(_ anim: CAAnimation, finished flag: Bool) {
         if let currentAngle = displayPointer.layer.presentation()?.value(forKeyPath: "transform.rotation") as? Double {
-            print("animationDidStop \(currentAngle)")
         }
     }
     
@@ -93,5 +87,12 @@ class ViewController: UIViewController, CAAnimationDelegate {
         view.layer.position = position
         view.layer.anchorPoint = anchorPoint
     }
+    
+    // function which is triggered when handleTap is called
+    @objc func handleTap(_ sender: UITapGestureRecognizer) {
+        let tabPosition = sender.location(in: cover).x / cover.frame.size.width
+        value = Double(tabPosition)
+    }
+
 }
 

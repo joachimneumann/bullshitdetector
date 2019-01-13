@@ -24,14 +24,14 @@ class Display: UIView {
     }
     
     func startAngle() -> CGFloat {
-        return CGFloat(.pi*2*(0.5+0.12))
+        return CGFloat(.pi*2*(0.5+0.11))
     }
     func endAngle() -> CGFloat {
-        return CGFloat(.pi*2*(1.0-0.12))
+        return CGFloat(.pi*2*(1.0-0.11))
     }
 
     func pointerCenter() -> CGPoint {
-        return CGPoint(x: self.frame.midX, y: self.frame.height * 1.2)
+        return CGPoint(x: self.frame.midX, y: self.frame.origin.y + 1.2 * self.frame.size.height)
     }
     func maxRadius() -> CGFloat {
         return radius() * 1.12
@@ -52,46 +52,51 @@ class Display: UIView {
     
     override func draw(_ rect: CGRect) {
         let radiusUpper = radius() * 1.07
-        let innerRadius = radius() * 0.93
+        let innerRadius = radius() * 0.9
         let mid: CGFloat = startAngle() + 0.7*(endAngle()-startAngle())
-        var track = UIBezierPath(arcCenter: center, radius: radius() - (5 / 2), startAngle: startAngle(), endAngle: mid, clockwise: true)
+        var track = UIBezierPath(arcCenter: pointerCenter(), radius: radius() - (5 / 2), startAngle: startAngle(), endAngle: mid, clockwise: true)
         track.lineWidth = 5
         track.lineCapStyle = .butt
         displayGray.setStroke()
         track.stroke()
 
-        track = UIBezierPath(arcCenter: center, radius: radius() - (5 / 2), startAngle: mid, endAngle: endAngle(), clockwise: true)
+        track = UIBezierPath(arcCenter: pointerCenter(), radius: radius() - (5 / 2), startAngle: mid, endAngle: endAngle(), clockwise: true)
         track.lineWidth = 5
         displayRed.setStroke()
         track.stroke()
 
-        track = UIBezierPath(arcCenter: center, radius: radiusUpper - (1 / 2), startAngle: startAngle(), endAngle: mid, clockwise: true)
+        track = UIBezierPath(arcCenter: pointerCenter(), radius: radiusUpper - (1 / 2), startAngle: startAngle(), endAngle: mid, clockwise: true)
         track.lineWidth = 1
         displayGray.setStroke()
         track.stroke()
         
-        track = UIBezierPath(arcCenter: center, radius: radiusUpper - (1 / 2), startAngle: mid, endAngle: endAngle(), clockwise: true)
+        track = UIBezierPath(arcCenter: pointerCenter(), radius: radiusUpper - (1 / 2), startAngle: mid, endAngle: endAngle(), clockwise: true)
         track.lineWidth = 1
         displayRed.setStroke()
         track.stroke()
         for factor in [0] {
-            let a = UIBezierPath(arcCenter: center, radius: maxRadius(), startAngle: startAngle(), endAngle: startAngle()+(endAngle()-startAngle())*CGFloat(factor), clockwise: true).currentPoint
-            let b = UIBezierPath(arcCenter: center, radius: innerRadius, startAngle: startAngle(), endAngle: startAngle()+(endAngle()-startAngle())*CGFloat(factor), clockwise: true).currentPoint
+            let a = UIBezierPath(arcCenter: pointerCenter(), radius: maxRadius(), startAngle: startAngle(), endAngle: startAngle()+(endAngle()-startAngle())*CGFloat(factor), clockwise: true).currentPoint
+            let b = UIBezierPath(arcCenter: pointerCenter(), radius: innerRadius, startAngle: startAngle(), endAngle: startAngle()+(endAngle()-startAngle())*CGFloat(factor), clockwise: true).currentPoint
             drawLineFrom(start: a, toPoint: b, ofColor: displayGray, inView: self)
         }
         for factor in [0.7, 1] {
-            let a = UIBezierPath(arcCenter: center, radius: maxRadius(), startAngle: startAngle(), endAngle: startAngle()+(endAngle()-startAngle())*CGFloat(factor), clockwise: true).currentPoint
-            let b = UIBezierPath(arcCenter: center, radius: innerRadius, startAngle: startAngle(), endAngle: startAngle()+(endAngle()-startAngle())*CGFloat(factor), clockwise: true).currentPoint
+            let a = UIBezierPath(arcCenter: pointerCenter(), radius: maxRadius(), startAngle: startAngle(), endAngle: startAngle()+(endAngle()-startAngle())*CGFloat(factor), clockwise: true).currentPoint
+            let b = UIBezierPath(arcCenter: pointerCenter(), radius: innerRadius, startAngle: startAngle(), endAngle: startAngle()+(endAngle()-startAngle())*CGFloat(factor), clockwise: true).currentPoint
             drawLineFrom(start: a, toPoint: b, ofColor: displayRed, inView: self)
         }
         for factor in [0.12, 0.2, 0.265, 0.32, 0.37, 0.42, 0.47, 0.52, 0.57, 0.62, 0.66] {
-            let a = UIBezierPath(arcCenter: center, radius: maxRadius(), startAngle: startAngle(), endAngle: startAngle()+(endAngle()-startAngle())*CGFloat(factor), clockwise: true).currentPoint
-            let b = UIBezierPath(arcCenter: center, radius: radiusUpper, startAngle: startAngle(), endAngle: startAngle()+(endAngle()-startAngle())*CGFloat(factor), clockwise: true).currentPoint
+            let a = UIBezierPath(arcCenter: pointerCenter(), radius: maxRadius(), startAngle: startAngle(), endAngle: startAngle()+(endAngle()-startAngle())*CGFloat(factor), clockwise: true).currentPoint
+            let b = UIBezierPath(arcCenter: pointerCenter(), radius: radiusUpper, startAngle: startAngle(), endAngle: startAngle()+(endAngle()-startAngle())*CGFloat(factor), clockwise: true).currentPoint
             drawLineFrom(start: a, toPoint: b, ofColor: displayGray, inView: self)
         }
         for factor in [0.79, 0.87, 0.94] {
-            let a = UIBezierPath(arcCenter: center, radius: maxRadius(), startAngle: startAngle(), endAngle: startAngle()+(endAngle()-startAngle())*CGFloat(factor), clockwise: true).currentPoint
-            let b = UIBezierPath(arcCenter: center, radius: radiusUpper, startAngle: startAngle(), endAngle: startAngle()+(endAngle()-startAngle())*CGFloat(factor), clockwise: true).currentPoint
+            let a = UIBezierPath(arcCenter: pointerCenter(), radius: maxRadius(), startAngle: startAngle(), endAngle: startAngle()+(endAngle()-startAngle())*CGFloat(factor), clockwise: true).currentPoint
+            let b = UIBezierPath(arcCenter: pointerCenter(), radius: radiusUpper, startAngle: startAngle(), endAngle: startAngle()+(endAngle()-startAngle())*CGFloat(factor), clockwise: true).currentPoint
+            drawLineFrom(start: a, toPoint: b, ofColor: displayRed, inView: self)
+        }
+        for factor in [0.0, 1.0] {
+            let a = UIBezierPath(arcCenter: pointerCenter(), radius: maxRadius(), startAngle: startAngle(), endAngle: startAngle()+(endAngle()-startAngle())*CGFloat(factor), clockwise: true).currentPoint
+            let b = UIBezierPath(arcCenter: pointerCenter(), radius: 0, startAngle: startAngle(), endAngle: startAngle()+(endAngle()-startAngle())*CGFloat(factor), clockwise: true).currentPoint
             drawLineFrom(start: a, toPoint: b, ofColor: displayRed, inView: self)
         }
     }
