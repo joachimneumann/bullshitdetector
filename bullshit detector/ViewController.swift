@@ -19,6 +19,8 @@ class ViewController: UIViewController, CAAnimationDelegate, UIGestureRecognizer
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var displayLabel: UITextField!
     @IBOutlet weak var displayLabelConstraint: NSLayoutConstraint!
+    @IBOutlet weak var viewToRightOfButton: UIView!
+    @IBOutlet weak var viewToLeftOfButton: UIView!
     
     var waveView: AnimatedWaveView?
     let random = GKRandomSource()
@@ -64,7 +66,12 @@ class ViewController: UIViewController, CAAnimationDelegate, UIGestureRecognizer
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(self.handleButtonTap(_:)))
         analyseButton.addGestureRecognizer(tap)
-        
+
+        let tapRight = UITapGestureRecognizer(target: self, action: #selector(self.handleButtonTapRight(_:)))
+        viewToRightOfButton.addGestureRecognizer(tapRight)
+        let tapLeft = UITapGestureRecognizer(target: self, action: #selector(self.handleButtonTapLeft(_:)))
+        viewToLeftOfButton.addGestureRecognizer(tapLeft)
+
         let imageTap = UITapGestureRecognizer(target: self, action: #selector(self.handleImageTap(_:)))
         imageView.addGestureRecognizer(imageTap)
         imageView.isUserInteractionEnabled = true
@@ -118,11 +125,21 @@ class ViewController: UIViewController, CAAnimationDelegate, UIGestureRecognizer
         value = targetValue
     }
 
+    @objc func handleButtonTapRight(_ sender: UITapGestureRecognizer) {
+        handleAllTabs(tabPosition: 1.0)
+    }
+    @objc func handleButtonTapLeft(_ sender: UITapGestureRecognizer) {
+        handleAllTabs(tabPosition: 0.0)
+    }
+
     @objc func handleButtonTap(_ sender: UITapGestureRecognizer) {
+        let tabPosition = (analyseButton.frame.size.width - sender.location(in: analyseButton).x) / analyseButton.frame.size.width
+        handleAllTabs(tabPosition: tabPosition)
+    }
+    func handleAllTabs(tabPosition: CGFloat) {
         imageView.isHidden = true
         animationView.isHidden = false
         analyseButton.isEnabled = false
-        let tabPosition = (analyseButton.frame.size.width - sender.location(in: analyseButton).x) / analyseButton.frame.size.width
 
         DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
             self.targetValue = self.targetValue + 0.3*(Double(tabPosition)-self.targetValue)
@@ -161,7 +178,7 @@ class ViewController: UIViewController, CAAnimationDelegate, UIGestureRecognizer
         let n = distribution.nextInt()
         var newValue = targetValue + 0.001 * Double(n)
         if newValue < 0.0 { newValue = 0.0 }
-        if newValue > 1.0 { newValue = 1.0 }
+        if newValue > 1.02 { newValue = 1.02 } // allow a bit more than 100% bullshit
         value = newValue
     }
 
