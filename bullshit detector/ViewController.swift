@@ -76,8 +76,9 @@ class ViewController: UIViewController, CAAnimationDelegate, UIGestureRecognizer
         imageView.addGestureRecognizer(imageTap)
         imageView.isUserInteractionEnabled = true
         analyseButton.layer.cornerRadius = 10
-        analyseButton.setTitle("Analysing...", for: .disabled)
+        analyseButton.setTitle("...analysing", for: .disabled)
         analyseButton.setTitle("Is that true?", for: .normal)
+        analyseButton.backgroundColor = UIColor(red: 255.0/255.0, green: 126.0/255.0, blue: 121.0/255.0, alpha: 1.0)
         displayPointer.layer.cornerRadius = displayPointerFrameWidth/2;
     }
     
@@ -108,6 +109,8 @@ class ViewController: UIViewController, CAAnimationDelegate, UIGestureRecognizer
         view.layer.anchorPoint = anchorPoint
     }
     
+    override var prefersStatusBarHidden: Bool { return true }
+    
     
     override func viewDidLayoutSubviews() {
 
@@ -126,10 +129,10 @@ class ViewController: UIViewController, CAAnimationDelegate, UIGestureRecognizer
     }
 
     @objc func handleButtonTapRight(_ sender: UITapGestureRecognizer) {
-        handleAllTabs(tabPosition: 1.0)
+        handleAllTabs(tabPosition: 0.0)
     }
     @objc func handleButtonTapLeft(_ sender: UITapGestureRecognizer) {
-        handleAllTabs(tabPosition: 0.0)
+        handleAllTabs(tabPosition: 1.0)
     }
 
     @objc func handleButtonTap(_ sender: UITapGestureRecognizer) {
@@ -140,6 +143,9 @@ class ViewController: UIViewController, CAAnimationDelegate, UIGestureRecognizer
         imageView.isHidden = true
         animationView.isHidden = false
         analyseButton.isEnabled = false
+        viewToRightOfButton.isUserInteractionEnabled = false
+        viewToLeftOfButton.isUserInteractionEnabled = false
+        analyseButton.backgroundColor = UIColor(red: 200.0/255.0, green: 200.0/255.0, blue: 200.0/255.0, alpha: 1.0)
 
         DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
             self.targetValue = self.targetValue + 0.3*(Double(tabPosition)-self.targetValue)
@@ -150,7 +156,6 @@ class ViewController: UIViewController, CAAnimationDelegate, UIGestureRecognizer
         DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
             self.animationView.isHidden = true
             self.targetValue = Double(tabPosition)
-            self.analyseButton.isEnabled = true
         }
         DispatchQueue.main.asyncAfter(deadline: .now() + 5.2) {
             self.imageView.isHidden = false
@@ -165,6 +170,12 @@ class ViewController: UIViewController, CAAnimationDelegate, UIGestureRecognizer
             } else {
                 self.imageView.image = UIImage(named: "true")
             }
+        }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 6) {
+            self.analyseButton.isEnabled = true
+            self.viewToRightOfButton.isUserInteractionEnabled = true
+            self.viewToLeftOfButton.isUserInteractionEnabled = true
+            self.analyseButton.backgroundColor = UIColor(red: 255.0/255.0, green: 126.0/255.0, blue: 121.0/255.0, alpha: 1.0)
         }
     }
 
