@@ -156,7 +156,7 @@ class ViewController: UIViewController, CAAnimationDelegate, UIGestureRecognizer
         let n = distribution.nextInt()
         var newValue = targetValue + 0.001 * Double(n)
         if newValue < 0.0 { newValue = 0.0 }
-        if newValue > 1.0 { newValue = 1.0 }
+        if newValue > 1.02 { newValue = 1.02 } // allow a bit more than 100% bullshit
         value = newValue
     }
 
