@@ -78,28 +78,44 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="8M0-Es-WDy">
                                 <rect key="frame" x="40" y="232" width="295" height="295"/>
                             </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BRf-oC-5Ke">
+                                <rect key="frame" x="335" y="567" width="40" height="100"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gbQ-wd-Zzj">
+                                <rect key="frame" x="0.0" y="567" width="40" height="100"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="3ki-0X-gGI" firstAttribute="centerX" secondItem="8M0-Es-WDy" secondAttribute="centerX" id="09L-hW-09t"/>
+                            <constraint firstItem="gbQ-wd-Zzj" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="6eJ-oL-8ZS"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="fj6-4L-L85" secondAttribute="trailing" id="91E-zO-XsM"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="BRf-oC-5Ke" secondAttribute="trailing" id="BhV-gi-Qx8"/>
                             <constraint firstItem="LTY-Rh-FmH" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="173" id="DfX-Zg-apv"/>
                             <constraint firstItem="LTY-Rh-FmH" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="G0d-Rw-c78"/>
                             <constraint firstItem="LTY-Rh-FmH" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="GcU-px-NDJ"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="3ki-0X-gGI" secondAttribute="trailing" id="IkX-95-Jdo"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="4ji-Hs-27j" secondAttribute="bottom" constant="40" id="MdL-z6-bhX"/>
+                            <constraint firstItem="BRf-oC-5Ke" firstAttribute="top" secondItem="fj6-4L-L85" secondAttribute="bottom" id="Qnf-7p-0TE"/>
+                            <constraint firstItem="BRf-oC-5Ke" firstAttribute="leading" secondItem="4ji-Hs-27j" secondAttribute="trailing" id="U3w-8Y-qEO"/>
                             <constraint firstItem="fj6-4L-L85" firstAttribute="top" secondItem="3ki-0X-gGI" secondAttribute="bottom" id="XhD-Sw-br2"/>
+                            <constraint firstItem="gbQ-wd-Zzj" firstAttribute="top" secondItem="fj6-4L-L85" secondAttribute="bottom" id="Xj7-b7-0MG"/>
                             <constraint firstItem="fj6-4L-L85" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="ZGX-Ff-SIC"/>
                             <constraint firstItem="fj6-4L-L85" firstAttribute="centerX" secondItem="8M0-Es-WDy" secondAttribute="centerX" id="aMZ-lk-1kr"/>
                             <constraint firstItem="4ji-Hs-27j" firstAttribute="top" secondItem="fj6-4L-L85" secondAttribute="bottom" id="bey-q2-dYt"/>
+                            <constraint firstItem="gbQ-wd-Zzj" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="bmE-Jr-3BL"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="4ji-Hs-27j" secondAttribute="trailing" constant="40" id="cRb-LF-7gk"/>
                             <constraint firstItem="3ki-0X-gGI" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="dFf-9g-m2j"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="BRf-oC-5Ke" secondAttribute="bottom" id="e8n-7e-0pY"/>
                             <constraint firstItem="8M0-Es-WDy" firstAttribute="leading" secondItem="4ji-Hs-27j" secondAttribute="leading" id="glQ-49-h78"/>
                             <constraint firstItem="4ji-Hs-27j" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="40" id="gqB-cO-b9S"/>
                             <constraint firstItem="4ji-Hs-27j" firstAttribute="top" secondItem="8M0-Es-WDy" secondAttribute="bottom" constant="40" id="ixe-c6-hyn"/>
                             <constraint firstItem="fj6-4L-L85" firstAttribute="centerY" secondItem="8M0-Es-WDy" secondAttribute="centerY" id="kmA-sZ-J7Q"/>
                             <constraint firstItem="3ki-0X-gGI" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="pyo-Ua-Sya"/>
+                            <constraint firstItem="4ji-Hs-27j" firstAttribute="leading" secondItem="gbQ-wd-Zzj" secondAttribute="trailing" id="wXC-4j-ZeS"/>
                             <constraint firstItem="LTY-Rh-FmH" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="181" id="yh2-jF-Zgb"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -111,6 +127,8 @@
                         <outlet property="display" destination="3ki-0X-gGI" id="V4T-nb-wfd"/>
                         <outlet property="displayPointer" destination="LTY-Rh-FmH" id="lzA-Uq-oUO"/>
                         <outlet property="imageView" destination="8M0-Es-WDy" id="ClV-H5-xaK"/>
+                        <outlet property="viewToLeftOfButton" destination="gbQ-wd-Zzj" id="fPM-lA-MwV"/>
+                        <outlet property="viewToRightOfButton" destination="BRf-oC-5Ke" id="u18-Wh-Bqg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
