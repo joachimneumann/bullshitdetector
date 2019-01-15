@@ -17,6 +17,8 @@ class ViewController: UIViewController, CAAnimationDelegate, UIGestureRecognizer
     @IBOutlet weak var display: Display!
     @IBOutlet weak var analyseButton: UIButton!
     @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var displayLabel: UITextField!
+    @IBOutlet weak var displayLabelConstraint: NSLayoutConstraint!
     
     var waveView: AnimatedWaveView?
     let random = GKRandomSource()
@@ -101,6 +103,9 @@ class ViewController: UIViewController, CAAnimationDelegate, UIGestureRecognizer
     
     
     override func viewDidLayoutSubviews() {
+
+        displayLabel.font = UIFont(name: displayLabel.font!.fontName, size: display.frame.size.height*0.1)
+        displayLabelConstraint.constant = display.frame.size.height * 0.8 -  displayLabel.frame.size.height * 0.5
         let displayPointerFrame = CGRect(
             x: display.pointerCenter().x - displayPointerFrameWidth / 2.0,
             y: display.pointerCenter().y - display.maxRadius() + self.view.safeAreaInsets.top,

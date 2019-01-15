@@ -40,11 +40,11 @@ public class AnimatedWaveView: UIView {
     
     // Default gradient colors
     private var gradientColors: [UIColor] = [
-        UIColor(red: 1, green: 1, blue: 1, alpha: 0.80),
-        UIColor(red: 1, green: 1, blue: 1, alpha: 0.50),
-        UIColor(red: 1, green: 1, blue: 1, alpha: 0.20),
-        UIColor(red: 1, green: 1, blue: 1, alpha: 0.02),
-        UIColor(red: 1, green: 1, blue: 1, alpha: 0.02)
+        UIColor(red: 1, green: 1, blue: 1, alpha: 1.0),
+        UIColor(red: 1, green: 1, blue: 1, alpha: 0.8),
+        UIColor(red: 1, green: 1, blue: 1, alpha: 0.6),
+        UIColor(red: 1, green: 1, blue: 1, alpha: 0.4),
+        UIColor(red: 1, green: 1, blue: 1, alpha: 0.2)
     ]
     
     // Cached initial and final paths for the waves
@@ -113,7 +113,7 @@ public class AnimatedWaveView: UIView {
             motionManager.startDeviceMotionUpdates(to: motionQueue, withHandler: { [weak self] (data: CMDeviceMotion?, error: Error?) in
                 guard let data = data else { return }
                 // Move the gradient to a new position
-                self?.moveGradient(gravityX: data.gravity.x, gravityY: data.gravity.y)
+                self?.moveGradient(gravityX: 2*data.gravity.x, gravityY: 2*data.gravity.y)
             })
         }
     }

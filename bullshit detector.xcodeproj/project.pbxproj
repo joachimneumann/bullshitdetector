@@ -16,6 +16,9 @@
 		AA61974F21E9BEB60069121A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AA61974E21E9BEB60069121A /* Assets.xcassets */; };
 		AA61975221E9BEB60069121A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AA61975021E9BEB60069121A /* LaunchScreen.storyboard */; };
 		AA61975A21E9C5810069121A /* Display.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA61975921E9C5810069121A /* Display.swift */; };
+		AAB1923B21EC7C5100836714 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAB1923A21EC7C5100836714 /* StoreKit.framework */; };
+		AAB1923D21EC7EC500836714 /* UnlimitedUsageProducts.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAB1923C21EC7EC500836714 /* UnlimitedUsageProducts.swift */; };
+		AAB1923F21EC9CE500836714 /* IAPHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAB1923E21EC9CE500836714 /* IAPHelper.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +33,9 @@
 		AA61975121E9BEB60069121A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AA61975321E9BEB60069121A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AA61975921E9C5810069121A /* Display.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Display.swift; sourceTree = "<group>"; };
+		AAB1923A21EC7C5100836714 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		AAB1923C21EC7EC500836714 /* UnlimitedUsageProducts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnlimitedUsageProducts.swift; sourceTree = "<group>"; };
+		AAB1923E21EC9CE500836714 /* IAPHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IAPHelper.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -37,6 +43,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AAB1923B21EC7C5100836714 /* StoreKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -48,6 +55,7 @@
 			children = (
 				AA61974621E9BEB40069121A /* bullshit detector */,
 				AA61974521E9BEB40069121A /* Products */,
+				AAB1923921EC7C5100836714 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -72,8 +80,18 @@
 				AA3DD48F21EB21110007244C /* AnimatedWaveView.swift */,
 				AA3DD48E21EB21110007244C /* PathBuilder.swift */,
 				AA3DD48D21EB21100007244C /* RadialGradientLayer.swift */,
+				AAB1923E21EC9CE500836714 /* IAPHelper.swift */,
+				AAB1923C21EC7EC500836714 /* UnlimitedUsageProducts.swift */,
 			);
 			path = "bullshit detector";
+			sourceTree = "<group>";
+		};
+		AAB1923921EC7C5100836714 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				AAB1923A21EC7C5100836714 /* StoreKit.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -108,6 +126,11 @@
 				TargetAttributes = {
 					AA61974321E9BEB40069121A = {
 						CreatedOnToolsVersion = 10.1;
+						SystemCapabilities = {
+							com.apple.InAppPurchase = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -151,8 +174,10 @@
 				AA61974A21E9BEB40069121A /* ViewController.swift in Sources */,
 				AA61975A21E9C5810069121A /* Display.swift in Sources */,
 				AA61974821E9BEB40069121A /* AppDelegate.swift in Sources */,
+				AAB1923F21EC9CE500836714 /* IAPHelper.swift in Sources */,
 				AA3DD49221EB21110007244C /* AnimatedWaveView.swift in Sources */,
 				AA3DD49121EB21110007244C /* PathBuilder.swift in Sources */,
+				AAB1923D21EC7EC500836714 /* UnlimitedUsageProducts.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
