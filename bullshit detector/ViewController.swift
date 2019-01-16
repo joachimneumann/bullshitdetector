@@ -138,17 +138,17 @@ class ViewController: UIViewController, CAAnimationDelegate, UIGestureRecognizer
     }
 
     @objc func handleButtonTapRight(_ sender: UITapGestureRecognizer) {
-        handleAllTabs(tabPosition: 0.0)
+        newQuestion(truthIndex: 0.0)
     }
     @objc func handleButtonTapLeft(_ sender: UITapGestureRecognizer) {
-        handleAllTabs(tabPosition: 1.0)
+        newQuestion(truthIndex: 1.0)
     }
 
     @objc func handleButtonTap(_ sender: UITapGestureRecognizer) {
         let tabPosition = (analyseButton.frame.size.width - sender.location(in: analyseButton).x) / analyseButton.frame.size.width
-        handleAllTabs(tabPosition: tabPosition)
+        newQuestion(truthIndex: tabPosition)
     }
-    func handleAllTabs(tabPosition: CGFloat) {
+    func newQuestion(truthIndex: CGFloat) {
         imageView.isHidden = true
         animationView.isHidden = false
         analyseButton.isEnabled = false
@@ -157,24 +157,24 @@ class ViewController: UIViewController, CAAnimationDelegate, UIGestureRecognizer
         analyseButton.backgroundColor = UIColor(red: 200.0/255.0, green: 200.0/255.0, blue: 200.0/255.0, alpha: 1.0)
 
         DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
-            self.targetValue = self.targetValue + 0.3*(Double(tabPosition)-self.targetValue)
+            self.targetValue = self.targetValue + 0.3*(Double(truthIndex)-self.targetValue)
         }
         DispatchQueue.main.asyncAfter(deadline: .now() + 4) {
-            self.targetValue = self.targetValue + 0.6*(Double(tabPosition)-self.targetValue)
+            self.targetValue = self.targetValue + 0.6*(Double(truthIndex)-self.targetValue)
         }
         DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
             self.animationView.isHidden = true
-            self.targetValue = Double(tabPosition)
+            self.targetValue = Double(truthIndex)
         }
         DispatchQueue.main.asyncAfter(deadline: .now() + 5.2) {
             self.imageView.isHidden = false
-            if tabPosition > 0.9 {
+            if truthIndex > 0.9 {
                 self.imageView.image = UIImage(named: "absolute bullshit")
-            } else if tabPosition > 0.8 {
+            } else if truthIndex > 0.8 {
                 self.imageView.image = UIImage(named: "bullshit")
-            } else if tabPosition > 0.4 {
+            } else if truthIndex > 0.4 {
                 self.imageView.image = UIImage(named: "resonable")
-            } else if tabPosition > 0.25 {
+            } else if truthIndex > 0.25 {
                 self.imageView.image = UIImage(named: "mostly true")
             } else {
                 self.imageView.image = UIImage(named: "true")
