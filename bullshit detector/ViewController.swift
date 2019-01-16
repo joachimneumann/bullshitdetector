@@ -80,6 +80,11 @@ class ViewController: UIViewController, CAAnimationDelegate, UIGestureRecognizer
         analyseButton.setTitle("Is that true?", for: .normal)
         analyseButton.backgroundColor = UIColor(red: 255.0/255.0, green: 126.0/255.0, blue: 121.0/255.0, alpha: 1.0)
         displayPointer.layer.cornerRadius = displayPointerFrameWidth/2;
+        
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(appWillEnterForeground(_:)),
+                                               name: UIApplication.willEnterForegroundNotification,
+                                               object: nil)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -126,6 +131,10 @@ class ViewController: UIViewController, CAAnimationDelegate, UIGestureRecognizer
         v0 = Double(display.startAngle()) - 1.5 * .pi
         v1 = Double(display.endAngle())   - 1.5 * .pi
         value = targetValue
+    }
+    
+    @objc func appWillEnterForeground(_ application: UIApplication) {
+        reset()
     }
 
     @objc func handleButtonTapRight(_ sender: UITapGestureRecognizer) {
@@ -179,10 +188,14 @@ class ViewController: UIViewController, CAAnimationDelegate, UIGestureRecognizer
         }
     }
 
-    @objc func handleImageTap(_ sender: UITapGestureRecognizer) {
+    func reset() {
         imageView.isHidden = true
         animationView.isHidden = true
         targetValue = 0.3
+    }
+    
+    @objc func handleImageTap(_ sender: UITapGestureRecognizer) {
+        reset()
     }
 
     @objc func noise() {
