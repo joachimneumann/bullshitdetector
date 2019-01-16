@@ -21,6 +21,7 @@ class ViewController: UIViewController, CAAnimationDelegate, UIGestureRecognizer
     @IBOutlet weak var displayLabelConstraint: NSLayoutConstraint!
     @IBOutlet weak var viewToRightOfButton: UIView!
     @IBOutlet weak var viewToLeftOfButton: UIView!
+    @IBOutlet weak var instructionsImageView: UIImageView!
     
     var waveView: AnimatedWaveView?
     let random = GKRandomSource()
@@ -57,6 +58,18 @@ class ViewController: UIViewController, CAAnimationDelegate, UIGestureRecognizer
     var v1 = 0.0
 
     override func viewDidLoad() {
+        let instructionsShown = UserDefaults.standard.object(forKey: "instructionsShown") as? Bool ?? false
+        if instructionsShown {
+            instructionsImageView.isHidden = true
+        }
+        let defaults = UserDefaults.standard
+        defaults.set(25, forKey: "Age")
+        defaults.set(true, forKey: "UseTouchID")
+        defaults.set(CGFloat.pi, forKey: "Pi")
+        
+        defaults.set("Paul Hudson", forKey: "Name")
+        defaults.set(Date(), forKey: "LastRun")
+        
         animationView.isHidden = true
         imageView.isHidden = true
         coverView.backgroundColor = UIColor.white
@@ -85,6 +98,8 @@ class ViewController: UIViewController, CAAnimationDelegate, UIGestureRecognizer
                                                selector: #selector(appWillEnterForeground(_:)),
                                                name: UIApplication.willEnterForegroundNotification,
                                                object: nil)
+        self.navigationController?.setNavigationBarHidden(true, animated: false)
+
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -149,9 +164,13 @@ class ViewController: UIViewController, CAAnimationDelegate, UIGestureRecognizer
         newQuestion(truthIndex: tabPosition)
     }
     func newQuestion(truthIndex: CGFloat) {
+        UserDefaults.standard.set(true, forKey: "instructionsShown")
+        instructionsImageView.isHidden = true
+
         imageView.isHidden = true
         animationView.isHidden = false
         analyseButton.isEnabled = false
+        analyseButton.setNeedsDisplay()
         viewToRightOfButton.isUserInteractionEnabled = false
         viewToLeftOfButton.isUserInteractionEnabled = false
         analyseButton.backgroundColor = UIColor(red: 200.0/255.0, green: 200.0/255.0, blue: 200.0/255.0, alpha: 1.0)
@@ -166,8 +185,11 @@ class ViewController: UIViewController, CAAnimationDelegate, UIGestureRecognizer
             self.animationView.isHidden = true
             self.targetValue = Double(truthIndex)
         }
-        DispatchQueue.main.asyncAfter(deadline: .now() + 5.2) {
-            self.imageView.isHidden = false
+        DispatchQueue.main.asyncAfter(deadline: .now() + 5.0) {
+            self.analyseButton.setTitle("Done", for: .disabled)
+            self.analyseButton.setNeedsDisplay()
+        }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 5.5) {
             if truthIndex > 0.9 {
                 self.imageView.image = UIImage(named: "absolute bullshit")
             } else if truthIndex > 0.8 {
@@ -179,11 +201,14 @@ class ViewController: UIViewController, CAAnimationDelegate, UIGestureRecognizer
             } else {
                 self.imageView.image = UIImage(named: "true")
             }
+            self.imageView.isHidden = false
         }
-        DispatchQueue.main.asyncAfter(deadline: .now() + 6) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 9) {
             self.analyseButton.isEnabled = true
+            self.analyseButton.setNeedsDisplay()
             self.viewToRightOfButton.isUserInteractionEnabled = true
             self.viewToLeftOfButton.isUserInteractionEnabled = true
+            self.analyseButton.setTitle("...analysing", for: .disabled)
             self.analyseButton.backgroundColor = UIColor(red: 255.0/255.0, green: 126.0/255.0, blue: 121.0/255.0, alpha: 1.0)
         }
     }

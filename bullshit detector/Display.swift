@@ -15,12 +15,12 @@ class Display: UIView {
 
     override init(frame: CGRect) {
         super.init(frame: frame)
-        self.backgroundColor = UIColor(red: 243/255.0, green: 238/255.0, blue: 220/255.0, alpha: 1.0)
+        self.backgroundColor = displayBackgroundColor
     }
     
     required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)!
-        self.backgroundColor = UIColor(red: 243/255.0, green: 238/255.0, blue: 220/255.0, alpha: 1.0)
+        self.backgroundColor = displayBackgroundColor
     }
     
     func startAngle() -> CGFloat {
