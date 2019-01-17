@@ -31,7 +31,7 @@ class Display: UIView {
     }
 
     func pointerCenter() -> CGPoint {
-        return CGPoint(x: self.frame.midX, y: self.frame.origin.y + 1.2 * self.frame.size.height)
+        return CGPoint(x: self.bounds.midX, y: self.bounds.origin.y + 1.2 * self.bounds.size.height)
     }
     func maxRadius() -> CGFloat {
         return radius() * 1.12
@@ -39,6 +39,7 @@ class Display: UIView {
     private func radius() -> CGFloat {
         return self.frame.height * 0.8
     }
+    
     func drawLineFrom(start: CGPoint, toPoint end:CGPoint, ofColor lineColor: UIColor, inView view: UIView) {
         let path = UIBezierPath()
         path.move(to: start)

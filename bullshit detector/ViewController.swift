@@ -62,13 +62,7 @@ class ViewController: UIViewController, CAAnimationDelegate, UIGestureRecognizer
         if instructionsShown {
             instructionsImageView.isHidden = true
         }
-        let defaults = UserDefaults.standard
-        defaults.set(25, forKey: "Age")
-        defaults.set(true, forKey: "UseTouchID")
-        defaults.set(CGFloat.pi, forKey: "Pi")
-        
-        defaults.set("Paul Hudson", forKey: "Name")
-        defaults.set(Date(), forKey: "LastRun")
+        self.view.backgroundColor = displayBackgroundColor
         
         animationView.isHidden = true
         imageView.isHidden = true
@@ -133,7 +127,6 @@ class ViewController: UIViewController, CAAnimationDelegate, UIGestureRecognizer
     
     
     override func viewDidLayoutSubviews() {
-
         displayLabel.font = UIFont(name: displayLabel.font!.fontName, size: display.frame.size.height*0.1)
         displayLabelConstraint.constant = display.frame.size.height * 0.8 -  displayLabel.frame.size.height * 0.5
         let displayPointerFrame = CGRect(
