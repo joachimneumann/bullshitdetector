@@ -41,7 +41,7 @@ class ViewController: UIViewController, CAAnimationDelegate, UIGestureRecognizer
             displayPointer.layer.removeAllAnimations()
             let circularAnimation = CABasicAnimation(keyPath: "transform.rotation")
             circularAnimation.delegate = self
-            let startAngle = oldAngle//v0 + _value * (v1-v0)
+            let startAngle = oldAngle
             let endAngle = v0 + newValue * (v1-v0)
             circularAnimation.fromValue = startAngle
             circularAnimation.toValue = endAngle
@@ -192,13 +192,13 @@ class ViewController: UIViewController, CAAnimationDelegate, UIGestureRecognizer
             self.analyseButton.setNeedsDisplay()
         }
         DispatchQueue.main.asyncAfter(deadline: .now() + 5.5) {
-            if truthIndex > 0.9 {
+            if truthIndex < 0.1 {
                 self.imageView.image = UIImage(named: "absolute bullshit")
-            } else if truthIndex > 0.8 {
+            } else if truthIndex < 0.2 {
                 self.imageView.image = UIImage(named: "bullshit")
-            } else if truthIndex > 0.4 {
+            } else if truthIndex < 0.6 {
                 self.imageView.image = UIImage(named: "resonable")
-            } else if truthIndex > 0.25 {
+            } else if truthIndex < 0.75 {
                 self.imageView.image = UIImage(named: "mostly true")
             } else {
                 self.imageView.image = UIImage(named: "true")
@@ -228,8 +228,8 @@ class ViewController: UIViewController, CAAnimationDelegate, UIGestureRecognizer
     @objc func noise() {
         let n = distribution.nextInt()
         var newValue = targetValue + 0.001 * Double(n)
-        if newValue < 0.0 { newValue = 0.0 }
-        if newValue > 1.02 { newValue = 1.02 } // allow a bit more than 100% bullshit
+        if newValue < -0.02 { newValue = -0.02 } // allow a bit more than 100% bullshit
+        if newValue > 1.0 { newValue = 1.0 }
         value = newValue
     }
 
