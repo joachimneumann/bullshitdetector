@@ -23,6 +23,7 @@ class ViewController: UIViewController, CAAnimationDelegate, UIGestureRecognizer
     @IBOutlet weak var viewToLeftOfButton: UIView!
     @IBOutlet weak var instructionsImageView: UIImageView!
     
+    var instructionsDisplayedCounter = 0
     var waveView: AnimatedWaveView?
     let random = GKRandomSource()
     let distribution = GKGaussianDistribution(lowestValue: -100, highestValue: 100)
@@ -50,7 +51,6 @@ class ViewController: UIViewController, CAAnimationDelegate, UIGestureRecognizer
             circularAnimation.fillMode = CAMediaTimingFillMode.forwards;
             circularAnimation.isRemovedOnCompletion = false
             displayPointer.layer.add(circularAnimation, forKey: "xx")
-//            _value = newValue
         }
     }
     
@@ -58,8 +58,8 @@ class ViewController: UIViewController, CAAnimationDelegate, UIGestureRecognizer
     var v1 = 0.0
 
     override func viewDidLoad() {
-        let instructionsShown = UserDefaults.standard.object(forKey: "instructionsShown") as? Bool ?? false
-        if instructionsShown {
+        let instructionsDisplayed = UserDefaults.standard.object(forKey: "instructionsDisplayedKey") as? Bool ?? false
+        if instructionsDisplayed {
             instructionsImageView.isHidden = true
         }
         self.view.backgroundColor = displayBackgroundColor
@@ -166,8 +166,11 @@ class ViewController: UIViewController, CAAnimationDelegate, UIGestureRecognizer
         newQuestion(truthIndex: tabPosition)
     }
     func newQuestion(truthIndex: CGFloat) {
-        UserDefaults.standard.set(true, forKey: "instructionsShown")
-        instructionsImageView.isHidden = true
+        instructionsDisplayedCounter += 1
+        if instructionsDisplayedCounter >= 2 {
+            UserDefaults.standard.set(true, forKey: "instructionsDisplayedKey")
+            instructionsImageView.isHidden = true
+        }
 
         imageView.isHidden = true
         animationView.isHidden = false
