@@ -36,7 +36,7 @@ public class AnimatedWaveView: UIView {
     private var maskLayer = CALayer()
     
     // CMMotion
-    private let motionManager = CMMotionManager()
+    let motionManager = CMMotionManager()
     
     // Default gradient colors
     private var gradientColors: [UIColor] = [
@@ -105,7 +105,7 @@ public class AnimatedWaveView: UIView {
     
     // MARK: - Device Motion
     
-    private func trackMotion() {
+    func trackMotion() {
         if motionManager.isDeviceMotionAvailable {
             // Set how often the motion call back will trigger (in seconds)
             motionManager.deviceMotionUpdateInterval = 2.0 / 60.0

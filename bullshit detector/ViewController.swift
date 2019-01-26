@@ -30,12 +30,15 @@ class ViewController: UIViewController, CAAnimationDelegate, UIGestureRecognizer
     var noiseTimer: Timer!
     var targetValue: Double = 0.3
     let displayPointerFrameWidth: CGFloat = 6
+    var displayStartAngle = 0.0
+    var displayEndAngle = 0.0
+
     var value: Double {
         get {
             return 0
         }
         set(newValue) {
-            var oldAngle = v0
+            var oldAngle = displayStartAngle
             if let currentAngle = displayPointer.layer.presentation()?.value(forKeyPath: "transform.rotation") as? Double {
                 oldAngle = currentAngle
             }
@@ -43,7 +46,7 @@ class ViewController: UIViewController, CAAnimationDelegate, UIGestureRecognizer
             let circularAnimation = CABasicAnimation(keyPath: "transform.rotation")
             circularAnimation.delegate = self
             let startAngle = oldAngle
-            let endAngle = v0 + newValue * (v1-v0)
+            let endAngle = displayStartAngle + newValue * (displayEndAngle-displayStartAngle)
             circularAnimation.fromValue = startAngle
             circularAnimation.toValue = endAngle
             circularAnimation.duration = 0.2
@@ -54,8 +57,6 @@ class ViewController: UIViewController, CAAnimationDelegate, UIGestureRecognizer
         }
     }
     
-    var v0 = 0.0
-    var v1 = 0.0
 
     override func viewDidLoad() {
         let instructionsDisplayed = UserDefaults.standard.object(forKey: "instructionsDisplayedKey") as? Bool ?? false
@@ -69,7 +70,7 @@ class ViewController: UIViewController, CAAnimationDelegate, UIGestureRecognizer
         coverView.backgroundColor = UIColor.white
         animationView.backgroundColor = UIColor(red: 255.0/255.0, green: 166.0/255.0, blue: 161.0/255.0, alpha: 1.0)
         super.viewDidLoad()
-        noiseTimer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(noise), userInfo: nil, repeats: true)
+        noiseTimer = Timer.scheduledTimer(timeInterval: 0.15, target: self, selector: #selector(noise), userInfo: nil, repeats: true)
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(self.handleButtonTap(_:)))
         analyseButton.addGestureRecognizer(tap)
@@ -83,7 +84,6 @@ class ViewController: UIViewController, CAAnimationDelegate, UIGestureRecognizer
         imageView.addGestureRecognizer(imageTap)
         imageView.isUserInteractionEnabled = true
         analyseButton.layer.cornerRadius = 10
-        analyseButton.setTitle("...analysing", for: .disabled)
         analyseButton.setTitle("Is that true?", for: .normal)
         analyseButton.backgroundColor = UIColor(red: 255.0/255.0, green: 126.0/255.0, blue: 121.0/255.0, alpha: 1.0)
         displayPointer.layer.cornerRadius = displayPointerFrameWidth/2;
@@ -145,8 +145,8 @@ class ViewController: UIViewController, CAAnimationDelegate, UIGestureRecognizer
         }
         displayPointer.frame = displayPointerFrame
         setAnchorPoint(anchorPoint: CGPoint(x: 0.5, y: 1.0), forView: displayPointer)
-        v0 = Double(display.startAngle()) - 1.5 * .pi
-        v1 = Double(display.endAngle())   - 1.5 * .pi
+        displayStartAngle = Double(display.startAngle()) - 1.5 * .pi
+        displayEndAngle = Double(display.endAngle())   - 1.5 * .pi
         value = targetValue
     }
     
@@ -174,12 +174,16 @@ class ViewController: UIViewController, CAAnimationDelegate, UIGestureRecognizer
 
         imageView.isHidden = true
         animationView.isHidden = false
+        waveView?.trackMotion()
         analyseButton.isEnabled = false
         analyseButton.setNeedsDisplay()
         viewToRightOfButton.isUserInteractionEnabled = false
         viewToLeftOfButton.isUserInteractionEnabled = false
         analyseButton.backgroundColor = UIColor(red: 200.0/255.0, green: 200.0/255.0, blue: 200.0/255.0, alpha: 1.0)
-
+        
+        // initially move to the center
+        targetValue = 0.5
+        
         DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
             self.targetValue = self.targetValue + 0.3*(Double(truthIndex)-self.targetValue)
         }
@@ -188,13 +192,8 @@ class ViewController: UIViewController, CAAnimationDelegate, UIGestureRecognizer
         }
         DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
             self.animationView.isHidden = true
+            self.waveView?.motionManager.stopDeviceMotionUpdates()
             self.targetValue = Double(truthIndex)
-        }
-        DispatchQueue.main.asyncAfter(deadline: .now() + 5.0) {
-            self.analyseButton.setTitle("Done", for: .disabled)
-            self.analyseButton.setNeedsDisplay()
-        }
-        DispatchQueue.main.asyncAfter(deadline: .now() + 5.5) {
             if truthIndex < 0.1 {
                 self.imageView.image = UIImage(named: "absolute bullshit")
             } else if truthIndex < 0.2 {
@@ -213,7 +212,6 @@ class ViewController: UIViewController, CAAnimationDelegate, UIGestureRecognizer
             self.analyseButton.setNeedsDisplay()
             self.viewToRightOfButton.isUserInteractionEnabled = true
             self.viewToLeftOfButton.isUserInteractionEnabled = true
-            self.analyseButton.setTitle("...analysing", for: .disabled)
             self.analyseButton.backgroundColor = UIColor(red: 255.0/255.0, green: 126.0/255.0, blue: 121.0/255.0, alpha: 1.0)
         }
     }
