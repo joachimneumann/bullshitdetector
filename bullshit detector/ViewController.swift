@@ -181,8 +181,9 @@ class ViewController: UIViewController, CAAnimationDelegate, UIGestureRecognizer
         viewToLeftOfButton.isUserInteractionEnabled = false
         analyseButton.backgroundColor = UIColor(red: 200.0/255.0, green: 200.0/255.0, blue: 200.0/255.0, alpha: 1.0)
         
-        // initially move to the center
-        targetValue = 0.5
+        // initially move to the center,
+        // but a bit on the "wrong" side
+        targetValue = 0.5 - 0.2 * (Double(truthIndex)-0.5)
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
             self.targetValue = self.targetValue + 0.3*(Double(truthIndex)-self.targetValue)
