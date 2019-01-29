@@ -15,12 +15,41 @@
 		AA61974821E9BEB40069121A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA61974721E9BEB40069121A /* AppDelegate.swift */; };
 		AA61974A21E9BEB40069121A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA61974921E9BEB40069121A /* ViewController.swift */; };
 		AA61974D21E9BEB40069121A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AA61974B21E9BEB40069121A /* Main.storyboard */; };
-		AA61974F21E9BEB60069121A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AA61974E21E9BEB60069121A /* Assets.xcassets */; };
 		AA61975221E9BEB60069121A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AA61975021E9BEB60069121A /* LaunchScreen.storyboard */; };
 		AA61975A21E9C5810069121A /* Display.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA61975921E9C5810069121A /* Display.swift */; };
+		AAA9256422002A6400AB15B7 /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAA9256322002A6400AB15B7 /* NotificationCenter.framework */; };
+		AAA9256722002A6400AB15B7 /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAA9256622002A6400AB15B7 /* TodayViewController.swift */; };
+		AAA9256A22002A6400AB15B7 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AAA9256822002A6400AB15B7 /* MainInterface.storyboard */; };
+		AAA9256E22002A6400AB15B7 /* Truth-O-Meter Widget.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = AAA9256222002A6400AB15B7 /* Truth-O-Meter Widget.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		AAA92577220031FA00AB15B7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AA61974E21E9BEB60069121A /* Assets.xcassets */; };
+		AAA925782200322200AB15B7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AA61974E21E9BEB60069121A /* Assets.xcassets */; };
 		AAB1923D21EC7EC500836714 /* UnlimitedUsageProducts.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAB1923C21EC7EC500836714 /* UnlimitedUsageProducts.swift */; };
 		AAB1923F21EC9CE500836714 /* IAPHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAB1923E21EC9CE500836714 /* IAPHelper.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		AAA9256C22002A6400AB15B7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AA61973C21E9BEB40069121A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = AAA9256122002A6400AB15B7;
+			remoteInfo = "Truth-O-Meter Widget";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		AAA9257222002A6400AB15B7 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				AAA9256E22002A6400AB15B7 /* Truth-O-Meter Widget.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		AA37BBF421EEE684005A4042 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
@@ -36,6 +65,11 @@
 		AA61975121E9BEB60069121A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AA61975321E9BEB60069121A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AA61975921E9C5810069121A /* Display.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Display.swift; sourceTree = "<group>"; };
+		AAA9256222002A6400AB15B7 /* Truth-O-Meter Widget.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Truth-O-Meter Widget.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		AAA9256322002A6400AB15B7 /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
+		AAA9256622002A6400AB15B7 /* TodayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayViewController.swift; sourceTree = "<group>"; };
+		AAA9256922002A6400AB15B7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
+		AAA9256B22002A6400AB15B7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AAB1923C21EC7EC500836714 /* UnlimitedUsageProducts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnlimitedUsageProducts.swift; sourceTree = "<group>"; };
 		AAB1923E21EC9CE500836714 /* IAPHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IAPHelper.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -48,6 +82,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		AAA9255F22002A6400AB15B7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AAA9256422002A6400AB15B7 /* NotificationCenter.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -55,6 +97,7 @@
 			isa = PBXGroup;
 			children = (
 				AA61974621E9BEB40069121A /* bullshit detector */,
+				AAA9256522002A6400AB15B7 /* Truth-O-Meter Widget */,
 				AA61974521E9BEB40069121A /* Products */,
 				AAB1923921EC7C5100836714 /* Frameworks */,
 			);
@@ -64,6 +107,7 @@
 			isa = PBXGroup;
 			children = (
 				AA61974421E9BEB40069121A /* bullshit detector.app */,
+				AAA9256222002A6400AB15B7 /* Truth-O-Meter Widget.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -89,9 +133,20 @@
 			path = "bullshit detector";
 			sourceTree = "<group>";
 		};
+		AAA9256522002A6400AB15B7 /* Truth-O-Meter Widget */ = {
+			isa = PBXGroup;
+			children = (
+				AAA9256622002A6400AB15B7 /* TodayViewController.swift */,
+				AAA9256822002A6400AB15B7 /* MainInterface.storyboard */,
+				AAA9256B22002A6400AB15B7 /* Info.plist */,
+			);
+			path = "Truth-O-Meter Widget";
+			sourceTree = "<group>";
+		};
 		AAB1923921EC7C5100836714 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				AAA9256322002A6400AB15B7 /* NotificationCenter.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -106,15 +161,34 @@
 				AA61974021E9BEB40069121A /* Sources */,
 				AA61974121E9BEB40069121A /* Frameworks */,
 				AA61974221E9BEB40069121A /* Resources */,
+				AAA9257222002A6400AB15B7 /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				AAA9256D22002A6400AB15B7 /* PBXTargetDependency */,
 			);
 			name = "bullshit detector";
 			productName = "bullshit detector";
 			productReference = AA61974421E9BEB40069121A /* bullshit detector.app */;
 			productType = "com.apple.product-type.application";
+		};
+		AAA9256122002A6400AB15B7 /* Truth-O-Meter Widget */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AAA9257122002A6400AB15B7 /* Build configuration list for PBXNativeTarget "Truth-O-Meter Widget" */;
+			buildPhases = (
+				AAA9255E22002A6400AB15B7 /* Sources */,
+				AAA9255F22002A6400AB15B7 /* Frameworks */,
+				AAA9256022002A6400AB15B7 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Truth-O-Meter Widget";
+			productName = "Truth-O-Meter Widget";
+			productReference = AAA9256222002A6400AB15B7 /* Truth-O-Meter Widget.appex */;
+			productType = "com.apple.product-type.app-extension";
 		};
 /* End PBXNativeTarget section */
 
@@ -135,6 +209,9 @@
 							};
 						};
 					};
+					AAA9256122002A6400AB15B7 = {
+						CreatedOnToolsVersion = 10.1;
+					};
 				};
 			};
 			buildConfigurationList = AA61973F21E9BEB40069121A /* Build configuration list for PBXProject "bullshit detector" */;
@@ -151,6 +228,7 @@
 			projectRoot = "";
 			targets = (
 				AA61974321E9BEB40069121A /* bullshit detector */,
+				AAA9256122002A6400AB15B7 /* Truth-O-Meter Widget */,
 			);
 		};
 /* End PBXProject section */
@@ -161,8 +239,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				AA61975221E9BEB60069121A /* LaunchScreen.storyboard in Resources */,
-				AA61974F21E9BEB60069121A /* Assets.xcassets in Resources */,
+				AAA92577220031FA00AB15B7 /* Assets.xcassets in Resources */,
 				AA61974D21E9BEB40069121A /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AAA9256022002A6400AB15B7 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AAA925782200322200AB15B7 /* Assets.xcassets in Resources */,
+				AAA9256A22002A6400AB15B7 /* MainInterface.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -186,7 +273,23 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		AAA9255E22002A6400AB15B7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AAA9256722002A6400AB15B7 /* TodayViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		AAA9256D22002A6400AB15B7 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = AAA9256122002A6400AB15B7 /* Truth-O-Meter Widget */;
+			targetProxy = AAA9256C22002A6400AB15B7 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		AA61974B21E9BEB40069121A /* Main.storyboard */ = {
@@ -203,6 +306,14 @@
 				AA61975121E9BEB60069121A /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		AAA9256822002A6400AB15B7 /* MainInterface.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				AAA9256922002A6400AB15B7 /* Base */,
+			);
+			name = MainInterface.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -327,6 +438,7 @@
 		AA61975721E9BEB60069121A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -350,6 +462,7 @@
 		AA61975821E9BEB60069121A /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -364,6 +477,48 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.joachimneumann.bullshitdetector;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		AAA9256F22002A6400AB15B7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 8A4DL788W9;
+				INFOPLIST_FILE = "Truth-O-Meter Widget/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.joachimneumann.bullshitdetector.Truth-O-Meter-Widget";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		AAA9257022002A6400AB15B7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 8A4DL788W9;
+				INFOPLIST_FILE = "Truth-O-Meter Widget/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.joachimneumann.bullshitdetector.Truth-O-Meter-Widget";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -386,6 +541,15 @@
 			buildConfigurations = (
 				AA61975721E9BEB60069121A /* Debug */,
 				AA61975821E9BEB60069121A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AAA9257122002A6400AB15B7 /* Build configuration list for PBXNativeTarget "Truth-O-Meter Widget" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AAA9256F22002A6400AB15B7 /* Debug */,
+				AAA9257022002A6400AB15B7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
