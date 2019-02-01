@@ -16,12 +16,14 @@ class ViewController: UIViewController, CAAnimationDelegate, UIGestureRecognizer
     @IBOutlet weak var displayPointer: UIView!
     @IBOutlet weak var display: Display!
     @IBOutlet weak var analyseButton: UIButton!
-    @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var resultView: UIView!
+    @IBOutlet weak var resultlabel: UILabel!
     @IBOutlet weak var displayLabel: UITextField!
     @IBOutlet weak var displayLabelConstraint: NSLayoutConstraint!
     @IBOutlet weak var viewToRightOfButton: UIView!
     @IBOutlet weak var viewToLeftOfButton: UIView!
     @IBOutlet weak var instructionsImageView: UIImageView!
+    @IBOutlet weak var settingsButton: UIButton!
     
     var instructionsDisplayedCounter = 0
     var waveView: AnimatedWaveView?
@@ -66,7 +68,7 @@ class ViewController: UIViewController, CAAnimationDelegate, UIGestureRecognizer
         self.view.backgroundColor = displayBackgroundColor
         
         animationView.isHidden = true
-        imageView.isHidden = true
+        resultView.isHidden = true
         coverView.backgroundColor = UIColor.white
         animationView.backgroundColor = UIColor(red: 255.0/255.0, green: 166.0/255.0, blue: 161.0/255.0, alpha: 1.0)
         super.viewDidLoad()
@@ -81,8 +83,8 @@ class ViewController: UIViewController, CAAnimationDelegate, UIGestureRecognizer
         viewToLeftOfButton.addGestureRecognizer(tapLeft)
 
         let imageTap = UITapGestureRecognizer(target: self, action: #selector(self.handleImageTap(_:)))
-        imageView.addGestureRecognizer(imageTap)
-        imageView.isUserInteractionEnabled = true
+        resultView.addGestureRecognizer(imageTap)
+        resultView.isUserInteractionEnabled = true
         analyseButton.layer.cornerRadius = 10
         analyseButton.setTitle("Is that true?", for: .normal)
         analyseButton.backgroundColor = UIColor(red: 255.0/255.0, green: 126.0/255.0, blue: 121.0/255.0, alpha: 1.0)
@@ -148,6 +150,12 @@ class ViewController: UIViewController, CAAnimationDelegate, UIGestureRecognizer
         displayStartAngle = Double(display.startAngle()) - 1.5 * .pi
         displayEndAngle = Double(display.endAngle())   - 1.5 * .pi
         value = targetValue
+        resultlabel.textColor = bullshitRed
+        let fontSize = resultlabel.bounds.size.width
+        let fontDescriptor = UIFontDescriptor(name: "BLACK", size: fontSize)
+        resultlabel.font = UIFont(descriptor: fontDescriptor, size: fontSize)
+        resultlabel.adjustsFontSizeToFitWidth = true
+        resultlabel.transform = CGAffineTransform(rotationAngle: CGFloat.pi / 20)
     }
     
     @objc func appWillEnterForeground(_ application: UIApplication) {
@@ -172,53 +180,58 @@ class ViewController: UIViewController, CAAnimationDelegate, UIGestureRecognizer
             instructionsImageView.isHidden = true
         }
 
-        imageView.isHidden = true
+        resultView.isHidden = true
         animationView.isHidden = false
         waveView?.trackMotion()
         analyseButton.isEnabled = false
         analyseButton.setNeedsDisplay()
         viewToRightOfButton.isUserInteractionEnabled = false
         viewToLeftOfButton.isUserInteractionEnabled = false
-        analyseButton.backgroundColor = UIColor(red: 200.0/255.0, green: 200.0/255.0, blue: 200.0/255.0, alpha: 1.0)
+        analyseButton.backgroundColor = bullshitGray
         
         // initially move to the center,
         // but a bit on the "wrong" side
         targetValue = 0.5 - 0.2 * (Double(truthIndex)-0.5)
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
             self.targetValue = self.targetValue + 0.3*(Double(truthIndex)-self.targetValue)
         }
-        DispatchQueue.main.asyncAfter(deadline: .now() + 4) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
             self.targetValue = self.targetValue + 0.6*(Double(truthIndex)-self.targetValue)
         }
-        DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
             self.animationView.isHidden = true
             self.waveView?.motionManager.stopDeviceMotionUpdates()
             self.targetValue = Double(truthIndex)
             if truthIndex < 0.1 {
-                self.imageView.image = UIImage(named: "absolute bullshit")
+                self.resultlabel.text = "Absolute   Bullshit"
+                self.resultlabel.numberOfLines = 2
             } else if truthIndex < 0.2 {
-                self.imageView.image = UIImage(named: "bullshit")
+                self.resultlabel.text = "Bullshit"
+                self.resultlabel.numberOfLines = 1
             } else if truthIndex < 0.6 {
-                self.imageView.image = UIImage(named: "resonable")
+                self.resultlabel.text = "Undecided"
+                self.resultlabel.numberOfLines = 1
             } else if truthIndex < 0.75 {
-                self.imageView.image = UIImage(named: "mostly true")
+                self.resultlabel.text = "Mostly     True"
+                self.resultlabel.numberOfLines = 2
             } else {
-                self.imageView.image = UIImage(named: "true")
+                self.resultlabel.text = "True"
+                self.resultlabel.numberOfLines = 1
             }
-            self.imageView.isHidden = false
+            self.resultView.isHidden = false
         }
-        DispatchQueue.main.asyncAfter(deadline: .now() + 9) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.9) {
             self.analyseButton.isEnabled = true
             self.analyseButton.setNeedsDisplay()
             self.viewToRightOfButton.isUserInteractionEnabled = true
             self.viewToLeftOfButton.isUserInteractionEnabled = true
-            self.analyseButton.backgroundColor = UIColor(red: 255.0/255.0, green: 126.0/255.0, blue: 121.0/255.0, alpha: 1.0)
+            self.analyseButton.backgroundColor = bullshitRed
         }
     }
 
     func reset() {
-        imageView.isHidden = true
+        resultView.isHidden = true
         animationView.isHidden = true
         targetValue = 0.3
     }

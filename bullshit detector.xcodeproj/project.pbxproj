@@ -23,6 +23,8 @@
 		AAA9256E22002A6400AB15B7 /* Truth-O-Meter Widget.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = AAA9256222002A6400AB15B7 /* Truth-O-Meter Widget.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		AAA92577220031FA00AB15B7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AA61974E21E9BEB60069121A /* Assets.xcassets */; };
 		AAA925782200322200AB15B7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AA61974E21E9BEB60069121A /* Assets.xcassets */; };
+		AAA9257F22004E0500AB15B7 /* BLACK Personal Use.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AAA9257E22004E0500AB15B7 /* BLACK Personal Use.ttf */; };
+		AAA9258022004E0500AB15B7 /* BLACK Personal Use.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AAA9257E22004E0500AB15B7 /* BLACK Personal Use.ttf */; };
 		AAB1923D21EC7EC500836714 /* UnlimitedUsageProducts.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAB1923C21EC7EC500836714 /* UnlimitedUsageProducts.swift */; };
 		AAB1923F21EC9CE500836714 /* IAPHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAB1923E21EC9CE500836714 /* IAPHelper.swift */; };
 /* End PBXBuildFile section */
@@ -70,6 +72,7 @@
 		AAA9256622002A6400AB15B7 /* TodayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayViewController.swift; sourceTree = "<group>"; };
 		AAA9256922002A6400AB15B7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
 		AAA9256B22002A6400AB15B7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AAA9257E22004E0500AB15B7 /* BLACK Personal Use.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "BLACK Personal Use.ttf"; sourceTree = "<group>"; };
 		AAB1923C21EC7EC500836714 /* UnlimitedUsageProducts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnlimitedUsageProducts.swift; sourceTree = "<group>"; };
 		AAB1923E21EC9CE500836714 /* IAPHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IAPHelper.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -97,6 +100,7 @@
 			isa = PBXGroup;
 			children = (
 				AA61974621E9BEB40069121A /* bullshit detector */,
+				AAA9257A2200416B00AB15B7 /* Font */,
 				AAA9256522002A6400AB15B7 /* Truth-O-Meter Widget */,
 				AA61974521E9BEB40069121A /* Products */,
 				AAB1923921EC7C5100836714 /* Frameworks */,
@@ -141,6 +145,14 @@
 				AAA9256B22002A6400AB15B7 /* Info.plist */,
 			);
 			path = "Truth-O-Meter Widget";
+			sourceTree = "<group>";
+		};
+		AAA9257A2200416B00AB15B7 /* Font */ = {
+			isa = PBXGroup;
+			children = (
+				AAA9257E22004E0500AB15B7 /* BLACK Personal Use.ttf */,
+			);
+			path = Font;
 			sourceTree = "<group>";
 		};
 		AAB1923921EC7C5100836714 /* Frameworks */ = {
@@ -241,6 +253,7 @@
 				AA61975221E9BEB60069121A /* LaunchScreen.storyboard in Resources */,
 				AAA92577220031FA00AB15B7 /* Assets.xcassets in Resources */,
 				AA61974D21E9BEB40069121A /* Main.storyboard in Resources */,
+				AAA9257F22004E0500AB15B7 /* BLACK Personal Use.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -248,6 +261,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AAA9258022004E0500AB15B7 /* BLACK Personal Use.ttf in Resources */,
 				AAA925782200322200AB15B7 /* Assets.xcassets in Resources */,
 				AAA9256A22002A6400AB15B7 /* MainInterface.storyboard in Resources */,
 			);
