@@ -17,13 +17,18 @@ class ViewController: UIViewController, CAAnimationDelegate, UIGestureRecognizer
     @IBOutlet weak var display: Display!
     @IBOutlet weak var analyseButton: UIButton!
     @IBOutlet weak var resultView: UIView!
-    @IBOutlet weak var resultlabel: UILabel!
+    @IBOutlet weak var resultLabel: UILabel!
+    @IBOutlet weak var resultLabel1: UITextField!
+    @IBOutlet weak var resultLabel2: UITextField!
     @IBOutlet weak var displayLabel: UITextField!
     @IBOutlet weak var displayLabelConstraint: NSLayoutConstraint!
     @IBOutlet weak var viewToRightOfButton: UIView!
     @IBOutlet weak var viewToLeftOfButton: UIView!
     @IBOutlet weak var instructionsImageView: UIImageView!
     @IBOutlet weak var settingsButton: UIButton!
+    
+    @IBOutlet weak var resultLabel1BottomConstraint: NSLayoutConstraint!
+    @IBOutlet weak var resultLabel2TopConstraint: NSLayoutConstraint!
     
     var instructionsDisplayedCounter = 0
     var waveView: AnimatedWaveView?
@@ -61,7 +66,8 @@ class ViewController: UIViewController, CAAnimationDelegate, UIGestureRecognizer
     
 
     override func viewDidLoad() {
-        let instructionsDisplayed = UserDefaults.standard.object(forKey: "instructionsDisplayedKey") as? Bool ?? false
+        print("view viewDidLoad")
+        let instructionsDisplayed = UserDefaults.standard.object(forKey: instructionsDisplayedKey) as? Bool ?? false
         if instructionsDisplayed {
             instructionsImageView.isHidden = true
         }
@@ -95,16 +101,31 @@ class ViewController: UIViewController, CAAnimationDelegate, UIGestureRecognizer
                                                name: UIApplication.willEnterForegroundNotification,
                                                object: nil)
         self.navigationController?.setNavigationBarHidden(true, animated: false)
-
+        
+        let fontSize = resultLabel.bounds.size.width
+        let fontDescriptor = UIFontDescriptor(name: "BLACK", size: fontSize)
+        resultLabel.font = UIFont(descriptor: fontDescriptor, size: fontSize)
+        resultLabel.adjustsFontSizeToFitWidth = true
+        resultLabel1.font = UIFont(descriptor: fontDescriptor, size: fontSize)
+        resultLabel1.adjustsFontSizeToFitWidth = true
+        resultLabel2.font = UIFont(descriptor: fontDescriptor, size: fontSize)
+        resultLabel2.adjustsFontSizeToFitWidth = true
+        resultView.transform = CGAffineTransform(rotationAngle: CGFloat.pi / 20)
     }
     
     override func viewDidAppear(_ animated: Bool) {
+        print("view viewDidAppear")
         super.viewDidAppear(animated)
+
+        displayLabel.text = UserDefaults.standard.string(forKey: displayTextkey)
+
         let animatedWaveView = AnimatedWaveView(frame: animationView.bounds)
         animationView.layer.cornerRadius = min(animationView.frame.size.height, animationView.frame.size.width) / 2
         waveView = animatedWaveView
         animationView.addSubview(animatedWaveView)
         waveView?.makeWaves()
+        resultLabel2TopConstraint.constant = resultView.frame.size.height * 0.45
+        resultLabel1BottomConstraint.constant = resultView.frame.size.height * 0.45
     }
 
     func setAnchorPoint(anchorPoint: CGPoint, forView view: UIView) {
@@ -150,12 +171,14 @@ class ViewController: UIViewController, CAAnimationDelegate, UIGestureRecognizer
         displayStartAngle = Double(display.startAngle()) - 1.5 * .pi
         displayEndAngle = Double(display.endAngle())   - 1.5 * .pi
         value = targetValue
-        resultlabel.textColor = bullshitRed
-        let fontSize = resultlabel.bounds.size.width
-        let fontDescriptor = UIFontDescriptor(name: "BLACK", size: fontSize)
-        resultlabel.font = UIFont(descriptor: fontDescriptor, size: fontSize)
-        resultlabel.adjustsFontSizeToFitWidth = true
-        resultlabel.transform = CGAffineTransform(rotationAngle: CGFloat.pi / 20)
+        resultLabel.textColor = bullshitRed
+        resultLabel1.textColor = resultLabel.textColor
+        resultLabel2.textColor = resultLabel.textColor
+        let resultLabel1Size = resultLabel1.font!.pointSize
+        let resultLabel2Size = resultLabel2.font!.pointSize
+        let minimumFontSize = min(resultLabel1Size, resultLabel2Size)
+        resultLabel1.font = UIFont(name:"BLACK", size: minimumFontSize)
+        resultLabel2.font = UIFont(name:"BLACK", size: minimumFontSize)
     }
     
     @objc func appWillEnterForeground(_ application: UIApplication) {
@@ -173,10 +196,11 @@ class ViewController: UIViewController, CAAnimationDelegate, UIGestureRecognizer
         let tabPosition = (analyseButton.frame.size.width - sender.location(in: analyseButton).x) / analyseButton.frame.size.width
         newQuestion(truthIndex: tabPosition)
     }
+    
     func newQuestion(truthIndex: CGFloat) {
         instructionsDisplayedCounter += 1
         if instructionsDisplayedCounter >= 2 {
-            UserDefaults.standard.set(true, forKey: "instructionsDisplayedKey")
+            UserDefaults.standard.set(true, forKey: instructionsDisplayedKey)
             instructionsImageView.isHidden = true
         }
 
@@ -203,23 +227,33 @@ class ViewController: UIViewController, CAAnimationDelegate, UIGestureRecognizer
             self.animationView.isHidden = true
             self.waveView?.motionManager.stopDeviceMotionUpdates()
             self.targetValue = Double(truthIndex)
+            var text: String = ""
             if truthIndex < 0.1 {
-                self.resultlabel.text = "Absolute   Bullshit"
-                self.resultlabel.numberOfLines = 2
+                text = UserDefaults.standard.string(forKey: farRightTextkey)!
             } else if truthIndex < 0.2 {
-                self.resultlabel.text = "Bullshit"
-                self.resultlabel.numberOfLines = 1
+                text = UserDefaults.standard.string(forKey: mediumRightTextkey)!
             } else if truthIndex < 0.6 {
-                self.resultlabel.text = "Undecided"
-                self.resultlabel.numberOfLines = 1
+                text = UserDefaults.standard.string(forKey: centerTextkey)!
             } else if truthIndex < 0.75 {
-                self.resultlabel.text = "Mostly     True"
-                self.resultlabel.numberOfLines = 2
+                text = UserDefaults.standard.string(forKey: mediumLeftTextkey)!
             } else {
-                self.resultlabel.text = "True"
-                self.resultlabel.numberOfLines = 1
+                text = UserDefaults.standard.string(forKey: farLeftTextkey)!
             }
-            self.resultView.isHidden = false
+            let n = text.components(separatedBy: " ").count
+            if n < 2 {
+                self.resultLabel.text = text
+                self.resultLabel.isHidden = false
+                self.resultLabel1.isHidden = true
+                self.resultLabel2.isHidden = true
+                self.resultView.isHidden = false
+            } else {
+                self.resultLabel1.text = text.components(separatedBy: " ")[0]
+                self.resultLabel2.text = text.components(separatedBy: " ")[1]
+                self.resultLabel.isHidden = true
+                self.resultLabel1.isHidden = false
+                self.resultLabel2.isHidden = false
+                self.resultView.isHidden = false
+            }
         }
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.9) {
             self.analyseButton.isEnabled = true

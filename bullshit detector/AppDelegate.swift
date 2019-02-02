@@ -16,6 +16,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        
+        UserDefaults.standard.register(defaults: [
+            displayTextkey    : displayTextDefault,
+            farLeftTextkey    : farLeftTextDefault,
+            mediumLeftTextkey : mediumLeftTextDefault,
+            centerTextkey     : centerTextDefault,
+            mediumRightTextkey: mediumRightTextDefault,
+            farRightTextkey   : farRightTextDefault])
+
         return true
     }
 

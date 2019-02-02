@@ -28,6 +28,14 @@ class SettingsViewController: UIViewController, UITextFieldDelegate {
         self.navigationController?.setNavigationBarHidden(false, animated: false)
         view.backgroundColor = displayBackgroundColor
         
+        
+        displayTextField.text = UserDefaults.standard.string(forKey: displayTextkey)
+        farLeftTextField.text = UserDefaults.standard.string(forKey: farLeftTextkey)
+        mediumLeftTextField.text = UserDefaults.standard.string(forKey: mediumLeftTextkey)
+        centerTextField.text = UserDefaults.standard.string(forKey: centerTextkey)
+        mediumRightTextField.text = UserDefaults.standard.string(forKey: mediumRightTextkey)
+        farRightTextField.text = UserDefaults.standard.string(forKey: farRightTextkey)
+
 //        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillShow), name:UIResponder.keyboardWillShowNotification, object: nil)
 //        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillHide), name:UIResponder.keyboardWillHideNotification, object: nil)
         
@@ -44,17 +52,32 @@ class SettingsViewController: UIViewController, UITextFieldDelegate {
         self.navigationController?.setNavigationBarHidden(true, animated: false)
     }
 
-    @IBAction func factoryResetPressed(_ sender: Any) {
-        factoryReset()
+    @IBAction func truthOMeterPressed(_ sender: Any) {
+        displayTextField.text = displayTextDefault
+        farLeftTextField.text = farLeftTextDefault
+        mediumLeftTextField.text = mediumLeftTextDefault
+        centerTextField.text = centerTextDefault
+        mediumRightTextField.text = mediumRightTextDefault
+        farRightTextField.text = farRightTextDefault
     }
 
-    func factoryReset() {
-        displayTextField.text = "Truth-O-Meter"
-        farLeftTextField.text = "True"
-        mediumLeftTextField.text = "mostly True"
+    @IBAction func bullshitOMeterPressed(_ sender: Any) {
+        displayTextField.text = "Bullshit-O-Meter"
+        farLeftTextField.text = "Absolute Bullshit"
+        mediumLeftTextField.text = "Bullshit"
         centerTextField.text = "undecided"
-        mediumRightTextField.text = "Bullshit"
-        farRightTextField.text = "Absolute Bullshit"
+        mediumRightTextField.text = "Mostly True"
+        farRightTextField.text = "True"
+    }
+
+    override func viewDidDisappear(_ animated: Bool) {
+        UserDefaults.standard.set(displayTextField.text, forKey: displayTextkey)
+        UserDefaults.standard.set(farLeftTextField.text, forKey: farLeftTextkey)
+        UserDefaults.standard.set(mediumLeftTextField.text, forKey: mediumLeftTextkey)
+        UserDefaults.standard.set(centerTextField.text, forKey: centerTextkey)
+        UserDefaults.standard.set(mediumRightTextField.text, forKey: mediumRightTextkey)
+        UserDefaults.standard.set(farRightTextField.text, forKey: farRightTextkey)
+        print("settings viewDidDisappear")
     }
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
