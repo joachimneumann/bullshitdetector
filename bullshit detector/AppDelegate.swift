@@ -18,11 +18,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         
         UserDefaults.standard.register(defaults: [
+            buttonTextkey     : buttonTextDefault,
             displayTextkey    : displayTextDefault,
             farLeftTextkey    : farLeftTextDefault,
-            mediumLeftTextkey : mediumLeftTextDefault,
+            leftTextkey       : leftTextDefault,
             centerTextkey     : centerTextDefault,
-            mediumRightTextkey: mediumRightTextDefault,
+            rightTextkey      : rightTextDefault,
             farRightTextkey   : farRightTextDefault])
 
         return true

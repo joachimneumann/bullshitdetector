@@ -92,14 +92,9 @@ class ViewController: UIViewController, CAAnimationDelegate, UIGestureRecognizer
         resultView.addGestureRecognizer(imageTap)
         resultView.isUserInteractionEnabled = true
         analyseButton.layer.cornerRadius = 10
-        analyseButton.setTitle("Is that true?", for: .normal)
-        analyseButton.backgroundColor = UIColor(red: 255.0/255.0, green: 126.0/255.0, blue: 121.0/255.0, alpha: 1.0)
+        analyseButton.backgroundColor = bullshitRed
         displayPointer.layer.cornerRadius = displayPointerFrameWidth/2;
         
-        NotificationCenter.default.addObserver(self,
-                                               selector: #selector(appWillEnterForeground(_:)),
-                                               name: UIApplication.willEnterForegroundNotification,
-                                               object: nil)
         self.navigationController?.setNavigationBarHidden(true, animated: false)
         
         let fontSize = resultLabel.bounds.size.width
@@ -117,9 +112,11 @@ class ViewController: UIViewController, CAAnimationDelegate, UIGestureRecognizer
     override func viewWillAppear(_ animated: Bool) {
         print("view viewWillAppear")
         super.viewWillAppear(animated)
+        self.navigationController?.setNavigationBarHidden(true, animated: false)
         reset()
         resultView.isHidden = true
         displayLabel.text = UserDefaults.standard.string(forKey: displayTextkey)
+        analyseButton.setTitle(UserDefaults.standard.string(forKey: buttonTextkey), for: .normal)
         print("view viewWillAppear")
         let animatedWaveView = AnimatedWaveView(frame: animationView.bounds)
         animationView.layer.cornerRadius = min(animationView.frame.size.height, animationView.frame.size.width) / 2
@@ -188,9 +185,6 @@ class ViewController: UIViewController, CAAnimationDelegate, UIGestureRecognizer
         resultLabel2.font = UIFont(name:"BLACK", size: minimumFontSize)
     }
     
-    @objc func appWillEnterForeground(_ application: UIApplication) {
-    }
-
     @objc func handleButtonTapRight(_ sender: UITapGestureRecognizer) {
         newQuestion(truthIndex: 0.0)
     }
@@ -234,14 +228,14 @@ class ViewController: UIViewController, CAAnimationDelegate, UIGestureRecognizer
             self.waveView?.motionManager.stopDeviceMotionUpdates()
             self.targetValue = Double(truthIndex)
             var text: String = ""
-            if truthIndex < 0.1 {
+            if truthIndex < 0.2 {
                 text = UserDefaults.standard.string(forKey: farRightTextkey)!
-            } else if truthIndex < 0.2 {
-                text = UserDefaults.standard.string(forKey: mediumRightTextkey)!
+            } else if truthIndex < 0.4 {
+                text = UserDefaults.standard.string(forKey: rightTextkey)!
             } else if truthIndex < 0.6 {
                 text = UserDefaults.standard.string(forKey: centerTextkey)!
-            } else if truthIndex < 0.75 {
-                text = UserDefaults.standard.string(forKey: mediumLeftTextkey)!
+            } else if truthIndex < 0.8 {
+                text = UserDefaults.standard.string(forKey: leftTextkey)!
             } else {
                 text = UserDefaults.standard.string(forKey: farLeftTextkey)!
             }

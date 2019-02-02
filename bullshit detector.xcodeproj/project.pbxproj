@@ -27,6 +27,8 @@
 		AAA9258022004E0500AB15B7 /* BLACK Personal Use.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AAA9257E22004E0500AB15B7 /* BLACK Personal Use.ttf */; };
 		AAB1923D21EC7EC500836714 /* UnlimitedUsageProducts.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAB1923C21EC7EC500836714 /* UnlimitedUsageProducts.swift */; };
 		AAB1923F21EC9CE500836714 /* IAPHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAB1923E21EC9CE500836714 /* IAPHelper.swift */; };
+		AAD927C22205B2F7001C328F /* CustomDisplayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD927C12205B2F7001C328F /* CustomDisplayViewController.swift */; };
+		AAD927C42205CE79001C328F /* CustomButtonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD927C32205CE79001C328F /* CustomButtonViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -75,6 +77,8 @@
 		AAA9257E22004E0500AB15B7 /* BLACK Personal Use.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "BLACK Personal Use.ttf"; sourceTree = "<group>"; };
 		AAB1923C21EC7EC500836714 /* UnlimitedUsageProducts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnlimitedUsageProducts.swift; sourceTree = "<group>"; };
 		AAB1923E21EC9CE500836714 /* IAPHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IAPHelper.swift; sourceTree = "<group>"; };
+		AAD927C12205B2F7001C328F /* CustomDisplayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomDisplayViewController.swift; sourceTree = "<group>"; };
+		AAD927C32205CE79001C328F /* CustomButtonViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButtonViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -133,6 +137,8 @@
 				AAB1923E21EC9CE500836714 /* IAPHelper.swift */,
 				AAB1923C21EC7EC500836714 /* UnlimitedUsageProducts.swift */,
 				AA37BBF621EEE965005A4042 /* constants.swift */,
+				AAD927C12205B2F7001C328F /* CustomDisplayViewController.swift */,
+				AAD927C32205CE79001C328F /* CustomButtonViewController.swift */,
 			);
 			path = "bullshit detector";
 			sourceTree = "<group>";
@@ -280,7 +286,9 @@
 				AA37BBF721EEE965005A4042 /* constants.swift in Sources */,
 				AA61974821E9BEB40069121A /* AppDelegate.swift in Sources */,
 				AAB1923F21EC9CE500836714 /* IAPHelper.swift in Sources */,
+				AAD927C42205CE79001C328F /* CustomButtonViewController.swift in Sources */,
 				AA3DD49221EB21110007244C /* AnimatedWaveView.swift in Sources */,
+				AAD927C22205B2F7001C328F /* CustomDisplayViewController.swift in Sources */,
 				AA3DD49121EB21110007244C /* PathBuilder.swift in Sources */,
 				AAB1923D21EC7EC500836714 /* UnlimitedUsageProducts.swift in Sources */,
 				AA37BBF521EEE684005A4042 /* SettingsViewController.swift in Sources */,
