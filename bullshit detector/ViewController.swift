@@ -113,12 +113,14 @@ class ViewController: UIViewController, CAAnimationDelegate, UIGestureRecognizer
         resultView.transform = CGAffineTransform(rotationAngle: CGFloat.pi / 20)
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        print("view viewDidAppear")
-        super.viewDidAppear(animated)
-
+    
+    override func viewWillAppear(_ animated: Bool) {
+        print("view viewWillAppear")
+        super.viewWillAppear(animated)
+        reset()
+        resultView.isHidden = true
         displayLabel.text = UserDefaults.standard.string(forKey: displayTextkey)
-
+        print("view viewWillAppear")
         let animatedWaveView = AnimatedWaveView(frame: animationView.bounds)
         animationView.layer.cornerRadius = min(animationView.frame.size.height, animationView.frame.size.width) / 2
         waveView = animatedWaveView
@@ -126,6 +128,11 @@ class ViewController: UIViewController, CAAnimationDelegate, UIGestureRecognizer
         waveView?.makeWaves()
         resultLabel2TopConstraint.constant = resultView.frame.size.height * 0.45
         resultLabel1BottomConstraint.constant = resultView.frame.size.height * 0.45
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        print("view viewDidAppear")
+        super.viewDidAppear(animated)
     }
 
     func setAnchorPoint(anchorPoint: CGPoint, forView view: UIView) {
@@ -182,7 +189,6 @@ class ViewController: UIViewController, CAAnimationDelegate, UIGestureRecognizer
     }
     
     @objc func appWillEnterForeground(_ application: UIApplication) {
-        reset()
     }
 
     @objc func handleButtonTapRight(_ sender: UITapGestureRecognizer) {

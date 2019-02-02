@@ -49,6 +49,13 @@ class SettingsViewController: UIViewController, UITextFieldDelegate {
     }
     
     override func viewWillDisappear(_ animated: Bool) {
+        UserDefaults.standard.set(displayTextField.text, forKey: displayTextkey)
+        UserDefaults.standard.set(farLeftTextField.text, forKey: farLeftTextkey)
+        UserDefaults.standard.set(mediumLeftTextField.text, forKey: mediumLeftTextkey)
+        UserDefaults.standard.set(centerTextField.text, forKey: centerTextkey)
+        UserDefaults.standard.set(mediumRightTextField.text, forKey: mediumRightTextkey)
+        UserDefaults.standard.set(farRightTextField.text, forKey: farRightTextkey)
+
         self.navigationController?.setNavigationBarHidden(true, animated: false)
     }
 
@@ -71,12 +78,6 @@ class SettingsViewController: UIViewController, UITextFieldDelegate {
     }
 
     override func viewDidDisappear(_ animated: Bool) {
-        UserDefaults.standard.set(displayTextField.text, forKey: displayTextkey)
-        UserDefaults.standard.set(farLeftTextField.text, forKey: farLeftTextkey)
-        UserDefaults.standard.set(mediumLeftTextField.text, forKey: mediumLeftTextkey)
-        UserDefaults.standard.set(centerTextField.text, forKey: centerTextkey)
-        UserDefaults.standard.set(mediumRightTextField.text, forKey: mediumRightTextkey)
-        UserDefaults.standard.set(farRightTextField.text, forKey: farRightTextkey)
         print("settings viewDidDisappear")
     }
     
