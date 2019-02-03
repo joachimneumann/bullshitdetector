@@ -13,6 +13,8 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="Rubberstamp" customModule="bullshit_detector" customModuleProvider="target">
             <connections>
                 <outlet property="contentView" destination="iN0-l3-epB" id="REd-7b-Q2g"/>
+                <outlet property="firstLineLabel" destination="diP-TJ-Dyn" id="fzf-L1-uTV"/>
+                <outlet property="secondLineLabel" destination="yJD-6i-dtT" id="eGm-GA-ZJe"/>
                 <outlet property="singleLineLabel" destination="dag-v4-4dJ" id="k2r-Mj-TJd"/>
             </connections>
         </placeholder>
@@ -21,8 +23,20 @@
             <rect key="frame" x="0.0" y="0.0" width="396" height="264"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dag-v4-4dJ">
-                    <rect key="frame" x="177" y="121.5" width="42" height="21"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dag-v4-4dJ">
+                    <rect key="frame" x="20" y="121.5" width="356" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="first line" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="diP-TJ-Dyn">
+                    <rect key="frame" x="20" y="101.5" width="356" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="second line" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yJD-6i-dtT">
+                    <rect key="frame" x="20" y="141.5" width="356" height="21"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
@@ -30,8 +44,15 @@
             </subviews>
             <color key="backgroundColor" red="1" green="0.83234566450000003" blue="0.47320586440000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="dag-v4-4dJ" secondAttribute="trailing" constant="20" id="1nQ-hD-gFf"/>
+                <constraint firstItem="yJD-6i-dtT" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="20" id="5tX-ey-a11"/>
                 <constraint firstItem="dag-v4-4dJ" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="Bfi-11-swQ"/>
-                <constraint firstItem="dag-v4-4dJ" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="sVS-ne-Rjt"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="diP-TJ-Dyn" secondAttribute="trailing" constant="20" id="MP8-Q7-oV0"/>
+                <constraint firstItem="diP-TJ-Dyn" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="20" id="PUY-pa-UEg"/>
+                <constraint firstItem="yJD-6i-dtT" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" constant="20" id="SzR-GP-zEO"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="yJD-6i-dtT" secondAttribute="trailing" constant="20" id="WKJ-H6-oSL"/>
+                <constraint firstItem="dag-v4-4dJ" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="20" id="jtP-rM-rR4"/>
+                <constraint firstItem="diP-TJ-Dyn" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" constant="-20" id="lZ3-lg-fTF"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>

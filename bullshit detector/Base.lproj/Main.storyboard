@@ -146,10 +146,12 @@
                                 <rect key="frame" x="0.0" y="567" width="40" height="100"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SOv-S9-DtH" customClass="Rubberstamp" customModule="bullshit_detector" customModuleProvider="target">
-                                <rect key="frame" x="67" y="269" width="240" height="128"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qYA-Kq-jfy" customClass="Rubberstamp" customModule="bullshit_detector" customModuleProvider="target">
+                                <rect key="frame" x="67" y="269" width="240" height="180"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="180" id="aOh-QE-Tbv"/>
+                                </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="color" keyPath="stampColor">
                                         <color key="value" red="1" green="0.83234566450000003" blue="0.47320586440000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -165,6 +167,7 @@
                             <constraint firstItem="Jgx-FL-XlB" firstAttribute="leading" secondItem="fj6-4L-L85" secondAttribute="leading" constant="40" id="AAB-uu-aII"/>
                             <constraint firstItem="LTY-Rh-FmH" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="173" id="DfX-Zg-apv"/>
                             <constraint firstItem="fj6-4L-L85" firstAttribute="centerY" secondItem="Jgx-FL-XlB" secondAttribute="centerY" id="DgR-xJ-qk0"/>
+                            <constraint firstItem="qYA-Kq-jfy" firstAttribute="top" secondItem="3ki-0X-gGI" secondAttribute="bottom" constant="33" id="FPk-rT-yGZ"/>
                             <constraint firstItem="LTY-Rh-FmH" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="G0d-Rw-c78"/>
                             <constraint firstItem="LTY-Rh-FmH" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="GcU-px-NDJ"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="3ki-0X-gGI" secondAttribute="trailing" id="IkX-95-Jdo"/>
@@ -184,7 +187,9 @@
                             <constraint firstItem="3ki-0X-gGI" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="dFf-9g-m2j"/>
                             <constraint firstItem="4ji-Hs-27j" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="40" id="gqB-cO-b9S"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="u4M-eL-yea" secondAttribute="trailing" constant="40" id="gtU-ef-zLd"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="qYA-Kq-jfy" secondAttribute="trailing" constant="68" id="hBT-rL-2ZV"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="Oue-lw-g9O" secondAttribute="bottom" id="mV1-42-S8M"/>
+                            <constraint firstItem="qYA-Kq-jfy" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="67" id="nmJ-LE-tku"/>
                             <constraint firstItem="4ji-Hs-27j" firstAttribute="leading" secondItem="Oue-lw-g9O" secondAttribute="trailing" id="opx-Ej-hFO"/>
                             <constraint firstItem="3ki-0X-gGI" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="pyo-Ua-Sya"/>
                             <constraint firstItem="4ji-Hs-27j" firstAttribute="top" secondItem="Oue-lw-g9O" secondAttribute="top" id="qtp-vd-QZf"/>
@@ -211,7 +216,7 @@
                         <outlet property="resultLabel2" destination="dvF-OI-7MV" id="NIA-Do-yjq"/>
                         <outlet property="resultLabel2TopConstraint" destination="bZT-SE-5ge" id="HgC-ZT-4Dm"/>
                         <outlet property="resultView" destination="Jgx-FL-XlB" id="u4R-fi-J4L"/>
-                        <outlet property="rubberstamp" destination="SOv-S9-DtH" id="mey-4d-VTc"/>
+                        <outlet property="rubberstamp" destination="qYA-Kq-jfy" id="VBC-rZ-Fwf"/>
                         <outlet property="settingsButton" destination="2rM-Ly-arC" id="211-Dg-3ws"/>
                         <outlet property="viewToLeftOfButton" destination="Oue-lw-g9O" id="x7D-2c-Vf2"/>
                         <outlet property="viewToRightOfButton" destination="H2G-W8-t0f" id="GK6-40-0w9"/>
@@ -219,7 +224,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1015" y="134"/>
+            <point key="canvasLocation" x="1013.6" y="133.5832083958021"/>
         </scene>
         <!--Settings View Controller-->
         <scene sceneID="Fqp-cb-C5l">

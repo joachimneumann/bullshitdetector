@@ -12,6 +12,9 @@ import UIKit
 class Rubberstamp: UIView {
     @IBOutlet var contentView: UIView!
     @IBOutlet weak var singleLineLabel: UILabel!
+    @IBOutlet weak var firstLineLabel: UILabel!
+    @IBOutlet weak var secondLineLabel: UILabel!
+    
     @IBInspectable var stampColor: UIColor? {
         didSet {
             contentView.layer.borderColor = stampColor?.cgColor
@@ -42,10 +45,26 @@ class Rubberstamp: UIView {
         contentView.layer.borderColor = UIColor.red.cgColor
         contentView.layer.borderWidth = 20.0
         contentView.backgroundColor = .yellow
-        singleLineLabel.text = "Stamp Text"
+        singleLineLabel.text = "single line2"
+        firstLineLabel.text = "first line2"
+        secondLineLabel.text = "second line2"
+//        contentView.transform = CGAffineTransform(rotationAngle: CGFloat.pi / 20)
     }
     
     func setText(text: String) {
+        let n = text.components(separatedBy: " ").count
+        if n < 2 {
+            singleLineLabel.text = text
+            singleLineLabel.isHidden = false
+            firstLineLabel.isHidden = true
+            secondLineLabel.isHidden = true
+        } else {
+            firstLineLabel.text = text.components(separatedBy: " ")[0]
+            secondLineLabel.text = text.components(separatedBy: " ")[1]
+            singleLineLabel.isHidden = true
+            firstLineLabel.isHidden = false
+            secondLineLabel.isHidden = false
+        }
         singleLineLabel.text = text
     }
     
