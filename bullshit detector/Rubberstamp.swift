@@ -20,6 +20,13 @@ class Rubberstamp: UIView {
             contentView.layer.borderColor = stampColor?.cgColor
         }
     }
+    
+    @IBInspectable var stampText: String = "stamp text" {
+        didSet {
+            setText(text: stampText)
+        }
+    }
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         initNib()
