@@ -16,6 +16,11 @@
                 <outlet property="firstLineLabel" destination="diP-TJ-Dyn" id="fzf-L1-uTV"/>
                 <outlet property="secondLineLabel" destination="yJD-6i-dtT" id="eGm-GA-ZJe"/>
                 <outlet property="singleLineLabel" destination="dag-v4-4dJ" id="k2r-Mj-TJd"/>
+                <outlet property="stampView" destination="nDj-eL-2W2" id="oXX-fy-qjy"/>
+                <outlet property="stampViewBottomConstraint" destination="Wnk-dH-PY4" id="b7Q-KJ-5yc"/>
+                <outlet property="stampViewLeadingConstraint" destination="KNG-NR-seW" id="3U2-MP-wEc"/>
+                <outlet property="stampViewTopConstraint" destination="xV3-0S-UEZ" id="7vc-39-op7"/>
+                <outlet property="stampViewTrailingConstraint" destination="W0r-Tt-Vyt" id="wqt-QM-2y9"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -23,36 +28,48 @@
             <rect key="frame" x="0.0" y="0.0" width="396" height="264"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dag-v4-4dJ">
-                    <rect key="frame" x="20" y="121.5" width="356" height="21"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <nil key="textColor"/>
-                    <nil key="highlightedColor"/>
-                </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="first line" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="diP-TJ-Dyn">
-                    <rect key="frame" x="20" y="101.5" width="356" height="21"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <nil key="textColor"/>
-                    <nil key="highlightedColor"/>
-                </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="second line" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yJD-6i-dtT">
-                    <rect key="frame" x="20" y="141.5" width="356" height="21"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <nil key="textColor"/>
-                    <nil key="highlightedColor"/>
-                </label>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nDj-eL-2W2" userLabel="stampView">
+                    <rect key="frame" x="0.0" y="0.0" width="396" height="264"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="single line" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dag-v4-4dJ">
+                            <rect key="frame" x="20" y="121.5" width="356" height="21"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="first line" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="diP-TJ-Dyn">
+                            <rect key="frame" x="20" y="121.5" width="356" height="21"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="second line" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yJD-6i-dtT">
+                            <rect key="frame" x="20" y="121.5" width="356" height="21"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstItem="dag-v4-4dJ" firstAttribute="leading" secondItem="nDj-eL-2W2" secondAttribute="leading" constant="20" id="3nb-Nj-Tov"/>
+                        <constraint firstAttribute="trailing" secondItem="diP-TJ-Dyn" secondAttribute="trailing" constant="20" id="J4E-5C-ZLk"/>
+                        <constraint firstItem="yJD-6i-dtT" firstAttribute="leading" secondItem="nDj-eL-2W2" secondAttribute="leading" constant="20" id="LiR-SW-nCr"/>
+                        <constraint firstItem="yJD-6i-dtT" firstAttribute="centerY" secondItem="nDj-eL-2W2" secondAttribute="centerY" id="XFX-45-aBH"/>
+                        <constraint firstItem="diP-TJ-Dyn" firstAttribute="leading" secondItem="nDj-eL-2W2" secondAttribute="leading" constant="20" id="ePo-dl-Mbp"/>
+                        <constraint firstItem="diP-TJ-Dyn" firstAttribute="centerY" secondItem="nDj-eL-2W2" secondAttribute="centerY" id="g2J-no-bwF"/>
+                        <constraint firstItem="dag-v4-4dJ" firstAttribute="centerY" secondItem="nDj-eL-2W2" secondAttribute="centerY" id="hEV-Du-rFo"/>
+                        <constraint firstAttribute="trailing" secondItem="dag-v4-4dJ" secondAttribute="trailing" constant="20" id="iHv-Er-JYC"/>
+                        <constraint firstAttribute="trailing" secondItem="yJD-6i-dtT" secondAttribute="trailing" constant="20" id="sop-lc-JJO"/>
+                    </constraints>
+                </view>
             </subviews>
             <color key="backgroundColor" red="1" green="0.83234566450000003" blue="0.47320586440000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="dag-v4-4dJ" secondAttribute="trailing" constant="20" id="1nQ-hD-gFf"/>
-                <constraint firstItem="yJD-6i-dtT" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="20" id="5tX-ey-a11"/>
-                <constraint firstItem="dag-v4-4dJ" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="Bfi-11-swQ"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="diP-TJ-Dyn" secondAttribute="trailing" constant="20" id="MP8-Q7-oV0"/>
-                <constraint firstItem="diP-TJ-Dyn" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="20" id="PUY-pa-UEg"/>
-                <constraint firstItem="yJD-6i-dtT" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" constant="20" id="SzR-GP-zEO"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="yJD-6i-dtT" secondAttribute="trailing" constant="20" id="WKJ-H6-oSL"/>
-                <constraint firstItem="dag-v4-4dJ" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="20" id="jtP-rM-rR4"/>
-                <constraint firstItem="diP-TJ-Dyn" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" constant="-20" id="lZ3-lg-fTF"/>
+                <constraint firstItem="nDj-eL-2W2" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="KNG-NR-seW"/>
+                <constraint firstAttribute="trailing" secondItem="nDj-eL-2W2" secondAttribute="trailing" id="W0r-Tt-Vyt"/>
+                <constraint firstAttribute="bottom" secondItem="nDj-eL-2W2" secondAttribute="bottom" id="Wnk-dH-PY4"/>
+                <constraint firstItem="nDj-eL-2W2" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="xV3-0S-UEZ"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>

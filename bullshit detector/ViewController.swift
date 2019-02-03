@@ -68,7 +68,7 @@ class ViewController: UIViewController, CAAnimationDelegate, UIGestureRecognizer
 
     override func viewDidLoad() {
         print("view viewDidLoad")
-        rubberstamp.setText(text: "test Text")
+//        rubberstamp.setText(text: "test Text")
         let instructionsDisplayed = UserDefaults.standard.object(forKey: instructionsDisplayedKey) as? Bool ?? false
         if instructionsDisplayed {
             instructionsImageView.isHidden = true

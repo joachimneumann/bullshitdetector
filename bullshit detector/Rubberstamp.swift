@@ -11,13 +11,19 @@ import UIKit
 @IBDesignable
 class Rubberstamp: UIView {
     @IBOutlet var contentView: UIView!
+    @IBOutlet weak var stampView: UIView!
     @IBOutlet weak var singleLineLabel: UILabel!
     @IBOutlet weak var firstLineLabel: UILabel!
     @IBOutlet weak var secondLineLabel: UILabel!
     
+    @IBOutlet weak var stampViewLeadingConstraint: NSLayoutConstraint!
+    @IBOutlet weak var stampViewTrailingConstraint: NSLayoutConstraint!
+    @IBOutlet weak var stampViewTopConstraint: NSLayoutConstraint!
+    @IBOutlet weak var stampViewBottomConstraint: NSLayoutConstraint!
+
     @IBInspectable var stampColor: UIColor? {
         didSet {
-            contentView.layer.borderColor = stampColor?.cgColor
+            stampView.layer.borderColor = stampColor?.cgColor
         }
     }
     
@@ -26,7 +32,17 @@ class Rubberstamp: UIView {
             setText(text: stampText)
         }
     }
-    
+
+    @IBInspectable var angle: CGFloat = 45.0 {
+        didSet {
+            if angle < 45 && angle > -45  {
+                setAngle(angle: 2*CGFloat.pi*angle/360.0)
+            } else {
+                setAngle(angle: 2*CGFloat.pi*45/360.0)
+            }
+        }
+    }
+
     override init(frame: CGRect) {
         super.init(frame: frame)
         initNib()
@@ -46,16 +62,40 @@ class Rubberstamp: UIView {
         setupView()
     }
 
+    private func setAngle(angle: CGFloat) {
+//        stampView.transform = CGAffineTransform(rotationAngle: 0)
+//        stampViewLeadingConstraint.constant = 0
+//        stampViewTrailingConstraint.constant = 0
+//        stampViewTopConstraint.constant = 0
+//        stampViewBottomConstraint.constant = 0
+//        stampView.layoutIfNeeded()
+        stampView.transform = CGAffineTransform(rotationAngle: angle)
+                stampView.layoutIfNeeded()
+        print("angle = \(angle)")
+        print("stampView frame = \(stampView.frame.size)")
+        print("stampView bounds = \(stampView.bounds.size)")
+        print("contentView frame = \(contentView.frame.size)")
+        print("contentView bounds = \(contentView.bounds.size)")
+        let rotationWidthReduction: CGFloat = -0.5*cos(angle) * (stampView.bounds.size.width - stampView.frame.size.width)
+        let rotationHeightReduction: CGFloat = -0.5*cos(angle) * (stampView.bounds.size.height - stampView.frame.size.height)
+        print("rotationWidthReduction = \(rotationWidthReduction)")
+        print("rotationHeightReduction = \(rotationHeightReduction)")
+        stampViewLeadingConstraint.constant = rotationWidthReduction
+        stampViewTrailingConstraint.constant = rotationWidthReduction
+        stampViewTopConstraint.constant = rotationHeightReduction
+        stampViewBottomConstraint.constant = rotationHeightReduction
+        stampView.layoutIfNeeded()
+    }
+    
     private func setupView() {
-        contentView.layer.cornerRadius = 25;
-        contentView.layer.masksToBounds = true;
-        contentView.layer.borderColor = UIColor.red.cgColor
-        contentView.layer.borderWidth = 20.0
-        contentView.backgroundColor = .yellow
+        stampView.layer.cornerRadius = 0;
+        stampView.layer.masksToBounds = true;
+        stampView.layer.borderColor = UIColor.red.cgColor
+        stampView.layer.borderWidth = 1.0
+        stampView.backgroundColor = .yellow
         singleLineLabel.text = "single line2"
         firstLineLabel.text = "first line2"
         secondLineLabel.text = "second line2"
-//        contentView.transform = CGAffineTransform(rotationAngle: CGFloat.pi / 20)
     }
     
     func setText(text: String) {
