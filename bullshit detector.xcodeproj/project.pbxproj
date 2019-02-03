@@ -17,6 +17,11 @@
 		AA61974D21E9BEB40069121A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AA61974B21E9BEB40069121A /* Main.storyboard */; };
 		AA61975221E9BEB60069121A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AA61975021E9BEB60069121A /* LaunchScreen.storyboard */; };
 		AA61975A21E9C5810069121A /* Display.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA61975921E9C5810069121A /* Display.swift */; };
+		AA7090FD2205F913002F06C6 /* Britannic Bold Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AA7090FC2205F913002F06C6 /* Britannic Bold Regular.ttf */; };
+		AA7090FE2205F913002F06C6 /* Britannic Bold Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AA7090FC2205F913002F06C6 /* Britannic Bold Regular.ttf */; };
+		AA709100220675C1002F06C6 /* Rubberstamp.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7090FF220675C1002F06C6 /* Rubberstamp.swift */; };
+		AA709101220675C1002F06C6 /* Rubberstamp.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7090FF220675C1002F06C6 /* Rubberstamp.swift */; };
+		AA70910322067AA1002F06C6 /* Rubberstamp.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA70910222067AA1002F06C6 /* Rubberstamp.xib */; };
 		AAA9256422002A6400AB15B7 /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAA9256322002A6400AB15B7 /* NotificationCenter.framework */; };
 		AAA9256722002A6400AB15B7 /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAA9256622002A6400AB15B7 /* TodayViewController.swift */; };
 		AAA9256A22002A6400AB15B7 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AAA9256822002A6400AB15B7 /* MainInterface.storyboard */; };
@@ -69,6 +74,9 @@
 		AA61975121E9BEB60069121A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AA61975321E9BEB60069121A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AA61975921E9C5810069121A /* Display.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Display.swift; sourceTree = "<group>"; };
+		AA7090FC2205F913002F06C6 /* Britannic Bold Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Britannic Bold Regular.ttf"; sourceTree = "<group>"; };
+		AA7090FF220675C1002F06C6 /* Rubberstamp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rubberstamp.swift; sourceTree = "<group>"; };
+		AA70910222067AA1002F06C6 /* Rubberstamp.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Rubberstamp.xib; sourceTree = "<group>"; };
 		AAA9256222002A6400AB15B7 /* Truth-O-Meter Widget.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Truth-O-Meter Widget.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AAA9256322002A6400AB15B7 /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
 		AAA9256622002A6400AB15B7 /* TodayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayViewController.swift; sourceTree = "<group>"; };
@@ -139,6 +147,8 @@
 				AA37BBF621EEE965005A4042 /* constants.swift */,
 				AAD927C12205B2F7001C328F /* CustomDisplayViewController.swift */,
 				AAD927C32205CE79001C328F /* CustomButtonViewController.swift */,
+				AA7090FF220675C1002F06C6 /* Rubberstamp.swift */,
+				AA70910222067AA1002F06C6 /* Rubberstamp.xib */,
 			);
 			path = "bullshit detector";
 			sourceTree = "<group>";
@@ -156,6 +166,7 @@
 		AAA9257A2200416B00AB15B7 /* Font */ = {
 			isa = PBXGroup;
 			children = (
+				AA7090FC2205F913002F06C6 /* Britannic Bold Regular.ttf */,
 				AAA9257E22004E0500AB15B7 /* BLACK Personal Use.ttf */,
 			);
 			path = Font;
@@ -259,6 +270,8 @@
 				AA61975221E9BEB60069121A /* LaunchScreen.storyboard in Resources */,
 				AAA92577220031FA00AB15B7 /* Assets.xcassets in Resources */,
 				AA61974D21E9BEB40069121A /* Main.storyboard in Resources */,
+				AA70910322067AA1002F06C6 /* Rubberstamp.xib in Resources */,
+				AA7090FD2205F913002F06C6 /* Britannic Bold Regular.ttf in Resources */,
 				AAA9257F22004E0500AB15B7 /* BLACK Personal Use.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -270,6 +283,7 @@
 				AAA9258022004E0500AB15B7 /* BLACK Personal Use.ttf in Resources */,
 				AAA925782200322200AB15B7 /* Assets.xcassets in Resources */,
 				AAA9256A22002A6400AB15B7 /* MainInterface.storyboard in Resources */,
+				AA7090FE2205F913002F06C6 /* Britannic Bold Regular.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -284,6 +298,7 @@
 				AA61974A21E9BEB40069121A /* ViewController.swift in Sources */,
 				AA61975A21E9C5810069121A /* Display.swift in Sources */,
 				AA37BBF721EEE965005A4042 /* constants.swift in Sources */,
+				AA709100220675C1002F06C6 /* Rubberstamp.swift in Sources */,
 				AA61974821E9BEB40069121A /* AppDelegate.swift in Sources */,
 				AAB1923F21EC9CE500836714 /* IAPHelper.swift in Sources */,
 				AAD927C42205CE79001C328F /* CustomButtonViewController.swift in Sources */,
@@ -300,6 +315,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AAA9256722002A6400AB15B7 /* TodayViewController.swift in Sources */,
+				AA709101220675C1002F06C6 /* Rubberstamp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -29,6 +29,7 @@ class ViewController: UIViewController, CAAnimationDelegate, UIGestureRecognizer
     
     @IBOutlet weak var resultLabel1BottomConstraint: NSLayoutConstraint!
     @IBOutlet weak var resultLabel2TopConstraint: NSLayoutConstraint!
+    @IBOutlet weak var rubberstamp: Rubberstamp!
     
     var instructionsDisplayedCounter = 0
     var waveView: AnimatedWaveView?
@@ -67,6 +68,7 @@ class ViewController: UIViewController, CAAnimationDelegate, UIGestureRecognizer
 
     override func viewDidLoad() {
         print("view viewDidLoad")
+        rubberstamp.setText(text: "test Text")
         let instructionsDisplayed = UserDefaults.standard.object(forKey: instructionsDisplayedKey) as? Bool ?? false
         if instructionsDisplayed {
             instructionsImageView.isHidden = true
