@@ -35,10 +35,10 @@ class Rubberstamp: UIView {
 
     @IBInspectable var angle: CGFloat = 45.0 {
         didSet {
-            if angle < 45 && angle > -45  {
+            if angle < 90 && angle > -90  {
                 setAngle(angle: 2*CGFloat.pi*angle/360.0)
             } else {
-                setAngle(angle: 2*CGFloat.pi*45/360.0)
+                setAngle(angle: 2*CGFloat.pi*90/360.0)
             }
         }
     }
@@ -63,27 +63,29 @@ class Rubberstamp: UIView {
     }
 
     private func setAngle(angle: CGFloat) {
-//        stampView.transform = CGAffineTransform(rotationAngle: 0)
-//        stampViewLeadingConstraint.constant = 0
-//        stampViewTrailingConstraint.constant = 0
-//        stampViewTopConstraint.constant = 0
-//        stampViewBottomConstraint.constant = 0
-//        stampView.layoutIfNeeded()
+        // Here, I need to rotate the stampView inside contentView
+        // while keeping the centers fixes and shrinking stampView
+        // to the maximal size completely inside contentView,
+        // keeping its aspect ratio
+        // see rectableRotation.pptx for an explanation
+        // All values of angles are in radian
+        
+        stampViewLeadingConstraint.constant  = 0
+        stampViewTrailingConstraint.constant = 0
+        stampViewTopConstraint.constant    = 0
+        stampViewBottomConstraint.constant = 0
+        let α = abs(angle)
+        let γ = atan(contentView.frame.size.height / contentView.frame.size.width)
+        let A = contentView.frame.size.width
+        let B = contentView.frame.size.height
+        let D = sqrt(A * A + B * B)
+        let d = B / sin(α + γ)
+        let scalingFactor = d / D
+        stampViewLeadingConstraint.constant  = 0.5 * (1.0 - scalingFactor) * A
+        stampViewTrailingConstraint.constant = 0.5 * (1.0 - scalingFactor) * A
+        stampViewTopConstraint.constant      = 0.5 * (1.0 - scalingFactor) * B
+        stampViewBottomConstraint.constant   = 0.5 * (1.0 - scalingFactor) * B
         stampView.transform = CGAffineTransform(rotationAngle: angle)
-                stampView.layoutIfNeeded()
-        print("angle = \(angle)")
-        print("stampView frame = \(stampView.frame.size)")
-        print("stampView bounds = \(stampView.bounds.size)")
-        print("contentView frame = \(contentView.frame.size)")
-        print("contentView bounds = \(contentView.bounds.size)")
-        let rotationWidthReduction: CGFloat = -0.5*cos(angle) * (stampView.bounds.size.width - stampView.frame.size.width)
-        let rotationHeightReduction: CGFloat = -0.5*cos(angle) * (stampView.bounds.size.height - stampView.frame.size.height)
-        print("rotationWidthReduction = \(rotationWidthReduction)")
-        print("rotationHeightReduction = \(rotationHeightReduction)")
-        stampViewLeadingConstraint.constant = rotationWidthReduction
-        stampViewTrailingConstraint.constant = rotationWidthReduction
-        stampViewTopConstraint.constant = rotationHeightReduction
-        stampViewBottomConstraint.constant = rotationHeightReduction
         stampView.layoutIfNeeded()
     }
     
