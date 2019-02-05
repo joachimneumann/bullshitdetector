@@ -20,25 +20,26 @@ class Rubberstamp: UIView {
     @IBOutlet weak var stampViewTrailingConstraint: NSLayoutConstraint!
     @IBOutlet weak var stampViewTopConstraint: NSLayoutConstraint!
     @IBOutlet weak var stampViewBottomConstraint: NSLayoutConstraint!
-
+    @IBOutlet weak var singleLineHeightConstraint: NSLayoutConstraint!
+    
     @IBInspectable var stampColor: UIColor? {
         didSet {
-            stampView.layer.borderColor = stampColor?.cgColor
+            //stampView.layer.borderColor = stampColor?.cgColor
         }
     }
     
     @IBInspectable var stampText: String = "stamp text" {
         didSet {
-            setText(text: stampText)
+            setTextArray(texts: [stampText])
         }
     }
 
-    @IBInspectable var angle: CGFloat = 45.0 {
+    @IBInspectable var angle: CGFloat = 20.0 {
         didSet {
             if angle < 90 && angle > -90  {
-                setAngle(angle: 2*CGFloat.pi*angle/360.0)
+                setAngle(angle: angle.rad)
             } else {
-                setAngle(angle: 2*CGFloat.pi*90/360.0)
+                setAngle(angle: CGFloat(90.0).rad)
             }
         }
     }
@@ -58,7 +59,6 @@ class Rubberstamp: UIView {
         bundle.loadNibNamed("Rubberstamp", owner: self, options: nil)
         addSubview(contentView)
         contentView.frame = bounds
-        contentView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
         setupView()
     }
 
@@ -74,47 +74,57 @@ class Rubberstamp: UIView {
         stampViewTrailingConstraint.constant = 0
         stampViewTopConstraint.constant    = 0
         stampViewBottomConstraint.constant = 0
-        let α = abs(angle)
-        let γ = atan(contentView.frame.size.height / contentView.frame.size.width)
         let A = contentView.frame.size.width
         let B = contentView.frame.size.height
+        let horizontal = A > B
+        let α = abs(angle)
+        let γ = horizontal ? atan(B / A) : atan(A / B)
         let D = sqrt(A * A + B * B)
-        let d = B / sin(α + γ)
+
+        let R:CGFloat = 0.0//D * 0.08
+        stampView.layer.cornerRadius = R
+        stampView.layer.borderWidth  = 1//D * 0.05
+        let diagonalExtention:CGFloat = (sqrt(2) * cos(45.0 / 360.0 * 2.0 * CGFloat.pi - α) - 1) * R / cos(γ)
+        let d = (horizontal ? B : A) / sin(α + γ) + diagonalExtention
+        let b = sin(γ) * d
         let scalingFactor = d / D
+
         stampViewLeadingConstraint.constant  = 0.5 * (1.0 - scalingFactor) * A
         stampViewTrailingConstraint.constant = 0.5 * (1.0 - scalingFactor) * A
         stampViewTopConstraint.constant      = 0.5 * (1.0 - scalingFactor) * B
         stampViewBottomConstraint.constant   = 0.5 * (1.0 - scalingFactor) * B
         stampView.transform = CGAffineTransform(rotationAngle: angle)
-        stampView.layoutIfNeeded()
+        singleLineLabel.font = UIFont(name: singleLineLabel.font.fontName, size: b*0.4)
+        singleLineHeightConstraint.constant = b - 2 * stampView.layer.borderWidth
     }
     
     private func setupView() {
-        stampView.layer.cornerRadius = 0;
-        stampView.layer.masksToBounds = true;
         stampView.layer.borderColor = UIColor.red.cgColor
-        stampView.layer.borderWidth = 1.0
-        stampView.backgroundColor = .yellow
-        singleLineLabel.text = "single line2"
-        firstLineLabel.text = "first line2"
-        secondLineLabel.text = "second line2"
+        stampView.backgroundColor = .clear
+        singleLineLabel.text = ""
+        firstLineLabel.text = ""
+        secondLineLabel.text = ""
     }
     
-    func setText(text: String) {
-        let n = text.components(separatedBy: " ").count
-        if n < 2 {
-            singleLineLabel.text = text
+    func setTextArray(texts: [String]) {
+        let n = texts.count
+        if n == 1 {
+            singleLineLabel.text = texts[0]
             singleLineLabel.isHidden = false
             firstLineLabel.isHidden = true
             secondLineLabel.isHidden = true
         } else {
-            firstLineLabel.text = text.components(separatedBy: " ")[0]
-            secondLineLabel.text = text.components(separatedBy: " ")[1]
+            firstLineLabel.text = texts[0]
+            secondLineLabel.text = texts[1]
             singleLineLabel.isHidden = true
             firstLineLabel.isHidden = false
             secondLineLabel.isHidden = false
         }
-        singleLineLabel.text = text
     }
     
+}
+
+
+extension CGFloat {
+    var rad: CGFloat { return self / 360.0 * 2.0 * CGFloat.pi }
 }

@@ -15,6 +15,7 @@
                 <outlet property="contentView" destination="iN0-l3-epB" id="REd-7b-Q2g"/>
                 <outlet property="firstLineLabel" destination="diP-TJ-Dyn" id="fzf-L1-uTV"/>
                 <outlet property="secondLineLabel" destination="yJD-6i-dtT" id="eGm-GA-ZJe"/>
+                <outlet property="singleLineHeightConstraint" destination="Wa7-8d-PcO" id="V3z-en-I1B"/>
                 <outlet property="singleLineLabel" destination="dag-v4-4dJ" id="k2r-Mj-TJd"/>
                 <outlet property="stampView" destination="nDj-eL-2W2" id="oXX-fy-qjy"/>
                 <outlet property="stampViewBottomConstraint" destination="Wnk-dH-PY4" id="b7Q-KJ-5yc"/>
@@ -31,9 +32,12 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nDj-eL-2W2" userLabel="stampView">
                     <rect key="frame" x="0.0" y="0.0" width="396" height="264"/>
                     <subviews>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="single line" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dag-v4-4dJ">
-                            <rect key="frame" x="20" y="121.5" width="356" height="21"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bullshit" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dag-v4-4dJ">
+                            <rect key="frame" x="20" y="101.5" width="356" height="61"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="61" id="Wa7-8d-PcO"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" name="Rockwell-Regular" family="Rockwell" pointSize="61"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
@@ -50,7 +54,6 @@
                             <nil key="highlightedColor"/>
                         </label>
                     </subviews>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstItem="dag-v4-4dJ" firstAttribute="leading" secondItem="nDj-eL-2W2" secondAttribute="leading" constant="20" id="3nb-Nj-Tov"/>
                         <constraint firstAttribute="trailing" secondItem="diP-TJ-Dyn" secondAttribute="trailing" constant="20" id="J4E-5C-ZLk"/>
