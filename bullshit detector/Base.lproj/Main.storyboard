@@ -240,7 +240,7 @@
                                 </connections>
                             </button>
                             <view tag="8" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="G34-N1-vG1" customClass="Rubberstamp" customModule="bullshit_detector" customModuleProvider="target">
-                                <rect key="frame" x="74" y="395" width="300" height="150"/>
+                                <rect key="frame" x="74" y="395" width="150" height="300"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <userDefinedRuntimeAttributes>
@@ -248,7 +248,7 @@
                                         <color key="value" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="number" keyPath="angle">
-                                        <real key="value" value="-6"/>
+                                        <real key="value" value="8"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="string" keyPath="stampText" value="12"/>
                                 </userDefinedRuntimeAttributes>
