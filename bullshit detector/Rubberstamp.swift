@@ -81,13 +81,15 @@ class Rubberstamp: UIView {
         let γ = horizontal ? atan(B / A) : atan(A / B)
         let D = sqrt(A * A + B * B)
 
-        let R:CGFloat = 0.0//D * 0.08
+        let d = (horizontal ? B : A) / sin(α + γ)
+        let R:CGFloat = d * 0.08
         stampView.layer.cornerRadius = R
         stampView.layer.borderWidth  = 1//D * 0.05
-        let diagonalExtention:CGFloat = (sqrt(2) * cos(45.0 / 360.0 * 2.0 * CGFloat.pi - α) - 1) * R / cos(γ)
-        let d = (horizontal ? B : A) / sin(α + γ) + diagonalExtention
-        let b = sin(γ) * d
-        let scalingFactor = d / D
+        let extensionAngle = α < CGFloat(45.0).rad ? CGFloat(45.0).rad - α : α - CGFloat(45.0).rad
+        let diagonalExtension:CGFloat = sqrt(2)*(sqrt(2) * cos(extensionAngle) - 1) * R / cos(γ)
+        let extended_d = (horizontal ? B : A) / sin(α + γ) + diagonalExtension
+        let b = sin(γ) * extended_d
+        let scalingFactor = extended_d / D
 
         stampViewLeadingConstraint.constant  = 0.5 * (1.0 - scalingFactor) * A
         stampViewTrailingConstraint.constant = 0.5 * (1.0 - scalingFactor) * A
