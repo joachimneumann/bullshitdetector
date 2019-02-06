@@ -15,12 +15,13 @@ class SettingsViewController: UIViewController, UITextFieldDelegate {
         self.navigationController?.navigationBar.tintColor = UIColor.gray
         self.navigationController?.setNavigationBarHidden(false, animated: false)
         view.backgroundColor = displayBackgroundColor
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-//       self.navigationController?.setNavigationBarHidden(true, animated: false)
+        
     }
 
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+    }
+    
     @IBAction func truthOMeterPressed(_ sender: Any) {
         UserDefaults.standard.set(buttonTextDefault, forKey: buttonTextkey)
         UserDefaults.standard.set(displayTextDefault, forKey: displayTextkey)

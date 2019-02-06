@@ -239,20 +239,6 @@
                                     <action selector="bullshitOMeterPressed:" destination="8mU-yx-3dI" eventType="touchUpInside" id="eA8-4g-U5k"/>
                                 </connections>
                             </button>
-                            <view tag="8" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="G34-N1-vG1" customClass="Rubberstamp" customModule="bullshit_detector" customModuleProvider="target">
-                                <rect key="frame" x="74" y="395" width="150" height="300"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="stampColor">
-                                        <color key="value" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="angle">
-                                        <real key="value" value="8"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="string" keyPath="stampText" value="12"/>
-                                </userDefinedRuntimeAttributes>
-                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -342,15 +328,18 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                             </button>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ZhS-Vw-yUO">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ZhS-Vw-yUO" customClass="NoSelectTextField" customModule="bullshit_detector" customModuleProvider="target">
                                 <rect key="frame" x="60" y="118" width="294" height="32"/>
                                 <color key="backgroundColor" white="1" alpha="0.44" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" name="Menlo-Bold" family="Menlo" pointSize="24"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
                             </textField>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="g1i-VY-2aI">
-                                <rect key="frame" x="40" y="234" width="334" height="29"/>
+                                <rect key="frame" x="40" y="234" width="334" height="36"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="35" id="vpb-os-7bQ"/>
+                                </constraints>
                                 <segments>
                                     <segment title="far left"/>
                                     <segment title="left"/>
@@ -363,36 +352,6 @@
                                     <action selector="segmentSelected:" destination="rFd-VX-DBN" eventType="valueChanged" id="8gr-Zh-Xy4"/>
                                 </connections>
                             </segmentedControl>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Resulting Text" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="CWq-aN-WNJ" userLabel="farLeftTextField">
-                                <rect key="frame" x="40" y="184" width="334" height="30"/>
-                                <color key="textColor" red="1" green="0.32943663919999999" blue="0.51792884159999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Resulting Text" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wk6-xn-rRM" userLabel="leftTextField">
-                                <rect key="frame" x="40" y="184" width="334" height="30"/>
-                                <color key="textColor" red="1" green="0.32943663919999999" blue="0.51792884159999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Resulting Text" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Zap-6E-aCM" userLabel="centerTextField">
-                                <rect key="frame" x="40" y="184" width="334" height="30"/>
-                                <color key="textColor" red="1" green="0.32943663919999999" blue="0.51792884159999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Resulting Text" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="F0A-RL-6XA" userLabel="rightTextField">
-                                <rect key="frame" x="40" y="184" width="334" height="30"/>
-                                <color key="textColor" red="1" green="0.32943663919999999" blue="0.51792884159999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Resulting Text" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3wQ-Eo-Prg" userLabel="farRightTextField">
-                                <rect key="frame" x="40" y="184" width="334" height="30"/>
-                                <color key="textColor" red="1" green="0.32943663919999999" blue="0.51792884159999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6Wp-eT-6W1">
                                 <rect key="frame" x="40" y="99" width="77" height="70"/>
                                 <color key="backgroundColor" red="0.058823529409999999" green="0.52549019610000003" blue="0.76470588240000004" alpha="0.26658818493150682" colorSpace="custom" customColorSpace="calibratedRGB"/>
@@ -400,59 +359,82 @@
                                     <constraint firstAttribute="width" constant="77" id="op5-33-Gzd"/>
                                 </constraints>
                             </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gR6-uw-Weo" customClass="Rubberstamp" customModule="bullshit_detector" customModuleProvider="target">
+                                <rect key="frame" x="20" y="319" width="374" height="199.33333333333337"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="gR6-uw-Weo" secondAttribute="height" multiplier="15:8" id="gfp-WN-znR"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="stampColor">
+                                        <color key="value" red="1" green="0.49327188729999999" blue="0.47399842739999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="stampText" value="Bullshit"/>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="angle">
+                                        <real key="value" value="20"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="border_radius">
+                                        <integer key="value" value="39"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="border_width">
+                                        <integer key="value" value="20"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="qOy-Ya-iny">
+                                <rect key="frame" x="40" y="189" width="334" height="30"/>
+                                <subviews>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="first line" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3IZ-NS-Phf" customClass="NoSelectTextField" customModule="bullshit_detector" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="157" height="30"/>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="second line (optional)" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="yfF-PK-ejf" customClass="NoSelectTextField" customModule="bullshit_detector" customModuleProvider="target">
+                                        <rect key="frame" x="177" y="0.0" width="157" height="30"/>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
+                                    </textField>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="g4d-AD-5V1" firstAttribute="trailing" secondItem="011-eh-3nf" secondAttribute="trailing" constant="40" id="05u-z0-jul"/>
-                            <constraint firstItem="F0A-RL-6XA" firstAttribute="top" secondItem="CWq-aN-WNJ" secondAttribute="top" id="0U4-jJ-qFu"/>
                             <constraint firstItem="6Wp-eT-6W1" firstAttribute="centerY" secondItem="011-eh-3nf" secondAttribute="centerY" id="0l5-Uu-TPP"/>
                             <constraint firstItem="011-eh-3nf" firstAttribute="top" secondItem="g4d-AD-5V1" secondAttribute="top" constant="40" id="11m-pG-QX5"/>
-                            <constraint firstItem="wk6-xn-rRM" firstAttribute="trailing" secondItem="CWq-aN-WNJ" secondAttribute="trailing" id="23Y-2q-PlI"/>
-                            <constraint firstItem="Zap-6E-aCM" firstAttribute="top" secondItem="CWq-aN-WNJ" secondAttribute="top" id="2Np-q1-oco"/>
-                            <constraint firstItem="F0A-RL-6XA" firstAttribute="trailing" secondItem="CWq-aN-WNJ" secondAttribute="trailing" id="2XM-Km-IFj"/>
-                            <constraint firstItem="3wQ-Eo-Prg" firstAttribute="bottom" secondItem="CWq-aN-WNJ" secondAttribute="bottom" id="5D9-DM-pN0"/>
-                            <constraint firstItem="F0A-RL-6XA" firstAttribute="leading" secondItem="CWq-aN-WNJ" secondAttribute="leading" id="9hE-2H-lH5"/>
-                            <constraint firstItem="wk6-xn-rRM" firstAttribute="bottom" secondItem="CWq-aN-WNJ" secondAttribute="bottom" id="Aga-Ny-JvN"/>
-                            <constraint firstItem="g1i-VY-2aI" firstAttribute="trailing" secondItem="011-eh-3nf" secondAttribute="trailing" id="CSO-kK-BJc"/>
-                            <constraint firstItem="F0A-RL-6XA" firstAttribute="bottom" secondItem="CWq-aN-WNJ" secondAttribute="bottom" id="EG7-oC-7Ss"/>
+                            <constraint firstItem="g4d-AD-5V1" firstAttribute="trailing" secondItem="gR6-uw-Weo" secondAttribute="trailing" constant="20" id="446-WJ-2vn"/>
+                            <constraint firstItem="gR6-uw-Weo" firstAttribute="top" secondItem="g1i-VY-2aI" secondAttribute="bottom" constant="50" id="EOb-FR-W1c"/>
+                            <constraint firstItem="qOy-Ya-iny" firstAttribute="top" secondItem="6Wp-eT-6W1" secondAttribute="bottom" constant="20" id="FHs-gP-rBR"/>
+                            <constraint firstItem="qOy-Ya-iny" firstAttribute="leading" secondItem="011-eh-3nf" secondAttribute="leading" id="GWU-KN-Zaq"/>
+                            <constraint firstItem="g1i-VY-2aI" firstAttribute="top" secondItem="qOy-Ya-iny" secondAttribute="bottom" constant="15" id="IBV-uS-E9k"/>
+                            <constraint firstItem="g1i-VY-2aI" firstAttribute="trailing" secondItem="011-eh-3nf" secondAttribute="trailing" id="K79-Ee-aJq"/>
                             <constraint firstItem="g4d-AD-5V1" firstAttribute="trailing" secondItem="ZhS-Vw-yUO" secondAttribute="trailing" constant="60" id="KsI-Gc-kpF"/>
-                            <constraint firstItem="Zap-6E-aCM" firstAttribute="leading" secondItem="CWq-aN-WNJ" secondAttribute="leading" id="Lgj-4l-0nh"/>
-                            <constraint firstItem="wk6-xn-rRM" firstAttribute="top" secondItem="CWq-aN-WNJ" secondAttribute="top" id="NOO-ee-so7"/>
-                            <constraint firstItem="CWq-aN-WNJ" firstAttribute="trailing" secondItem="011-eh-3nf" secondAttribute="trailing" id="PJq-EV-cBX"/>
                             <constraint firstItem="6Wp-eT-6W1" firstAttribute="leading" secondItem="g4d-AD-5V1" secondAttribute="leading" constant="40" id="WfP-LV-rT7"/>
                             <constraint firstItem="ZhS-Vw-yUO" firstAttribute="centerY" secondItem="011-eh-3nf" secondAttribute="centerY" id="Yyq-El-B5h"/>
-                            <constraint firstItem="g1i-VY-2aI" firstAttribute="top" secondItem="CWq-aN-WNJ" secondAttribute="bottom" constant="20" id="a7D-Tg-VP4"/>
-                            <constraint firstItem="g1i-VY-2aI" firstAttribute="leading" secondItem="011-eh-3nf" secondAttribute="leading" id="azA-XH-9j5"/>
-                            <constraint firstItem="CWq-aN-WNJ" firstAttribute="leading" secondItem="011-eh-3nf" secondAttribute="leading" id="ebK-77-8jN"/>
-                            <constraint firstItem="CWq-aN-WNJ" firstAttribute="top" secondItem="011-eh-3nf" secondAttribute="bottom" constant="20" id="hmI-Kf-arx"/>
-                            <constraint firstItem="3wQ-Eo-Prg" firstAttribute="top" secondItem="CWq-aN-WNJ" secondAttribute="top" id="iEV-g4-XaV"/>
-                            <constraint firstItem="Zap-6E-aCM" firstAttribute="trailing" secondItem="CWq-aN-WNJ" secondAttribute="trailing" id="iTd-x4-Ehh"/>
+                            <constraint firstItem="g1i-VY-2aI" firstAttribute="leading" secondItem="011-eh-3nf" secondAttribute="leading" id="bGQ-VB-tZD"/>
                             <constraint firstItem="011-eh-3nf" firstAttribute="leading" secondItem="g4d-AD-5V1" secondAttribute="leading" constant="40" id="ipE-Ih-grJ"/>
                             <constraint firstItem="ZhS-Vw-yUO" firstAttribute="leading" secondItem="g4d-AD-5V1" secondAttribute="leading" constant="60" id="jBZ-Pn-zQh"/>
-                            <constraint firstItem="Zap-6E-aCM" firstAttribute="bottom" secondItem="CWq-aN-WNJ" secondAttribute="bottom" id="jn2-Yf-FFN"/>
-                            <constraint firstItem="3wQ-Eo-Prg" firstAttribute="leading" secondItem="CWq-aN-WNJ" secondAttribute="leading" id="ldE-77-eBy"/>
-                            <constraint firstItem="3wQ-Eo-Prg" firstAttribute="trailing" secondItem="CWq-aN-WNJ" secondAttribute="trailing" id="n4y-EJ-OWD"/>
                             <constraint firstItem="6Wp-eT-6W1" firstAttribute="height" secondItem="011-eh-3nf" secondAttribute="height" constant="10" id="rrO-xJ-Uur"/>
-                            <constraint firstItem="wk6-xn-rRM" firstAttribute="leading" secondItem="CWq-aN-WNJ" secondAttribute="leading" id="yZk-TL-kE5"/>
+                            <constraint firstItem="qOy-Ya-iny" firstAttribute="trailing" secondItem="011-eh-3nf" secondAttribute="trailing" id="sEX-jS-xIf"/>
+                            <constraint firstItem="gR6-uw-Weo" firstAttribute="leading" secondItem="g4d-AD-5V1" secondAttribute="leading" constant="20" id="sOk-pM-Bnw"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="g4d-AD-5V1"/>
                     </view>
                     <connections>
                         <outlet property="buttonTextField" destination="ZhS-Vw-yUO" id="5pL-0s-bNg"/>
-                        <outlet property="centerTextField" destination="Zap-6E-aCM" id="mUd-zw-OEu"/>
-                        <outlet property="farLeftTextField" destination="CWq-aN-WNJ" id="Uqz-Yu-AdD"/>
-                        <outlet property="farRightTextField" destination="3wQ-Eo-Prg" id="LuS-Rm-eb5"/>
+                        <outlet property="firstTextField" destination="3IZ-NS-Phf" id="dCH-9y-rhB"/>
                         <outlet property="indicatorView" destination="6Wp-eT-6W1" id="aB2-Ig-rvw"/>
                         <outlet property="indicatorViewLeadingConstraint" destination="WfP-LV-rT7" id="H88-Ps-At7"/>
                         <outlet property="indicatorViewWidthConstraint" destination="op5-33-Gzd" id="tsd-D2-Op6"/>
-                        <outlet property="leftTextField" destination="wk6-xn-rRM" id="V6P-a3-xBw"/>
-                        <outlet property="rightTextField" destination="F0A-RL-6XA" id="PBy-82-y1Q"/>
+                        <outlet property="secondTextField" destination="yfF-PK-ejf" id="AXl-Y3-KfF"/>
+                        <outlet property="stampPreview" destination="gR6-uw-Weo" id="tkr-Sg-563"/>
                         <outlet property="theButton" destination="011-eh-3nf" id="LBQ-eY-jhG"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KPh-uH-DKv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3128.8000000000002" y="133.5832083958021"/>
+            <point key="canvasLocation" x="3127.536231884058" y="132.88043478260872"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Gcm-7A-Ajw">

@@ -22,6 +22,7 @@
 		AA709100220675C1002F06C6 /* Rubberstamp.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7090FF220675C1002F06C6 /* Rubberstamp.swift */; };
 		AA709101220675C1002F06C6 /* Rubberstamp.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7090FF220675C1002F06C6 /* Rubberstamp.swift */; };
 		AA70910322067AA1002F06C6 /* Rubberstamp.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA70910222067AA1002F06C6 /* Rubberstamp.xib */; };
+		AAA8FD13220A92DE00865236 /* NoSelectTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAA8FD12220A92DE00865236 /* NoSelectTextField.swift */; };
 		AAA9256422002A6400AB15B7 /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAA9256322002A6400AB15B7 /* NotificationCenter.framework */; };
 		AAA9256722002A6400AB15B7 /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAA9256622002A6400AB15B7 /* TodayViewController.swift */; };
 		AAA9256A22002A6400AB15B7 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AAA9256822002A6400AB15B7 /* MainInterface.storyboard */; };
@@ -77,6 +78,7 @@
 		AA7090FC2205F913002F06C6 /* Britannic Bold Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Britannic Bold Regular.ttf"; sourceTree = "<group>"; };
 		AA7090FF220675C1002F06C6 /* Rubberstamp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rubberstamp.swift; sourceTree = "<group>"; };
 		AA70910222067AA1002F06C6 /* Rubberstamp.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Rubberstamp.xib; sourceTree = "<group>"; };
+		AAA8FD12220A92DE00865236 /* NoSelectTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoSelectTextField.swift; sourceTree = "<group>"; };
 		AAA9256222002A6400AB15B7 /* Truth-O-Meter Widget.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Truth-O-Meter Widget.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AAA9256322002A6400AB15B7 /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
 		AAA9256622002A6400AB15B7 /* TodayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayViewController.swift; sourceTree = "<group>"; };
@@ -149,6 +151,7 @@
 				AAD927C32205CE79001C328F /* CustomButtonViewController.swift */,
 				AA7090FF220675C1002F06C6 /* Rubberstamp.swift */,
 				AA70910222067AA1002F06C6 /* Rubberstamp.xib */,
+				AAA8FD12220A92DE00865236 /* NoSelectTextField.swift */,
 			);
 			path = "bullshit detector";
 			sourceTree = "<group>";
@@ -298,6 +301,7 @@
 				AA61974A21E9BEB40069121A /* ViewController.swift in Sources */,
 				AA61975A21E9C5810069121A /* Display.swift in Sources */,
 				AA37BBF721EEE965005A4042 /* constants.swift in Sources */,
+				AAA8FD13220A92DE00865236 /* NoSelectTextField.swift in Sources */,
 				AA709100220675C1002F06C6 /* Rubberstamp.swift in Sources */,
 				AA61974821E9BEB40069121A /* AppDelegate.swift in Sources */,
 				AAB1923F21EC9CE500836714 /* IAPHelper.swift in Sources */,
@@ -488,7 +492,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.joachimneumann.bullshitdetector;
+				PRODUCT_BUNDLE_IDENTIFIER = com.joachimneumann.bullshitdetector2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -512,7 +516,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.joachimneumann.bullshitdetector;
+				PRODUCT_BUNDLE_IDENTIFIER = com.joachimneumann.bullshitdetector2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.2;
@@ -533,7 +537,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.joachimneumann.bullshitdetector.Truth-O-Meter-Widget";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.joachimneumann.bullshitdetector2.Truth-O-Meter-Widget";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 4.2;
@@ -554,7 +558,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.joachimneumann.bullshitdetector.Truth-O-Meter-Widget";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.joachimneumann.bullshitdetector2.Truth-O-Meter-Widget";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 4.2;
