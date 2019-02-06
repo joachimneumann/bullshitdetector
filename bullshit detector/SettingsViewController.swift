@@ -23,12 +23,24 @@ class SettingsViewController: UIViewController, UITextFieldDelegate {
     
     @IBAction func truthOMeterPressed(_ sender: Any) {
         UserDefaults.standard.set(Template.TruthOMeter.rawValue, forKey: templatekey)
-        BullshitViewController.__defaultTexts()
+        navigationController?.popViewController(animated: true)
     }
 
     @IBAction func bullshitOMeterPressed(_ sender: Any) {
         UserDefaults.standard.set(Template.BullshitOMeter.rawValue, forKey: templatekey)
-        BullshitViewController.__bullshitOMeterTexts()
+        navigationController?.popViewController(animated: true)
+    }
+
+    @IBAction func voiceOMeterPressed(_ sender: Any) {
+        UserDefaults.standard.set(Template.VoiceOMeter.rawValue, forKey: templatekey)
+        navigationController?.popViewController(animated: true)
+    }
+
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "customizingSeque" {
+            UserDefaults.standard.set(Template.Custom.rawValue, forKey: templatekey)
+        }
     }
 
     override func viewDidDisappear(_ animated: Bool) {

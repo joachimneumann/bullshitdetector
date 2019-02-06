@@ -9,16 +9,12 @@
 /* Begin PBXBuildFile section */
 		AA37BBF521EEE684005A4042 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA37BBF421EEE684005A4042 /* SettingsViewController.swift */; };
 		AA37BBF721EEE965005A4042 /* constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA37BBF621EEE965005A4042 /* constants.swift */; };
-		AA3DD49021EB21110007244C /* RadialGradientLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA3DD48D21EB21100007244C /* RadialGradientLayer.swift */; };
 		AA3DD49121EB21110007244C /* PathBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA3DD48E21EB21110007244C /* PathBuilder.swift */; };
-		AA3DD49221EB21110007244C /* AnimatedWaveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA3DD48F21EB21110007244C /* AnimatedWaveView.swift */; };
 		AA61974821E9BEB40069121A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA61974721E9BEB40069121A /* AppDelegate.swift */; };
 		AA61974A21E9BEB40069121A /* BullshitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA61974921E9BEB40069121A /* BullshitViewController.swift */; };
 		AA61974D21E9BEB40069121A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AA61974B21E9BEB40069121A /* Main.storyboard */; };
 		AA61975221E9BEB60069121A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AA61975021E9BEB60069121A /* LaunchScreen.storyboard */; };
 		AA61975A21E9C5810069121A /* Display.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA61975921E9C5810069121A /* Display.swift */; };
-		AA7090FD2205F913002F06C6 /* Britannic Bold Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AA7090FC2205F913002F06C6 /* Britannic Bold Regular.ttf */; };
-		AA7090FE2205F913002F06C6 /* Britannic Bold Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AA7090FC2205F913002F06C6 /* Britannic Bold Regular.ttf */; };
 		AA709100220675C1002F06C6 /* Rubberstamp.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7090FF220675C1002F06C6 /* Rubberstamp.swift */; };
 		AA709101220675C1002F06C6 /* Rubberstamp.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7090FF220675C1002F06C6 /* Rubberstamp.swift */; };
 		AA70910322067AA1002F06C6 /* Rubberstamp.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA70910222067AA1002F06C6 /* Rubberstamp.xib */; };
@@ -29,10 +25,7 @@
 		AAA9256E22002A6400AB15B7 /* Truth-O-Meter Widget.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = AAA9256222002A6400AB15B7 /* Truth-O-Meter Widget.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		AAA92577220031FA00AB15B7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AA61974E21E9BEB60069121A /* Assets.xcassets */; };
 		AAA925782200322200AB15B7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AA61974E21E9BEB60069121A /* Assets.xcassets */; };
-		AAA9257F22004E0500AB15B7 /* BLACK Personal Use.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AAA9257E22004E0500AB15B7 /* BLACK Personal Use.ttf */; };
-		AAA9258022004E0500AB15B7 /* BLACK Personal Use.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AAA9257E22004E0500AB15B7 /* BLACK Personal Use.ttf */; };
 		AAB1923D21EC7EC500836714 /* UnlimitedUsageProducts.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAB1923C21EC7EC500836714 /* UnlimitedUsageProducts.swift */; };
-		AAB1923F21EC9CE500836714 /* IAPHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAB1923E21EC9CE500836714 /* IAPHelper.swift */; };
 		AAD927C22205B2F7001C328F /* CustomDisplayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD927C12205B2F7001C328F /* CustomDisplayViewController.swift */; };
 		AAD927C42205CE79001C328F /* CustomButtonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD927C32205CE79001C328F /* CustomButtonViewController.swift */; };
 /* End PBXBuildFile section */
@@ -64,9 +57,7 @@
 /* Begin PBXFileReference section */
 		AA37BBF421EEE684005A4042 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		AA37BBF621EEE965005A4042 /* constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = constants.swift; sourceTree = "<group>"; };
-		AA3DD48D21EB21100007244C /* RadialGradientLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RadialGradientLayer.swift; sourceTree = "<group>"; };
 		AA3DD48E21EB21110007244C /* PathBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PathBuilder.swift; sourceTree = "<group>"; };
-		AA3DD48F21EB21110007244C /* AnimatedWaveView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimatedWaveView.swift; sourceTree = "<group>"; };
 		AA61974421E9BEB40069121A /* bullshit detector.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "bullshit detector.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA61974721E9BEB40069121A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AA61974921E9BEB40069121A /* BullshitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BullshitViewController.swift; sourceTree = "<group>"; };
@@ -75,7 +66,6 @@
 		AA61975121E9BEB60069121A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AA61975321E9BEB60069121A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AA61975921E9C5810069121A /* Display.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Display.swift; sourceTree = "<group>"; };
-		AA7090FC2205F913002F06C6 /* Britannic Bold Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Britannic Bold Regular.ttf"; sourceTree = "<group>"; };
 		AA7090FF220675C1002F06C6 /* Rubberstamp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rubberstamp.swift; sourceTree = "<group>"; };
 		AA70910222067AA1002F06C6 /* Rubberstamp.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Rubberstamp.xib; sourceTree = "<group>"; };
 		AAA8FD12220A92DE00865236 /* NoSelectTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoSelectTextField.swift; sourceTree = "<group>"; };
@@ -84,9 +74,7 @@
 		AAA9256622002A6400AB15B7 /* TodayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayViewController.swift; sourceTree = "<group>"; };
 		AAA9256922002A6400AB15B7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
 		AAA9256B22002A6400AB15B7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		AAA9257E22004E0500AB15B7 /* BLACK Personal Use.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "BLACK Personal Use.ttf"; sourceTree = "<group>"; };
 		AAB1923C21EC7EC500836714 /* UnlimitedUsageProducts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnlimitedUsageProducts.swift; sourceTree = "<group>"; };
-		AAB1923E21EC9CE500836714 /* IAPHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IAPHelper.swift; sourceTree = "<group>"; };
 		AAD927C12205B2F7001C328F /* CustomDisplayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomDisplayViewController.swift; sourceTree = "<group>"; };
 		AAD927C32205CE79001C328F /* CustomButtonViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButtonViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -114,7 +102,6 @@
 			isa = PBXGroup;
 			children = (
 				AA61974621E9BEB40069121A /* bullshit detector */,
-				AAA9257A2200416B00AB15B7 /* Font */,
 				AAA9256522002A6400AB15B7 /* Truth-O-Meter Widget */,
 				AA61974521E9BEB40069121A /* Products */,
 				AAB1923921EC7C5100836714 /* Frameworks */,
@@ -141,10 +128,7 @@
 				AA61975021E9BEB60069121A /* LaunchScreen.storyboard */,
 				AA61975321E9BEB60069121A /* Info.plist */,
 				AA61975921E9C5810069121A /* Display.swift */,
-				AA3DD48F21EB21110007244C /* AnimatedWaveView.swift */,
 				AA3DD48E21EB21110007244C /* PathBuilder.swift */,
-				AA3DD48D21EB21100007244C /* RadialGradientLayer.swift */,
-				AAB1923E21EC9CE500836714 /* IAPHelper.swift */,
 				AAB1923C21EC7EC500836714 /* UnlimitedUsageProducts.swift */,
 				AA37BBF621EEE965005A4042 /* constants.swift */,
 				AAD927C12205B2F7001C328F /* CustomDisplayViewController.swift */,
@@ -164,15 +148,6 @@
 				AAA9256B22002A6400AB15B7 /* Info.plist */,
 			);
 			path = "Truth-O-Meter Widget";
-			sourceTree = "<group>";
-		};
-		AAA9257A2200416B00AB15B7 /* Font */ = {
-			isa = PBXGroup;
-			children = (
-				AA7090FC2205F913002F06C6 /* Britannic Bold Regular.ttf */,
-				AAA9257E22004E0500AB15B7 /* BLACK Personal Use.ttf */,
-			);
-			path = Font;
 			sourceTree = "<group>";
 		};
 		AAB1923921EC7C5100836714 /* Frameworks */ = {
@@ -274,8 +249,6 @@
 				AAA92577220031FA00AB15B7 /* Assets.xcassets in Resources */,
 				AA61974D21E9BEB40069121A /* Main.storyboard in Resources */,
 				AA70910322067AA1002F06C6 /* Rubberstamp.xib in Resources */,
-				AA7090FD2205F913002F06C6 /* Britannic Bold Regular.ttf in Resources */,
-				AAA9257F22004E0500AB15B7 /* BLACK Personal Use.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -283,10 +256,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AAA9258022004E0500AB15B7 /* BLACK Personal Use.ttf in Resources */,
 				AAA925782200322200AB15B7 /* Assets.xcassets in Resources */,
 				AAA9256A22002A6400AB15B7 /* MainInterface.storyboard in Resources */,
-				AA7090FE2205F913002F06C6 /* Britannic Bold Regular.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -297,16 +268,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AA3DD49021EB21110007244C /* RadialGradientLayer.swift in Sources */,
 				AA61974A21E9BEB40069121A /* BullshitViewController.swift in Sources */,
 				AA61975A21E9C5810069121A /* Display.swift in Sources */,
 				AA37BBF721EEE965005A4042 /* constants.swift in Sources */,
 				AAA8FD13220A92DE00865236 /* NoSelectTextField.swift in Sources */,
 				AA709100220675C1002F06C6 /* Rubberstamp.swift in Sources */,
 				AA61974821E9BEB40069121A /* AppDelegate.swift in Sources */,
-				AAB1923F21EC9CE500836714 /* IAPHelper.swift in Sources */,
 				AAD927C42205CE79001C328F /* CustomButtonViewController.swift in Sources */,
-				AA3DD49221EB21110007244C /* AnimatedWaveView.swift in Sources */,
 				AAD927C22205B2F7001C328F /* CustomDisplayViewController.swift in Sources */,
 				AA3DD49121EB21110007244C /* PathBuilder.swift in Sources */,
 				AAB1923D21EC7EC500836714 /* UnlimitedUsageProducts.swift in Sources */,
@@ -492,7 +460,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.joachimneumann.bullshitdetector2;
+				PRODUCT_BUNDLE_IDENTIFIER = com.joachimneumann.bullshitdetector;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -516,7 +484,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.joachimneumann.bullshitdetector2;
+				PRODUCT_BUNDLE_IDENTIFIER = com.joachimneumann.bullshitdetector;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.2;
@@ -537,7 +505,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.joachimneumann.bullshitdetector2.Truth-O-Meter-Widget";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.joachimneumann.bullshitdetector.Truth-O-Meter-Widget";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 4.2;
@@ -558,7 +526,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.joachimneumann.bullshitdetector2.Truth-O-Meter-Widget";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.joachimneumann.bullshitdetector.Truth-O-Meter-Widget";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 4.2;

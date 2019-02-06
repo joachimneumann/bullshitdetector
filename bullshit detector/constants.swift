@@ -16,16 +16,24 @@ let bullshitGray = UIColor(red: 200.0/255.0, green: 200.0/255.0, blue: 200.0/255
 enum Template: String {
     case TruthOMeter = "TruthOMeter"
     case BullshitOMeter = "BullshitOMeter"
+    case VoiceOMeter = "VoiceOMeter"
     case Custom = "Custom"
 }
 
+let instructionsDisplayedKey = "instructionsDisplayedKey"
 let templatekey              = "templatekey"
 let buttonCustomTextkey      = "buttonCustomTextkey"
 let displayCustomTextkey     = "displayCustomTextkey"
-let farLeftCustomTextkey     = "farLeftCustomTextkey"
-let leftCustomTextkey        = "leftCustomTextkey"
-let centerCustomTextkey      = "centerCustomTextkey"
-let rightCustomTextkey       = "rightCustomTextkey"
-let farRightCustomTextkey    = "farRightCustomTextkey"
-let instructionsDisplayedKey = "instructionsDisplayedKey"
+
+let farLeftCustomTextkey1     = "farLeftCustomTextkey1"
+let leftCustomTextkey1        = "leftCustomTextkey1"
+let centerCustomTextkey1      = "centerCustomTextkey1"
+let rightCustomTextkey1       = "rightCustomTextkey1"
+let farRightCustomTextkey1    = "farRightCustomTextkey1"
+
+let farLeftCustomTextkey2     = "farLeftCustomTextkey2"
+let leftCustomTextkey2        = "leftCustomTextkey2"
+let centerCustomTextkey2      = "centerCustomTextkey2"
+let rightCustomTextkey2       = "rightCustomTextkey2"
+let farRightCustomTextkey2    = "farRightCustomTextkey2"
 

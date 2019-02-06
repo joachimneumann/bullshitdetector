@@ -59,17 +59,18 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fj6-4L-L85">
                                 <rect key="frame" x="0.0" y="254" width="414" height="382"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="keB-2p-vpv">
-                                        <rect key="frame" x="80" y="80" width="254" height="222"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    </view>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="cg0-M1-bYk" userLabel="templateImageView">
+                                        <rect key="frame" x="87" y="71" width="240" height="240"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="cg0-M1-bYk" secondAttribute="height" multiplier="1:1" id="CuQ-nb-wWO"/>
+                                        </constraints>
+                                    </imageView>
                                 </subviews>
                                 <color key="backgroundColor" red="0.058823529409999999" green="0.52549019610000003" blue="0.76470588240000004" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="bottom" secondItem="keB-2p-vpv" secondAttribute="bottom" constant="80" id="4kL-JP-0dC"/>
-                                    <constraint firstAttribute="trailing" secondItem="keB-2p-vpv" secondAttribute="trailing" constant="80" id="N7H-BQ-ESc"/>
-                                    <constraint firstItem="keB-2p-vpv" firstAttribute="top" secondItem="fj6-4L-L85" secondAttribute="top" constant="80" id="ujB-c7-e7D"/>
-                                    <constraint firstItem="keB-2p-vpv" firstAttribute="leading" secondItem="fj6-4L-L85" secondAttribute="leading" constant="80" id="wxk-ey-g8H"/>
+                                    <constraint firstItem="cg0-M1-bYk" firstAttribute="leading" secondItem="fj6-4L-L85" secondAttribute="leading" constant="87" id="3rg-xx-WOZ"/>
+                                    <constraint firstItem="cg0-M1-bYk" firstAttribute="centerY" secondItem="fj6-4L-L85" secondAttribute="centerY" id="Nej-BD-2cf"/>
+                                    <constraint firstAttribute="trailing" secondItem="cg0-M1-bYk" secondAttribute="trailing" constant="87" id="uPQ-wy-1ps"/>
                                 </constraints>
                             </view>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="instruction" translatesAutoresizingMaskIntoConstraints="NO" id="u4M-eL-yea">
@@ -102,9 +103,9 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Jgx-FL-XlB" userLabel="rubberstamp" customClass="Rubberstamp" customModule="bullshit_detector" customModuleProvider="target">
-                                <rect key="frame" x="20" y="314" width="374" height="262"/>
+                                <rect key="frame" x="20" y="332.66666666666669" width="374" height="224.33333333333331"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" secondItem="Jgx-FL-XlB" secondAttribute="height" multiplier="1:0.7" id="ICS-do-IK7"/>
+                                    <constraint firstAttribute="width" secondItem="Jgx-FL-XlB" secondAttribute="height" multiplier="1:0.6" id="ICS-do-IK7"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="angle">
@@ -164,7 +165,6 @@
                     <navigationItem key="navigationItem" id="IG4-Ab-HMZ"/>
                     <connections>
                         <outlet property="analyseButton" destination="4ji-Hs-27j" id="v0a-uw-NMh"/>
-                        <outlet property="animationView" destination="keB-2p-vpv" id="cnp-Vd-7sS"/>
                         <outlet property="coverView" destination="fj6-4L-L85" id="tmy-ug-7pD"/>
                         <outlet property="display" destination="3ki-0X-gGI" id="V4T-nb-wfd"/>
                         <outlet property="displayLabel" destination="HQJ-dQ-8mP" id="qmZ-m5-4hi"/>
@@ -173,6 +173,7 @@
                         <outlet property="instructionsImageView" destination="u4M-eL-yea" id="37c-xB-grM"/>
                         <outlet property="rubberstamp" destination="Jgx-FL-XlB" id="yCO-fr-tsw"/>
                         <outlet property="settingsButton" destination="2rM-Ly-arC" id="211-Dg-3ws"/>
+                        <outlet property="templateImageView" destination="cg0-M1-bYk" id="tSK-ih-5Om"/>
                         <outlet property="viewToLeftOfButton" destination="Oue-lw-g9O" id="x7D-2c-Vf2"/>
                         <outlet property="viewToRightOfButton" destination="H2G-W8-t0f" id="GK6-40-0w9"/>
                     </connections>
@@ -203,23 +204,33 @@
                                     <action selector="bullshitOMeterPressed:" destination="8mU-yx-3dI" eventType="touchUpInside" id="eA8-4g-U5k"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KA6-uP-8WT">
-                                <rect key="frame" x="20" y="194" width="374" height="30"/>
-                                <state key="normal" title="Customize"/>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KA6-uP-8WT">
+                                <rect key="frame" x="20" y="244" width="374" height="30"/>
+                                <state key="normal" title="Customize →"/>
                                 <connections>
-                                    <segue destination="yN9-ms-BvG" kind="show" id="9Ek-8O-KhB"/>
+                                    <segue destination="yN9-ms-BvG" kind="show" identifier="customizingSeque" id="9Ek-8O-KhB"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1ql-cB-MIT">
+                                <rect key="frame" x="20" y="194" width="374" height="30"/>
+                                <state key="normal" title="Voice-O-Meter"/>
+                                <connections>
+                                    <action selector="voiceOMeterPressed:" destination="8mU-yx-3dI" eventType="touchUpInside" id="2W3-Ml-Lez"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="KA6-uP-8WT" firstAttribute="top" secondItem="xVm-rh-wnv" secondAttribute="bottom" constant="20" id="0RM-wm-X0j"/>
+                            <constraint firstItem="1ql-cB-MIT" firstAttribute="top" secondItem="xVm-rh-wnv" secondAttribute="bottom" constant="20" id="1bW-uT-iwf"/>
                             <constraint firstItem="tsW-o1-dYT" firstAttribute="trailing" secondItem="dFa-4P-pxL" secondAttribute="trailing" constant="20" id="2IS-Ge-ghC"/>
+                            <constraint firstItem="tsW-o1-dYT" firstAttribute="trailing" secondItem="1ql-cB-MIT" secondAttribute="trailing" constant="20" id="Ed3-w4-mFE"/>
                             <constraint firstItem="xVm-rh-wnv" firstAttribute="leading" secondItem="tsW-o1-dYT" secondAttribute="leading" constant="20" id="SZV-4w-o0U"/>
                             <constraint firstItem="dFa-4P-pxL" firstAttribute="leading" secondItem="tsW-o1-dYT" secondAttribute="leading" constant="20" id="TVp-sm-lUu"/>
                             <constraint firstItem="dFa-4P-pxL" firstAttribute="top" secondItem="tsW-o1-dYT" secondAttribute="top" constant="30" id="UZ4-4y-Dic"/>
                             <constraint firstItem="xVm-rh-wnv" firstAttribute="top" secondItem="dFa-4P-pxL" secondAttribute="bottom" constant="20" id="Xaf-Hp-nap"/>
+                            <constraint firstItem="KA6-uP-8WT" firstAttribute="top" secondItem="1ql-cB-MIT" secondAttribute="bottom" constant="20" id="ixR-q6-QKQ"/>
                             <constraint firstItem="tsW-o1-dYT" firstAttribute="trailing" secondItem="KA6-uP-8WT" secondAttribute="trailing" constant="20" id="lc2-3F-ZbS"/>
+                            <constraint firstItem="1ql-cB-MIT" firstAttribute="leading" secondItem="tsW-o1-dYT" secondAttribute="leading" constant="20" id="tDF-82-u5r"/>
                             <constraint firstItem="tsW-o1-dYT" firstAttribute="trailing" secondItem="xVm-rh-wnv" secondAttribute="trailing" constant="20" id="w6a-pi-qMb"/>
                             <constraint firstItem="KA6-uP-8WT" firstAttribute="leading" secondItem="tsW-o1-dYT" secondAttribute="leading" constant="20" id="xlj-zy-sfI"/>
                         </constraints>
@@ -266,7 +277,7 @@
                     <navigationItem key="navigationItem" title="Display text" id="l1F-2E-EJ0">
                         <barButtonItem key="rightBarButtonItem" title="Next" id="n4i-hy-wKv">
                             <connections>
-                                <segue destination="rFd-VX-DBN" kind="show" id="WpH-Hd-q52"/>
+                                <segue destination="rFd-VX-DBN" kind="show" identifier="" id="WpH-Hd-q52"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -399,6 +410,7 @@
                         <outlet property="indicatorViewLeadingConstraint" destination="WfP-LV-rT7" id="H88-Ps-At7"/>
                         <outlet property="indicatorViewWidthConstraint" destination="op5-33-Gzd" id="tsd-D2-Op6"/>
                         <outlet property="secondTextField" destination="yfF-PK-ejf" id="AXl-Y3-KfF"/>
+                        <outlet property="segmentedControlPosition" destination="g1i-VY-2aI" id="HEs-3i-j7O"/>
                         <outlet property="stampPreview" destination="gR6-uw-Weo" id="tkr-Sg-563"/>
                         <outlet property="theButton" destination="011-eh-3nf" id="LBQ-eY-jhG"/>
                     </connections>

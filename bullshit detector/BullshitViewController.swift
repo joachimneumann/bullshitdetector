@@ -11,20 +11,19 @@ import GameplayKit
 
 class BullshitViewController: UIViewController, CAAnimationDelegate, UIGestureRecognizerDelegate {
 
-    static var __displayText = "3.1415926"
-    static var __buttonText = "3.1415926"
-    static var __farLeftText1 = "3.1415926"
-    static var __leftText1 = "3.1415926"
-    static var __centerText1 = "3.1415926"
-    static var __rightText1 = "3.1415926"
-    static var __farRightText1 = "3.1415926"
-    static var __farLeftText2 = "3.1415926"
-    static var __leftText2 = "3.1415926"
-    static var __centerText2 = "3.1415926"
-    static var __rightText2 = "3.1415926"
-    static var __farRightText2 = "3.1415926"
+    static var __displayText = ""
+    static var __buttonText = ""
+    static var __farLeftText1 = ""
+    static var __leftText1 = ""
+    static var __centerText1 = ""
+    static var __rightText1 = ""
+    static var __farRightText1 = ""
+    static var __farLeftText2 = ""
+    static var __leftText2 = ""
+    static var __centerText2 = ""
+    static var __rightText2 = ""
+    static var __farRightText2 = ""
 
-    @IBOutlet weak var animationView: UIView!
     @IBOutlet weak var coverView: UIView!
     @IBOutlet weak var displayPointer: UIView!
     @IBOutlet weak var display: Display!
@@ -36,10 +35,10 @@ class BullshitViewController: UIViewController, CAAnimationDelegate, UIGestureRe
     @IBOutlet weak var viewToLeftOfButton: UIView!
     @IBOutlet weak var instructionsImageView: UIImageView!
     @IBOutlet weak var settingsButton: UIButton!
+    @IBOutlet weak var templateImageView: UIImageView!
     
     
     var instructionsDisplayedCounter = 0
-    var waveView: AnimatedWaveView?
     let random = GKRandomSource()
     let distribution = GKGaussianDistribution(lowestValue: -100, highestValue: 100)
     var noiseTimer: Timer!
@@ -68,24 +67,23 @@ class BullshitViewController: UIViewController, CAAnimationDelegate, UIGestureRe
             circularAnimation.repeatCount = 1
             circularAnimation.fillMode = CAMediaTimingFillMode.forwards;
             circularAnimation.isRemovedOnCompletion = false
-            displayPointer.layer.add(circularAnimation, forKey: "xx")
+            displayPointer.layer.add(circularAnimation, forKey: "dummykey")
         }
     }
     
 
     override func viewDidLoad() {
         print("view viewDidLoad")
-//        rubberstamp.setText(text: "test Text")
         let instructionsDisplayed = UserDefaults.standard.object(forKey: instructionsDisplayedKey) as? Bool ?? false
         if instructionsDisplayed {
             instructionsImageView.isHidden = true
         }
         self.view.backgroundColor = displayBackgroundColor
         
-        animationView.isHidden = true
+        templateImageView.alpha = 0.2
         rubberstamp.isHidden = true
+        templateImageView.isHidden = false
         coverView.backgroundColor = UIColor.white
-        animationView.backgroundColor = UIColor(red: 255.0/255.0, green: 166.0/255.0, blue: 161.0/255.0, alpha: 1.0)
         super.viewDidLoad()
         noiseTimer = Timer.scheduledTimer(timeInterval: 0.15, target: self, selector: #selector(noise), userInfo: nil, repeats: true)
         
@@ -105,23 +103,37 @@ class BullshitViewController: UIViewController, CAAnimationDelegate, UIGestureRe
         displayPointer.layer.cornerRadius = displayPointerFrameWidth/2;
         
         self.navigationController?.setNavigationBarHidden(true, animated: false)
+        reset()
     }
     
     
     override func viewWillAppear(_ animated: Bool) {
+        targetValue = 0.5
         print("view viewWillAppear")
         super.viewWillAppear(animated)
         self.navigationController?.setNavigationBarHidden(true, animated: false)
-        reset()
         rubberstamp.isHidden = true
+        templateImageView.isHidden = false
+        if let template = Template(rawValue: UserDefaults.standard.string(forKey: templatekey)!) {
+            switch template {
+            case Template.TruthOMeter:
+                BullshitViewController.__defaultTexts()
+                templateImageView.image = UIImage(named: "truth")
+            case Template.BullshitOMeter:
+                BullshitViewController.__bullshitOMeterTexts()
+                templateImageView.image = UIImage(named: "truth")
+            case Template.VoiceOMeter:
+                BullshitViewController.__voiceOMeterTexts()
+                templateImageView.image = UIImage(named: "singer")
+            case Template.Custom:
+                BullshitViewController.__customTexts()
+                templateImageView.image = UIImage(named: "truth")
+            }
+            templateImageView.alpha = 0.2
+
+        }
         displayLabel.text = BullshitViewController.__displayText
         analyseButton.setTitle(BullshitViewController.__buttonText, for: .normal)
-        print("view viewWillAppear")
-        let animatedWaveView = AnimatedWaveView(frame: animationView.bounds)
-        animationView.layer.cornerRadius = min(animationView.frame.size.height, animationView.frame.size.width) / 2
-        waveView = animatedWaveView
-        animationView.addSubview(animatedWaveView)
-        waveView?.makeWaves()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -148,7 +160,6 @@ class BullshitViewController: UIViewController, CAAnimationDelegate, UIGestureRe
     }
     
     override var prefersStatusBarHidden: Bool { return true }
-    
     
     override func viewDidLayoutSubviews() {
         displayLabel.font = UIFont(name: displayLabel.font!.fontName, size: display.frame.size.height*0.1)
@@ -194,8 +205,8 @@ class BullshitViewController: UIViewController, CAAnimationDelegate, UIGestureRe
         }
 
         rubberstamp.isHidden = true
-        animationView.isHidden = false
-        waveView?.trackMotion()
+        templateImageView.isHidden = false
+        templateImageView.alpha = 0.6
         analyseButton.isEnabled = false
         analyseButton.setNeedsDisplay()
         viewToRightOfButton.isUserInteractionEnabled = false
@@ -206,15 +217,13 @@ class BullshitViewController: UIViewController, CAAnimationDelegate, UIGestureRe
         // but a bit on the "wrong" side
         targetValue = 0.5 - 0.2 * (Double(truthIndex)-0.5)
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
             self.targetValue = self.targetValue + 0.3*(Double(truthIndex)-self.targetValue)
         }
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
             self.targetValue = self.targetValue + 0.6*(Double(truthIndex)-self.targetValue)
         }
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-            self.animationView.isHidden = true
-            self.waveView?.motionManager.stopDeviceMotionUpdates()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 4) {
             self.targetValue = Double(truthIndex)
             var text1: String = ""
             var text2: String = ""
@@ -236,7 +245,7 @@ class BullshitViewController: UIViewController, CAAnimationDelegate, UIGestureRe
             }
             self.rubberstamp.setTextArray(texts: [text1, text2])
         }
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.9) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 6) {
             self.analyseButton.isEnabled = true
             self.analyseButton.setNeedsDisplay()
             self.viewToRightOfButton.isUserInteractionEnabled = true
@@ -244,6 +253,7 @@ class BullshitViewController: UIViewController, CAAnimationDelegate, UIGestureRe
             self.analyseButton.backgroundColor = bullshitRed
             self.rubberstamp.rubbereffect(imageName: "mask")
             self.rubberstamp.isHidden = false
+            self.templateImageView.isHidden = true
         }
     }
 
@@ -277,19 +287,64 @@ class BullshitViewController: UIViewController, CAAnimationDelegate, UIGestureRe
         BullshitViewController.__farRightText2 = ""
     }
     
-    func reset() {
-        if let template = Template(rawValue: UserDefaults.standard.string(forKey: templatekey)!) {
-            switch template {
-                case Template.TruthOMeter:
-                    BullshitViewController.__defaultTexts()
-                case Template.BullshitOMeter:
-                    BullshitViewController.__bullshitOMeterTexts()
-                case Template.Custom:
-                    BullshitViewController.__bullshitOMeterTexts()
-            }
+    static func __voiceOMeterTexts() {
+        BullshitViewController.__buttonText = "How is you voice?"
+        BullshitViewController.__displayText = "Voice-O-Meter"
+        BullshitViewController.__farLeftText1 = "Sexy"
+        BullshitViewController.__farLeftText2 = ""
+        BullshitViewController.__leftText1 = "impressive"
+        BullshitViewController.__leftText2 = ""
+        BullshitViewController.__centerText1 = "good"
+        BullshitViewController.__centerText2 = ""
+        BullshitViewController.__rightText1 = "could be"
+        BullshitViewController.__rightText2 = "better"
+        BullshitViewController.__farRightText1 = "flimsy"
+        BullshitViewController.__farRightText2 = ""
+    }
+    
+    static func __customTexts() {
+        if let s = UserDefaults.standard.string(forKey: buttonCustomTextkey) {
+            BullshitViewController.__buttonText = s
         }
+        if let s = UserDefaults.standard.string(forKey: displayCustomTextkey) {
+            BullshitViewController.__displayText = s
+        }
+        if let s = UserDefaults.standard.string(forKey: farLeftCustomTextkey1) {
+            BullshitViewController.__farLeftText1 = s
+        }
+        if let s = UserDefaults.standard.string(forKey: farLeftCustomTextkey2) {
+            BullshitViewController.__farLeftText2 = s
+        }
+        if let s = UserDefaults.standard.string(forKey: leftCustomTextkey1) {
+            BullshitViewController.__leftText1 = s
+        }
+        if let s = UserDefaults.standard.string(forKey: leftCustomTextkey2) {
+            BullshitViewController.__leftText2 = s
+        }
+        if let s = UserDefaults.standard.string(forKey: centerCustomTextkey1) {
+            BullshitViewController.__centerText1 = s
+        }
+        if let s = UserDefaults.standard.string(forKey: centerCustomTextkey2) {
+            BullshitViewController.__centerText2 = s
+        }
+        if let s = UserDefaults.standard.string(forKey: rightCustomTextkey1) {
+            BullshitViewController.__rightText1 = s
+        }
+        if let s = UserDefaults.standard.string(forKey: rightCustomTextkey2) {
+            BullshitViewController.__rightText2 = s
+        }
+        if let s = UserDefaults.standard.string(forKey: farRightCustomTextkey1) {
+            BullshitViewController.__farRightText1 = s
+        }
+        if let s = UserDefaults.standard.string(forKey: farRightCustomTextkey2) {
+            BullshitViewController.__farRightText2 = s
+        }
+    }
+
+    func reset() {
+        self.templateImageView.isHidden = false
         rubberstamp.isHidden = true
-        animationView.isHidden = true
+        templateImageView.alpha = 0.2
         targetValue = 0.3
     }
     

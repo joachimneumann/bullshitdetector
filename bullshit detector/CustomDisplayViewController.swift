@@ -19,7 +19,9 @@ class CustomDisplayViewController: UIViewController, UITextFieldDelegate {
         self.navigationController?.setNavigationBarHidden(false, animated: false)
         view.backgroundColor = displayBackgroundColor
         displayTextField.delegate = self
-        displayTextField.text = ""
+        if let s = UserDefaults.standard.string(forKey: displayCustomTextkey) {
+            displayTextField.text = s
+        }
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -27,13 +29,14 @@ class CustomDisplayViewController: UIViewController, UITextFieldDelegate {
         return true
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        displayTextField.text = ""
-    }
+//    override func viewWillAppear(_ animated: Bool) {
+//        super.viewWillAppear(animated)
+//    }
 
     override func viewWillDisappear(_ animated: Bool) {
-       BullshitViewController.__displayText = displayTextField.text!
+        if let s = displayTextField.text {
+            UserDefaults.standard.set(s, forKey: displayCustomTextkey)
+        }
     }
 
     
