@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  BullshitViewController.swift
 //  bullshit detector
 //
 //  Created by Joachim Neumann on 12/01/2019.
@@ -9,17 +9,27 @@
 import UIKit
 import GameplayKit
 
-class ViewController: UIViewController, CAAnimationDelegate, UIGestureRecognizerDelegate {
+class BullshitViewController: UIViewController, CAAnimationDelegate, UIGestureRecognizerDelegate {
+
+    static var __displayText = "3.1415926"
+    static var __buttonText = "3.1415926"
+    static var __farLeftText1 = "3.1415926"
+    static var __leftText1 = "3.1415926"
+    static var __centerText1 = "3.1415926"
+    static var __rightText1 = "3.1415926"
+    static var __farRightText1 = "3.1415926"
+    static var __farLeftText2 = "3.1415926"
+    static var __leftText2 = "3.1415926"
+    static var __centerText2 = "3.1415926"
+    static var __rightText2 = "3.1415926"
+    static var __farRightText2 = "3.1415926"
 
     @IBOutlet weak var animationView: UIView!
     @IBOutlet weak var coverView: UIView!
     @IBOutlet weak var displayPointer: UIView!
     @IBOutlet weak var display: Display!
     @IBOutlet weak var analyseButton: UIButton!
-    @IBOutlet weak var resultView: UIView!
-    @IBOutlet weak var resultLabel: UILabel!
-    @IBOutlet weak var resultLabel1: UITextField!
-    @IBOutlet weak var resultLabel2: UITextField!
+    @IBOutlet weak var rubberstamp: Rubberstamp!
     @IBOutlet weak var displayLabel: UITextField!
     @IBOutlet weak var displayLabelConstraint: NSLayoutConstraint!
     @IBOutlet weak var viewToRightOfButton: UIView!
@@ -27,9 +37,6 @@ class ViewController: UIViewController, CAAnimationDelegate, UIGestureRecognizer
     @IBOutlet weak var instructionsImageView: UIImageView!
     @IBOutlet weak var settingsButton: UIButton!
     
-    @IBOutlet weak var resultLabel1BottomConstraint: NSLayoutConstraint!
-    @IBOutlet weak var resultLabel2TopConstraint: NSLayoutConstraint!
-    @IBOutlet weak var rubberstamp: Rubberstamp!
     
     var instructionsDisplayedCounter = 0
     var waveView: AnimatedWaveView?
@@ -76,7 +83,7 @@ class ViewController: UIViewController, CAAnimationDelegate, UIGestureRecognizer
         self.view.backgroundColor = displayBackgroundColor
         
         animationView.isHidden = true
-        resultView.isHidden = true
+        rubberstamp.isHidden = true
         coverView.backgroundColor = UIColor.white
         animationView.backgroundColor = UIColor(red: 255.0/255.0, green: 166.0/255.0, blue: 161.0/255.0, alpha: 1.0)
         super.viewDidLoad()
@@ -91,23 +98,13 @@ class ViewController: UIViewController, CAAnimationDelegate, UIGestureRecognizer
         viewToLeftOfButton.addGestureRecognizer(tapLeft)
 
         let imageTap = UITapGestureRecognizer(target: self, action: #selector(self.handleImageTap(_:)))
-        resultView.addGestureRecognizer(imageTap)
-        resultView.isUserInteractionEnabled = true
+        rubberstamp.addGestureRecognizer(imageTap)
+        rubberstamp.isUserInteractionEnabled = true
         analyseButton.layer.cornerRadius = 10
         analyseButton.backgroundColor = bullshitRed
         displayPointer.layer.cornerRadius = displayPointerFrameWidth/2;
         
         self.navigationController?.setNavigationBarHidden(true, animated: false)
-        
-        let fontSize = resultLabel.bounds.size.width
-        let fontDescriptor = UIFontDescriptor(name: "BLACK", size: fontSize)
-        resultLabel.font = UIFont(descriptor: fontDescriptor, size: fontSize)
-        resultLabel.adjustsFontSizeToFitWidth = true
-        resultLabel1.font = UIFont(descriptor: fontDescriptor, size: fontSize)
-        resultLabel1.adjustsFontSizeToFitWidth = true
-        resultLabel2.font = UIFont(descriptor: fontDescriptor, size: fontSize)
-        resultLabel2.adjustsFontSizeToFitWidth = true
-        resultView.transform = CGAffineTransform(rotationAngle: CGFloat.pi / 20)
     }
     
     
@@ -116,17 +113,15 @@ class ViewController: UIViewController, CAAnimationDelegate, UIGestureRecognizer
         super.viewWillAppear(animated)
         self.navigationController?.setNavigationBarHidden(true, animated: false)
         reset()
-        resultView.isHidden = true
-        displayLabel.text = UserDefaults.standard.string(forKey: displayTextkey)
-        analyseButton.setTitle(UserDefaults.standard.string(forKey: buttonTextkey), for: .normal)
+        rubberstamp.isHidden = true
+        displayLabel.text = BullshitViewController.__displayText
+        analyseButton.setTitle(BullshitViewController.__buttonText, for: .normal)
         print("view viewWillAppear")
         let animatedWaveView = AnimatedWaveView(frame: animationView.bounds)
         animationView.layer.cornerRadius = min(animationView.frame.size.height, animationView.frame.size.width) / 2
         waveView = animatedWaveView
         animationView.addSubview(animatedWaveView)
         waveView?.makeWaves()
-        resultLabel2TopConstraint.constant = resultView.frame.size.height * 0.45
-        resultLabel1BottomConstraint.constant = resultView.frame.size.height * 0.45
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -177,14 +172,6 @@ class ViewController: UIViewController, CAAnimationDelegate, UIGestureRecognizer
         displayStartAngle = Double(display.startAngle()) - 1.5 * .pi
         displayEndAngle = Double(display.endAngle())   - 1.5 * .pi
         value = targetValue
-        resultLabel.textColor = bullshitRed
-        resultLabel1.textColor = resultLabel.textColor
-        resultLabel2.textColor = resultLabel.textColor
-        let resultLabel1Size = resultLabel1.font!.pointSize
-        let resultLabel2Size = resultLabel2.font!.pointSize
-        let minimumFontSize = min(resultLabel1Size, resultLabel2Size)
-        resultLabel1.font = UIFont(name:"BLACK", size: minimumFontSize)
-        resultLabel2.font = UIFont(name:"BLACK", size: minimumFontSize)
     }
     
     @objc func handleButtonTapRight(_ sender: UITapGestureRecognizer) {
@@ -206,7 +193,7 @@ class ViewController: UIViewController, CAAnimationDelegate, UIGestureRecognizer
             instructionsImageView.isHidden = true
         }
 
-        resultView.isHidden = true
+        rubberstamp.isHidden = true
         animationView.isHidden = false
         waveView?.trackMotion()
         analyseButton.isEnabled = false
@@ -229,33 +216,25 @@ class ViewController: UIViewController, CAAnimationDelegate, UIGestureRecognizer
             self.animationView.isHidden = true
             self.waveView?.motionManager.stopDeviceMotionUpdates()
             self.targetValue = Double(truthIndex)
-            var text: String = ""
+            var text1: String = ""
+            var text2: String = ""
             if truthIndex < 0.2 {
-                text = UserDefaults.standard.string(forKey: farRightTextkey)!
+                text1 = BullshitViewController.__farRightText1
+                text2 = BullshitViewController.__farRightText2
             } else if truthIndex < 0.4 {
-                text = UserDefaults.standard.string(forKey: rightTextkey)!
+                text1 = BullshitViewController.__rightText1
+                text2 = BullshitViewController.__rightText2
             } else if truthIndex < 0.6 {
-                text = UserDefaults.standard.string(forKey: centerTextkey)!
+                text1 = BullshitViewController.__centerText1
+                text2 = BullshitViewController.__centerText2
             } else if truthIndex < 0.8 {
-                text = UserDefaults.standard.string(forKey: leftTextkey)!
+                text1 = BullshitViewController.__leftText1
+                text2 = BullshitViewController.__leftText2
             } else {
-                text = UserDefaults.standard.string(forKey: farLeftTextkey)!
+                text1 = BullshitViewController.__farLeftText1
+                text2 = BullshitViewController.__farLeftText2
             }
-            let n = text.components(separatedBy: " ").count
-            if n < 2 {
-                self.resultLabel.text = text
-                self.resultLabel.isHidden = false
-                self.resultLabel1.isHidden = true
-                self.resultLabel2.isHidden = true
-                self.resultView.isHidden = false
-            } else {
-                self.resultLabel1.text = text.components(separatedBy: " ")[0]
-                self.resultLabel2.text = text.components(separatedBy: " ")[1]
-                self.resultLabel.isHidden = true
-                self.resultLabel1.isHidden = false
-                self.resultLabel2.isHidden = false
-                self.resultView.isHidden = false
-            }
+            self.rubberstamp.setTextArray(texts: [text1, text2])
         }
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.9) {
             self.analyseButton.isEnabled = true
@@ -263,11 +242,53 @@ class ViewController: UIViewController, CAAnimationDelegate, UIGestureRecognizer
             self.viewToRightOfButton.isUserInteractionEnabled = true
             self.viewToLeftOfButton.isUserInteractionEnabled = true
             self.analyseButton.backgroundColor = bullshitRed
+            self.rubberstamp.rubbereffect(imageName: "mask")
+            self.rubberstamp.isHidden = false
         }
     }
 
+    static func __defaultTexts() {
+        BullshitViewController.__buttonText = "Is that true?"
+        BullshitViewController.__displayText = "Truth-O-Meter"
+        BullshitViewController.__farLeftText1 = "True"
+        BullshitViewController.__farLeftText2 = ""
+        BullshitViewController.__leftText1 = "Mostly"
+        BullshitViewController.__leftText2 = "True"
+        BullshitViewController.__centerText1 = "Undecided"
+        BullshitViewController.__centerText2 = ""
+        BullshitViewController.__rightText1 = "Bullshit"
+        BullshitViewController.__rightText2 = ""
+        BullshitViewController.__farRightText1 = "Absolute"
+        BullshitViewController.__farRightText2 = "Bullshit"
+    }
+    
+    static func __bullshitOMeterTexts() {
+        BullshitViewController.__buttonText = "Is that Bullshit?"
+        BullshitViewController.__displayText = "Bullshit-O-Meter"
+        BullshitViewController.__farLeftText1 = "Absolute"
+        BullshitViewController.__farLeftText2 = "Bullshit"
+        BullshitViewController.__leftText1 = "Bullshit"
+        BullshitViewController.__leftText2 = ""
+        BullshitViewController.__centerText1 = "undecided"
+        BullshitViewController.__centerText2 = ""
+        BullshitViewController.__rightText1 = "Mostly"
+        BullshitViewController.__rightText2 = "True"
+        BullshitViewController.__farRightText1 = "True"
+        BullshitViewController.__farRightText2 = ""
+    }
+    
     func reset() {
-        resultView.isHidden = true
+        if let template = Template(rawValue: UserDefaults.standard.string(forKey: templatekey)!) {
+            switch template {
+                case Template.TruthOMeter:
+                    BullshitViewController.__defaultTexts()
+                case Template.BullshitOMeter:
+                    BullshitViewController.__bullshitOMeterTexts()
+                case Template.Custom:
+                    BullshitViewController.__bullshitOMeterTexts()
+            }
+        }
+        rubberstamp.isHidden = true
         animationView.isHidden = true
         targetValue = 0.3
     }

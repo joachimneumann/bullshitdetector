@@ -10,7 +10,7 @@ import UIKit
 
 class Display: UIView {
 
-    let displayRed = UIColor(red: 180/255.0, green: 101/255.0, blue:100/255.0, alpha: 1.0)
+    let displayRed = bullshitRed// UIColor(red: 180/255.0, green: 101/255.0, blue:100/255.0, alpha: 1.0)
     let displayGray = UIColor(red:  88/255.0, green: 89/255.0, blue: 82/255.0, alpha: 1.0)
 
     override init(frame: CGRect) {

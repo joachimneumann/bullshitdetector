@@ -13,7 +13,7 @@
 		AA3DD49121EB21110007244C /* PathBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA3DD48E21EB21110007244C /* PathBuilder.swift */; };
 		AA3DD49221EB21110007244C /* AnimatedWaveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA3DD48F21EB21110007244C /* AnimatedWaveView.swift */; };
 		AA61974821E9BEB40069121A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA61974721E9BEB40069121A /* AppDelegate.swift */; };
-		AA61974A21E9BEB40069121A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA61974921E9BEB40069121A /* ViewController.swift */; };
+		AA61974A21E9BEB40069121A /* BullshitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA61974921E9BEB40069121A /* BullshitViewController.swift */; };
 		AA61974D21E9BEB40069121A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AA61974B21E9BEB40069121A /* Main.storyboard */; };
 		AA61975221E9BEB60069121A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AA61975021E9BEB60069121A /* LaunchScreen.storyboard */; };
 		AA61975A21E9C5810069121A /* Display.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA61975921E9C5810069121A /* Display.swift */; };
@@ -69,7 +69,7 @@
 		AA3DD48F21EB21110007244C /* AnimatedWaveView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimatedWaveView.swift; sourceTree = "<group>"; };
 		AA61974421E9BEB40069121A /* bullshit detector.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "bullshit detector.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA61974721E9BEB40069121A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		AA61974921E9BEB40069121A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		AA61974921E9BEB40069121A /* BullshitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BullshitViewController.swift; sourceTree = "<group>"; };
 		AA61974C21E9BEB40069121A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		AA61974E21E9BEB60069121A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AA61975121E9BEB60069121A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -134,7 +134,7 @@
 			isa = PBXGroup;
 			children = (
 				AA61974721E9BEB40069121A /* AppDelegate.swift */,
-				AA61974921E9BEB40069121A /* ViewController.swift */,
+				AA61974921E9BEB40069121A /* BullshitViewController.swift */,
 				AA37BBF421EEE684005A4042 /* SettingsViewController.swift */,
 				AA61974B21E9BEB40069121A /* Main.storyboard */,
 				AA61974E21E9BEB60069121A /* Assets.xcassets */,
@@ -149,9 +149,9 @@
 				AA37BBF621EEE965005A4042 /* constants.swift */,
 				AAD927C12205B2F7001C328F /* CustomDisplayViewController.swift */,
 				AAD927C32205CE79001C328F /* CustomButtonViewController.swift */,
+				AAA8FD12220A92DE00865236 /* NoSelectTextField.swift */,
 				AA7090FF220675C1002F06C6 /* Rubberstamp.swift */,
 				AA70910222067AA1002F06C6 /* Rubberstamp.xib */,
-				AAA8FD12220A92DE00865236 /* NoSelectTextField.swift */,
 			);
 			path = "bullshit detector";
 			sourceTree = "<group>";
@@ -298,7 +298,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AA3DD49021EB21110007244C /* RadialGradientLayer.swift in Sources */,
-				AA61974A21E9BEB40069121A /* ViewController.swift in Sources */,
+				AA61974A21E9BEB40069121A /* BullshitViewController.swift in Sources */,
 				AA61975A21E9C5810069121A /* Display.swift in Sources */,
 				AA37BBF721EEE965005A4042 /* constants.swift in Sources */,
 				AAA8FD13220A92DE00865236 /* NoSelectTextField.swift in Sources */,

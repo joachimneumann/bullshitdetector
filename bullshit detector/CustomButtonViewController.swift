@@ -8,6 +8,7 @@
 
 import UIKit
 
+
 class CustomButtonViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var stampPreview: Rubberstamp!
@@ -20,6 +21,7 @@ class CustomButtonViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var theButton: UIButton!
     @IBOutlet weak var firstTextField: UITextField!
     @IBOutlet weak var secondTextField: UITextField!
+
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.navigationBar.tintColor = UIColor.gray
@@ -68,7 +70,7 @@ class CustomButtonViewController: UIViewController, UITextFieldDelegate {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        buttonTextField.text = UserDefaults.standard.string(forKey: buttonTextkey)
+        buttonTextField.text = BullshitViewController.__buttonText
     }
     
     @IBAction func segmentSelected(_ segmentedControl: UISegmentedControl) {
@@ -106,7 +108,7 @@ class CustomButtonViewController: UIViewController, UITextFieldDelegate {
     }
     
     override func viewWillDisappear(_ animated: Bool) {
-        UserDefaults.standard.set(buttonTextField.text, forKey: buttonTextkey)
+//        UserDefaults.standard.set(buttonTextField.text, forKey: buttonTextkey)
 //        UserDefaults.standard.set(farLeftTextField.text, forKey: farLeftTextkey)
 //        UserDefaults.standard.set(leftTextField.text, forKey: leftTextkey)
 //        UserDefaults.standard.set(centerTextField.text, forKey: centerTextkey)

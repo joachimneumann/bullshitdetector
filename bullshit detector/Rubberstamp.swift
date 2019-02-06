@@ -34,7 +34,7 @@ class Rubberstamp: UIView {
     @IBOutlet weak var stampLabelViewBottomConstraint: NSLayoutConstraint!
     @IBOutlet weak var stampLabelViewLeftConstraint: NSLayoutConstraint!
     @IBOutlet weak var stampLabelViewRightConstraint: NSLayoutConstraint!
-    var rubberEffectMask: UIImageView?
+    private var rubberEffectMask: UIImageView?
     
     @IBInspectable var stampColor: UIColor? {
         didSet {
@@ -51,7 +51,7 @@ class Rubberstamp: UIView {
         }
     }
 
-    @IBInspectable var angle: CGFloat = 20.0 {
+    @IBInspectable private var angle: CGFloat = 20.0 {
         didSet {
             if angle < 90 && angle > -90  {
                 setAngle(angle: angle.rad)
@@ -61,19 +61,19 @@ class Rubberstamp: UIView {
         }
     }
 
-    @IBInspectable var border_radius: Int = 5 {
+    @IBInspectable private var border_radius: Int = 5 {
         didSet {
             setAngle(angle: angle.rad)
         }
     }
     
-    @IBInspectable var border_width: Int = 5 {
+    @IBInspectable private var border_width: Int = 5 {
         didSet {
             setAngle(angle: angle.rad)
             stampLabelViewTopConstraint.constant = 0.5*CGFloat(border_width)
             stampLabelViewBottomConstraint.constant = 0.5*CGFloat(border_width)
-            stampLabelViewLeftConstraint.constant = 0.5*CGFloat(border_width)
-            stampLabelViewRightConstraint.constant = 0.5*CGFloat(border_width)
+            stampLabelViewLeftConstraint.constant = CGFloat(border_width)
+            stampLabelViewRightConstraint.constant = CGFloat(border_width)
         }
     }
     
@@ -87,7 +87,7 @@ class Rubberstamp: UIView {
         initNib()
     }
     
-    func initNib() {
+    private func initNib() {
         let bundle = Bundle(for: Rubberstamp.self)
         bundle.loadNibNamed("Rubberstamp", owner: self, options: nil)
         addSubview(contentView)
@@ -216,7 +216,7 @@ class Rubberstamp: UIView {
     }
 }
 
-func adjustedFontSizeForLabel(_ label: UILabel) -> CGFloat {
+private func adjustedFontSizeForLabel(_ label: UILabel) -> CGFloat {
     let text: NSMutableAttributedString = NSMutableAttributedString(attributedString: label.attributedText!)
     text.setAttributes([NSAttributedString.Key.font: label.font], range: NSMakeRange(0, text.length))
     let context: NSStringDrawingContext = NSStringDrawingContext()
@@ -227,6 +227,6 @@ func adjustedFontSizeForLabel(_ label: UILabel) -> CGFloat {
 }
 
 
-extension CGFloat {
+private extension CGFloat {
     var rad: CGFloat { return self / 360.0 * 2.0 * CGFloat.pi }
 }
