@@ -218,16 +218,26 @@
                                     <action selector="voiceOMeterPressed:" destination="8mU-yx-3dI" eventType="touchUpInside" id="2W3-Ml-Lez"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zfk-TM-PdS">
+                                <rect key="frame" x="20" y="294" width="374" height="30"/>
+                                <state key="normal" title="Purchase"/>
+                                <connections>
+                                    <action selector="purchasePressed:" destination="8mU-yx-3dI" eventType="touchUpInside" id="QG6-1N-Mn0"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="1ql-cB-MIT" firstAttribute="top" secondItem="xVm-rh-wnv" secondAttribute="bottom" constant="20" id="1bW-uT-iwf"/>
                             <constraint firstItem="tsW-o1-dYT" firstAttribute="trailing" secondItem="dFa-4P-pxL" secondAttribute="trailing" constant="20" id="2IS-Ge-ghC"/>
+                            <constraint firstItem="Zfk-TM-PdS" firstAttribute="top" secondItem="KA6-uP-8WT" secondAttribute="bottom" constant="20" id="5FY-fU-oYl"/>
                             <constraint firstItem="tsW-o1-dYT" firstAttribute="trailing" secondItem="1ql-cB-MIT" secondAttribute="trailing" constant="20" id="Ed3-w4-mFE"/>
+                            <constraint firstItem="tsW-o1-dYT" firstAttribute="trailing" secondItem="Zfk-TM-PdS" secondAttribute="trailing" constant="20" id="Gz1-b0-59Z"/>
                             <constraint firstItem="xVm-rh-wnv" firstAttribute="leading" secondItem="tsW-o1-dYT" secondAttribute="leading" constant="20" id="SZV-4w-o0U"/>
                             <constraint firstItem="dFa-4P-pxL" firstAttribute="leading" secondItem="tsW-o1-dYT" secondAttribute="leading" constant="20" id="TVp-sm-lUu"/>
                             <constraint firstItem="dFa-4P-pxL" firstAttribute="top" secondItem="tsW-o1-dYT" secondAttribute="top" constant="30" id="UZ4-4y-Dic"/>
                             <constraint firstItem="xVm-rh-wnv" firstAttribute="top" secondItem="dFa-4P-pxL" secondAttribute="bottom" constant="20" id="Xaf-Hp-nap"/>
+                            <constraint firstItem="Zfk-TM-PdS" firstAttribute="leading" secondItem="tsW-o1-dYT" secondAttribute="leading" constant="20" id="by9-Um-pRD"/>
                             <constraint firstItem="KA6-uP-8WT" firstAttribute="top" secondItem="1ql-cB-MIT" secondAttribute="bottom" constant="20" id="ixR-q6-QKQ"/>
                             <constraint firstItem="tsW-o1-dYT" firstAttribute="trailing" secondItem="KA6-uP-8WT" secondAttribute="trailing" constant="20" id="lc2-3F-ZbS"/>
                             <constraint firstItem="1ql-cB-MIT" firstAttribute="leading" secondItem="tsW-o1-dYT" secondAttribute="leading" constant="20" id="tDF-82-u5r"/>
@@ -236,6 +246,9 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="tsW-o1-dYT"/>
                     </view>
+                    <connections>
+                        <outlet property="customizeButton" destination="KA6-uP-8WT" id="IyQ-To-tgA"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Vil-Da-bNL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

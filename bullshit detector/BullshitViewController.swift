@@ -73,7 +73,7 @@ class BullshitViewController: UIViewController, CAAnimationDelegate, UIGestureRe
     
 
     override func viewDidLoad() {
-        print("view viewDidLoad")
+        IAPService.shared.getProducts()
         let instructionsDisplayed = UserDefaults.standard.object(forKey: instructionsDisplayedKey) as? Bool ?? false
         if instructionsDisplayed {
             instructionsImageView.isHidden = true

@@ -18,7 +18,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         
         UserDefaults.standard.register(defaults: [
-            templatekey       : Template.TruthOMeter.rawValue])
+            templatekey              : Template.TruthOMeter.rawValue,
+            customisablePurchasedKey : false])
 
         return true
     }

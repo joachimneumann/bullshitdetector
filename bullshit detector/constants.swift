@@ -20,6 +20,7 @@ enum Template: String {
     case Custom = "Custom"
 }
 
+let customisablePurchasedKey = "customisablePurchasedKey"
 let instructionsDisplayedKey = "instructionsDisplayedKey"
 let templatekey              = "templatekey"
 let buttonCustomTextkey      = "buttonCustomTextkey"

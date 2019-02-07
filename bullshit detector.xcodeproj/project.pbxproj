@@ -25,7 +25,9 @@
 		AAA9256E22002A6400AB15B7 /* Truth-O-Meter Widget.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = AAA9256222002A6400AB15B7 /* Truth-O-Meter Widget.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		AAA92577220031FA00AB15B7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AA61974E21E9BEB60069121A /* Assets.xcassets */; };
 		AAA925782200322200AB15B7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AA61974E21E9BEB60069121A /* Assets.xcassets */; };
-		AAB1923D21EC7EC500836714 /* UnlimitedUsageProducts.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAB1923C21EC7EC500836714 /* UnlimitedUsageProducts.swift */; };
+		AAB309AF220B4BDB002924FD /* IAPProduct.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAB309AE220B4BDB002924FD /* IAPProduct.swift */; };
+		AAB309B1220B4C4A002924FD /* IAPService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAB309B0220B4C4A002924FD /* IAPService.swift */; };
+		AAB309B3220B4D0C002924FD /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAB309B2220B4D0C002924FD /* StoreKit.framework */; };
 		AAD927C22205B2F7001C328F /* CustomDisplayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD927C12205B2F7001C328F /* CustomDisplayViewController.swift */; };
 		AAD927C42205CE79001C328F /* CustomButtonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD927C32205CE79001C328F /* CustomButtonViewController.swift */; };
 /* End PBXBuildFile section */
@@ -74,7 +76,9 @@
 		AAA9256622002A6400AB15B7 /* TodayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayViewController.swift; sourceTree = "<group>"; };
 		AAA9256922002A6400AB15B7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
 		AAA9256B22002A6400AB15B7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		AAB1923C21EC7EC500836714 /* UnlimitedUsageProducts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnlimitedUsageProducts.swift; sourceTree = "<group>"; };
+		AAB309AE220B4BDB002924FD /* IAPProduct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IAPProduct.swift; sourceTree = "<group>"; };
+		AAB309B0220B4C4A002924FD /* IAPService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IAPService.swift; sourceTree = "<group>"; };
+		AAB309B2220B4D0C002924FD /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		AAD927C12205B2F7001C328F /* CustomDisplayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomDisplayViewController.swift; sourceTree = "<group>"; };
 		AAD927C32205CE79001C328F /* CustomButtonViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButtonViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -84,6 +88,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AAB309B3220B4D0C002924FD /* StoreKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -129,13 +134,14 @@
 				AA61975321E9BEB60069121A /* Info.plist */,
 				AA61975921E9C5810069121A /* Display.swift */,
 				AA3DD48E21EB21110007244C /* PathBuilder.swift */,
-				AAB1923C21EC7EC500836714 /* UnlimitedUsageProducts.swift */,
 				AA37BBF621EEE965005A4042 /* constants.swift */,
 				AAD927C12205B2F7001C328F /* CustomDisplayViewController.swift */,
 				AAD927C32205CE79001C328F /* CustomButtonViewController.swift */,
 				AAA8FD12220A92DE00865236 /* NoSelectTextField.swift */,
 				AA7090FF220675C1002F06C6 /* Rubberstamp.swift */,
 				AA70910222067AA1002F06C6 /* Rubberstamp.xib */,
+				AAB309AE220B4BDB002924FD /* IAPProduct.swift */,
+				AAB309B0220B4C4A002924FD /* IAPService.swift */,
 			);
 			path = "bullshit detector";
 			sourceTree = "<group>";
@@ -153,6 +159,7 @@
 		AAB1923921EC7C5100836714 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				AAB309B2220B4D0C002924FD /* StoreKit.framework */,
 				AAA9256322002A6400AB15B7 /* NotificationCenter.framework */,
 			);
 			name = Frameworks;
@@ -212,7 +219,7 @@
 						LastSwiftMigration = 1010;
 						SystemCapabilities = {
 							com.apple.InAppPurchase = {
-								enabled = 0;
+								enabled = 1;
 							};
 						};
 					};
@@ -270,14 +277,15 @@
 			files = (
 				AA61974A21E9BEB40069121A /* BullshitViewController.swift in Sources */,
 				AA61975A21E9C5810069121A /* Display.swift in Sources */,
+				AAB309B1220B4C4A002924FD /* IAPService.swift in Sources */,
 				AA37BBF721EEE965005A4042 /* constants.swift in Sources */,
 				AAA8FD13220A92DE00865236 /* NoSelectTextField.swift in Sources */,
 				AA709100220675C1002F06C6 /* Rubberstamp.swift in Sources */,
+				AAB309AF220B4BDB002924FD /* IAPProduct.swift in Sources */,
 				AA61974821E9BEB40069121A /* AppDelegate.swift in Sources */,
 				AAD927C42205CE79001C328F /* CustomButtonViewController.swift in Sources */,
 				AAD927C22205B2F7001C328F /* CustomDisplayViewController.swift in Sources */,
 				AA3DD49121EB21110007244C /* PathBuilder.swift in Sources */,
-				AAB1923D21EC7EC500836714 /* UnlimitedUsageProducts.swift in Sources */,
 				AA37BBF521EEE684005A4042 /* SettingsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
