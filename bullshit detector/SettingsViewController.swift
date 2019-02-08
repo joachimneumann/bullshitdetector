@@ -25,6 +25,7 @@ class SettingsViewController: UIViewController, UITextFieldDelegate {
 
     @objc func OnCustomisablePurchased() {
         purchasedOrNot()
+        PROVOKE ERROR IN CI
     }
     
     func purchasedOrNot() {
