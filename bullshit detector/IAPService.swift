@@ -98,7 +98,6 @@ extension IAPService: SKPaymentTransactionObserver {
     }
 
     private func deliverPurchaseNotificationFor(identifier: String?) {
-        guard let identifier = identifier else { return }
         UserDefaults.standard.set(true, forKey: customisablePurchasedKey)
         NotificationCenter.default.post(name: Notification.Name(customisablePurchasedKey), object: nil)
     }
