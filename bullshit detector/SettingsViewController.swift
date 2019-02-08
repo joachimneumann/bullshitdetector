@@ -40,20 +40,19 @@ class SettingsViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func truthOMeterPressed(_ sender: Any) {
-        UserDefaults.standard.set(Template.TruthOMeter.rawValue, forKey: templatekey)
+        Model.shared.themeIndex = 0
         navigationController?.popViewController(animated: true)
     }
 
     @IBAction func bullshitOMeterPressed(_ sender: Any) {
-        UserDefaults.standard.set(Template.BullshitOMeter.rawValue, forKey: templatekey)
+        Model.shared.themeIndex = 1
         navigationController?.popViewController(animated: true)
     }
 
     @IBAction func voiceOMeterPressed(_ sender: Any) {
-        UserDefaults.standard.set(Template.VoiceOMeter.rawValue, forKey: templatekey)
+        Model.shared.themeIndex = 2
         navigationController?.popViewController(animated: true)
     }
-
     
     @IBAction func purchasePressed(_ sender: Any) {
         IAPService.shared.purchase(product: .customisation)
@@ -62,7 +61,7 @@ class SettingsViewController: UIViewController, UITextFieldDelegate {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "customizingSeque" {
-            UserDefaults.standard.set(Template.Custom.rawValue, forKey: templatekey)
+            Model.shared.themeIndex = 3
         }
     }
 

@@ -11,19 +11,6 @@ import GameplayKit
 
 class BullshitViewController: UIViewController, CAAnimationDelegate, UIGestureRecognizerDelegate {
 
-    static var __displayText = ""
-    static var __buttonText = ""
-    static var __farLeftText1 = ""
-    static var __leftText1 = ""
-    static var __centerText1 = ""
-    static var __rightText1 = ""
-    static var __farRightText1 = ""
-    static var __farLeftText2 = ""
-    static var __leftText2 = ""
-    static var __centerText2 = ""
-    static var __rightText2 = ""
-    static var __farRightText2 = ""
-
     @IBOutlet weak var coverView: UIView!
     @IBOutlet weak var displayPointer: UIView!
     @IBOutlet weak var display: Display!
@@ -71,8 +58,13 @@ class BullshitViewController: UIViewController, CAAnimationDelegate, UIGestureRe
         }
     }
     
+    
+    
 
+    
     override func viewDidLoad() {
+        super.viewDidLoad()
+        // TODO only if not purchased or even later
         IAPService.shared.getProducts()
         let instructionsDisplayed = UserDefaults.standard.object(forKey: instructionsDisplayedKey) as? Bool ?? false
         if instructionsDisplayed {
@@ -84,7 +76,6 @@ class BullshitViewController: UIViewController, CAAnimationDelegate, UIGestureRe
         rubberstamp.isHidden = true
         templateImageView.isHidden = false
         coverView.backgroundColor = UIColor.white
-        super.viewDidLoad()
         noiseTimer = Timer.scheduledTimer(timeInterval: 0.15, target: self, selector: #selector(noise), userInfo: nil, repeats: true)
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(self.handleButtonTap(_:)))
@@ -114,33 +105,13 @@ class BullshitViewController: UIViewController, CAAnimationDelegate, UIGestureRe
         self.navigationController?.setNavigationBarHidden(true, animated: false)
         rubberstamp.isHidden = true
         templateImageView.isHidden = false
-        if let template = Template(rawValue: UserDefaults.standard.string(forKey: templatekey)!) {
-            switch template {
-            case Template.TruthOMeter:
-                BullshitViewController.__defaultTexts()
-                templateImageView.image = UIImage(named: "truth")
-            case Template.BullshitOMeter:
-                BullshitViewController.__bullshitOMeterTexts()
-                templateImageView.image = UIImage(named: "truth")
-            case Template.VoiceOMeter:
-                BullshitViewController.__voiceOMeterTexts()
-                templateImageView.image = UIImage(named: "singer")
-            case Template.Custom:
-                BullshitViewController.__customTexts()
-                templateImageView.image = UIImage(named: "truth")
-            }
-            templateImageView.alpha = 0.2
-
-        }
-        displayLabel.text = BullshitViewController.__displayText
-        analyseButton.setTitle(BullshitViewController.__buttonText, for: .normal)
+        let theme = Model.shared.theme()
+        templateImageView.image = UIImage(named: theme.imageName)
+        templateImageView.alpha = 0.2
+        displayLabel.text = theme.displayText
+        analyseButton.setTitle(theme.buttonText, for: .normal)
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        print("view viewDidAppear")
-        super.viewDidAppear(animated)
-    }
-
     func setAnchorPoint(anchorPoint: CGPoint, forView view: UIView) {
         var newPoint = CGPoint(x: view.bounds.size.width * anchorPoint.x, y: view.bounds.size.height * anchorPoint.y)
         var oldPoint = CGPoint(x: view.bounds.size.width * view.layer.anchorPoint.x, y: view.bounds.size.height * view.layer.anchorPoint.y)
@@ -216,7 +187,7 @@ class BullshitViewController: UIViewController, CAAnimationDelegate, UIGestureRe
         // initially move to the center,
         // but a bit on the "wrong" side
         targetValue = 0.5 - 0.2 * (Double(truthIndex)-0.5)
-        
+        let theme = Model.shared.theme()
         DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
             self.targetValue = self.targetValue + 0.3*(Double(truthIndex)-self.targetValue)
         }
@@ -228,20 +199,20 @@ class BullshitViewController: UIViewController, CAAnimationDelegate, UIGestureRe
             var text1: String = ""
             var text2: String = ""
             if truthIndex < 0.2 {
-                text1 = BullshitViewController.__farRightText1
-                text2 = BullshitViewController.__farRightText2
+                text1 = theme.farRightText1
+                text2 = theme.farRightText2
             } else if truthIndex < 0.4 {
-                text1 = BullshitViewController.__rightText1
-                text2 = BullshitViewController.__rightText2
+                text1 = theme.rightText1
+                text2 = theme.rightText2
             } else if truthIndex < 0.6 {
-                text1 = BullshitViewController.__centerText1
-                text2 = BullshitViewController.__centerText2
+                text1 = theme.centerText1
+                text2 = theme.centerText2
             } else if truthIndex < 0.8 {
-                text1 = BullshitViewController.__leftText1
-                text2 = BullshitViewController.__leftText2
+                text1 = theme.leftText1
+                text2 = theme.leftText2
             } else {
-                text1 = BullshitViewController.__farLeftText1
-                text2 = BullshitViewController.__farLeftText2
+                text1 = theme.farLeftText1
+                text2 = theme.farLeftText2
             }
             self.rubberstamp.setTextArray(texts: [text1, text2])
         }
@@ -256,91 +227,7 @@ class BullshitViewController: UIViewController, CAAnimationDelegate, UIGestureRe
             self.templateImageView.isHidden = true
         }
     }
-
-    static func __defaultTexts() {
-        BullshitViewController.__buttonText = "Is that true?"
-        BullshitViewController.__displayText = "Truth-O-Meter"
-        BullshitViewController.__farLeftText1 = "True"
-        BullshitViewController.__farLeftText2 = ""
-        BullshitViewController.__leftText1 = "Mostly"
-        BullshitViewController.__leftText2 = "True"
-        BullshitViewController.__centerText1 = "Undecided"
-        BullshitViewController.__centerText2 = ""
-        BullshitViewController.__rightText1 = "Bullshit"
-        BullshitViewController.__rightText2 = ""
-        BullshitViewController.__farRightText1 = "Absolute"
-        BullshitViewController.__farRightText2 = "Bullshit"
-    }
     
-    static func __bullshitOMeterTexts() {
-        BullshitViewController.__buttonText = "Is that Bullshit?"
-        BullshitViewController.__displayText = "Bullshit-O-Meter"
-        BullshitViewController.__farLeftText1 = "Absolute"
-        BullshitViewController.__farLeftText2 = "Bullshit"
-        BullshitViewController.__leftText1 = "Bullshit"
-        BullshitViewController.__leftText2 = ""
-        BullshitViewController.__centerText1 = "undecided"
-        BullshitViewController.__centerText2 = ""
-        BullshitViewController.__rightText1 = "Mostly"
-        BullshitViewController.__rightText2 = "True"
-        BullshitViewController.__farRightText1 = "True"
-        BullshitViewController.__farRightText2 = ""
-    }
-    
-    static func __voiceOMeterTexts() {
-        BullshitViewController.__buttonText = "How is you voice?"
-        BullshitViewController.__displayText = "Voice-O-Meter"
-        BullshitViewController.__farLeftText1 = "Sexy"
-        BullshitViewController.__farLeftText2 = ""
-        BullshitViewController.__leftText1 = "impressive"
-        BullshitViewController.__leftText2 = ""
-        BullshitViewController.__centerText1 = "good"
-        BullshitViewController.__centerText2 = ""
-        BullshitViewController.__rightText1 = "could be"
-        BullshitViewController.__rightText2 = "better"
-        BullshitViewController.__farRightText1 = "flimsy"
-        BullshitViewController.__farRightText2 = ""
-    }
-    
-    static func __customTexts() {
-        if let s = UserDefaults.standard.string(forKey: buttonCustomTextkey) {
-            BullshitViewController.__buttonText = s
-        }
-        if let s = UserDefaults.standard.string(forKey: displayCustomTextkey) {
-            BullshitViewController.__displayText = s
-        }
-        if let s = UserDefaults.standard.string(forKey: farLeftCustomTextkey1) {
-            BullshitViewController.__farLeftText1 = s
-        }
-        if let s = UserDefaults.standard.string(forKey: farLeftCustomTextkey2) {
-            BullshitViewController.__farLeftText2 = s
-        }
-        if let s = UserDefaults.standard.string(forKey: leftCustomTextkey1) {
-            BullshitViewController.__leftText1 = s
-        }
-        if let s = UserDefaults.standard.string(forKey: leftCustomTextkey2) {
-            BullshitViewController.__leftText2 = s
-        }
-        if let s = UserDefaults.standard.string(forKey: centerCustomTextkey1) {
-            BullshitViewController.__centerText1 = s
-        }
-        if let s = UserDefaults.standard.string(forKey: centerCustomTextkey2) {
-            BullshitViewController.__centerText2 = s
-        }
-        if let s = UserDefaults.standard.string(forKey: rightCustomTextkey1) {
-            BullshitViewController.__rightText1 = s
-        }
-        if let s = UserDefaults.standard.string(forKey: rightCustomTextkey2) {
-            BullshitViewController.__rightText2 = s
-        }
-        if let s = UserDefaults.standard.string(forKey: farRightCustomTextkey1) {
-            BullshitViewController.__farRightText1 = s
-        }
-        if let s = UserDefaults.standard.string(forKey: farRightCustomTextkey2) {
-            BullshitViewController.__farRightText2 = s
-        }
-    }
-
     func reset() {
         self.templateImageView.isHidden = false
         rubberstamp.isHidden = true
