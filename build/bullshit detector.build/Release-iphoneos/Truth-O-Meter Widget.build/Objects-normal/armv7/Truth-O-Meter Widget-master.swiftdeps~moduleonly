@@ -1,6 +1,0 @@
-version: "Apple Swift version 4.2.1 (swiftlang-1000.11.42 clang-1000.11.45.1)"
-options: "66b41d22db6bc63a6fba4497790f2c9a"
-build_time: [1549606473, 501651000]
-inputs:
-  "/Users/joachim/projects/bullshit/Truth-O-Meter Widget/TodayViewController.swift": [9223372036, 854775807]
-  "/Users/joachim/projects/bullshit/bullshit detector/Rubberstamp.swift": [9223372036, 854775807]
