@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AA35D763220D57BD001C1F99 /* bullshit_detectorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA35D762220D57BD001C1F99 /* bullshit_detectorTests.swift */; };
 		AA37BBF521EEE684005A4042 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA37BBF421EEE684005A4042 /* SettingsViewController.swift */; };
 		AA37BBF721EEE965005A4042 /* constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA37BBF621EEE965005A4042 /* constants.swift */; };
 		AA3DD49121EB21110007244C /* PathBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA3DD48E21EB21110007244C /* PathBuilder.swift */; };
@@ -25,12 +26,24 @@
 		AAA9256E22002A6400AB15B7 /* Truth-O-Meter Widget.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = AAA9256222002A6400AB15B7 /* Truth-O-Meter Widget.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		AAA92577220031FA00AB15B7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AA61974E21E9BEB60069121A /* Assets.xcassets */; };
 		AAA925782200322200AB15B7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AA61974E21E9BEB60069121A /* Assets.xcassets */; };
-		AAB1923D21EC7EC500836714 /* UnlimitedUsageProducts.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAB1923C21EC7EC500836714 /* UnlimitedUsageProducts.swift */; };
+		AAB309AF220B4BDB002924FD /* IAPProduct.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAB309AE220B4BDB002924FD /* IAPProduct.swift */; };
+		AAB309B1220B4C4A002924FD /* IAPService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAB309B0220B4C4A002924FD /* IAPService.swift */; };
+		AAB309B3220B4D0C002924FD /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAB309B2220B4D0C002924FD /* StoreKit.framework */; };
 		AAD927C22205B2F7001C328F /* CustomDisplayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD927C12205B2F7001C328F /* CustomDisplayViewController.swift */; };
 		AAD927C42205CE79001C328F /* CustomButtonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD927C32205CE79001C328F /* CustomButtonViewController.swift */; };
+		AADBB643220C34710024AAC2 /* ThemeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AADBB642220C34710024AAC2 /* ThemeTableViewController.swift */; };
+		AADBB645220C3FE50024AAC2 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = AADBB644220C3FE50024AAC2 /* Theme.swift */; };
+		AADBB647220C479E0024AAC2 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = AADBB646220C479E0024AAC2 /* Model.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		AA35D765220D57BD001C1F99 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AA61973C21E9BEB40069121A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = AA61974321E9BEB40069121A;
+			remoteInfo = "bullshit detector";
+		};
 		AAA9256C22002A6400AB15B7 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = AA61973C21E9BEB40069121A /* Project object */;
@@ -55,6 +68,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		AA35D760220D57BD001C1F99 /* bullshit detectorTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "bullshit detectorTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		AA35D762220D57BD001C1F99 /* bullshit_detectorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = bullshit_detectorTests.swift; sourceTree = "<group>"; };
+		AA35D764220D57BD001C1F99 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AA37BBF421EEE684005A4042 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		AA37BBF621EEE965005A4042 /* constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = constants.swift; sourceTree = "<group>"; };
 		AA3DD48E21EB21110007244C /* PathBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PathBuilder.swift; sourceTree = "<group>"; };
@@ -74,16 +90,29 @@
 		AAA9256622002A6400AB15B7 /* TodayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayViewController.swift; sourceTree = "<group>"; };
 		AAA9256922002A6400AB15B7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
 		AAA9256B22002A6400AB15B7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		AAB1923C21EC7EC500836714 /* UnlimitedUsageProducts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnlimitedUsageProducts.swift; sourceTree = "<group>"; };
+		AAB309AE220B4BDB002924FD /* IAPProduct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IAPProduct.swift; sourceTree = "<group>"; };
+		AAB309B0220B4C4A002924FD /* IAPService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IAPService.swift; sourceTree = "<group>"; };
+		AAB309B2220B4D0C002924FD /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		AAD927C12205B2F7001C328F /* CustomDisplayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomDisplayViewController.swift; sourceTree = "<group>"; };
 		AAD927C32205CE79001C328F /* CustomButtonViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButtonViewController.swift; sourceTree = "<group>"; };
+		AADBB642220C34710024AAC2 /* ThemeTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeTableViewController.swift; sourceTree = "<group>"; };
+		AADBB644220C3FE50024AAC2 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
+		AADBB646220C479E0024AAC2 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		AA35D75D220D57BD001C1F99 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		AA61974121E9BEB40069121A /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AAB309B3220B4D0C002924FD /* StoreKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -98,11 +127,21 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		AA35D761220D57BD001C1F99 /* bullshit detectorTests */ = {
+			isa = PBXGroup;
+			children = (
+				AA35D762220D57BD001C1F99 /* bullshit_detectorTests.swift */,
+				AA35D764220D57BD001C1F99 /* Info.plist */,
+			);
+			path = "bullshit detectorTests";
+			sourceTree = "<group>";
+		};
 		AA61973B21E9BEB40069121A = {
 			isa = PBXGroup;
 			children = (
 				AA61974621E9BEB40069121A /* bullshit detector */,
 				AAA9256522002A6400AB15B7 /* Truth-O-Meter Widget */,
+				AA35D761220D57BD001C1F99 /* bullshit detectorTests */,
 				AA61974521E9BEB40069121A /* Products */,
 				AAB1923921EC7C5100836714 /* Frameworks */,
 			);
@@ -113,6 +152,7 @@
 			children = (
 				AA61974421E9BEB40069121A /* bullshit detector.app */,
 				AAA9256222002A6400AB15B7 /* Truth-O-Meter Widget.appex */,
+				AA35D760220D57BD001C1F99 /* bullshit detectorTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -129,13 +169,17 @@
 				AA61975321E9BEB60069121A /* Info.plist */,
 				AA61975921E9C5810069121A /* Display.swift */,
 				AA3DD48E21EB21110007244C /* PathBuilder.swift */,
-				AAB1923C21EC7EC500836714 /* UnlimitedUsageProducts.swift */,
 				AA37BBF621EEE965005A4042 /* constants.swift */,
 				AAD927C12205B2F7001C328F /* CustomDisplayViewController.swift */,
 				AAD927C32205CE79001C328F /* CustomButtonViewController.swift */,
 				AAA8FD12220A92DE00865236 /* NoSelectTextField.swift */,
 				AA7090FF220675C1002F06C6 /* Rubberstamp.swift */,
 				AA70910222067AA1002F06C6 /* Rubberstamp.xib */,
+				AAB309AE220B4BDB002924FD /* IAPProduct.swift */,
+				AAB309B0220B4C4A002924FD /* IAPService.swift */,
+				AADBB642220C34710024AAC2 /* ThemeTableViewController.swift */,
+				AADBB644220C3FE50024AAC2 /* Theme.swift */,
+				AADBB646220C479E0024AAC2 /* Model.swift */,
 			);
 			path = "bullshit detector";
 			sourceTree = "<group>";
@@ -153,6 +197,7 @@
 		AAB1923921EC7C5100836714 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				AAB309B2220B4D0C002924FD /* StoreKit.framework */,
 				AAA9256322002A6400AB15B7 /* NotificationCenter.framework */,
 			);
 			name = Frameworks;
@@ -161,6 +206,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		AA35D75F220D57BD001C1F99 /* bullshit detectorTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AA35D769220D57BD001C1F99 /* Build configuration list for PBXNativeTarget "bullshit detectorTests" */;
+			buildPhases = (
+				AA35D75C220D57BD001C1F99 /* Sources */,
+				AA35D75D220D57BD001C1F99 /* Frameworks */,
+				AA35D75E220D57BD001C1F99 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				AA35D766220D57BD001C1F99 /* PBXTargetDependency */,
+			);
+			name = "bullshit detectorTests";
+			productName = "bullshit detectorTests";
+			productReference = AA35D760220D57BD001C1F99 /* bullshit detectorTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		AA61974321E9BEB40069121A /* bullshit detector */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = AA61975621E9BEB60069121A /* Build configuration list for PBXNativeTarget "bullshit detector" */;
@@ -207,12 +270,16 @@
 				LastUpgradeCheck = 1010;
 				ORGANIZATIONNAME = "Joachim Neumann";
 				TargetAttributes = {
+					AA35D75F220D57BD001C1F99 = {
+						CreatedOnToolsVersion = 10.1;
+						TestTargetID = AA61974321E9BEB40069121A;
+					};
 					AA61974321E9BEB40069121A = {
 						CreatedOnToolsVersion = 10.1;
 						LastSwiftMigration = 1010;
 						SystemCapabilities = {
 							com.apple.InAppPurchase = {
-								enabled = 0;
+								enabled = 1;
 							};
 						};
 					};
@@ -236,11 +303,19 @@
 			targets = (
 				AA61974321E9BEB40069121A /* bullshit detector */,
 				AAA9256122002A6400AB15B7 /* Truth-O-Meter Widget */,
+				AA35D75F220D57BD001C1F99 /* bullshit detectorTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		AA35D75E220D57BD001C1F99 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		AA61974221E9BEB40069121A /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -264,21 +339,33 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		AA35D75C220D57BD001C1F99 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AA35D763220D57BD001C1F99 /* bullshit_detectorTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		AA61974021E9BEB40069121A /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AADBB647220C479E0024AAC2 /* Model.swift in Sources */,
 				AA61974A21E9BEB40069121A /* BullshitViewController.swift in Sources */,
 				AA61975A21E9C5810069121A /* Display.swift in Sources */,
+				AADBB643220C34710024AAC2 /* ThemeTableViewController.swift in Sources */,
+				AAB309B1220B4C4A002924FD /* IAPService.swift in Sources */,
 				AA37BBF721EEE965005A4042 /* constants.swift in Sources */,
 				AAA8FD13220A92DE00865236 /* NoSelectTextField.swift in Sources */,
 				AA709100220675C1002F06C6 /* Rubberstamp.swift in Sources */,
+				AAB309AF220B4BDB002924FD /* IAPProduct.swift in Sources */,
 				AA61974821E9BEB40069121A /* AppDelegate.swift in Sources */,
 				AAD927C42205CE79001C328F /* CustomButtonViewController.swift in Sources */,
 				AAD927C22205B2F7001C328F /* CustomDisplayViewController.swift in Sources */,
 				AA3DD49121EB21110007244C /* PathBuilder.swift in Sources */,
-				AAB1923D21EC7EC500836714 /* UnlimitedUsageProducts.swift in Sources */,
 				AA37BBF521EEE684005A4042 /* SettingsViewController.swift in Sources */,
+				AADBB645220C3FE50024AAC2 /* Theme.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -294,6 +381,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		AA35D766220D57BD001C1F99 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = AA61974321E9BEB40069121A /* bullshit detector */;
+			targetProxy = AA35D765220D57BD001C1F99 /* PBXContainerItemProxy */;
+		};
 		AAA9256D22002A6400AB15B7 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = AAA9256122002A6400AB15B7 /* Truth-O-Meter Widget */;
@@ -329,6 +421,46 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		AA35D767220D57BD001C1F99 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 8A4DL788W9;
+				INFOPLIST_FILE = "bullshit detectorTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.joachimneumann.bullshit-detectorTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/bullshit detector.app/bullshit detector";
+			};
+			name = Debug;
+		};
+		AA35D768220D57BD001C1F99 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 8A4DL788W9;
+				INFOPLIST_FILE = "bullshit detectorTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.joachimneumann.bullshit-detectorTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/bullshit detector.app/bullshit detector";
+			};
+			name = Release;
+		};
 		AA61975421E9BEB60069121A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -537,6 +669,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		AA35D769220D57BD001C1F99 /* Build configuration list for PBXNativeTarget "bullshit detectorTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AA35D767220D57BD001C1F99 /* Debug */,
+				AA35D768220D57BD001C1F99 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		AA61973F21E9BEB40069121A /* Build configuration list for PBXProject "bullshit detector" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

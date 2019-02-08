@@ -11,6 +11,8 @@ import UIKit
 
 class CustomDisplayViewController: UIViewController, UITextFieldDelegate {
     
+    var theme: BullshitTheme = BullshitTheme()
+    
     @IBOutlet weak var displayTextField: UITextField!
     
     override func viewDidLoad() {
@@ -18,9 +20,15 @@ class CustomDisplayViewController: UIViewController, UITextFieldDelegate {
         self.navigationController?.navigationBar.tintColor = UIColor.gray
         self.navigationController?.setNavigationBarHidden(false, animated: false)
         view.backgroundColor = displayBackgroundColor
-        displayTextField.delegate = self
-        if let s = UserDefaults.standard.string(forKey: displayCustomTextkey) {
-            displayTextField.text = s
+        
+        displayTextField.text = theme.displayText
+        if theme.readonly {
+            displayTextField.isUserInteractionEnabled = false
+            displayTextField.backgroundColor = UIColor.clear
+            displayTextField.borderStyle = .none
+        } else {
+            displayTextField.isUserInteractionEnabled = true
+            displayTextField.delegate = self
         }
     }
     
@@ -29,15 +37,19 @@ class CustomDisplayViewController: UIViewController, UITextFieldDelegate {
         return true
     }
     
-//    override func viewWillAppear(_ animated: Bool) {
-//        super.viewWillAppear(animated)
-//    }
-
     override func viewWillDisappear(_ animated: Bool) {
         if let s = displayTextField.text {
             UserDefaults.standard.set(s, forKey: displayCustomTextkey)
         }
     }
-
+    
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "buttonSettingsSegue" {
+            if let destinationVC = segue.destination as? CustomButtonViewController {
+                    destinationVC.theme = theme
+            }
+        }
+    }
     
 }

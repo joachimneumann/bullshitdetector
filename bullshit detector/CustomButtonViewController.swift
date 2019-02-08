@@ -11,6 +11,8 @@ import UIKit
 
 class CustomButtonViewController: UIViewController, UITextFieldDelegate {
     
+    var theme: BullshitTheme = BullshitTheme()
+
     @IBOutlet weak var stampPreview: Rubberstamp!
     
     @IBOutlet weak var indicatorView: UIView!
@@ -32,59 +34,69 @@ class CustomButtonViewController: UIViewController, UITextFieldDelegate {
         theButton.layer.cornerRadius = 10
         theButton.backgroundColor = bullshitRed
         indicatorView.isHidden = true
-        firstTextField.isUserInteractionEnabled = true
-        secondTextField.isUserInteractionEnabled = true
-        firstTextField.delegate = self
-        secondTextField.delegate = self
+        updateTextFields()
+        if theme.readonly {
+            firstTextField.isHidden = true
+            secondTextField.isHidden = true
+            stampPreview.isHidden = false
+            indicatorView.isHidden = false
+            buttonTextField.isUserInteractionEnabled = false
+            buttonTextField.backgroundColor = UIColor.clear
+            buttonTextField.borderStyle = .none
+        } else {
+            firstTextField.isHidden = false
+            secondTextField.isHidden = false
+            firstTextField.isUserInteractionEnabled = true
+            secondTextField.isUserInteractionEnabled = true
+            buttonTextField.isUserInteractionEnabled = true
+            firstTextField.delegate = self
+            secondTextField.delegate = self
+            stampPreview.isHidden = true
+            indicatorView.isHidden = true
+        }
 
-        stampPreview.isHidden = true
         stampPreview.rubbereffect(imageName: "mask")
         stampPreview.stampColor = bullshitRed
 
-        if let s = UserDefaults.standard.string(forKey: buttonCustomTextkey) {
-            buttonTextField.text = s
-        }
+        buttonTextField.text = theme.buttonText
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        stampPreview.setTextArray(texts: [firstTextField.text!, secondTextField.text!])
+    }
+    
+    func updateTextFields() {
+        let x1 = theButton.frame.origin.x
+        let w = theButton.frame.size.width / 5
+        indicatorViewWidthConstraint.constant = w
         switch segmentedControlPosition.selectedSegmentIndex {
-        case 0:
-            if let s = UserDefaults.standard.string(forKey: farLeftCustomTextkey1) {
-                firstTextField.text = s
-            }
-            if let s = UserDefaults.standard.string(forKey: farLeftCustomTextkey2) {
-                secondTextField.text = s
-            }
-        case 1:
-            if let s = UserDefaults.standard.string(forKey: leftCustomTextkey1) {
-                firstTextField.text = s
-            }
-            if let s = UserDefaults.standard.string(forKey: leftCustomTextkey2) {
-                secondTextField.text = s
-            }
-        case 2:
-            if let s = UserDefaults.standard.string(forKey: centerCustomTextkey1) {
-                firstTextField.text = s
-            }
-            if let s = UserDefaults.standard.string(forKey: centerCustomTextkey2) {
-                secondTextField.text = s
-            }
-        case 3:
-            if let s = UserDefaults.standard.string(forKey: rightCustomTextkey1) {
-                firstTextField.text = s
-            }
-            if let s = UserDefaults.standard.string(forKey: rightCustomTextkey2) {
-                secondTextField.text = s
-            }
-        case 4:
-            if let s = UserDefaults.standard.string(forKey: farRightCustomTextkey1) {
-                firstTextField.text = s
-            }
-            if let s = UserDefaults.standard.string(forKey: farRightCustomTextkey2) {
-                secondTextField.text = s
-            }
-        default:
+            case 0:
+                indicatorViewLeadingConstraint.constant = 0
+                indicatorViewWidthConstraint.constant = x1+w
+                firstTextField.text  = theme.farLeftText1
+                secondTextField.text = theme.farLeftText2
+            case 1:
+                indicatorViewLeadingConstraint.constant = x1+1*w
+                firstTextField.text  = theme.leftText1
+                secondTextField.text = theme.leftText2
+            case 2:
+                indicatorViewLeadingConstraint.constant = x1+2*w
+                firstTextField.text  = theme.centerText1
+                secondTextField.text = theme.centerText2
+            case 3:
+                indicatorViewLeadingConstraint.constant = x1+3*w
+                firstTextField.text  = theme.rightText1
+                secondTextField.text = theme.rightText2
+            case 4:
+                indicatorViewLeadingConstraint.constant = x1+4*w
+                indicatorViewWidthConstraint.constant = x1+w
+                firstTextField.text  = theme.farRightText1
+                secondTextField.text = theme.farRightText2
+            default:
             print("unexpected case")
         }
     }
-    
+
     func save() {
         print("save()")
         UserDefaults.standard.set(buttonTextField.text,  forKey: buttonCustomTextkey)
@@ -150,61 +162,8 @@ class CustomButtonViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func segmentSelected(_ segmentedControl: UISegmentedControl) {
-        let x1 = theButton.frame.origin.x
-        let w = theButton.frame.size.width / 5
-        indicatorViewWidthConstraint.constant = w
         indicatorView.isHidden = false
-        firstTextField.text = ""
-        secondTextField.text = ""
-        switch segmentedControl.selectedSegmentIndex {
-        case 0:
-            indicatorViewLeadingConstraint.constant = 0
-            indicatorViewWidthConstraint.constant = x1+w
-            if let s = UserDefaults.standard.string(forKey: farLeftCustomTextkey1) {
-                firstTextField.text = s
-            }
-            if let s = UserDefaults.standard.string(forKey: farLeftCustomTextkey2) {
-                secondTextField.text = s
-            }
-        case 1:
-            indicatorViewLeadingConstraint.constant = x1+1*w
-            if let s = UserDefaults.standard.string(forKey: leftCustomTextkey1) {
-                firstTextField.text = s
-            }
-            if let s = UserDefaults.standard.string(forKey: leftCustomTextkey2) {
-                secondTextField.text = s
-            }
-        case 2:
-            indicatorViewLeadingConstraint.constant = x1+2*w
-            if let s = UserDefaults.standard.string(forKey: centerCustomTextkey1) {
-                firstTextField.text = s
-            }
-            if let s = UserDefaults.standard.string(forKey: centerCustomTextkey2) {
-                secondTextField.text = s
-            }
-        case 3:
-            indicatorViewLeadingConstraint.constant = x1+3*w
-            if let s = UserDefaults.standard.string(forKey: rightCustomTextkey1) {
-                firstTextField.text = s
-            }
-            if let s = UserDefaults.standard.string(forKey: rightCustomTextkey2) {
-                secondTextField.text = s
-            }
-        case 4:
-            indicatorViewLeadingConstraint.constant = x1+4*w
-            indicatorViewWidthConstraint.constant = x1+w
-            if let s = UserDefaults.standard.string(forKey: farRightCustomTextkey1) {
-                firstTextField.text = s
-            }
-            if let s = UserDefaults.standard.string(forKey: farRightCustomTextkey2) {
-                secondTextField.text = s
-            }
-        default:
-            indicatorViewLeadingConstraint.constant = -1000
-        }
-        firstTextField.isHidden = false
-        secondTextField.isHidden = false
-
+        updateTextFields()
         stampPreview.setTextArray(texts: [firstTextField.text!, secondTextField.text!])
         stampPreview.isHidden = false
     }

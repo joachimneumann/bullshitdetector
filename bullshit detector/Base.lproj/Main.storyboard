@@ -37,7 +37,7 @@
                                         </constraints>
                                         <state key="normal" title="Button" image="settings"/>
                                         <connections>
-                                            <segue destination="8mU-yx-3dI" kind="show" id="U1L-FZ-fce"/>
+                                            <segue destination="GI4-Nl-nwH" kind="show" id="gif-5Z-MoK"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -182,64 +182,37 @@
             </objects>
             <point key="canvasLocation" x="1013.6" y="133.5832083958021"/>
         </scene>
-        <!--Settings View Controller-->
-        <scene sceneID="Fqp-cb-C5l">
+        <!--Theme Table View Controller-->
+        <scene sceneID="e2e-Tv-KBQ">
             <objects>
-                <viewController id="8mU-yx-3dI" customClass="SettingsViewController" customModule="bullshit_detector" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="lBk-Q3-2ud">
+                <tableViewController id="GI4-Nl-nwH" customClass="ThemeTableViewController" customModule="bullshit_detector" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="ZWQ-CA-Z8m">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dFa-4P-pxL">
-                                <rect key="frame" x="20" y="94" width="374" height="30"/>
-                                <state key="normal" title="Truth-O-Meter (default)"/>
-                                <connections>
-                                    <action selector="truthOMeterPressed:" destination="8mU-yx-3dI" eventType="touchUpInside" id="247-Yp-NGD"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xVm-rh-wnv">
-                                <rect key="frame" x="20" y="144" width="374" height="30"/>
-                                <state key="normal" title="Bullshit-O-Meter"/>
-                                <connections>
-                                    <action selector="bullshitOMeterPressed:" destination="8mU-yx-3dI" eventType="touchUpInside" id="eA8-4g-U5k"/>
-                                </connections>
-                            </button>
-                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KA6-uP-8WT">
-                                <rect key="frame" x="20" y="244" width="374" height="30"/>
-                                <state key="normal" title="Customize →"/>
-                                <connections>
-                                    <segue destination="yN9-ms-BvG" kind="show" identifier="customizingSeque" id="9Ek-8O-KhB"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1ql-cB-MIT">
-                                <rect key="frame" x="20" y="194" width="374" height="30"/>
-                                <state key="normal" title="Voice-O-Meter"/>
-                                <connections>
-                                    <action selector="voiceOMeterPressed:" destination="8mU-yx-3dI" eventType="touchUpInside" id="2W3-Ml-Lez"/>
-                                </connections>
-                            </button>
-                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <constraints>
-                            <constraint firstItem="1ql-cB-MIT" firstAttribute="top" secondItem="xVm-rh-wnv" secondAttribute="bottom" constant="20" id="1bW-uT-iwf"/>
-                            <constraint firstItem="tsW-o1-dYT" firstAttribute="trailing" secondItem="dFa-4P-pxL" secondAttribute="trailing" constant="20" id="2IS-Ge-ghC"/>
-                            <constraint firstItem="tsW-o1-dYT" firstAttribute="trailing" secondItem="1ql-cB-MIT" secondAttribute="trailing" constant="20" id="Ed3-w4-mFE"/>
-                            <constraint firstItem="xVm-rh-wnv" firstAttribute="leading" secondItem="tsW-o1-dYT" secondAttribute="leading" constant="20" id="SZV-4w-o0U"/>
-                            <constraint firstItem="dFa-4P-pxL" firstAttribute="leading" secondItem="tsW-o1-dYT" secondAttribute="leading" constant="20" id="TVp-sm-lUu"/>
-                            <constraint firstItem="dFa-4P-pxL" firstAttribute="top" secondItem="tsW-o1-dYT" secondAttribute="top" constant="30" id="UZ4-4y-Dic"/>
-                            <constraint firstItem="xVm-rh-wnv" firstAttribute="top" secondItem="dFa-4P-pxL" secondAttribute="bottom" constant="20" id="Xaf-Hp-nap"/>
-                            <constraint firstItem="KA6-uP-8WT" firstAttribute="top" secondItem="1ql-cB-MIT" secondAttribute="bottom" constant="20" id="ixR-q6-QKQ"/>
-                            <constraint firstItem="tsW-o1-dYT" firstAttribute="trailing" secondItem="KA6-uP-8WT" secondAttribute="trailing" constant="20" id="lc2-3F-ZbS"/>
-                            <constraint firstItem="1ql-cB-MIT" firstAttribute="leading" secondItem="tsW-o1-dYT" secondAttribute="leading" constant="20" id="tDF-82-u5r"/>
-                            <constraint firstItem="tsW-o1-dYT" firstAttribute="trailing" secondItem="xVm-rh-wnv" secondAttribute="trailing" constant="20" id="w6a-pi-qMb"/>
-                            <constraint firstItem="KA6-uP-8WT" firstAttribute="leading" secondItem="tsW-o1-dYT" secondAttribute="leading" constant="20" id="xlj-zy-sfI"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="tsW-o1-dYT"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Vil-Da-bNL" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="themeCell" id="cS5-mS-jey">
+                                <rect key="frame" x="0.0" y="28" width="414" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="cS5-mS-jey" id="zBV-b8-7CE">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.666666666666664"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="GI4-Nl-nwH" id="C68-vJ-Y6r"/>
+                            <outlet property="delegate" destination="GI4-Nl-nwH" id="L8m-Uv-wNa"/>
+                        </connections>
+                    </tableView>
+                    <connections>
+                        <outlet property="themeTableView" destination="ZWQ-CA-Z8m" id="30z-br-ksI"/>
+                        <segue destination="yN9-ms-BvG" kind="show" identifier="displaySettingsSegue" id="5un-sg-kUz"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8BH-ov-tjq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1753" y="134"/>
+            <point key="canvasLocation" x="1755" y="133"/>
         </scene>
         <!--Display text-->
         <scene sceneID="u24-Xa-uVp">
@@ -277,7 +250,7 @@
                     <navigationItem key="navigationItem" title="Display text" id="l1F-2E-EJ0">
                         <barButtonItem key="rightBarButtonItem" title="Next" id="n4i-hy-wKv">
                             <connections>
-                                <segue destination="rFd-VX-DBN" kind="show" identifier="" id="WpH-Hd-q52"/>
+                                <segue destination="rFd-VX-DBN" kind="show" identifier="buttonSettingsSegue" id="WpH-Hd-q52"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -287,7 +260,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W8v-Gl-P00" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2474" y="134"/>
+            <point key="canvasLocation" x="2535" y="133"/>
         </scene>
         <!--Custom Button View Controller-->
         <scene sceneID="Aqv-78-Xsa">
@@ -417,7 +390,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KPh-uH-DKv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3127.536231884058" y="132.88043478260872"/>
+            <point key="canvasLocation" x="3190" y="131"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Gcm-7A-Ajw">
