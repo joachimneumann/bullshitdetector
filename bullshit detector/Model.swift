@@ -12,13 +12,40 @@ class Model: NSObject {
     private override init() {
         super.init()
         defaultValues()
-        themeIndex = UserDefaults.standard.integer(forKey: themeIndexKey)
     }
     
     static let shared = Model()
     
     private var themes = [BullshitTheme]()
-    var themeIndex: Int = 0
+    private var _themeIndex: Int = 0
+
+    var themeIndex: Int {
+        get {
+            return UserDefaults.standard.integer(forKey: selectedThemeIndexKey)
+        }
+        set {
+            UserDefaults.standard.set(newValue, forKey: selectedThemeIndexKey)
+        }
+    }
+
+    var instructionsHaveBeenDisplayed: Bool {
+        get {
+            return UserDefaults.standard.bool(forKey: instructionsHaveBeenDisplayedKey)
+        }
+        set {
+            UserDefaults.standard.set(newValue, forKey: instructionsHaveBeenDisplayedKey)
+        }
+    }
+    
+    var customizationHasBeenPurchased: Bool {
+        get {
+            return UserDefaults.standard.bool(forKey: customizationHasBeenPurchasedKey)
+        }
+        set {
+            UserDefaults.standard.set(newValue, forKey: customizationHasBeenPurchasedKey)
+        }
+    }
+
     var count: Int {
         get {
             return themes.count
@@ -41,9 +68,7 @@ class Model: NSObject {
     }
 
     func defaultValues() {
-        let truthOMeter    = BullshitTheme()
-        truthOMeter.name = "Truth-O-Meter"
-        truthOMeter.imageName = "truth"
+        let truthOMeter    = BullshitTheme(name: "Truth-O-Meter", readonly: true, imageName: "truth")
         truthOMeter.buttonText = "Is that true?"
         truthOMeter.displayText = "Truth-O-Meter"
         truthOMeter.farLeftText1 = "True"
@@ -58,9 +83,7 @@ class Model: NSObject {
         truthOMeter.farRightText2 = "Bullshit"
         themes.append(truthOMeter)
         
-        let bullshitOMeter = BullshitTheme()
-        bullshitOMeter.name = "Bullshit-O-Meter"
-        bullshitOMeter.imageName = "truth"
+        let bullshitOMeter = BullshitTheme(name: "Bullshit-O-Meter", readonly: true, imageName: "truth")
         bullshitOMeter.buttonText = "Is that Bullshit?"
         bullshitOMeter.displayText = "Bullshit-O-Meter"
         bullshitOMeter.farLeftText1 = "Absolute"
@@ -75,9 +98,8 @@ class Model: NSObject {
         bullshitOMeter.farRightText2 = ""
         themes.append(bullshitOMeter)
 
-        let voiceOMeter    = BullshitTheme()
+        let voiceOMeter = BullshitTheme(name: "Voice-O-Meter", readonly: true, imageName: "singer")
         voiceOMeter.buttonText = "How is you voice?"
-        voiceOMeter.imageName = "singer"
         voiceOMeter.displayText = "Voice-O-Meter"
         voiceOMeter.farLeftText1 = "Sexy"
         voiceOMeter.farLeftText2 = ""
@@ -89,13 +111,9 @@ class Model: NSObject {
         voiceOMeter.rightText2 = "better"
         voiceOMeter.farRightText1 = "flimsy"
         voiceOMeter.farRightText2 = ""
-        voiceOMeter.name = "Voice-O-Meter"
         themes.append(voiceOMeter)
 
-        let customised     = BullshitTheme()
-        customised.name = "Customised"
-        customised.imageName = "truth"
-        customised.readonly = false
+        let customised     = BullshitTheme(name: "Customised", readonly: false, imageName: "truth")
         themes.append(customised)
     }
     

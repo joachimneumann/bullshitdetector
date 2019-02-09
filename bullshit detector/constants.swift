@@ -13,21 +13,23 @@ let displayBackgroundColor = UIColor(red: 243/255.0, green: 238/255.0, blue: 220
 let bullshitRed = UIColor(red: 255.0/255.0, green: 126.0/255.0, blue: 121.0/255.0, alpha: 1.0)
 let bullshitGray = UIColor(red: 200.0/255.0, green: 200.0/255.0, blue: 200.0/255.0, alpha: 1.0)
 
-let customisablePurchasedKey = "customisablePurchasedKey"
-let instructionsDisplayedKey = "instructionsDisplayedKey"
-let themeIndexKey            = "themeIndexKey"
-let buttonCustomTextkey      = "buttonCustomTextkey"
-let displayCustomTextkey     = "displayCustomTextkey"
+let customizablePurchasedNotification = "customisablePurchasedNotification"
+let instructionsHaveBeenDisplayedKey = "instructionsHaveBeenDisplayedKey"
+let selectedThemeIndexKey    = "selectedThemeIndexKey"
+let customizationHasBeenPurchasedKey = "customizationHasBeenPurchasedKey"
 
-let farLeftCustomTextkey1     = "farLeftCustomTextkey1"
-let leftCustomTextkey1        = "leftCustomTextkey1"
-let centerCustomTextkey1      = "centerCustomTextkey1"
-let rightCustomTextkey1       = "rightCustomTextkey1"
-let farRightCustomTextkey1    = "farRightCustomTextkey1"
+let buttonTextkey       = "buttonTextkey"
+let displayTextkey      = "displayTextkey"
 
-let farLeftCustomTextkey2     = "farLeftCustomTextkey2"
-let leftCustomTextkey2        = "leftCustomTextkey2"
-let centerCustomTextkey2      = "centerCustomTextkey2"
-let rightCustomTextkey2       = "rightCustomTextkey2"
-let farRightCustomTextkey2    = "farRightCustomTextkey2"
+let farLeftText1key     = "farLeftText1key"
+let leftText1key        = "leftText1key"
+let centerText1key      = "centerText1key"
+let rightText1key       = "rightText1key"
+let farRightText1key    = "farRightText1key"
+
+let farLeftText2key     = "farLeftText2key"
+let leftText2key        = "leftText2key"
+let centerText2key      = "centerText2key"
+let rightText2key       = "rightText2key"
+let farRightText2key    = "farRightText2key"
 

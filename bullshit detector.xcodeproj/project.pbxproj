@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		AA35D763220D57BD001C1F99 /* bullshit_detectorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA35D762220D57BD001C1F99 /* bullshit_detectorTests.swift */; };
-		AA37BBF521EEE684005A4042 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA37BBF421EEE684005A4042 /* SettingsViewController.swift */; };
+		AA35D76B220D8466001C1F99 /* PurchaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA35D76A220D8466001C1F99 /* PurchaseViewController.swift */; };
 		AA37BBF721EEE965005A4042 /* constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA37BBF621EEE965005A4042 /* constants.swift */; };
 		AA3DD49121EB21110007244C /* PathBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA3DD48E21EB21110007244C /* PathBuilder.swift */; };
 		AA61974821E9BEB40069121A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA61974721E9BEB40069121A /* AppDelegate.swift */; };
@@ -29,7 +29,6 @@
 		AAB309AF220B4BDB002924FD /* IAPProduct.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAB309AE220B4BDB002924FD /* IAPProduct.swift */; };
 		AAB309B1220B4C4A002924FD /* IAPService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAB309B0220B4C4A002924FD /* IAPService.swift */; };
 		AAB309B3220B4D0C002924FD /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAB309B2220B4D0C002924FD /* StoreKit.framework */; };
-		AAD927C22205B2F7001C328F /* CustomDisplayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD927C12205B2F7001C328F /* CustomDisplayViewController.swift */; };
 		AAD927C42205CE79001C328F /* CustomButtonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD927C32205CE79001C328F /* CustomButtonViewController.swift */; };
 		AADBB643220C34710024AAC2 /* ThemeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AADBB642220C34710024AAC2 /* ThemeTableViewController.swift */; };
 		AADBB645220C3FE50024AAC2 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = AADBB644220C3FE50024AAC2 /* Theme.swift */; };
@@ -71,7 +70,7 @@
 		AA35D760220D57BD001C1F99 /* bullshit detectorTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "bullshit detectorTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA35D762220D57BD001C1F99 /* bullshit_detectorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = bullshit_detectorTests.swift; sourceTree = "<group>"; };
 		AA35D764220D57BD001C1F99 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		AA37BBF421EEE684005A4042 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		AA35D76A220D8466001C1F99 /* PurchaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseViewController.swift; sourceTree = "<group>"; };
 		AA37BBF621EEE965005A4042 /* constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = constants.swift; sourceTree = "<group>"; };
 		AA3DD48E21EB21110007244C /* PathBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PathBuilder.swift; sourceTree = "<group>"; };
 		AA61974421E9BEB40069121A /* bullshit detector.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "bullshit detector.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -93,7 +92,6 @@
 		AAB309AE220B4BDB002924FD /* IAPProduct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IAPProduct.swift; sourceTree = "<group>"; };
 		AAB309B0220B4C4A002924FD /* IAPService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IAPService.swift; sourceTree = "<group>"; };
 		AAB309B2220B4D0C002924FD /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
-		AAD927C12205B2F7001C328F /* CustomDisplayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomDisplayViewController.swift; sourceTree = "<group>"; };
 		AAD927C32205CE79001C328F /* CustomButtonViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButtonViewController.swift; sourceTree = "<group>"; };
 		AADBB642220C34710024AAC2 /* ThemeTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeTableViewController.swift; sourceTree = "<group>"; };
 		AADBB644220C3FE50024AAC2 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
@@ -162,7 +160,6 @@
 			children = (
 				AA61974721E9BEB40069121A /* AppDelegate.swift */,
 				AA61974921E9BEB40069121A /* BullshitViewController.swift */,
-				AA37BBF421EEE684005A4042 /* SettingsViewController.swift */,
 				AA61974B21E9BEB40069121A /* Main.storyboard */,
 				AA61974E21E9BEB60069121A /* Assets.xcassets */,
 				AA61975021E9BEB60069121A /* LaunchScreen.storyboard */,
@@ -170,7 +167,6 @@
 				AA61975921E9C5810069121A /* Display.swift */,
 				AA3DD48E21EB21110007244C /* PathBuilder.swift */,
 				AA37BBF621EEE965005A4042 /* constants.swift */,
-				AAD927C12205B2F7001C328F /* CustomDisplayViewController.swift */,
 				AAD927C32205CE79001C328F /* CustomButtonViewController.swift */,
 				AAA8FD12220A92DE00865236 /* NoSelectTextField.swift */,
 				AA7090FF220675C1002F06C6 /* Rubberstamp.swift */,
@@ -180,6 +176,7 @@
 				AADBB642220C34710024AAC2 /* ThemeTableViewController.swift */,
 				AADBB644220C3FE50024AAC2 /* Theme.swift */,
 				AADBB646220C479E0024AAC2 /* Model.swift */,
+				AA35D76A220D8466001C1F99 /* PurchaseViewController.swift */,
 			);
 			path = "bullshit detector";
 			sourceTree = "<group>";
@@ -352,6 +349,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AADBB647220C479E0024AAC2 /* Model.swift in Sources */,
+				AA35D76B220D8466001C1F99 /* PurchaseViewController.swift in Sources */,
 				AA61974A21E9BEB40069121A /* BullshitViewController.swift in Sources */,
 				AA61975A21E9C5810069121A /* Display.swift in Sources */,
 				AADBB643220C34710024AAC2 /* ThemeTableViewController.swift in Sources */,
@@ -362,9 +360,7 @@
 				AAB309AF220B4BDB002924FD /* IAPProduct.swift in Sources */,
 				AA61974821E9BEB40069121A /* AppDelegate.swift in Sources */,
 				AAD927C42205CE79001C328F /* CustomButtonViewController.swift in Sources */,
-				AAD927C22205B2F7001C328F /* CustomDisplayViewController.swift in Sources */,
 				AA3DD49121EB21110007244C /* PathBuilder.swift in Sources */,
-				AA37BBF521EEE684005A4042 /* SettingsViewController.swift in Sources */,
 				AADBB645220C3FE50024AAC2 /* Theme.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

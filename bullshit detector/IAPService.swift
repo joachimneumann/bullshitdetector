@@ -34,6 +34,17 @@ class IAPService: NSObject {
         print("restoring purchases")
         paymentQueue.restoreCompletedTransactions()
     }
+    
+    func priceStringForProduct(product: IAPProduct) -> String? {
+        guard let productToFindPriceOf = products.filter({ $0 .productIdentifier == product.rawValue}).first else { return "" }
+        let numberFormatter = NumberFormatter()
+        let price = productToFindPriceOf.price
+        let locale = productToFindPriceOf.priceLocale
+        numberFormatter.numberStyle = .currency
+        numberFormatter.locale = locale
+        return numberFormatter.string(from: price)
+    }
+    
 }
 
 extension IAPService: SKProductsRequestDelegate {
@@ -98,8 +109,8 @@ extension IAPService: SKPaymentTransactionObserver {
     }
 
     private func deliverPurchaseNotificationFor(identifier: String?) {
-        UserDefaults.standard.set(true, forKey: customisablePurchasedKey)
-        NotificationCenter.default.post(name: Notification.Name(customisablePurchasedKey), object: nil)
+        Model.shared.customizationHasBeenPurchased = true
+        NotificationCenter.default.post(name: Notification.Name(customizablePurchasedNotification), object: nil)
     }
 }
 

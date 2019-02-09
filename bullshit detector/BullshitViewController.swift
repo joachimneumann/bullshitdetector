@@ -58,16 +58,13 @@ class BullshitViewController: UIViewController, CAAnimationDelegate, UIGestureRe
         }
     }
     
-    
-    
 
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // TODO only if not purchased or even later
         IAPService.shared.getProducts()
-        let instructionsDisplayed = UserDefaults.standard.object(forKey: instructionsDisplayedKey) as? Bool ?? false
-        if instructionsDisplayed {
+        if Model.shared.instructionsHaveBeenDisplayed {
             instructionsImageView.isHidden = true
         }
         self.view.backgroundColor = displayBackgroundColor
@@ -171,7 +168,7 @@ class BullshitViewController: UIViewController, CAAnimationDelegate, UIGestureRe
     func newQuestion(truthIndex: CGFloat) {
         instructionsDisplayedCounter += 1
         if instructionsDisplayedCounter >= 2 {
-            UserDefaults.standard.set(true, forKey: instructionsDisplayedKey)
+            Model.shared.instructionsHaveBeenDisplayed = true
             instructionsImageView.isHidden = true
         }
 

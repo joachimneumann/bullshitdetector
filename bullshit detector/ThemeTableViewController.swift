@@ -14,6 +14,16 @@ class ThemeTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        #if targetEnvironment(simulator)
+            // simulator no in-app-purchase possible --> set as purchased
+            Model.shared.customizationHasBeenPurchased = true
+        #else
+        #endif
+        
+        // for Debugging: set purchased to false
+        // Model.shared.customizationHasBeenPurchased = false
+
 
         self.navigationController?.navigationBar.tintColor = UIColor.gray
         self.navigationController?.setNavigationBarHidden(false, animated: false)
@@ -30,12 +40,15 @@ class ThemeTableViewController: UITableViewController {
     // MARK: - Table view data source
 
     override func viewWillAppear(_ animated: Bool) {
+        self.tableView.reloadData()
         themeTableView.selectRow(at: IndexPath(row: Model.shared.themeIndex, section: 0), animated: true, scrollPosition: UITableView.ScrollPosition.none)
         
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         Model.shared.themeIndex = indexPath.row
+        tableView.reloadData()
+        tableView.selectRow(at: indexPath, animated: false, scrollPosition: .none)
     }
     
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
@@ -43,7 +56,11 @@ class ThemeTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, accessoryButtonTappedForRowWith indexPath: IndexPath) {
-        performSegue(withIdentifier: "displaySettingsSegue", sender: indexPath)
+        if Model.shared.theme(index: indexPath.row).readonly || Model.shared.customizationHasBeenPurchased {
+            performSegue(withIdentifier: "displaySettingsSegue", sender: indexPath)
+        } else {
+            performSegue(withIdentifier: "purchaseSegue", sender: indexPath)
+        }
     }
     
     
@@ -61,7 +78,19 @@ class ThemeTableViewController: UITableViewController {
 
         let cell = tableView.dequeueReusableCell(withIdentifier: "themeCell", for: indexPath)
         
-        cell.accessoryType = .detailButton
+        cell.textLabel?.textColor = UIColor.black
+        if !Model.shared.theme(index: indexPath.row).readonly {
+            if !Model.shared.customizationHasBeenPurchased {
+                cell.selectionStyle = .none;
+                cell.textLabel?.textColor = UIColor.lightGray
+            }
+        }
+
+        if indexPath.row == Model.shared.themeIndex {
+            cell.accessoryType = .detailButton
+        } else {
+            cell.accessoryType = .none
+        }
         
         cell.textLabel?.text = Model.shared.themeName(n: indexPath.row)
         return cell
@@ -106,7 +135,14 @@ class ThemeTableViewController: UITableViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "displaySettingsSegue" {
             if let indexPath = sender as? IndexPath {
-                if let destinationVC = segue.destination as? CustomDisplayViewController {
+                if let destinationVC = segue.destination as? CustomButtonViewController {
+                    destinationVC.theme = Model.shared.theme(index: indexPath.row)
+                }
+            }
+        }
+        if segue.identifier == "purchaseSegue" {
+            if let indexPath = sender as? IndexPath {
+                if let destinationVC = segue.destination as? PurchaseViewController {
                     destinationVC.theme = Model.shared.theme(index: indexPath.row)
                 }
             }
