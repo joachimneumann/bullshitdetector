@@ -43,12 +43,6 @@ class settingsViewController: UIViewController, UITableViewDelegate, UITableView
         }
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-//        themeTableView.reloadData()
-//        themeTableView.selectRow(at: IndexPath(row: Model.shared.themeIndex, section: 0), animated: true, scrollPosition: UITableView.ScrollPosition.none)
-//
-    }
-    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         Model.shared.themeIndex = indexPath.row
         tableView.reloadData()
@@ -79,7 +73,6 @@ class settingsViewController: UIViewController, UITableViewDelegate, UITableView
     
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        print("\(#function) --- section = \(indexPath.section), row = \(indexPath.row)")
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "themeCell", for: indexPath)
         

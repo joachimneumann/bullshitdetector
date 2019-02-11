@@ -13,17 +13,9 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="Rubberstamp" customModule="bullshit_detector" customModuleProvider="target">
             <connections>
                 <outlet property="contentView" destination="iN0-l3-epB" id="REd-7b-Q2g"/>
-                <outlet property="firstLineCenterConstraint" destination="vXi-hL-9w9" id="ISt-Ty-rht"/>
                 <outlet property="firstLineLabel" destination="diP-TJ-Dyn" id="fzf-L1-uTV"/>
-                <outlet property="firstLineLeadingConstraint" destination="ri1-ri-BIV" id="hDF-1d-Q8c"/>
-                <outlet property="firstLineTrailingConstraint" destination="qQB-Ya-cLx" id="BCd-8h-RRg"/>
-                <outlet property="secondLineCenterConstraint" destination="qz4-yk-Sro" id="WTX-4Q-AXN"/>
                 <outlet property="secondLineLabel" destination="yJD-6i-dtT" id="eGm-GA-ZJe"/>
-                <outlet property="secondLineLeadingConstraint" destination="n94-8A-mME" id="j6g-g5-loN"/>
-                <outlet property="secondLineTrailingConstraint" destination="qLE-Ev-CM5" id="Z1v-Or-WeR"/>
                 <outlet property="singleLineLabel" destination="dag-v4-4dJ" id="k2r-Mj-TJd"/>
-                <outlet property="singleLineLeadingConstraint" destination="2fX-2c-cOX" id="tMu-uP-h07"/>
-                <outlet property="singleLineTrailingConstraint" destination="OVE-4q-YFY" id="Ns3-lK-rT6"/>
                 <outlet property="stampLabelView" destination="YZB-at-gHe" id="RHL-yP-7RC"/>
                 <outlet property="stampLabelViewBottomConstraint" destination="stj-1D-d26" id="eyV-Iy-LpX"/>
                 <outlet property="stampLabelViewLeftConstraint" destination="3W0-uA-1e3" id="EqV-T3-GBv"/>
@@ -47,35 +39,36 @@
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YZB-at-gHe">
                             <rect key="frame" x="0.0" y="0.0" width="396" height="264"/>
                             <subviews>
+                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="GSc-Go-FU6">
+                                    <rect key="frame" x="0.0" y="0.0" width="396" height="264"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.20000000000000001" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="diP-TJ-Dyn">
+                                            <rect key="frame" x="0.0" y="0.0" width="396" height="132"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.20000000000000001" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yJD-6i-dtT">
+                                            <rect key="frame" x="0.0" y="132" width="396" height="132"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </stackView>
                                 <label autoresizesSubviews="NO" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bullshit" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dag-v4-4dJ">
-                                    <rect key="frame" x="20" y="95.5" width="356" height="73"/>
-                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="61"/>
-                                    <nil key="textColor"/>
-                                    <nil key="highlightedColor"/>
-                                </label>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="first line" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="diP-TJ-Dyn">
-                                    <rect key="frame" x="20" y="122" width="356" height="20.5"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                    <nil key="textColor"/>
-                                    <nil key="highlightedColor"/>
-                                </label>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="second line" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yJD-6i-dtT">
-                                    <rect key="frame" x="20" y="122" width="356" height="20.5"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <rect key="frame" x="0.0" y="-24" width="396" height="312"/>
+                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="261"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                             </subviews>
                             <constraints>
-                                <constraint firstItem="dag-v4-4dJ" firstAttribute="leading" secondItem="YZB-at-gHe" secondAttribute="leading" constant="20" id="2fX-2c-cOX"/>
+                                <constraint firstItem="dag-v4-4dJ" firstAttribute="leading" secondItem="YZB-at-gHe" secondAttribute="leading" id="2fX-2c-cOX"/>
+                                <constraint firstAttribute="trailing" secondItem="GSc-Go-FU6" secondAttribute="trailing" id="Bnx-jJ-gZH"/>
                                 <constraint firstItem="dag-v4-4dJ" firstAttribute="centerY" secondItem="YZB-at-gHe" secondAttribute="centerY" id="CbZ-UO-a9N"/>
-                                <constraint firstAttribute="trailing" secondItem="dag-v4-4dJ" secondAttribute="trailing" constant="20" id="OVE-4q-YFY"/>
-                                <constraint firstItem="yJD-6i-dtT" firstAttribute="leading" secondItem="YZB-at-gHe" secondAttribute="leading" constant="20" id="n94-8A-mME"/>
-                                <constraint firstAttribute="trailing" secondItem="yJD-6i-dtT" secondAttribute="trailing" constant="20" id="qLE-Ev-CM5"/>
-                                <constraint firstAttribute="trailing" secondItem="diP-TJ-Dyn" secondAttribute="trailing" constant="20" id="qQB-Ya-cLx"/>
-                                <constraint firstItem="yJD-6i-dtT" firstAttribute="centerY" secondItem="YZB-at-gHe" secondAttribute="centerY" id="qz4-yk-Sro"/>
-                                <constraint firstItem="diP-TJ-Dyn" firstAttribute="leading" secondItem="YZB-at-gHe" secondAttribute="leading" constant="20" id="ri1-ri-BIV"/>
-                                <constraint firstItem="diP-TJ-Dyn" firstAttribute="centerY" secondItem="YZB-at-gHe" secondAttribute="centerY" id="vXi-hL-9w9"/>
+                                <constraint firstAttribute="trailing" secondItem="dag-v4-4dJ" secondAttribute="trailing" id="OVE-4q-YFY"/>
+                                <constraint firstItem="GSc-Go-FU6" firstAttribute="top" secondItem="YZB-at-gHe" secondAttribute="top" id="m3O-AI-4bu"/>
+                                <constraint firstItem="GSc-Go-FU6" firstAttribute="leading" secondItem="YZB-at-gHe" secondAttribute="leading" id="rGk-ow-tv3"/>
+                                <constraint firstAttribute="bottom" secondItem="GSc-Go-FU6" secondAttribute="bottom" id="teG-ef-lJP"/>
                             </constraints>
                         </view>
                     </subviews>

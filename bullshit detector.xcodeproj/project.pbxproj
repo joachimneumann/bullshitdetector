@@ -126,10 +126,10 @@
 			isa = PBXGroup;
 			children = (
 				AA61974921E9BEB40069121A /* BullshitViewController.swift */,
-				AA35D76A220D8466001C1F99 /* PurchaseViewController.swift */,
 				AA25953F2211877100D78844 /* settingsViewController.swift */,
-				AA61975921E9C5810069121A /* Display.swift */,
 				AAD927C32205CE79001C328F /* CustomViewController.swift */,
+				AA35D76A220D8466001C1F99 /* PurchaseViewController.swift */,
+				AA61975921E9C5810069121A /* Display.swift */,
 				AAA8FD12220A92DE00865236 /* NoSelectTextField.swift */,
 				AA7090FF220675C1002F06C6 /* Rubberstamp.swift */,
 				AA70910222067AA1002F06C6 /* Rubberstamp.xib */,

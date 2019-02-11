@@ -27,6 +27,7 @@ class CustomViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var secondTextField: UITextField!
     
     private var truthIndex: Int = 0
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -80,27 +81,8 @@ class CustomViewController: UIViewController, UITextFieldDelegate {
         display.newTargetValue(targetValue: 1.0)
         stampPreview.setTextArray(texts: [firstTextField.text!, secondTextField.text!])
     }
-    
-    func displayTextFrame() {
-//        var frame = display.titleTextFrame!
-//        frame.origin.x = display.titleTextFrame!.origin.x + display.frame.origin.x
-//        frame.origin.y = display.titleTextFrame!.origin.y + display.frame.origin.y - 20
-//        frame.size.height = 5
-//        frame.size.width = 5
-//        displayTextField.frame = frame
-//        displayTextField.font  = display.titleTextFont!
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        displayTextFrame()
-    }
-    
-//    override func viewDidLayoutSubviews() {
-//        super.viewDidLayoutSubviews()
-//        displayTextFrame()
-//    }
-    
+
+
     @objc func handleButtonTap(_ sender: UITapGestureRecognizer) {
         let pos = sender.location(in: theButton).x / theButton.frame.size.width
         print("pos \(pos)")

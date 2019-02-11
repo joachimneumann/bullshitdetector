@@ -135,7 +135,7 @@ class Display: UIView, CAAnimationDelegate {
         needleShapeLayer!.path = needlePath?.cgPath
         needleShapeLayer!.strokeColor = displayRed.cgColor
         needleShapeLayer!.fillColor = nil
-        needleShapeLayer!.lineWidth = 10
+        needleShapeLayer!.lineWidth = bounds.height / 30
         needleShapeLayer!.lineCap = .round
         needleShapeLayer?.position =  displayCenter()
         let x = needlePath!.cgPath.boundingBox
