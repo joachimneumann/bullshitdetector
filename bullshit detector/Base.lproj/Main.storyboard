@@ -469,10 +469,10 @@
             </objects>
             <point key="canvasLocation" x="266" y="134"/>
         </scene>
-        <!--View Controller-->
+        <!--Dummy View Controller-->
         <scene sceneID="Fy6-Wh-mLK">
             <objects>
-                <viewController id="sau-U8-oN4" sceneMemberID="viewController">
+                <viewController id="sau-U8-oN4" customClass="dummyViewController" customModule="bullshit_detector" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="HuH-IK-iMg">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -491,13 +491,25 @@
                                         <integer key="value" value="3"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="number" keyPath="lineWidth">
-                                        <real key="value" value="7"/>
+                                        <real key="value" value="9"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
                                         <color key="value" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="value">
+                                        <real key="value" value="0.29999999999999999"/>
+                                    </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="k0q-XP-GVi">
+                                <rect key="frame" x="184" y="368" width="46" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="redraw:" destination="sau-U8-oN4" eventType="touchUpInside" id="OaR-wl-c9Z"/>
+                                    <action selector="redraw:" destination="kzB-K0-3Fv" eventType="touchUpInside" id="sPR-mO-H6p"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -507,8 +519,12 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="SpF-BZ-3Z8"/>
                     </view>
+                    <connections>
+                        <outlet property="display" destination="9A7-Le-4Gr" id="Cxv-sf-een"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lTI-Bv-Rgl" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="kzB-K0-3Fv" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="265.21739130434787" y="794.02173913043487"/>
         </scene>

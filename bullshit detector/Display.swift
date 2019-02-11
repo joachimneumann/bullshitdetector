@@ -11,11 +11,20 @@ import UIKit
 @IBDesignable
 class Display: UIView, CAAnimationDelegate {
 
-    private var displayPointer: UIView!
-    private let displayPointerFrameWidth: CGFloat = 6
-    private var displayStartAngle = 0.0
-    private var displayEndAngle = 0.0
     private var _lineWidth: CGFloat = 7
+
+    private var needleValue: Double = 0.5
+    private var needleShapeLayer: CAShapeLayer?
+    
+    @IBInspectable var value: Double {
+        get { return needleValue }
+        set {
+            var new = newValue
+            if new < 0.0 { new = 0 }
+            if new > 1.0 { new = 1 }
+            drawNeedle(newValue: new)
+        }
+    }
 
     @IBInspectable
     var displayRed: UIColor = bullshitRed
@@ -43,14 +52,71 @@ class Display: UIView, CAAnimationDelegate {
         set { self.layer.cornerRadius = CGFloat(newValue) }
     }
 
-    private func addLineSublayer(path: UIBezierPath, color: UIColor, lineWidth1: Bool) {
-        let shapeLayer = CAShapeLayer()
-        shapeLayer.path = path.cgPath
-        shapeLayer.strokeColor = color.cgColor
-        shapeLayer.fillColor = nil
-        shapeLayer.lineWidth = lineWidth1 ? 1 : _lineWidth
-        self.layer.addSublayer(shapeLayer)
+
+    override init(frame: CGRect) {
+        super.init(frame: frame)
     }
+
+
+    required init(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)!
+    }
+    
+    override func layoutSubviews() {
+        drawBackground()
+        drawNeedle(newValue: needleValue)
+    }
+
+    func startAngle() -> CGFloat {
+        return CGFloat(.pi*2*(0.5+0.11))
+    }
+    func endAngle() -> CGFloat {
+        return CGFloat(.pi*2*(1.0-0.11))
+    }
+
+    func displayCenter() -> CGPoint {
+        return CGPoint(x: self.bounds.midX, y: self.bounds.origin.y + 1.2 * self.bounds.size.height)
+    }
+    func outerRadius() -> CGFloat {
+        return radius() * 1.12
+    }
+    private func radius() -> CGFloat {
+        return self.frame.height * 0.95
+    }
+
+    func drawNeedle(newValue: Double) {
+        let start = UIBezierPath(arcCenter: displayCenter(), radius: outerRadius(), startAngle: startAngle(), endAngle: startAngle()+(endAngle()-startAngle())*CGFloat(needleValue), clockwise: true).currentPoint
+        let end = displayCenter()
+        
+        let needlePath = UIBezierPath()
+        needlePath.move(to: start)
+        needlePath.addLine(to: end)
+
+        needleShapeLayer?.removeFromSuperlayer()
+        needleShapeLayer = CAShapeLayer()
+        needleShapeLayer!.path = needlePath.cgPath
+        needleShapeLayer!.strokeColor = displayRed.cgColor
+        needleShapeLayer!.fillColor = nil
+        needleShapeLayer!.lineWidth = 10
+        needleShapeLayer!.lineCap = .round
+        
+//        needleShapeLayer!.removeAllAnimations()
+        let circularAnimation = CABasicAnimation(keyPath: "transform.rotation")
+        circularAnimation.delegate = self
+        circularAnimation.fromValue = startAngle() - 1.5 * .pi
+        circularAnimation.toValue = endAngle() - 1.5 * .pi
+        circularAnimation.duration = 2
+        circularAnimation.repeatCount = 1
+        circularAnimation.fillMode = CAMediaTimingFillMode.forwards;
+        circularAnimation.isRemovedOnCompletion = false
+        let x = needlePath.cgPath.boundingBox
+        needleShapeLayer!.bounds = x
+        needleShapeLayer?.position =  displayCenter()
+        needleShapeLayer!.anchorPoint = CGPoint(x: 0.5, y: 1.0)
+        needleShapeLayer!.add(circularAnimation, forKey: "dummykey")
+        layer.addSublayer(needleShapeLayer!)
+        layer.masksToBounds = true
+     }
     
     private func drawBackground() {
         layer.sublayers?.forEach { $0.removeFromSuperlayer() }
@@ -92,50 +158,16 @@ class Display: UIView, CAAnimationDelegate {
         }
         for factor in [0.0, 1.0] {
             let a = UIBezierPath(arcCenter: displayCenter(), radius: outerRadius(), startAngle: startAngle(), endAngle: startAngle()+(endAngle()-startAngle())*CGFloat(factor), clockwise: true).currentPoint
-            let b = UIBezierPath(arcCenter: displayCenter(), radius: 0, startAngle: startAngle(), endAngle: startAngle()+(endAngle()-startAngle())*CGFloat(factor), clockwise: true).currentPoint
+            let b = displayCenter()
             drawLineFrom(start: a, end: b, color: displayRed)
         }
     }
     
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        backgroundColor = UIColor.green
-        drawBackground()
-    }
-
-
-    required init(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)!
-        self.backgroundColor = UIColor.yellow
-        drawBackground()
-    }
-    
-    override func layoutSubviews() {
-        drawBackground()
-    }
-
-    func startAngle() -> CGFloat {
-        return CGFloat(.pi*2*(0.5+0.11))
-    }
-    func endAngle() -> CGFloat {
-        return CGFloat(.pi*2*(1.0-0.11))
-    }
-
-    func displayCenter() -> CGPoint {
-        return CGPoint(x: self.bounds.midX, y: self.bounds.origin.y + 1.2 * self.bounds.size.height)
-    }
-    func outerRadius() -> CGFloat {
-        return radius() * 1.12
-    }
-    private func radius() -> CGFloat {
-        return self.frame.height * 0.95
-    }
-
     func drawLineFrom(start: CGPoint, end:CGPoint, color: UIColor) {
         let path = UIBezierPath()
         path.move(to: start)
         path.addLine(to: end)
-
+        
         let shapeLayer = CAShapeLayer()
         shapeLayer.path = path.cgPath
         shapeLayer.strokeColor = color.cgColor
@@ -144,15 +176,24 @@ class Display: UIView, CAAnimationDelegate {
         layer.addSublayer(shapeLayer)
         layer.masksToBounds = true
     }
+
+    private func addLineSublayer(path: UIBezierPath, color: UIColor, lineWidth1: Bool) {
+        let shapeLayer = CAShapeLayer()
+        shapeLayer.path = path.cgPath
+        shapeLayer.strokeColor = color.cgColor
+        shapeLayer.fillColor = nil
+        shapeLayer.lineWidth = lineWidth1 ? 1 : _lineWidth
+        self.layer.addSublayer(shapeLayer)
+    }
     
-    
-//    override func draw(_ rect: CGRect) {
-//    }
 }
 
 private extension CGFloat {
     var rad: CGFloat { return self * CGFloat.pi / 180.0 }
 }
+
+//    override func draw(_ rect: CGRect) {
+//    }
 
 
 //    var value: Double {
@@ -205,11 +246,11 @@ private extension CGFloat {
 //        value = 0.2
 
 
-//    func setAnchorPoint(anchorPoint: CGPoint, forView view: UIView) {
-//        var newPoint = CGPoint(x: view.bounds.size.width * anchorPoint.x, y: view.bounds.size.height * anchorPoint.y)
-//        var oldPoint = CGPoint(x: view.bounds.size.width * view.layer.anchorPoint.x, y: view.bounds.size.height * view.layer.anchorPoint.y)
+//    func setAnchorPoint(anchorPoint: CGPoint, layer: CAShapeLayer) {
+//        var newPoint = CGPoint(x: layer.bounds.size.width * anchorPoint.x, y: layer.bounds.size.height * anchorPoint.y)
+//        var oldPoint = CGPoint(x: layer.bounds.size.width * view.layer.anchorPoint.x, y: view.bounds.size.height * view.layer.anchorPoint.y)
 //
-//        newPoint = __CGPointApplyAffineTransform(newPoint, view.transform)
+//        newPoint = __CGPointApplyAffineTransform(newPoint, layer.transform)
 //        oldPoint = __CGPointApplyAffineTransform(oldPoint, view.transform)
 //
 //        var position = view.layer.position
@@ -219,7 +260,7 @@ private extension CGFloat {
 //        position.y -= oldPoint.y
 //        position.y += newPoint.y
 //
-//        view.layer.position = position
-//        view.layer.anchorPoint = anchorPoint
+//        layer.position = position
+//        layer.anchorPoint = anchorPoint
 //    }
 //

@@ -29,6 +29,7 @@
 		AAB309AF220B4BDB002924FD /* IAPProduct.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAB309AE220B4BDB002924FD /* IAPProduct.swift */; };
 		AAB309B1220B4C4A002924FD /* IAPService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAB309B0220B4C4A002924FD /* IAPService.swift */; };
 		AAB309B3220B4D0C002924FD /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAB309B2220B4D0C002924FD /* StoreKit.framework */; };
+		AAD797AA22111F0400D887BA /* dummyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD797A922111F0400D887BA /* dummyViewController.swift */; };
 		AAD927C42205CE79001C328F /* CustomButtonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD927C32205CE79001C328F /* CustomButtonViewController.swift */; };
 		AADBB643220C34710024AAC2 /* ThemeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AADBB642220C34710024AAC2 /* ThemeTableViewController.swift */; };
 		AADBB645220C3FE50024AAC2 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = AADBB644220C3FE50024AAC2 /* Theme.swift */; };
@@ -92,6 +93,7 @@
 		AAB309AE220B4BDB002924FD /* IAPProduct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IAPProduct.swift; sourceTree = "<group>"; };
 		AAB309B0220B4C4A002924FD /* IAPService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IAPService.swift; sourceTree = "<group>"; };
 		AAB309B2220B4D0C002924FD /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		AAD797A922111F0400D887BA /* dummyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = dummyViewController.swift; sourceTree = "<group>"; };
 		AAD927C32205CE79001C328F /* CustomButtonViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButtonViewController.swift; sourceTree = "<group>"; };
 		AADBB642220C34710024AAC2 /* ThemeTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeTableViewController.swift; sourceTree = "<group>"; };
 		AADBB644220C3FE50024AAC2 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
@@ -137,6 +139,7 @@
 		AA61973B21E9BEB40069121A = {
 			isa = PBXGroup;
 			children = (
+				AAD797A922111F0400D887BA /* dummyViewController.swift */,
 				AA61974621E9BEB40069121A /* bullshit detector */,
 				AAA9256522002A6400AB15B7 /* Truth-O-Meter Widget */,
 				AA35D761220D57BD001C1F99 /* bullshit detectorTests */,
@@ -357,6 +360,7 @@
 				AA37BBF721EEE965005A4042 /* constants.swift in Sources */,
 				AAA8FD13220A92DE00865236 /* NoSelectTextField.swift in Sources */,
 				AA709100220675C1002F06C6 /* Rubberstamp.swift in Sources */,
+				AAD797AA22111F0400D887BA /* dummyViewController.swift in Sources */,
 				AAB309AF220B4BDB002924FD /* IAPProduct.swift in Sources */,
 				AA61974821E9BEB40069121A /* AppDelegate.swift in Sources */,
 				AAD927C42205CE79001C328F /* CustomButtonViewController.swift in Sources */,
