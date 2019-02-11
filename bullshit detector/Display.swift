@@ -14,44 +14,57 @@ class Display: UIView, CAAnimationDelegate {
 
     private var _lineWidth: CGFloat = 7
 
-    private var lastNeedleValue: Double = 0.5
     private var needleShapeLayer: CAShapeLayer?
     private var needlePath: UIBezierPath? = nil
     private let circularAnimation = CABasicAnimation(keyPath: "transform.rotation")
     private var noiseTimer: Timer? = nil
     private let distribution = GKGaussianDistribution(lowestValue: -100, highestValue: 100)
-    private var targetValue = 0.3
+    private var targetValue: Double = 0.5
+    private var lastNeedleValue: Double = 0.5
 
-    @IBInspectable var value: Double = 0.5 {
-        didSet {
-            targetValue = value
+    // main public function
+    func newTargetValue(targetValue: Double) {
+        if noise {
+            self.targetValue = targetValue
+        } else {
+            setNeedleAngle(to: targetValue)
         }
     }
-
-    @IBInspectable var noise: Bool = false
-
-    @IBInspectable
-    var displayRed: UIColor = bullshitRed
-
-    @IBInspectable
-    var displayGray: UIColor = UIColor(red:  88/255.0, green: 89/255.0, blue: 82/255.0, alpha: 1.0)
     
-    @IBInspectable var borderWidth: Int {
+    @IBInspectable
+    private var value: Double = 0.5 {
+        didSet { targetValue = value }
+    }
+
+    @IBInspectable
+    private var noise: Bool = false
+
+    @IBInspectable
+    private var displayRed: UIColor = bullshitRed
+
+    @IBInspectable
+    private var displayGray: UIColor = UIColor(red:  88/255.0, green: 89/255.0, blue: 82/255.0, alpha: 1.0)
+    
+    @IBInspectable
+    private var borderWidth: Int {
         get { return Int(self.layer.borderWidth) }
         set { self.layer.borderWidth = CGFloat(newValue) }
     }
     
-    @IBInspectable var lineWidth: CGFloat {
+    @IBInspectable
+    private var lineWidth: CGFloat {
         get { return _lineWidth }
         set { _lineWidth = newValue }
     }
     
-    @IBInspectable var borderColor: UIColor? {
+    @IBInspectable
+    private var borderColor: UIColor? {
         get { return UIColor(cgColor: self.layer.borderColor!) }
         set { self.layer.borderColor = newValue?.cgColor }
     }
     
-    @IBInspectable var cornerRadius: Double {
+    @IBInspectable
+    private var cornerRadius: Double {
         get { return Double(self.layer.cornerRadius) }
         set { self.layer.cornerRadius = CGFloat(newValue) }
     }
@@ -74,7 +87,7 @@ class Display: UIView, CAAnimationDelegate {
         }
     }
     
-    @objc func applyNoise() {
+    @objc private func applyNoise() {
         if noise {
             let n = distribution.nextInt()
             var newValue = targetValue + 0.001 * Double(n)
@@ -131,13 +144,7 @@ class Display: UIView, CAAnimationDelegate {
         setNeedleAngle(to: 0.5)
     }
     
-    func newTargetValue(targetValue: Double) {
-        if noise {
-            self.targetValue = targetValue
-        } else {
-            setNeedleAngle(to: targetValue)
-        }
-    }
+
     
     private func setNeedleAngle(to: Double) {
         if needlePath != nil {

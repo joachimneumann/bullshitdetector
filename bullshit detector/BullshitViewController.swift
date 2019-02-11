@@ -12,7 +12,6 @@ import GameplayKit
 class BullshitViewController: UIViewController, CAAnimationDelegate, UIGestureRecognizerDelegate {
 
     @IBOutlet weak var coverView: UIView!
-    @IBOutlet weak var displayPointer: UIView!
     @IBOutlet weak var display: Display!
     @IBOutlet weak var analyseButton: UIButton!
     @IBOutlet weak var rubberstamp: Rubberstamp!
@@ -26,39 +25,7 @@ class BullshitViewController: UIViewController, CAAnimationDelegate, UIGestureRe
     
     
     var instructionsDisplayedCounter = 0
-    let random = GKRandomSource()
-    let distribution = GKGaussianDistribution(lowestValue: -100, highestValue: 100)
-    var noiseTimer: Timer!
-    var targetValue: Double = 0.3
-    let displayPointerFrameWidth: CGFloat = 6
-    var displayStartAngle = 0.0
-    var displayEndAngle = 0.0
-
-    var value: Double {
-        get {
-            return 0
-        }
-        set(newValue) {
-            var oldAngle = displayStartAngle
-            if let currentAngle = displayPointer.layer.presentation()?.value(forKeyPath: "transform.rotation") as? Double {
-                oldAngle = currentAngle
-            }
-            displayPointer.layer.removeAllAnimations()
-            let circularAnimation = CABasicAnimation(keyPath: "transform.rotation")
-            circularAnimation.delegate = self
-            let startAngle = oldAngle
-            let endAngle = displayStartAngle + newValue * (displayEndAngle-displayStartAngle)
-            circularAnimation.fromValue = startAngle
-            circularAnimation.toValue = endAngle
-            circularAnimation.duration = 0.2
-            circularAnimation.repeatCount = 1
-            circularAnimation.fillMode = CAMediaTimingFillMode.forwards;
-            circularAnimation.isRemovedOnCompletion = false
-            displayPointer.layer.add(circularAnimation, forKey: "dummykey")
-        }
-    }
-    
-
+    var displayTargetValue = 0.5
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -67,13 +34,12 @@ class BullshitViewController: UIViewController, CAAnimationDelegate, UIGestureRe
         if Model.shared.instructionsHaveBeenDisplayed {
             instructionsImageView.isHidden = true
         }
-        self.view.backgroundColor = displayBackgroundColor
+//        self.view.backgroundColor = displayBackgroundColor
         
         templateImageView.alpha = 0.2
         rubberstamp.isHidden = true
         templateImageView.isHidden = false
         coverView.backgroundColor = UIColor.white
-        noiseTimer = Timer.scheduledTimer(timeInterval: 0.15, target: self, selector: #selector(noise), userInfo: nil, repeats: true)
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(self.handleButtonTap(_:)))
         analyseButton.addGestureRecognizer(tap)
@@ -88,7 +54,6 @@ class BullshitViewController: UIViewController, CAAnimationDelegate, UIGestureRe
         rubberstamp.isUserInteractionEnabled = true
         analyseButton.layer.cornerRadius = 10
         analyseButton.backgroundColor = bullshitRed
-        displayPointer.layer.cornerRadius = displayPointerFrameWidth/2;
         
         self.navigationController?.setNavigationBarHidden(true, animated: false)
         reset()
@@ -96,7 +61,6 @@ class BullshitViewController: UIViewController, CAAnimationDelegate, UIGestureRe
     
     
     override func viewWillAppear(_ animated: Bool) {
-        targetValue = 0.5
         print("view viewWillAppear")
         super.viewWillAppear(animated)
         self.navigationController?.setNavigationBarHidden(true, animated: false)
@@ -109,48 +73,12 @@ class BullshitViewController: UIViewController, CAAnimationDelegate, UIGestureRe
         analyseButton.setTitle(theme.buttonText, for: .normal)
     }
     
-    func setAnchorPoint(anchorPoint: CGPoint, forView view: UIView) {
-        var newPoint = CGPoint(x: view.bounds.size.width * anchorPoint.x, y: view.bounds.size.height * anchorPoint.y)
-        var oldPoint = CGPoint(x: view.bounds.size.width * view.layer.anchorPoint.x, y: view.bounds.size.height * view.layer.anchorPoint.y)
-        
-        newPoint = __CGPointApplyAffineTransform(newPoint, view.transform)
-        oldPoint = __CGPointApplyAffineTransform(oldPoint, view.transform)
-        
-        var position = view.layer.position
-        position.x -= oldPoint.x
-        position.x += newPoint.x
-        
-        position.y -= oldPoint.y
-        position.y += newPoint.y
-        
-        view.layer.position = position
-        view.layer.anchorPoint = anchorPoint
-    }
     
     override var prefersStatusBarHidden: Bool { return true }
     
     override func viewDidLayoutSubviews() {
-        displayLabel.font = UIFont(name: displayLabel.font!.fontName, size: display.frame.size.height*0.1)
-        displayLabelConstraint.constant = display.frame.size.height * 0.8 -  displayLabel.frame.size.height * 0.5
-        var displayPointerFrame: CGRect
-//        if #available(iOS 11.0, *) {
-//            displayPointerFrame = CGRect(
-//                x: display.pointerCenter().x - displayPointerFrameWidth / 2.0,
-//                y: display.pointerCenter().y - display.maxRadius() + self.view.safeAreaInsets.top,
-//                width: displayPointerFrameWidth,
-//                height: display.maxRadius())
-//        } else {
-//            displayPointerFrame = CGRect(
-//                x: display.pointerCenter().x - displayPointerFrameWidth / 2.0,
-//                y: display.pointerCenter().y - display.maxRadius(),
-//                width: displayPointerFrameWidth,
-//                height: display.maxRadius())
-//        }
-//        displayPointer.frame = displayPointerFrame
-//        setAnchorPoint(anchorPoint: CGPoint(x: 0.5, y: 1.0), forView: displayPointer)
-//        displayStartAngle = Double(display.startAngle()) - 1.5 * .pi
-//        displayEndAngle = Double(display.endAngle())   - 1.5 * .pi
-        value = targetValue
+        displayLabel.font = UIFont(name: displayLabel.font!.fontName, size: display.frame.size.height*0.14)
+//        displayLabelConstraint.constant = display.frame.size.height * 0.8 -  displayLabel.frame.size.height * 0.5
     }
     
     @objc func handleButtonTapRight(_ sender: UITapGestureRecognizer) {
@@ -183,16 +111,20 @@ class BullshitViewController: UIViewController, CAAnimationDelegate, UIGestureRe
         
         // initially move to the center,
         // but a bit on the "wrong" side
-        targetValue = 0.5 - 0.2 * (Double(truthIndex)-0.5)
+        displayTargetValue = 0.5 - 0.2 * (Double(truthIndex)-0.5)
+        display.newTargetValue(targetValue: displayTargetValue)
         let theme = Model.shared.theme()
         DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-            self.targetValue = self.targetValue + 0.3*(Double(truthIndex)-self.targetValue)
+            self.displayTargetValue = self.displayTargetValue + 0.3*(Double(truthIndex)-self.displayTargetValue)
+            self.display.newTargetValue(targetValue: self.displayTargetValue)
         }
         DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
-            self.targetValue = self.targetValue + 0.6*(Double(truthIndex)-self.targetValue)
+            self.displayTargetValue = self.displayTargetValue + 0.6*(Double(truthIndex)-self.displayTargetValue)
+            self.display.newTargetValue(targetValue: self.displayTargetValue)
         }
         DispatchQueue.main.asyncAfter(deadline: .now() + 4) {
-            self.targetValue = Double(truthIndex)
+            self.displayTargetValue = Double(truthIndex)
+            self.display.newTargetValue(targetValue: self.displayTargetValue)
             var text1: String = ""
             var text2: String = ""
             if truthIndex < 0.2 {
@@ -229,19 +161,12 @@ class BullshitViewController: UIViewController, CAAnimationDelegate, UIGestureRe
         self.templateImageView.isHidden = false
         rubberstamp.isHidden = true
         templateImageView.alpha = 0.2
-        targetValue = 0.3
+        displayTargetValue = 0.3
+        display.newTargetValue(targetValue: displayTargetValue)
     }
     
     @objc func handleImageTap(_ sender: UITapGestureRecognizer) {
         reset()
-    }
-
-    @objc func noise() {
-        let n = distribution.nextInt()
-        var newValue = targetValue + 0.001 * Double(n)
-        if newValue < -0.02 { newValue = -0.02 } // allow a bit more than 100% bullshit
-        if newValue > 1.0 { newValue = 1.0 }
-        value = newValue
     }
 
 }
