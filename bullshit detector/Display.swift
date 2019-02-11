@@ -13,16 +13,14 @@ class Display: UIView, CAAnimationDelegate {
 
     private var _lineWidth: CGFloat = 7
 
-    private var needleValue: Double = 0.5
+    private var lastNeedleValue: Double = 0.5
     private var needleShapeLayer: CAShapeLayer?
-    
-    @IBInspectable var value: Double {
-        get { return needleValue }
-        set {
-            var new = newValue
-            if new < 0.0 { new = 0 }
-            if new > 1.0 { new = 1 }
-            drawNeedle(newValue: new)
+    private var needlePath: UIBezierPath? = nil
+    private let circularAnimation = CABasicAnimation(keyPath: "transform.rotation")
+
+    @IBInspectable var value: Double = 0.5 {
+        didSet {
+            rotateNeedle(to: value)
         }
     }
 
@@ -64,58 +62,70 @@ class Display: UIView, CAAnimationDelegate {
     
     override func layoutSubviews() {
         drawBackground()
-        drawNeedle(newValue: needleValue)
+        drawVerticalNeedle()
     }
+    
 
-    func startAngle() -> CGFloat {
+    private func startAngle() -> CGFloat {
         return CGFloat(.pi*2*(0.5+0.11))
     }
-    func endAngle() -> CGFloat {
+    private func endAngle() -> CGFloat {
         return CGFloat(.pi*2*(1.0-0.11))
     }
 
-    func displayCenter() -> CGPoint {
+    private func displayCenter() -> CGPoint {
         return CGPoint(x: self.bounds.midX, y: self.bounds.origin.y + 1.2 * self.bounds.size.height)
     }
-    func outerRadius() -> CGFloat {
+    private func outerRadius() -> CGFloat {
         return radius() * 1.12
     }
     private func radius() -> CGFloat {
         return self.frame.height * 0.95
     }
 
-    func drawNeedle(newValue: Double) {
-        let start = UIBezierPath(arcCenter: displayCenter(), radius: outerRadius(), startAngle: startAngle(), endAngle: startAngle()+(endAngle()-startAngle())*CGFloat(needleValue), clockwise: true).currentPoint
+    private func drawVerticalNeedle() {
+        let centerAngle = startAngle()+(endAngle()-startAngle())*CGFloat(0.5)
+        let start = UIBezierPath(arcCenter: displayCenter(), radius: outerRadius(), startAngle: startAngle(), endAngle: centerAngle, clockwise: true).currentPoint
         let end = displayCenter()
         
-        let needlePath = UIBezierPath()
-        needlePath.move(to: start)
-        needlePath.addLine(to: end)
-
+        needlePath = UIBezierPath()
+        needlePath?.move(to: start)
+        needlePath?.addLine(to: end)
         needleShapeLayer?.removeFromSuperlayer()
         needleShapeLayer = CAShapeLayer()
-        needleShapeLayer!.path = needlePath.cgPath
+        needleShapeLayer!.path = needlePath?.cgPath
         needleShapeLayer!.strokeColor = displayRed.cgColor
         needleShapeLayer!.fillColor = nil
         needleShapeLayer!.lineWidth = 10
         needleShapeLayer!.lineCap = .round
-        
-//        needleShapeLayer!.removeAllAnimations()
-        let circularAnimation = CABasicAnimation(keyPath: "transform.rotation")
-        circularAnimation.delegate = self
-        circularAnimation.fromValue = startAngle() - 1.5 * .pi
-        circularAnimation.toValue = endAngle() - 1.5 * .pi
-        circularAnimation.duration = 2
-        circularAnimation.repeatCount = 1
-        circularAnimation.fillMode = CAMediaTimingFillMode.forwards;
-        circularAnimation.isRemovedOnCompletion = false
-        let x = needlePath.cgPath.boundingBox
-        needleShapeLayer!.bounds = x
         needleShapeLayer?.position =  displayCenter()
+        let x = needlePath!.cgPath.boundingBox
+        needleShapeLayer!.bounds = x
         needleShapeLayer!.anchorPoint = CGPoint(x: 0.5, y: 1.0)
-        needleShapeLayer!.add(circularAnimation, forKey: "dummykey")
         layer.addSublayer(needleShapeLayer!)
-        layer.masksToBounds = true
+        
+        rotateNeedle(to: 0.5)
+    }
+    
+    func rotateNeedle(to: Double) {
+        var target = to
+        if target < 0.0 { target = 0.0 }
+        if target > 1.0 { target = 1.0 }
+        if needlePath != nil {
+            //        needleShapeLayer!.removeAllAnimations()
+            circularAnimation.delegate = self
+            let from = startAngle() + (endAngle() - startAngle()) * CGFloat(lastNeedleValue) - 1.5 * .pi
+            let to = startAngle() + (endAngle() - startAngle()) * CGFloat(target) - 1.5 * .pi
+            circularAnimation.fromValue = from // startAngle() - 1.5 * .pi
+            circularAnimation.toValue = to//endAngle() - 1.5 * .pi
+            circularAnimation.duration = 2
+            circularAnimation.repeatCount = 1
+            circularAnimation.fillMode = CAMediaTimingFillMode.forwards;
+            circularAnimation.isRemovedOnCompletion = false
+            needleShapeLayer!.add(circularAnimation, forKey: "dummykey")
+            layer.masksToBounds = true
+        }
+        lastNeedleValue = target
      }
     
     private func drawBackground() {
@@ -163,7 +173,7 @@ class Display: UIView, CAAnimationDelegate {
         }
     }
     
-    func drawLineFrom(start: CGPoint, end:CGPoint, color: UIColor) {
+    private func drawLineFrom(start: CGPoint, end:CGPoint, color: UIColor) {
         let path = UIBezierPath()
         path.move(to: start)
         path.addLine(to: end)

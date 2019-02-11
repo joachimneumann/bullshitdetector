@@ -497,7 +497,7 @@
                                         <color key="value" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="number" keyPath="value">
-                                        <real key="value" value="0.29999999999999999"/>
+                                        <real key="value" value="0.69999999999999996"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
@@ -508,6 +508,22 @@
                                 <connections>
                                     <action selector="redraw:" destination="sau-U8-oN4" eventType="touchUpInside" id="OaR-wl-c9Z"/>
                                     <action selector="redraw:" destination="kzB-K0-3Fv" eventType="touchUpInside" id="sPR-mO-H6p"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TBX-Cr-zMZ">
+                                <rect key="frame" x="184" y="406" width="46" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="xx:" destination="sau-U8-oN4" eventType="touchUpInside" id="xSo-YU-miW"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JHD-Vk-DlZ">
+                                <rect key="frame" x="184" y="444" width="46" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="xxx:" destination="sau-U8-oN4" eventType="touchUpInside" id="wZR-KQ-rdb"/>
                                 </connections>
                             </button>
                         </subviews>
