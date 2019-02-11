@@ -18,13 +18,13 @@ class dummyViewController: UIViewController {
     }
     
     @IBAction func redraw(_ sender: Any) {
-        display.rotateNeedle(to: 0.0)
+        display.newTargetValue(targetValue: 0.0)
     }
 
     @IBAction func xx(_ sender: Any) {
-        display.rotateNeedle(to: 0.5)
+        display.newTargetValue(targetValue: 0.5)
     }
     @IBAction func xxx(_ sender: Any) {
-        display.rotateNeedle(to: 1.0)
+        display.newTargetValue(targetValue: 1.0)
     }
 }

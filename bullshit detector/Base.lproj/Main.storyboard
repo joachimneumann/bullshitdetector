@@ -499,6 +499,7 @@
                                     <userDefinedRuntimeAttribute type="number" keyPath="value">
                                         <real key="value" value="0.69999999999999996"/>
                                     </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="noise" value="YES"/>
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="k0q-XP-GVi">

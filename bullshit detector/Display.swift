@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import GameplayKit
 
 @IBDesignable
 class Display: UIView, CAAnimationDelegate {
@@ -17,12 +18,17 @@ class Display: UIView, CAAnimationDelegate {
     private var needleShapeLayer: CAShapeLayer?
     private var needlePath: UIBezierPath? = nil
     private let circularAnimation = CABasicAnimation(keyPath: "transform.rotation")
+    private var noiseTimer: Timer? = nil
+    private let distribution = GKGaussianDistribution(lowestValue: -100, highestValue: 100)
+    private var targetValue = 0.3
 
     @IBInspectable var value: Double = 0.5 {
         didSet {
-            rotateNeedle(to: value)
+            targetValue = value
         }
     }
+
+    @IBInspectable var noise: Bool = false
 
     @IBInspectable
     var displayRed: UIColor = bullshitRed
@@ -63,9 +69,21 @@ class Display: UIView, CAAnimationDelegate {
     override func layoutSubviews() {
         drawBackground()
         drawVerticalNeedle()
+        if noiseTimer == nil {
+            noiseTimer = Timer.scheduledTimer(timeInterval: 0.15, target: self, selector: #selector(applyNoise), userInfo: nil, repeats: true)
+        }
     }
     
-
+    @objc func applyNoise() {
+        if noise {
+            let n = distribution.nextInt()
+            var newValue = targetValue + 0.001 * Double(n)
+            if newValue < -0.02 { newValue = -0.02 }
+            if newValue > 1.02 { newValue = 1.02 }
+            setNeedleAngle(to: newValue)
+        }
+    }
+    
     private func startAngle() -> CGFloat {
         return CGFloat(.pi*2*(0.5+0.11))
     }
@@ -110,22 +128,26 @@ class Display: UIView, CAAnimationDelegate {
         circularAnimation.fillMode = CAMediaTimingFillMode.forwards;
         circularAnimation.isRemovedOnCompletion = false
 
-        rotateNeedle(to: 0.5)
+        setNeedleAngle(to: 0.5)
     }
     
-    func rotateNeedle(to: Double) {
-        if needlePath != nil {
-            var target = to
-            if target < 0.0 { target = 0.0 }
-            if target > 1.0 { target = 1.0 }
+    func newTargetValue(targetValue: Double) {
+        if noise {
+            self.targetValue = targetValue
+        } else {
+            setNeedleAngle(to: targetValue)
+        }
+    }
     
-            let from = startAngle() + (endAngle() - startAngle()) * CGFloat(lastNeedleValue) - 1.5 * .pi
-            let to = startAngle() + (endAngle() - startAngle()) * CGFloat(target) - 1.5 * .pi
-            circularAnimation.fromValue = from // startAngle() - 1.5 * .pi
-            circularAnimation.toValue = to//endAngle() - 1.5 * .pi
+    private func setNeedleAngle(to: Double) {
+        if needlePath != nil {
+            let fromAngle = startAngle() + (endAngle() - startAngle()) * CGFloat(lastNeedleValue) - 1.5 * .pi
+            let toAngle = startAngle() + (endAngle() - startAngle()) * CGFloat(to) - 1.5 * .pi
+            circularAnimation.fromValue = fromAngle
+            circularAnimation.toValue = toAngle
             needleShapeLayer!.add(circularAnimation, forKey: "dummykey")
             layer.masksToBounds = true
-            lastNeedleValue = target
+            lastNeedleValue = to
         }
      }
     
