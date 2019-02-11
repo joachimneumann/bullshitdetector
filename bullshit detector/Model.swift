@@ -27,7 +27,16 @@ class Model: NSObject {
             UserDefaults.standard.set(newValue, forKey: selectedThemeIndexKey)
         }
     }
-
+    
+    var fastResponseTime: Int {
+        get {
+            return UserDefaults.standard.integer(forKey: fastResponseTimeKey)
+        }
+        set {
+            UserDefaults.standard.set(newValue, forKey: fastResponseTimeKey)
+        }
+    }
+    
     var instructionsHaveBeenDisplayed: Bool {
         get {
             return UserDefaults.standard.bool(forKey: instructionsHaveBeenDisplayedKey)
@@ -37,6 +46,7 @@ class Model: NSObject {
         }
     }
     
+
     var customizationHasBeenPurchased: Bool {
         get {
             return UserDefaults.standard.bool(forKey: customizationHasBeenPurchasedKey)

@@ -27,13 +27,14 @@ class BullshitViewController: UIViewController, CAAnimationDelegate, UIGestureRe
     
     override func viewDidLoad() {
         super.viewDidLoad()
+                
         // TODO only if not purchased or even later
         IAPService.shared.getProducts()
         if Model.shared.instructionsHaveBeenDisplayed {
             instructionsImageView.isHidden = true
         }
         
-        templateImageView.alpha = 0.2
+        templateImageView.alpha = 0.1
         rubberstamp.isHidden = true
         templateImageView.isHidden = false
         coverView.backgroundColor = UIColor.white
@@ -105,15 +106,26 @@ class BullshitViewController: UIViewController, CAAnimationDelegate, UIGestureRe
         displayTargetValue = 0.5 - 0.2 * (Double(truthIndex)-0.5)
         display.newTargetValue(targetValue: displayTargetValue)
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+        var times = [2.0, 3.0, 4.0, 6.0]
+        switch Model.shared.fastResponseTime {
+            case 0: // fast
+                times = [0.5, 1.0, 1.5, 2.0]
+            case 1: // medium
+                times = [1.0, 2.0, 3.0, 4.0]
+            case 2: // slow
+                times = [2.0, 3.0, 4.0, 6.0]
+            default: times = [2.0, 3.0, 4.0, 6.0]
+        }
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + times[0]) {
             self.displayTargetValue = self.displayTargetValue + 0.3*(Double(truthIndex)-self.displayTargetValue)
             self.display.newTargetValue(targetValue: self.displayTargetValue)
         }
-        DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + times[1]) {
             self.displayTargetValue = self.displayTargetValue + 0.6*(Double(truthIndex)-self.displayTargetValue)
             self.display.newTargetValue(targetValue: self.displayTargetValue)
         }
-        DispatchQueue.main.asyncAfter(deadline: .now() + 4) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + times[2]) {
             self.displayTargetValue = Double(truthIndex)
             self.display.newTargetValue(targetValue: self.displayTargetValue)
             var text1: String = ""
@@ -136,7 +148,7 @@ class BullshitViewController: UIViewController, CAAnimationDelegate, UIGestureRe
             }
             self.rubberstamp.setTextArray(texts: [text1, text2])
         }
-        DispatchQueue.main.asyncAfter(deadline: .now() + 6) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + times[3]) {
             self.analyseButton.isEnabled = true
             self.analyseButton.setNeedsDisplay()
             self.viewToRightOfButton.isUserInteractionEnabled = true

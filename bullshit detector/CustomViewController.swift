@@ -50,7 +50,6 @@ class CustomViewController: UIViewController, UITextFieldDelegate {
             theButton.setTitle(theme?.buttonText, for: .normal)
             firstTextField.isHidden = true
             secondTextField.isHidden = true
-            stampPreview.isHidden = false
             buttonTextField.isUserInteractionEnabled = false
             buttonTextField.backgroundColor = UIColor.clear
             buttonTextField.borderStyle = .none
@@ -69,7 +68,6 @@ class CustomViewController: UIViewController, UITextFieldDelegate {
             buttonTextField.isUserInteractionEnabled = true
             firstTextField.delegate = self
             secondTextField.delegate = self
-            stampPreview.isHidden = true
         }
 
         stampPreview.rubbereffect(imageName: "mask")
@@ -83,13 +81,25 @@ class CustomViewController: UIViewController, UITextFieldDelegate {
         stampPreview.setTextArray(texts: [firstTextField.text!, secondTextField.text!])
     }
     
-    override func viewDidLayoutSubviews() {
-        var frame = display.titleTextFrame!
-        frame.origin.x = display.titleTextFrame!.origin.x + display.frame.origin.x
-        frame.origin.y = display.titleTextFrame!.origin.y + display.frame.origin.y
-        displayTextField.frame = frame
-        displayTextField.font  = display.titleTextFont!
+    func displayTextFrame() {
+//        var frame = display.titleTextFrame!
+//        frame.origin.x = display.titleTextFrame!.origin.x + display.frame.origin.x
+//        frame.origin.y = display.titleTextFrame!.origin.y + display.frame.origin.y - 20
+//        frame.size.height = 5
+//        frame.size.width = 5
+//        displayTextField.frame = frame
+//        displayTextField.font  = display.titleTextFont!
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        displayTextFrame()
+    }
+    
+//    override func viewDidLayoutSubviews() {
+//        super.viewDidLayoutSubviews()
+//        displayTextFrame()
+//    }
     
     @objc func handleButtonTap(_ sender: UITapGestureRecognizer) {
         let pos = sender.location(in: theButton).x / theButton.frame.size.width
@@ -99,7 +109,6 @@ class CustomViewController: UIViewController, UITextFieldDelegate {
         display.newTargetValue(targetValue: 1.0 - Double(truthIndex) * 0.25)
         updateTextFields()
         stampPreview.setTextArray(texts: [firstTextField.text!, secondTextField.text!])
-        stampPreview.isHidden = false
     }
     
     @objc func back(sender: UIBarButtonItem) {
@@ -138,25 +147,9 @@ class CustomViewController: UIViewController, UITextFieldDelegate {
             print("unexpected case \(truthIndex)")
         }
     }
-    
-    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
-        if textField.isEqual(buttonTextField) {
-            stampPreview.isHidden = true
-        } else {
-            stampPreview.isHidden = false
-        }
-        return true
-    }
- 
-    func textFieldDidEndEditing(_ textField: UITextField) {
-    }
-    
+
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
-        return true
-    }
-    
-    func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
         return true
     }
 

@@ -12,11 +12,15 @@ class settingsViewController: UIViewController, UITableViewDelegate, UITableView
 
     @IBOutlet var themeTableView: UITableView!
 
+    @IBOutlet weak var fastSlow: UISegmentedControl!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         themeTableView.delegate = self
         themeTableView.dataSource = self
+        
+        fastSlow.selectedSegmentIndex = Model.shared.fastResponseTime
         
         #if targetEnvironment(simulator)
         // simulator no in-app-purchase possible --> set as purchased
@@ -32,6 +36,11 @@ class settingsViewController: UIViewController, UITableViewDelegate, UITableView
         
         themeTableView.register(UITableViewCell.self, forCellReuseIdentifier: "themeCell")
         
+    }
+    @IBAction func fastSlowChanged(_ sender: Any) {
+        if let fastSlow = sender as? UISegmentedControl {
+            Model.shared.fastResponseTime = fastSlow.selectedSegmentIndex
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {

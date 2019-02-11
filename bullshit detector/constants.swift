@@ -13,9 +13,10 @@ let bullshitRed = UIColor(red: 255.0/255.0, green: 126.0/255.0, blue: 121.0/255.
 let bullshitGray = UIColor(red: 200.0/255.0, green: 200.0/255.0, blue: 200.0/255.0, alpha: 1.0)
 
 let customizablePurchasedNotification = "customisablePurchasedNotification"
-let instructionsHaveBeenDisplayedKey = "instructionsHaveBeenDisplayedKey"
-let selectedThemeIndexKey    = "selectedThemeIndexKey"
-let customizationHasBeenPurchasedKey = "customizationHasBeenPurchasedKey"
+let instructionsHaveBeenDisplayedKey  = "instructionsHaveBeenDisplayedKey"
+let fastResponseTimeKey               = "fastResponseTimeKey"
+let selectedThemeIndexKey             = "selectedThemeIndexKey"
+let customizationHasBeenPurchasedKey  = "customizationHasBeenPurchasedKey"
 
 let buttonTextkey       = "buttonTextkey"
 let displayTextkey      = "displayTextkey"
