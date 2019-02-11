@@ -11,7 +11,6 @@ import GameplayKit
 
 class BullshitViewController: UIViewController, CAAnimationDelegate, UIGestureRecognizerDelegate {
 
-    @IBOutlet weak var coverView: UIView!
     @IBOutlet weak var display: Display!
     @IBOutlet weak var analyseButton: UIButton!
     @IBOutlet weak var rubberstamp: Rubberstamp!
@@ -37,7 +36,6 @@ class BullshitViewController: UIViewController, CAAnimationDelegate, UIGestureRe
         templateImageView.alpha = 0.1
         rubberstamp.isHidden = true
         templateImageView.isHidden = false
-        coverView.backgroundColor = UIColor.white
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(self.handleButtonTap(_:)))
         analyseButton.addGestureRecognizer(tap)
@@ -59,10 +57,10 @@ class BullshitViewController: UIViewController, CAAnimationDelegate, UIGestureRe
     
     
     override func viewWillAppear(_ animated: Bool) {
-        print("view viewWillAppear")
         super.viewWillAppear(animated)
         self.navigationController?.setNavigationBarHidden(true, animated: false)
         rubberstamp.isHidden = true
+
         templateImageView.isHidden = false
         templateImageView.image = UIImage(named: Model.shared.theme().imageName)
         templateImageView.alpha = 0.2
@@ -70,6 +68,11 @@ class BullshitViewController: UIViewController, CAAnimationDelegate, UIGestureRe
         analyseButton.setTitle(Model.shared.theme().buttonText, for: .normal)
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        rubberstamp.border_width = Int(rubberstamp.frame.height * 0.1)
+        rubberstamp.border_radius = Int(rubberstamp.frame.height * 0.25)
+    }
     
     override var prefersStatusBarHidden: Bool { return true }
     

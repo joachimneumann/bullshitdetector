@@ -16,6 +16,7 @@ class Rubberstamp: UIView {
     @IBOutlet weak var singleLineLabel: UILabel!
     @IBOutlet weak var firstLineLabel: UILabel!
     @IBOutlet weak var secondLineLabel: UILabel!
+    @IBOutlet weak var twoLineStackView: UIStackView!
     
     @IBOutlet weak var stampViewLeadingConstraint: NSLayoutConstraint!
     @IBOutlet weak var stampViewTrailingConstraint: NSLayoutConstraint!
@@ -53,13 +54,13 @@ class Rubberstamp: UIView {
         }
     }
 
-    @IBInspectable private var border_radius: Int = 5 {
+    @IBInspectable var border_radius: Int = 5 {
         didSet {
             setAngle(angle: angle.rad)
         }
     }
     
-    @IBInspectable private var border_width: Int = 5 {
+    @IBInspectable var border_width: Int = 5 {
         didSet {
             setAngle(angle: angle.rad)
             stampLabelViewTopConstraint.constant = 0.5*CGFloat(border_width)
@@ -168,14 +169,12 @@ class Rubberstamp: UIView {
         if n == 1 {
             singleLineLabel.text = texts[0]
             singleLineLabel.isHidden = false
-            firstLineLabel.isHidden = true
-            secondLineLabel.isHidden = true
+            twoLineStackView.isHidden = true
         } else {
             firstLineLabel.text = texts[0]
             secondLineLabel.text = texts[1]
             singleLineLabel.isHidden = true
-            firstLineLabel.isHidden = false
-            secondLineLabel.isHidden = false
+            twoLineStackView.isHidden = false
         }
     }
 }

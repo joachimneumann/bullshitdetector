@@ -25,7 +25,12 @@ class CustomViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var theButton: UIButton!
     @IBOutlet weak var firstTextField: UITextField!
     @IBOutlet weak var secondTextField: UITextField!
-    
+
+    @IBOutlet weak var stampContainer: UIView!
+    @IBOutlet weak var stampHeightConstraint: NSLayoutConstraint!
+    @IBOutlet weak var stampWidhtConstraint: NSLayoutConstraint!
+
+   
     private var truthIndex: Int = 0
     
     override func viewDidLoad() {
@@ -81,13 +86,26 @@ class CustomViewController: UIViewController, UITextFieldDelegate {
         display.newTargetValue(targetValue: 1.0)
         stampPreview.setTextArray(texts: [firstTextField.text!, secondTextField.text!])
     }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        updateTextFields()
+        stampHeightConstraint.constant = stampContainer.frame.size.height * 0.9
+        stampWidhtConstraint.constant = stampContainer.frame.size.width * 0.9
+        stampPreview.border_width = Int(stampPreview.frame.height * 0.1)
+        stampPreview.border_radius = Int(stampPreview.frame.height * 0.25)
+    }
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+    }
+//    override func viewDidAppear(_ animated: Bool) {
+//        super.viewDidAppear(animated)
+//    }
 
     @objc func handleButtonTap(_ sender: UITapGestureRecognizer) {
         let pos = sender.location(in: theButton).x / theButton.frame.size.width
-        print("pos \(pos)")
         truthIndex = Int( floor(5.0 * pos) )
-        print("truthIndex \(truthIndex)")
         display.newTargetValue(targetValue: 1.0 - Double(truthIndex) * 0.25)
         updateTextFields()
         stampPreview.setTextArray(texts: [firstTextField.text!, secondTextField.text!])

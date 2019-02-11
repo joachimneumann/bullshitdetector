@@ -26,6 +26,7 @@
                 <outlet property="stampViewLeadingConstraint" destination="KNG-NR-seW" id="3U2-MP-wEc"/>
                 <outlet property="stampViewTopConstraint" destination="xV3-0S-UEZ" id="7vc-39-op7"/>
                 <outlet property="stampViewTrailingConstraint" destination="W0r-Tt-Vyt" id="wqt-QM-2y9"/>
+                <outlet property="twoLineStackView" destination="GSc-Go-FU6" id="xyk-Zx-Qpq"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -44,11 +45,13 @@
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.20000000000000001" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="diP-TJ-Dyn">
                                             <rect key="frame" x="0.0" y="0.0" width="396" height="132"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.20000000000000001" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yJD-6i-dtT">
                                             <rect key="frame" x="0.0" y="132" width="396" height="132"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
