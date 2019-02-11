@@ -133,23 +133,23 @@ class BullshitViewController: UIViewController, CAAnimationDelegate, UIGestureRe
         displayLabel.font = UIFont(name: displayLabel.font!.fontName, size: display.frame.size.height*0.1)
         displayLabelConstraint.constant = display.frame.size.height * 0.8 -  displayLabel.frame.size.height * 0.5
         var displayPointerFrame: CGRect
-        if #available(iOS 11.0, *) {
-            displayPointerFrame = CGRect(
-                x: display.pointerCenter().x - displayPointerFrameWidth / 2.0,
-                y: display.pointerCenter().y - display.maxRadius() + self.view.safeAreaInsets.top,
-                width: displayPointerFrameWidth,
-                height: display.maxRadius())
-        } else {
-            displayPointerFrame = CGRect(
-                x: display.pointerCenter().x - displayPointerFrameWidth / 2.0,
-                y: display.pointerCenter().y - display.maxRadius(),
-                width: displayPointerFrameWidth,
-                height: display.maxRadius())
-        }
-        displayPointer.frame = displayPointerFrame
-        setAnchorPoint(anchorPoint: CGPoint(x: 0.5, y: 1.0), forView: displayPointer)
-        displayStartAngle = Double(display.startAngle()) - 1.5 * .pi
-        displayEndAngle = Double(display.endAngle())   - 1.5 * .pi
+//        if #available(iOS 11.0, *) {
+//            displayPointerFrame = CGRect(
+//                x: display.pointerCenter().x - displayPointerFrameWidth / 2.0,
+//                y: display.pointerCenter().y - display.maxRadius() + self.view.safeAreaInsets.top,
+//                width: displayPointerFrameWidth,
+//                height: display.maxRadius())
+//        } else {
+//            displayPointerFrame = CGRect(
+//                x: display.pointerCenter().x - displayPointerFrameWidth / 2.0,
+//                y: display.pointerCenter().y - display.maxRadius(),
+//                width: displayPointerFrameWidth,
+//                height: display.maxRadius())
+//        }
+//        displayPointer.frame = displayPointerFrame
+//        setAnchorPoint(anchorPoint: CGPoint(x: 0.5, y: 1.0), forView: displayPointer)
+//        displayStartAngle = Double(display.startAngle()) - 1.5 * .pi
+//        displayEndAngle = Double(display.endAngle())   - 1.5 * .pi
         value = targetValue
     }
     

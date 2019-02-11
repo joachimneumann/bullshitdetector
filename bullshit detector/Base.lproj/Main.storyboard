@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="zhD-O1-8HN">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="sau-U8-oN4">
     <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -18,7 +18,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3ki-0X-gGI" customClass="Display" customModule="bullshit_detector" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3ki-0X-gGI">
                                 <rect key="frame" x="0.0" y="64" width="414" height="190"/>
                                 <subviews>
                                     <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Truth-O-Meter" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="HQJ-dQ-8mP">
@@ -391,6 +391,14 @@
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="Uyu-qt-rpw" secondAttribute="height" multiplier="3:1" id="0I4-yy-EP7"/>
                                 </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <integer key="value" value="0"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="lineWidth">
+                                        <real key="value" value="6"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                             </view>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Poi-fu-8nw" customClass="NoSelectTextField" customModule="bullshit_detector" customModuleProvider="target">
                                 <rect key="frame" x="80" y="165.33333333333334" width="254" height="30"/>
@@ -460,6 +468,49 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YO3-du-Nut" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="266" y="134"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="Fy6-Wh-mLK">
+            <objects>
+                <viewController id="sau-U8-oN4" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="HuH-IK-iMg">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9A7-Le-4Gr" customClass="Display" customModule="bullshit_detector" customModuleProvider="target">
+                                <rect key="frame" x="30" y="50" width="354" height="180"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="180" id="VtJ-qp-lOS"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="0.0"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <integer key="value" value="3"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="lineWidth">
+                                        <real key="value" value="7"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                        <color key="value" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="9A7-Le-4Gr" firstAttribute="leading" secondItem="SpF-BZ-3Z8" secondAttribute="leading" constant="30" id="4NA-Xw-sHL"/>
+                            <constraint firstItem="SpF-BZ-3Z8" firstAttribute="trailing" secondItem="9A7-Le-4Gr" secondAttribute="trailing" constant="30" id="Wgg-iv-WrX"/>
+                            <constraint firstItem="9A7-Le-4Gr" firstAttribute="top" secondItem="SpF-BZ-3Z8" secondAttribute="top" constant="30" id="azX-zH-ezO"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="SpF-BZ-3Z8"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lTI-Bv-Rgl" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="265.21739130434787" y="794.02173913043487"/>
         </scene>
     </scenes>
     <resources>

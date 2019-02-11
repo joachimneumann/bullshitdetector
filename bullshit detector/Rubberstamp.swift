@@ -226,7 +226,6 @@ private func adjustedFontSizeForLabel(_ label: UILabel) -> CGFloat {
     return adjustedFontSize
 }
 
-
 private extension CGFloat {
-    var rad: CGFloat { return self / 360.0 * 2.0 * CGFloat.pi }
+    var rad: CGFloat { return self * CGFloat.pi / 180.0 }
 }
