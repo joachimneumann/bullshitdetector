@@ -11,14 +11,12 @@
 		AA35D763220D57BD001C1F99 /* bullshit_detectorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA35D762220D57BD001C1F99 /* bullshit_detectorTests.swift */; };
 		AA35D76B220D8466001C1F99 /* PurchaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA35D76A220D8466001C1F99 /* PurchaseViewController.swift */; };
 		AA37BBF721EEE965005A4042 /* constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA37BBF621EEE965005A4042 /* constants.swift */; };
-		AA3DD49121EB21110007244C /* PathBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA3DD48E21EB21110007244C /* PathBuilder.swift */; };
 		AA61974821E9BEB40069121A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA61974721E9BEB40069121A /* AppDelegate.swift */; };
 		AA61974A21E9BEB40069121A /* BullshitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA61974921E9BEB40069121A /* BullshitViewController.swift */; };
 		AA61974D21E9BEB40069121A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AA61974B21E9BEB40069121A /* Main.storyboard */; };
 		AA61975221E9BEB60069121A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AA61975021E9BEB60069121A /* LaunchScreen.storyboard */; };
 		AA61975A21E9C5810069121A /* Display.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA61975921E9C5810069121A /* Display.swift */; };
 		AA709100220675C1002F06C6 /* Rubberstamp.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7090FF220675C1002F06C6 /* Rubberstamp.swift */; };
-		AA709101220675C1002F06C6 /* Rubberstamp.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7090FF220675C1002F06C6 /* Rubberstamp.swift */; };
 		AA70910322067AA1002F06C6 /* Rubberstamp.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA70910222067AA1002F06C6 /* Rubberstamp.xib */; };
 		AAA8FD13220A92DE00865236 /* NoSelectTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAA8FD12220A92DE00865236 /* NoSelectTextField.swift */; };
 		AAA9256422002A6400AB15B7 /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAA9256322002A6400AB15B7 /* NotificationCenter.framework */; };
@@ -73,7 +71,6 @@
 		AA35D764220D57BD001C1F99 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AA35D76A220D8466001C1F99 /* PurchaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseViewController.swift; sourceTree = "<group>"; };
 		AA37BBF621EEE965005A4042 /* constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = constants.swift; sourceTree = "<group>"; };
-		AA3DD48E21EB21110007244C /* PathBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PathBuilder.swift; sourceTree = "<group>"; };
 		AA61974421E9BEB40069121A /* bullshit detector.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "bullshit detector.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA61974721E9BEB40069121A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AA61974921E9BEB40069121A /* BullshitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BullshitViewController.swift; sourceTree = "<group>"; };
@@ -125,6 +122,31 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		AA2595412211962E00D78844 /* GUI */ = {
+			isa = PBXGroup;
+			children = (
+				AA61974921E9BEB40069121A /* BullshitViewController.swift */,
+				AA35D76A220D8466001C1F99 /* PurchaseViewController.swift */,
+				AA25953F2211877100D78844 /* settingsViewController.swift */,
+				AA61975921E9C5810069121A /* Display.swift */,
+				AAD927C32205CE79001C328F /* CustomViewController.swift */,
+				AAA8FD12220A92DE00865236 /* NoSelectTextField.swift */,
+				AA7090FF220675C1002F06C6 /* Rubberstamp.swift */,
+				AA70910222067AA1002F06C6 /* Rubberstamp.xib */,
+			);
+			path = GUI;
+			sourceTree = "<group>";
+		};
+		AA2595422211964300D78844 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				AA37BBF621EEE965005A4042 /* constants.swift */,
+				AADBB644220C3FE50024AAC2 /* Theme.swift */,
+				AADBB646220C479E0024AAC2 /* Model.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		AA35D761220D57BD001C1F99 /* bullshit detectorTests */ = {
 			isa = PBXGroup;
 			children = (
@@ -158,25 +180,15 @@
 		AA61974621E9BEB40069121A /* bullshit detector */ = {
 			isa = PBXGroup;
 			children = (
-				AA61974721E9BEB40069121A /* AppDelegate.swift */,
-				AA61974921E9BEB40069121A /* BullshitViewController.swift */,
+				AA2595422211964300D78844 /* Model */,
+				AA2595412211962E00D78844 /* GUI */,
 				AA61974B21E9BEB40069121A /* Main.storyboard */,
+				AAB309AE220B4BDB002924FD /* IAPProduct.swift */,
+				AAB309B0220B4C4A002924FD /* IAPService.swift */,
+				AA61974721E9BEB40069121A /* AppDelegate.swift */,
 				AA61974E21E9BEB60069121A /* Assets.xcassets */,
 				AA61975021E9BEB60069121A /* LaunchScreen.storyboard */,
 				AA61975321E9BEB60069121A /* Info.plist */,
-				AA61975921E9C5810069121A /* Display.swift */,
-				AA3DD48E21EB21110007244C /* PathBuilder.swift */,
-				AA37BBF621EEE965005A4042 /* constants.swift */,
-				AAD927C32205CE79001C328F /* CustomViewController.swift */,
-				AAA8FD12220A92DE00865236 /* NoSelectTextField.swift */,
-				AA7090FF220675C1002F06C6 /* Rubberstamp.swift */,
-				AA70910222067AA1002F06C6 /* Rubberstamp.xib */,
-				AAB309AE220B4BDB002924FD /* IAPProduct.swift */,
-				AAB309B0220B4C4A002924FD /* IAPService.swift */,
-				AADBB644220C3FE50024AAC2 /* Theme.swift */,
-				AADBB646220C479E0024AAC2 /* Model.swift */,
-				AA35D76A220D8466001C1F99 /* PurchaseViewController.swift */,
-				AA25953F2211877100D78844 /* settingsViewController.swift */,
 			);
 			path = "bullshit detector";
 			sourceTree = "<group>";
@@ -360,7 +372,6 @@
 				AAB309AF220B4BDB002924FD /* IAPProduct.swift in Sources */,
 				AA61974821E9BEB40069121A /* AppDelegate.swift in Sources */,
 				AAD927C42205CE79001C328F /* CustomViewController.swift in Sources */,
-				AA3DD49121EB21110007244C /* PathBuilder.swift in Sources */,
 				AADBB645220C3FE50024AAC2 /* Theme.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -370,7 +381,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				AAA9256722002A6400AB15B7 /* TodayViewController.swift in Sources */,
-				AA709101220675C1002F06C6 /* Rubberstamp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
