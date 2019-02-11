@@ -40,7 +40,7 @@ class PurchaseViewController: UIViewController {
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let destinationVC = segue.destination as? CustomButtonViewController {
+        if let destinationVC = segue.destination as? CustomViewController {
             destinationVC.theme = theme
         }
     }

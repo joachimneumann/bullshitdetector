@@ -1,5 +1,5 @@
 //
-//  CustomButtonViewController.swift
+//  CustomViewController.swift
 //  bullshit detector
 //
 //  Created by Joachim Neumann on 02.02.19.
@@ -9,14 +9,13 @@
 import UIKit
 
 
-class CustomButtonViewController: UIViewController, UITextFieldDelegate {
+class CustomViewController: UIViewController, UITextFieldDelegate {
     
     var theme: BullshitTheme?
 
     @IBOutlet weak var stampPreview: Rubberstamp!
     
     @IBOutlet weak var display: Display!
-    @IBOutlet weak var displayView: NoSelectTextField!
     @IBOutlet weak var displayTextField: NoSelectTextField!
     @IBOutlet weak var indicatorView: UIView!
     @IBOutlet weak var buttonTextField: UITextField!
@@ -26,31 +25,41 @@ class CustomButtonViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var theButton: UIButton!
     @IBOutlet weak var firstTextField: UITextField!
     @IBOutlet weak var secondTextField: UITextField!
-    @IBOutlet weak var segmentedControlPosition: UISegmentedControl!
     
+    private var truthIndex: Int = 0
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        truthIndex = 0
+        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(self.handleButtonTap(_:)))
+        theButton.addGestureRecognizer(tap)
+        
         self.navigationController?.navigationBar.tintColor = UIColor.gray
         self.navigationController?.setNavigationBarHidden(false, animated: false)
-        view.backgroundColor = displayBackgroundColor
-        displayTextField.text = theme?.displayText
         buttonTextField.delegate = self
         theButton.layer.cornerRadius = 10
         theButton.backgroundColor = bullshitRed
-        indicatorView.isHidden = true
         updateTextFields()
-        if theme?.readonly ?? false  {
-            displayTextField.isUserInteractionEnabled = false
-            displayTextField.backgroundColor = UIColor.clear
-            displayTextField.borderStyle = .none
+        if let name = theme?.name {
+            display.title = name
+        }
+        if (theme?.readonly ?? false)  {
+            displayTextField.isHidden = true
+            buttonTextField.isHidden = true
+            theButton.setTitle(theme?.buttonText, for: .normal)
             firstTextField.isHidden = true
             secondTextField.isHidden = true
             stampPreview.isHidden = false
-            indicatorView.isHidden = false
             buttonTextField.isUserInteractionEnabled = false
             buttonTextField.backgroundColor = UIColor.clear
             buttonTextField.borderStyle = .none
         } else {
+            displayTextField.isHidden = false
+            display.title = ""
+            theButton.setTitle(theme?.buttonText, for: .normal)
+            buttonTextField.text = theme?.buttonText
+            displayTextField.text = theme?.displayText
             displayTextField.isUserInteractionEnabled = true
             displayTextField.delegate = self
             firstTextField.isHidden = false
@@ -61,18 +70,36 @@ class CustomButtonViewController: UIViewController, UITextFieldDelegate {
             firstTextField.delegate = self
             secondTextField.delegate = self
             stampPreview.isHidden = true
-            indicatorView.isHidden = true
         }
 
         stampPreview.rubbereffect(imageName: "mask")
         stampPreview.stampColor = bullshitRed
 
-        buttonTextField.text = theme?.buttonText
-
         // back --> always to table, never to purchase
         self.navigationItem.hidesBackButton = true
-        let backButton = UIBarButtonItem(title: "Back", style: UIBarButtonItem.Style.plain, target: self, action: #selector(CustomButtonViewController.back(sender:)))
+        let backButton = UIBarButtonItem(title: "Back", style: UIBarButtonItem.Style.plain, target: self, action: #selector(CustomViewController.back(sender:)))
         self.navigationItem.leftBarButtonItem = backButton
+        display.newTargetValue(targetValue: 1.0)
+        stampPreview.setTextArray(texts: [firstTextField.text!, secondTextField.text!])
+    }
+    
+    override func viewDidLayoutSubviews() {
+        var frame = display.titleTextFrame!
+        frame.origin.x = display.titleTextFrame!.origin.x + display.frame.origin.x
+        frame.origin.y = display.titleTextFrame!.origin.y + display.frame.origin.y
+        displayTextField.frame = frame
+        displayTextField.font  = display.titleTextFont!
+    }
+    
+    @objc func handleButtonTap(_ sender: UITapGestureRecognizer) {
+        let pos = sender.location(in: theButton).x / theButton.frame.size.width
+        print("pos \(pos)")
+        truthIndex = Int( floor(5.0 * pos) )
+        print("truthIndex \(truthIndex)")
+        display.newTargetValue(targetValue: 1.0 - Double(truthIndex) * 0.25)
+        updateTextFields()
+        stampPreview.setTextArray(texts: [firstTextField.text!, secondTextField.text!])
+        stampPreview.isHidden = false
     }
     
     @objc func back(sender: UIBarButtonItem) {
@@ -80,15 +107,11 @@ class CustomButtonViewController: UIViewController, UITextFieldDelegate {
         navigationController!.popToViewController(dashboardVC, animated: true)
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        stampPreview.setTextArray(texts: [firstTextField.text!, secondTextField.text!])
-    }
-    
     func updateTextFields() {
         let x1 = theButton.frame.origin.x
         let w = theButton.frame.size.width / 5
         indicatorViewWidthConstraint.constant = w
-        switch segmentedControlPosition.selectedSegmentIndex {
+        switch truthIndex {
             case 0:
                 indicatorViewLeadingConstraint.constant = 0
                 indicatorViewWidthConstraint.constant = x1+w
@@ -112,16 +135,14 @@ class CustomButtonViewController: UIViewController, UITextFieldDelegate {
                 firstTextField.text  = theme?.farRightText1
                 secondTextField.text = theme?.farRightText2
             default:
-            print("unexpected case")
+            print("unexpected case \(truthIndex)")
         }
     }
     
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
         if textField.isEqual(buttonTextField) {
-            indicatorView.isHidden = true
             stampPreview.isHidden = true
         } else {
-            indicatorView.isHidden = false
             stampPreview.isHidden = false
         }
         return true
@@ -139,67 +160,45 @@ class CustomButtonViewController: UIViewController, UITextFieldDelegate {
         return true
     }
 
-    func save(isFirstTextfield: Bool) {
-        switch segmentedControlPosition.selectedSegmentIndex {
+    func save() {
+        switch truthIndex {
         case 0:
-            if isFirstTextfield {
-                theme?.farLeftText1 = firstTextField.text!
-            } else {
-                theme?.farLeftText2 = secondTextField.text!
-            }
+            theme?.farLeftText1 = firstTextField.text!
+            theme?.farLeftText2 = secondTextField.text!
         case 1:
-            if isFirstTextfield {
-                theme?.leftText1 = firstTextField.text!
-            } else {
-                theme?.leftText2 = secondTextField.text!
-            }
+            theme?.leftText1 = firstTextField.text!
+            theme?.leftText2 = secondTextField.text!
         case 2:
-            if isFirstTextfield {
-                theme?.centerText1 = firstTextField.text!
-            } else {
-                theme?.centerText2 = secondTextField.text!
-            }
+            theme?.centerText1 = firstTextField.text!
+            theme?.centerText2 = secondTextField.text!
         case 3:
-            if isFirstTextfield {
-                theme?.rightText1 = firstTextField.text!
-            } else {
-                theme?.rightText2 = secondTextField.text!
-            }
+            theme?.rightText1 = firstTextField.text!
+            theme?.rightText2 = secondTextField.text!
         case 4:
-            if isFirstTextfield {
-                theme?.farRightText1 = firstTextField.text!
-            } else {
-                theme?.farRightText2 = secondTextField.text!
-            }
+            theme?.farRightText1 = firstTextField.text!
+            theme?.farRightText2 = secondTextField.text!
         default:
             print("unexpected case")
         }
     }
     
-    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        if let text = textField.text as NSString? {
-            let txtAfterUpdate = text.replacingCharacters(in: range, with: string)
-            if textField.isEqual(firstTextField) {
-                stampPreview.setTextArray(texts: [txtAfterUpdate, secondTextField.text!])
-            } else {
-                stampPreview.setTextArray(texts: [firstTextField.text!, txtAfterUpdate])
-            }
-            textField.text = txtAfterUpdate
-        }
-        return false        
-        // this is a hack to allow getting the texts even if the user presses on the seggmented control
+    @IBAction func displayTextFieldDidChange(_ sender: Any) {
+        theme?.displayText = displayTextField.text!
     }
-    
-    @IBAction func segmentSelected(_ segmentedControl: UISegmentedControl) {
-        indicatorView.isHidden = false
-        updateTextFields()
+
+    @IBAction func buttonTextFieldDidChange(_ sender: Any) {
+        theButton.setTitle(buttonTextField.text!, for: .normal)
+        theme?.buttonText = buttonTextField.text!
+    }
+
+    @IBAction func leftTextFieldDidChange(_ sender: Any) {
         stampPreview.setTextArray(texts: [firstTextField.text!, secondTextField.text!])
-        stampPreview.isHidden = false
+        save()
     }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        Model.shared.theme().buttonText = buttonTextField.text!
-        Model.shared.theme().displayText = displayTextField.text!
+
+    @IBAction func rightTextFieldDidChange(_ sender: Any) {
+        stampPreview.setTextArray(texts: [firstTextField.text!, secondTextField.text!])
+        save()
     }
 
 }

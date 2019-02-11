@@ -135,7 +135,7 @@ class ThemeTableViewController: UITableViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "displaySettingsSegue" {
             if let indexPath = sender as? IndexPath {
-                if let destinationVC = segue.destination as? CustomButtonViewController {
+                if let destinationVC = segue.destination as? CustomViewController {
                     destinationVC.theme = Model.shared.theme(index: indexPath.row)
                 }
             }

@@ -15,8 +15,6 @@ class BullshitViewController: UIViewController, CAAnimationDelegate, UIGestureRe
     @IBOutlet weak var display: Display!
     @IBOutlet weak var analyseButton: UIButton!
     @IBOutlet weak var rubberstamp: Rubberstamp!
-    @IBOutlet weak var displayLabel: UITextField!
-    @IBOutlet weak var displayLabelConstraint: NSLayoutConstraint!
     @IBOutlet weak var viewToRightOfButton: UIView!
     @IBOutlet weak var viewToLeftOfButton: UIView!
     @IBOutlet weak var instructionsImageView: UIImageView!
@@ -34,7 +32,6 @@ class BullshitViewController: UIViewController, CAAnimationDelegate, UIGestureRe
         if Model.shared.instructionsHaveBeenDisplayed {
             instructionsImageView.isHidden = true
         }
-//        self.view.backgroundColor = displayBackgroundColor
         
         templateImageView.alpha = 0.2
         rubberstamp.isHidden = true
@@ -66,20 +63,14 @@ class BullshitViewController: UIViewController, CAAnimationDelegate, UIGestureRe
         self.navigationController?.setNavigationBarHidden(true, animated: false)
         rubberstamp.isHidden = true
         templateImageView.isHidden = false
-        let theme = Model.shared.theme()
-        templateImageView.image = UIImage(named: theme.imageName)
+        templateImageView.image = UIImage(named: Model.shared.theme().imageName)
         templateImageView.alpha = 0.2
-        displayLabel.text = theme.displayText
-        analyseButton.setTitle(theme.buttonText, for: .normal)
+        display.title = Model.shared.theme().displayText
+        analyseButton.setTitle(Model.shared.theme().buttonText, for: .normal)
     }
     
     
     override var prefersStatusBarHidden: Bool { return true }
-    
-    override func viewDidLayoutSubviews() {
-        displayLabel.font = UIFont(name: displayLabel.font!.fontName, size: display.frame.size.height*0.14)
-//        displayLabelConstraint.constant = display.frame.size.height * 0.8 -  displayLabel.frame.size.height * 0.5
-    }
     
     @objc func handleButtonTapRight(_ sender: UITapGestureRecognizer) {
         newQuestion(truthIndex: 0.0)
@@ -113,7 +104,7 @@ class BullshitViewController: UIViewController, CAAnimationDelegate, UIGestureRe
         // but a bit on the "wrong" side
         displayTargetValue = 0.5 - 0.2 * (Double(truthIndex)-0.5)
         display.newTargetValue(targetValue: displayTargetValue)
-        let theme = Model.shared.theme()
+        
         DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
             self.displayTargetValue = self.displayTargetValue + 0.3*(Double(truthIndex)-self.displayTargetValue)
             self.display.newTargetValue(targetValue: self.displayTargetValue)
@@ -128,20 +119,20 @@ class BullshitViewController: UIViewController, CAAnimationDelegate, UIGestureRe
             var text1: String = ""
             var text2: String = ""
             if truthIndex < 0.2 {
-                text1 = theme.farRightText1
-                text2 = theme.farRightText2
+                text1 = Model.shared.theme().farRightText1
+                text2 = Model.shared.theme().farRightText2
             } else if truthIndex < 0.4 {
-                text1 = theme.rightText1
-                text2 = theme.rightText2
+                text1 = Model.shared.theme().rightText1
+                text2 = Model.shared.theme().rightText2
             } else if truthIndex < 0.6 {
-                text1 = theme.centerText1
-                text2 = theme.centerText2
+                text1 = Model.shared.theme().centerText1
+                text2 = Model.shared.theme().centerText2
             } else if truthIndex < 0.8 {
-                text1 = theme.leftText1
-                text2 = theme.leftText2
+                text1 = Model.shared.theme().leftText1
+                text2 = Model.shared.theme().leftText2
             } else {
-                text1 = theme.farLeftText1
-                text2 = theme.farLeftText2
+                text1 = Model.shared.theme().farLeftText1
+                text2 = Model.shared.theme().farLeftText2
             }
             self.rubberstamp.setTextArray(texts: [text1, text2])
         }

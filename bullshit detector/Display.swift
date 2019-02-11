@@ -22,6 +22,9 @@ class Display: UIView, CAAnimationDelegate {
     private var targetValue: Double = 0.5
     private var lastNeedleValue: Double = 0.5
 
+    var titleTextFrame: CGRect?
+    var titleTextFont: UIFont?
+
     // main public function
     func newTargetValue(targetValue: Double) {
         if noise {
@@ -30,7 +33,12 @@ class Display: UIView, CAAnimationDelegate {
             setNeedleAngle(to: targetValue)
         }
     }
-    
+
+    @IBInspectable
+    var title: String = "Title" {
+        didSet { drawBackground() }
+    }
+
     @IBInspectable
     private var value: Double = 0.5 {
         didSet { targetValue = value }
@@ -160,22 +168,23 @@ class Display: UIView, CAAnimationDelegate {
     
     private func drawBackground() {
         layer.sublayers?.forEach { $0.removeFromSuperlayer() }
+
         let radiusUpper = radius() * 1.07
         let innerRadius = radius() * 0.9
         let mid: CGFloat = startAngle() + 0.7*(endAngle()-startAngle())
         var path = UIBezierPath(arcCenter: displayCenter(), radius: radius() - (5 / 2), startAngle: startAngle(), endAngle: mid, clockwise: true)
         path.lineCapStyle = .butt
         addLineSublayer(path: path, color: displayGray, lineWidth1: false)
-        
+
         path = UIBezierPath(arcCenter: displayCenter(), radius: radius() - (5 / 2), startAngle: mid, endAngle: endAngle(), clockwise: true)
         addLineSublayer(path: path, color: displayRed, lineWidth1: false)
-        
+
         path = UIBezierPath(arcCenter: displayCenter(), radius: radiusUpper - (1 / 2), startAngle: startAngle(), endAngle: mid, clockwise: true)
         addLineSublayer(path: path, color: displayGray, lineWidth1: true)
-        
+
         path = UIBezierPath(arcCenter: displayCenter(), radius: radiusUpper - (1 / 2), startAngle: mid, endAngle: endAngle(), clockwise: true)
         addLineSublayer(path: path, color: displayRed, lineWidth1: true)
-        
+
         for factor in [0] {
             let a = UIBezierPath(arcCenter: displayCenter(), radius: outerRadius(), startAngle: startAngle(), endAngle: startAngle()+(endAngle()-startAngle())*CGFloat(factor), clockwise: true).currentPoint
             let b = UIBezierPath(arcCenter: displayCenter(), radius: innerRadius, startAngle: startAngle(), endAngle: startAngle()+(endAngle()-startAngle())*CGFloat(factor), clockwise: true).currentPoint
@@ -201,6 +210,18 @@ class Display: UIView, CAAnimationDelegate {
             let b = displayCenter()
             drawLineFrom(start: a, end: b, color: displayRed)
         }
+
+        let titleText = CATextLayer()
+        titleText.alignmentMode = .center
+        titleTextFrame = CGRect(x: 0, y: layer.bounds.height*0.6, width: layer.bounds.width, height: layer.bounds.height*0.4)
+        titleText.frame = titleTextFrame!
+        titleText.string = title
+        titleTextFont = UIFont.boldSystemFont(ofSize: layer.bounds.height*0.15)
+        titleText.font = titleTextFont
+        titleText.fontSize = titleTextFont!.pointSize
+        titleText.foregroundColor = UIColor.lightGray.cgColor
+        titleText.backgroundColor = UIColor.clear.cgColor
+        layer.addSublayer(titleText)
     }
     
     private func drawLineFrom(start: CGPoint, end:CGPoint, color: UIColor) {
