@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AA2595402211877100D78844 /* settingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA25953F2211877100D78844 /* settingsViewController.swift */; };
 		AA35D763220D57BD001C1F99 /* bullshit_detectorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA35D762220D57BD001C1F99 /* bullshit_detectorTests.swift */; };
 		AA35D76B220D8466001C1F99 /* PurchaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA35D76A220D8466001C1F99 /* PurchaseViewController.swift */; };
 		AA37BBF721EEE965005A4042 /* constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA37BBF621EEE965005A4042 /* constants.swift */; };
@@ -30,7 +31,6 @@
 		AAB309B1220B4C4A002924FD /* IAPService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAB309B0220B4C4A002924FD /* IAPService.swift */; };
 		AAB309B3220B4D0C002924FD /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAB309B2220B4D0C002924FD /* StoreKit.framework */; };
 		AAD927C42205CE79001C328F /* CustomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD927C32205CE79001C328F /* CustomViewController.swift */; };
-		AADBB643220C34710024AAC2 /* ThemeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AADBB642220C34710024AAC2 /* ThemeTableViewController.swift */; };
 		AADBB645220C3FE50024AAC2 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = AADBB644220C3FE50024AAC2 /* Theme.swift */; };
 		AADBB647220C479E0024AAC2 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = AADBB646220C479E0024AAC2 /* Model.swift */; };
 /* End PBXBuildFile section */
@@ -67,6 +67,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		AA25953F2211877100D78844 /* settingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = settingsViewController.swift; sourceTree = "<group>"; };
 		AA35D760220D57BD001C1F99 /* bullshit detectorTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "bullshit detectorTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA35D762220D57BD001C1F99 /* bullshit_detectorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = bullshit_detectorTests.swift; sourceTree = "<group>"; };
 		AA35D764220D57BD001C1F99 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -93,7 +94,6 @@
 		AAB309B0220B4C4A002924FD /* IAPService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IAPService.swift; sourceTree = "<group>"; };
 		AAB309B2220B4D0C002924FD /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		AAD927C32205CE79001C328F /* CustomViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomViewController.swift; sourceTree = "<group>"; };
-		AADBB642220C34710024AAC2 /* ThemeTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeTableViewController.swift; sourceTree = "<group>"; };
 		AADBB644220C3FE50024AAC2 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		AADBB646220C479E0024AAC2 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -173,10 +173,10 @@
 				AA70910222067AA1002F06C6 /* Rubberstamp.xib */,
 				AAB309AE220B4BDB002924FD /* IAPProduct.swift */,
 				AAB309B0220B4C4A002924FD /* IAPService.swift */,
-				AADBB642220C34710024AAC2 /* ThemeTableViewController.swift */,
 				AADBB644220C3FE50024AAC2 /* Theme.swift */,
 				AADBB646220C479E0024AAC2 /* Model.swift */,
 				AA35D76A220D8466001C1F99 /* PurchaseViewController.swift */,
+				AA25953F2211877100D78844 /* settingsViewController.swift */,
 			);
 			path = "bullshit detector";
 			sourceTree = "<group>";
@@ -352,7 +352,7 @@
 				AA35D76B220D8466001C1F99 /* PurchaseViewController.swift in Sources */,
 				AA61974A21E9BEB40069121A /* BullshitViewController.swift in Sources */,
 				AA61975A21E9C5810069121A /* Display.swift in Sources */,
-				AADBB643220C34710024AAC2 /* ThemeTableViewController.swift in Sources */,
+				AA2595402211877100D78844 /* settingsViewController.swift in Sources */,
 				AAB309B1220B4C4A002924FD /* IAPService.swift in Sources */,
 				AA37BBF721EEE965005A4042 /* constants.swift in Sources */,
 				AAA8FD13220A92DE00865236 /* NoSelectTextField.swift in Sources */,

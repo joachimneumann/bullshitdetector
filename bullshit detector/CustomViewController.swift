@@ -103,7 +103,7 @@ class CustomViewController: UIViewController, UITextFieldDelegate {
     }
     
     @objc func back(sender: UIBarButtonItem) {
-        let dashboardVC = navigationController!.viewControllers.filter { $0 is ThemeTableViewController }.first!
+        let dashboardVC = navigationController!.viewControllers.filter { $0 is settingsViewController }.first!
         navigationController!.popToViewController(dashboardVC, animated: true)
     }
     

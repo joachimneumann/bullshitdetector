@@ -118,7 +118,7 @@
                                 </constraints>
                                 <state key="normal" title="Button" image="settings"/>
                                 <connections>
-                                    <segue destination="GI4-Nl-nwH" kind="show" id="zRG-Ho-lTi"/>
+                                    <segue destination="8qa-kv-71y" kind="show" id="hui-bX-1wg"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -172,38 +172,47 @@
             </objects>
             <point key="canvasLocation" x="1013.0434782608696" y="132.88043478260872"/>
         </scene>
-        <!--Theme Table View Controller-->
-        <scene sceneID="e2e-Tv-KBQ">
+        <!--Settings View Controller-->
+        <scene sceneID="639-5r-q7V">
             <objects>
-                <tableViewController id="GI4-Nl-nwH" customClass="ThemeTableViewController" customModule="bullshit_detector" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="ZWQ-CA-Z8m">
+                <viewController id="8qa-kv-71y" customClass="settingsViewController" customModule="bullshit_detector" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Eyy-DJ-nXm">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="themeCell" id="cS5-mS-jey">
-                                <rect key="frame" x="0.0" y="55.333333333333343" width="414" height="44"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="cS5-mS-jey" id="zBV-b8-7CE">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.666666666666664"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="GI4-Nl-nwH" id="C68-vJ-Y6r"/>
-                            <outlet property="delegate" destination="GI4-Nl-nwH" id="L8m-Uv-wNa"/>
-                        </connections>
-                    </tableView>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="09v-BO-zht">
+                                <rect key="frame" x="0.0" y="104" width="414" height="632"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="NLe-wD-y9S">
+                                        <rect key="frame" x="0.0" y="55.333333333333343" width="414" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="NLe-wD-y9S" id="clt-Er-Tki">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.666666666666664"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="tAY-IW-szh" firstAttribute="bottom" secondItem="09v-BO-zht" secondAttribute="bottom" id="6Mh-Et-MBg"/>
+                            <constraint firstItem="09v-BO-zht" firstAttribute="top" secondItem="tAY-IW-szh" secondAttribute="top" constant="40" id="IEj-C0-NLP"/>
+                            <constraint firstItem="09v-BO-zht" firstAttribute="leading" secondItem="tAY-IW-szh" secondAttribute="leading" id="dhz-B5-MHP"/>
+                            <constraint firstItem="tAY-IW-szh" firstAttribute="trailing" secondItem="09v-BO-zht" secondAttribute="trailing" id="iOo-sv-qbY"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="tAY-IW-szh"/>
+                    </view>
                     <connections>
-                        <outlet property="themeTableView" destination="ZWQ-CA-Z8m" id="30z-br-ksI"/>
-                        <segue destination="x7X-3p-55I" kind="show" identifier="purchaseSegue" id="c2G-1b-v0Y"/>
-                        <segue destination="rFd-VX-DBN" kind="show" identifier="displaySettingsSegue" id="OLi-li-0P2"/>
+                        <outlet property="themeTableView" destination="09v-BO-zht" id="a2U-et-Yrc"/>
+                        <segue destination="rFd-VX-DBN" kind="show" identifier="displaySettingsSegue" id="gCv-oU-gHA"/>
+                        <segue destination="x7X-3p-55I" kind="show" identifier="purchaseSegue" id="51m-0p-xRY"/>
                     </connections>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="8BH-ov-tjq" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="IqU-P3-YqA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1755" y="133"/>
+            <point key="canvasLocation" x="1786" y="133"/>
         </scene>
         <!--Purchase View Controller-->
         <scene sceneID="fTH-6h-aBc">
@@ -301,7 +310,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="22f-v6-JIg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1754" y="884"/>
+            <point key="canvasLocation" x="1786" y="884"/>
         </scene>
         <!--Custom View Controller-->
         <scene sceneID="Aqv-78-Xsa">
@@ -483,6 +492,6 @@
         <image name="settings" width="256" height="256"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="OLi-li-0P2"/>
+        <segue reference="LIe-y3-Nmi"/>
     </inferredMetricsTieBreakers>
 </document>
