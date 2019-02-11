@@ -104,28 +104,29 @@ class Display: UIView, CAAnimationDelegate {
         needleShapeLayer!.anchorPoint = CGPoint(x: 0.5, y: 1.0)
         layer.addSublayer(needleShapeLayer!)
         
+        circularAnimation.delegate = self
+        circularAnimation.duration = 0.1
+        circularAnimation.repeatCount = 1
+        circularAnimation.fillMode = CAMediaTimingFillMode.forwards;
+        circularAnimation.isRemovedOnCompletion = false
+
         rotateNeedle(to: 0.5)
     }
     
     func rotateNeedle(to: Double) {
-        var target = to
-        if target < 0.0 { target = 0.0 }
-        if target > 1.0 { target = 1.0 }
         if needlePath != nil {
-            //        needleShapeLayer!.removeAllAnimations()
-            circularAnimation.delegate = self
+            var target = to
+            if target < 0.0 { target = 0.0 }
+            if target > 1.0 { target = 1.0 }
+    
             let from = startAngle() + (endAngle() - startAngle()) * CGFloat(lastNeedleValue) - 1.5 * .pi
             let to = startAngle() + (endAngle() - startAngle()) * CGFloat(target) - 1.5 * .pi
             circularAnimation.fromValue = from // startAngle() - 1.5 * .pi
             circularAnimation.toValue = to//endAngle() - 1.5 * .pi
-            circularAnimation.duration = 2
-            circularAnimation.repeatCount = 1
-            circularAnimation.fillMode = CAMediaTimingFillMode.forwards;
-            circularAnimation.isRemovedOnCompletion = false
             needleShapeLayer!.add(circularAnimation, forKey: "dummykey")
             layer.masksToBounds = true
+            lastNeedleValue = target
         }
-        lastNeedleValue = target
      }
     
     private func drawBackground() {
@@ -201,76 +202,3 @@ class Display: UIView, CAAnimationDelegate {
 private extension CGFloat {
     var rad: CGFloat { return self * CGFloat.pi / 180.0 }
 }
-
-//    override func draw(_ rect: CGRect) {
-//    }
-
-
-//    var value: Double {
-//        get {
-//            return 0
-//        }
-//        set(newValue) {
-//            var oldAngle = displayStartAngle
-//            if let currentAngle = displayPointer.layer.presentation()?.value(forKeyPath: "transform.rotation") as? Double {
-//                oldAngle = currentAngle
-//            }
-//            displayPointer.layer.removeAllAnimations()
-//            let circularAnimation = CABasicAnimation(keyPath: "transform.rotation")
-//            circularAnimation.delegate = self
-//            let startAngle = oldAngle
-//            let endAngle = displayStartAngle + newValue * (displayEndAngle-displayStartAngle)
-//            circularAnimation.fromValue = startAngle
-//            circularAnimation.toValue = endAngle
-//            circularAnimation.duration = 0.2
-//            circularAnimation.repeatCount = 1
-//            circularAnimation.fillMode = CAMediaTimingFillMode.forwards;
-//            circularAnimation.isRemovedOnCompletion = false
-//            displayPointer.layer.add(circularAnimation, forKey: "dummykey")
-//            addSubview(displayPointer)
-//        }
-//    }
-
-
-//        self.backgroundColor = displayBackgroundColor
-//        displayPointer.layer.cornerRadius = displayPointerFrameWidth/2;
-//        var displayPointerFrame: CGRect
-//        if #available(iOS 11.0, *) {
-//            displayPointerFrame = CGRect(
-//                x: pointerCenter().x - displayPointerFrameWidth / 2.0,
-//                y: pointerCenter().y - maxRadius() + super.safeAreaInsets.top,
-//                width: displayPointerFrameWidth,
-//                height: maxRadius())
-//        } else {
-//            displayPointerFrame = CGRect(
-//                x: pointerCenter().x - displayPointerFrameWidth / 2.0,
-//                y: pointerCenter().y - maxRadius(),
-//                width: displayPointerFrameWidth,
-//                height: maxRadius())
-//        }
-//        displayPointer.frame = CGRect(x: 10, y: 10, width: 100, height: 100) // displayPointerFrame
-//        displayPointer.backgroundColor = UIColor.green
-//        setAnchorPoint(anchorPoint: CGPoint(x: 0.5, y: 1.0), forView: displayPointer)
-//        displayStartAngle = Double(startAngle()) - 1.5 * .pi
-//        displayEndAngle = Double(endAngle())   - 1.5 * .pi
-//        value = 0.2
-
-
-//    func setAnchorPoint(anchorPoint: CGPoint, layer: CAShapeLayer) {
-//        var newPoint = CGPoint(x: layer.bounds.size.width * anchorPoint.x, y: layer.bounds.size.height * anchorPoint.y)
-//        var oldPoint = CGPoint(x: layer.bounds.size.width * view.layer.anchorPoint.x, y: view.bounds.size.height * view.layer.anchorPoint.y)
-//
-//        newPoint = __CGPointApplyAffineTransform(newPoint, layer.transform)
-//        oldPoint = __CGPointApplyAffineTransform(oldPoint, view.transform)
-//
-//        var position = view.layer.position
-//        position.x -= oldPoint.x
-//        position.x += newPoint.x
-//
-//        position.y -= oldPoint.y
-//        position.y += newPoint.y
-//
-//        layer.position = position
-//        layer.anchorPoint = anchorPoint
-//    }
-//
