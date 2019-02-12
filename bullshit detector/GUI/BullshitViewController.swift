@@ -55,6 +55,12 @@ class BullshitViewController: UIViewController, CAAnimationDelegate, UIGestureRe
         reset()
     }
     
+    func refresh() {
+        display.title = Model.shared.theme().displayText
+        analyseButton.setTitle(Model.shared.theme().buttonText, for: .normal)
+        templateImageView.image = UIImage(named: Model.shared.theme().imageName)
+    }
+    
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -64,8 +70,7 @@ class BullshitViewController: UIViewController, CAAnimationDelegate, UIGestureRe
         templateImageView.isHidden = false
         templateImageView.image = UIImage(named: Model.shared.theme().imageName)
         templateImageView.alpha = 0.2
-        display.title = Model.shared.theme().displayText
-        analyseButton.setTitle(Model.shared.theme().buttonText, for: .normal)
+        refresh()
     }
     
     override func viewDidAppear(_ animated: Bool) {

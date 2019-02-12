@@ -77,6 +77,23 @@ class Model: NSObject {
         return themes[index]
     }
 
+    func resetCustomized() {
+        let customised     = BullshitTheme(name: "Customised", readonly: false, imageName: "truth")
+        customised.buttonText = ""
+        customised.displayText = ""
+        customised.farLeftText1 = ""
+        customised.farLeftText2 = ""
+        customised.leftText1 = ""
+        customised.leftText2 = ""
+        customised.centerText1 = ""
+        customised.centerText2 = ""
+        customised.rightText1 = ""
+        customised.rightText2 = ""
+        customised.farRightText1 = ""
+        customised.farRightText2 = ""
+        themes[3] = customised
+    }
+    
     func defaultValues() {
         let truthOMeter    = BullshitTheme(name: "Truth-O-Meter", readonly: true, imageName: "truth")
         truthOMeter.buttonText = "Is that true?"
@@ -124,6 +141,18 @@ class Model: NSObject {
         themes.append(voiceOMeter)
 
         let customised     = BullshitTheme(name: "Customised", readonly: false, imageName: "truth")
+        customised.buttonText = ""
+        customised.displayText = ""
+        customised.farLeftText1 = ""
+        customised.farLeftText2 = ""
+        customised.leftText1 = ""
+        customised.leftText2 = ""
+        customised.centerText1 = ""
+        customised.centerText2 = ""
+        customised.rightText1 = ""
+        customised.rightText2 = ""
+        customised.farRightText1 = ""
+        customised.farRightText2 = ""
         themes.append(customised)
     }
     

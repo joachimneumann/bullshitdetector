@@ -11,8 +11,6 @@ import UIKit
 
 class CustomViewController: UIViewController, UITextFieldDelegate {
     
-    var theme: BullshitTheme?
-
     @IBOutlet weak var stampPreview: Rubberstamp!
     
     @IBOutlet weak var display: Display!
@@ -27,8 +25,6 @@ class CustomViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var secondTextField: UITextField!
 
     @IBOutlet weak var stampContainer: UIView!
-    @IBOutlet weak var stampHeightConstraint: NSLayoutConstraint!
-    @IBOutlet weak var stampWidhtConstraint: NSLayoutConstraint!
 
    
     private var truthIndex: Int = 0
@@ -47,13 +43,11 @@ class CustomViewController: UIViewController, UITextFieldDelegate {
         theButton.layer.cornerRadius = 10
         theButton.backgroundColor = bullshitRed
         updateTextFields()
-        if let name = theme?.name {
-            display.title = name
-        }
-        if (theme?.readonly ?? false)  {
+        display.title = Model.shared.theme().displayText
+        if (Model.shared.theme().readonly)  {
             displayTextField.isHidden = true
             buttonTextField.isHidden = true
-            theButton.setTitle(theme?.buttonText, for: .normal)
+            theButton.setTitle(Model.shared.theme().buttonText, for: .normal)
             firstTextField.isHidden = true
             secondTextField.isHidden = true
             buttonTextField.isUserInteractionEnabled = false
@@ -62,9 +56,9 @@ class CustomViewController: UIViewController, UITextFieldDelegate {
         } else {
             displayTextField.isHidden = false
             display.title = ""
-            theButton.setTitle(theme?.buttonText, for: .normal)
-            buttonTextField.text = theme?.buttonText
-            displayTextField.text = theme?.displayText
+            theButton.setTitle(Model.shared.theme().buttonText, for: .normal)
+            buttonTextField.text = Model.shared.theme().buttonText
+            displayTextField.text = Model.shared.theme().displayText
             displayTextField.isUserInteractionEnabled = true
             displayTextField.delegate = self
             firstTextField.isHidden = false
@@ -90,8 +84,6 @@ class CustomViewController: UIViewController, UITextFieldDelegate {
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         updateTextFields()
-        stampHeightConstraint.constant = stampContainer.frame.size.height * 0.9
-        stampWidhtConstraint.constant = stampContainer.frame.size.width * 0.9
         stampPreview.border_width = Int(stampPreview.frame.height * 0.1)
         stampPreview.border_radius = Int(stampPreview.frame.height * 0.25)
     }
@@ -99,9 +91,6 @@ class CustomViewController: UIViewController, UITextFieldDelegate {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
     }
-//    override func viewDidAppear(_ animated: Bool) {
-//        super.viewDidAppear(animated)
-//    }
 
     @objc func handleButtonTap(_ sender: UITapGestureRecognizer) {
         let pos = sender.location(in: theButton).x / theButton.frame.size.width
@@ -124,25 +113,25 @@ class CustomViewController: UIViewController, UITextFieldDelegate {
             case 0:
                 indicatorViewLeadingConstraint.constant = 0
                 indicatorViewWidthConstraint.constant = x1+w
-                firstTextField.text  = theme?.farLeftText1
-                secondTextField.text = theme?.farLeftText2
+                firstTextField.text  = Model.shared.theme().farLeftText1
+                secondTextField.text = Model.shared.theme().farLeftText2
             case 1:
                 indicatorViewLeadingConstraint.constant = x1+1*w
-                firstTextField.text  = theme?.leftText1
-                secondTextField.text = theme?.leftText2
+                firstTextField.text  = Model.shared.theme().leftText1
+                secondTextField.text = Model.shared.theme().leftText2
             case 2:
                 indicatorViewLeadingConstraint.constant = x1+2*w
-                firstTextField.text  = theme?.centerText1
-                secondTextField.text = theme?.centerText2
+                firstTextField.text  = Model.shared.theme().centerText1
+                secondTextField.text = Model.shared.theme().centerText2
             case 3:
                 indicatorViewLeadingConstraint.constant = x1+3*w
-                firstTextField.text  = theme?.rightText1
-                secondTextField.text = theme?.rightText2
+                firstTextField.text  = Model.shared.theme().rightText1
+                secondTextField.text = Model.shared.theme().rightText2
             case 4:
                 indicatorViewLeadingConstraint.constant = x1+4*w
                 indicatorViewWidthConstraint.constant = x1+w
-                firstTextField.text  = theme?.farRightText1
-                secondTextField.text = theme?.farRightText2
+                firstTextField.text  = Model.shared.theme().farRightText1
+                secondTextField.text = Model.shared.theme().farRightText2
             default:
             print("unexpected case \(truthIndex)")
         }
@@ -156,32 +145,32 @@ class CustomViewController: UIViewController, UITextFieldDelegate {
     func save() {
         switch truthIndex {
         case 0:
-            theme?.farLeftText1 = firstTextField.text!
-            theme?.farLeftText2 = secondTextField.text!
+            Model.shared.theme().farLeftText1 = firstTextField.text!
+            Model.shared.theme().farLeftText2 = secondTextField.text!
         case 1:
-            theme?.leftText1 = firstTextField.text!
-            theme?.leftText2 = secondTextField.text!
+            Model.shared.theme().leftText1 = firstTextField.text!
+            Model.shared.theme().leftText2 = secondTextField.text!
         case 2:
-            theme?.centerText1 = firstTextField.text!
-            theme?.centerText2 = secondTextField.text!
+            Model.shared.theme().centerText1 = firstTextField.text!
+            Model.shared.theme().centerText2 = secondTextField.text!
         case 3:
-            theme?.rightText1 = firstTextField.text!
-            theme?.rightText2 = secondTextField.text!
+            Model.shared.theme().rightText1 = firstTextField.text!
+            Model.shared.theme().rightText2 = secondTextField.text!
         case 4:
-            theme?.farRightText1 = firstTextField.text!
-            theme?.farRightText2 = secondTextField.text!
+            Model.shared.theme().farRightText1 = firstTextField.text!
+            Model.shared.theme().farRightText2 = secondTextField.text!
         default:
             print("unexpected case")
         }
     }
     
     @IBAction func displayTextFieldDidChange(_ sender: Any) {
-        theme?.displayText = displayTextField.text!
+        Model.shared.theme().displayText = displayTextField.text!
     }
 
     @IBAction func buttonTextFieldDidChange(_ sender: Any) {
         theButton.setTitle(buttonTextField.text!, for: .normal)
-        theme?.buttonText = buttonTextField.text!
+        Model.shared.theme().buttonText = buttonTextField.text!
     }
 
     @IBAction func leftTextFieldDidChange(_ sender: Any) {

@@ -77,12 +77,6 @@ class settingsViewController: UIViewController, UITableViewDelegate, UITableView
         let cell = tableView.dequeueReusableCell(withIdentifier: "themeCell", for: indexPath)
         
         cell.textLabel?.textColor = UIColor.black
-        if !Model.shared.theme(index: indexPath.row).readonly {
-            if !Model.shared.customizationHasBeenPurchased {
-                cell.selectionStyle = .none;
-                cell.textLabel?.textColor = UIColor.lightGray
-            }
-        }
         
         if indexPath.row == Model.shared.themeIndex {
             cell.accessoryType = .detailButton
@@ -94,23 +88,4 @@ class settingsViewController: UIViewController, UITableViewDelegate, UITableView
         return cell
     }
     
-
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "displaySettingsSegue" {
-            if let indexPath = sender as? IndexPath {
-                if let destinationVC = segue.destination as? CustomViewController {
-                    destinationVC.theme = Model.shared.theme(index: indexPath.row)
-                }
-            }
-        }
-        if segue.identifier == "purchaseSegue" {
-            if let indexPath = sender as? IndexPath {
-                if let destinationVC = segue.destination as? PurchaseViewController {
-                    destinationVC.theme = Model.shared.theme(index: indexPath.row)
-                }
-            }
-        }
-    }
-
 }

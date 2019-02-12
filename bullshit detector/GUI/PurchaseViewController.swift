@@ -10,8 +10,6 @@ import UIKit
 
 class PurchaseViewController: UIViewController {
     
-    var theme: BullshitTheme?
-
     @IBOutlet weak var purchaseButton: UIButton!
     
     @IBOutlet weak var thankYouView: UIView!
@@ -39,10 +37,5 @@ class PurchaseViewController: UIViewController {
         IAPService.shared.purchase(product: .customisation)
     }
 
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let destinationVC = segue.destination as? CustomViewController {
-            destinationVC.theme = theme
-        }
-    }
 
 }
