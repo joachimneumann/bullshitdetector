@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina4_7" orientation="portrait">
+    <device id="ipad12_9" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -22,10 +22,10 @@
                 <outlet property="stampLabelViewRightConstraint" destination="flb-cQ-MEl" id="ycl-3J-nne"/>
                 <outlet property="stampLabelViewTopConstraint" destination="qIU-NC-Inq" id="N1E-o9-RBr"/>
                 <outlet property="stampView" destination="nDj-eL-2W2" id="oXX-fy-qjy"/>
-                <outlet property="stampViewBottomConstraint" destination="Wnk-dH-PY4" id="b7Q-KJ-5yc"/>
-                <outlet property="stampViewLeadingConstraint" destination="KNG-NR-seW" id="3U2-MP-wEc"/>
-                <outlet property="stampViewTopConstraint" destination="xV3-0S-UEZ" id="7vc-39-op7"/>
-                <outlet property="stampViewTrailingConstraint" destination="W0r-Tt-Vyt" id="wqt-QM-2y9"/>
+                <outlet property="stampViewBottomConstraint" destination="stj-1D-d26" id="j0w-Gp-yaK"/>
+                <outlet property="stampViewLeadingConstraint" destination="3W0-uA-1e3" id="a6b-Ed-SIJ"/>
+                <outlet property="stampViewTopConstraint" destination="qIU-NC-Inq" id="NXH-sR-YdQ"/>
+                <outlet property="stampViewTrailingConstraint" destination="flb-cQ-MEl" id="DAq-tD-Ys3"/>
                 <outlet property="twoLineStackView" destination="GSc-Go-FU6" id="xyk-Zx-Qpq"/>
             </connections>
         </placeholder>
@@ -84,10 +84,10 @@
                 </view>
             </subviews>
             <constraints>
-                <constraint firstItem="nDj-eL-2W2" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="KNG-NR-seW"/>
-                <constraint firstAttribute="trailing" secondItem="nDj-eL-2W2" secondAttribute="trailing" id="W0r-Tt-Vyt"/>
-                <constraint firstAttribute="bottom" secondItem="nDj-eL-2W2" secondAttribute="bottom" id="Wnk-dH-PY4"/>
-                <constraint firstItem="nDj-eL-2W2" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="xV3-0S-UEZ"/>
+                <constraint firstItem="nDj-eL-2W2" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="9cg-ft-Ams"/>
+                <constraint firstItem="nDj-eL-2W2" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="mwS-q3-51m"/>
+                <constraint firstItem="nDj-eL-2W2" firstAttribute="bottom" secondItem="vUN-kp-3ea" secondAttribute="bottom" id="rZl-mr-6cg"/>
+                <constraint firstItem="nDj-eL-2W2" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="wNt-oa-iHa"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
