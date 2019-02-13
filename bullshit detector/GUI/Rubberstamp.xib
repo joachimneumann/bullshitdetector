@@ -22,10 +22,10 @@
                 <outlet property="stampLabelViewRightConstraint" destination="flb-cQ-MEl" id="ycl-3J-nne"/>
                 <outlet property="stampLabelViewTopConstraint" destination="qIU-NC-Inq" id="N1E-o9-RBr"/>
                 <outlet property="stampView" destination="nDj-eL-2W2" id="oXX-fy-qjy"/>
-                <outlet property="stampViewBottomConstraint" destination="stj-1D-d26" id="j0w-Gp-yaK"/>
-                <outlet property="stampViewLeadingConstraint" destination="3W0-uA-1e3" id="a6b-Ed-SIJ"/>
-                <outlet property="stampViewTopConstraint" destination="qIU-NC-Inq" id="NXH-sR-YdQ"/>
-                <outlet property="stampViewTrailingConstraint" destination="flb-cQ-MEl" id="DAq-tD-Ys3"/>
+                <outlet property="stampViewBottomConstraint" destination="rZl-mr-6cg" id="fCJ-Kv-cQG"/>
+                <outlet property="stampViewLeadingConstraint" destination="wNt-oa-iHa" id="hda-ib-6Ex"/>
+                <outlet property="stampViewTopConstraint" destination="9cg-ft-Ams" id="cir-Pa-pZ5"/>
+                <outlet property="stampViewTrailingConstraint" destination="mwS-q3-51m" id="jqB-sZ-dMP"/>
                 <outlet property="twoLineStackView" destination="GSc-Go-FU6" id="xyk-Zx-Qpq"/>
             </connections>
         </placeholder>
