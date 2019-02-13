@@ -14,20 +14,17 @@ class PurchaseViewController: UIViewController {
     
     @IBOutlet weak var thankYouView: UIView!
     
-    var price: String? = nil
     override func viewDidLoad() {
         super.viewDidLoad()
         thankYouView.isHidden = true
         NotificationCenter.default.addObserver(self, selector: #selector(OnCustomisablePurchased), name: Notification.Name(customizablePurchasedNotification), object: nil)
         
-        price = IAPService.shared.priceStringForProduct(product: .customisation)
-        if price != nil {
-            purchaseButton.setTitle("Purchase for "+price!, for: .normal)
+        if let price = IAPService.shared.priceString {
+            purchaseButton.setTitle("Purchase for "+price, for: .normal)
         } else {
             purchaseButton.setTitle("Purchase", for: .normal)
         }
     }
-    
     
     @objc func OnCustomisablePurchased() {
         thankYouView.isHidden = false

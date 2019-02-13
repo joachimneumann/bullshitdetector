@@ -141,18 +141,18 @@ class Model: NSObject {
         themes.append(voiceOMeter)
 
         let customised     = BullshitTheme(name: "Customised", readonly: false, imageName: "truth")
-        customised.buttonText = ""
-        customised.displayText = ""
-        customised.farLeftText1 = ""
-        customised.farLeftText2 = ""
-        customised.leftText1 = ""
-        customised.leftText2 = ""
-        customised.centerText1 = ""
-        customised.centerText2 = ""
-        customised.rightText1 = ""
-        customised.rightText2 = ""
-        customised.farRightText1 = ""
-        customised.farRightText2 = ""
+        customised.buttonText    = UserDefaults.standard.string(forKey: customised.name + buttonTextkey) ?? ""
+        customised.displayText   = UserDefaults.standard.string(forKey: customised.name + displayTextkey) ?? ""
+        customised.farLeftText1  = UserDefaults.standard.string(forKey: customised.name + farLeftText1key) ?? ""
+        customised.farLeftText2  = UserDefaults.standard.string(forKey: customised.name + farLeftText2key) ?? ""
+        customised.leftText1     = UserDefaults.standard.string(forKey: customised.name + leftText1key) ?? ""
+        customised.leftText2     = UserDefaults.standard.string(forKey: customised.name + leftText2key) ?? ""
+        customised.centerText1   = UserDefaults.standard.string(forKey: customised.name + centerText1key) ?? ""
+        customised.centerText2   = UserDefaults.standard.string(forKey: customised.name + centerText2key) ?? ""
+        customised.rightText1    = UserDefaults.standard.string(forKey: customised.name + rightText1key) ?? ""
+        customised.rightText2    = UserDefaults.standard.string(forKey: customised.name + rightText2key) ?? ""
+        customised.farRightText1 = UserDefaults.standard.string(forKey: customised.name + farRightText1key) ?? ""
+        customised.farRightText2 = UserDefaults.standard.string(forKey: customised.name + farRightText2key) ?? ""
         themes.append(customised)
     }
     

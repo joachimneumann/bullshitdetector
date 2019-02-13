@@ -13,7 +13,7 @@ class IAPService: NSObject {
     private override init() {}
     static let shared = IAPService()
     let paymentQueue = SKPaymentQueue.default()
-    
+    var priceString: String?
     var products = [SKProduct]()
     func getProducts() {
         let products: Set = [IAPProduct.customisation.rawValue]
@@ -53,6 +53,8 @@ extension IAPService: SKProductsRequestDelegate {
         for p in products {
             print("product: \(p.productIdentifier) \(p.localizedTitle)")
         }
+        priceString = IAPService.shared.priceStringForProduct(product: .customisation)
+        print("price: \(priceString ?? "unknown")")
     }
 }
 

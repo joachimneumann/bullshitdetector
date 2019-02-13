@@ -33,10 +33,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationWillEnterForeground(_ application: UIApplication) {
         if !Model.shared.customizationHasBeenPurchased {
-            Model.shared.themeIndex = 0
-            Model.shared.resetCustomized()
             if let topVC = UIApplication.getTopMostViewController() {
                 if let bvc = topVC as? BullshitViewController {
+                    Model.shared.themeIndex = 0
+                    Model.shared.resetCustomized()
                     bvc.refresh()
                 }
             }
