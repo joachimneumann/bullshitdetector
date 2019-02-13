@@ -1,3 +1,20 @@
+## preparation
+In XCode: create scheme "CI" for release
+see if this works:
+xcodebuild -project bullshit\ detector.xcodeproj -scheme "CI" -sdk iphonesimulator clean analyze
+xcodebuild -scheme CI -project bullshit\ detector.xcodeproj build
+
+
+xcodebuild  -project bullshit\ detector.xcodeproj \
+            -scheme CI \
+            -destination "platform=iOS Simulator,OS=12.1,name=iPhone 8"
+
+xcodebuild -project bullshit\ detector.xcodeproj \
+           -scheme CI \
+           -sdk iphoneos \
+           -configuration AppStoreDistribution archive \
+           -archivePath $PWD/build/CLI.xcarchive
+
 ## Apple Worldwide Developer Relations Certification Authority
 Download from:
 https://developer.apple.com/certificationauthority/AppleWWDRCA.cer
