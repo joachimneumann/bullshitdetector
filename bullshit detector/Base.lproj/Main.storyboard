@@ -190,7 +190,7 @@
                                 <rect key="frame" x="153" y="100" width="191" height="29"/>
                                 <segments>
                                     <segment title="Fast"/>
-                                    <segment title="Meduim"/>
+                                    <segment title="Medium"/>
                                     <segment title="Slow"/>
                                 </segments>
                                 <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -537,6 +537,6 @@
         <image name="settings" width="256" height="256"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="saS-zx-Ctf"/>
+        <segue reference="gCv-oU-gHA"/>
     </inferredMetricsTieBreakers>
 </document>
