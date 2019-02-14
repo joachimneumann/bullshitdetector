@@ -34,5 +34,9 @@ class PurchaseViewController: UIViewController {
         IAPService.shared.purchase(product: .customisation)
     }
 
+    @IBAction func restorePressed(_ sender: Any) {
+        IAPService.shared.restorePurchases()
+    }
+
 
 }

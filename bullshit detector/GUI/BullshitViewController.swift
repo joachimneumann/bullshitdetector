@@ -27,8 +27,10 @@ class BullshitViewController: UIViewController, CAAnimationDelegate, UIGestureRe
     override func viewDidLoad() {
         super.viewDidLoad()
                 
-        // TODO only if not purchased or even later
-        IAPService.shared.getProducts()
+        if !Model.shared.customizationHasBeenPurchased {
+            IAPService.shared.getProducts()
+        }
+        
         if Model.shared.instructionsHaveBeenDisplayed {
             instructionsImageView.isHidden = true
         }

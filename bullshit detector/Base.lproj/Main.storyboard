@@ -251,15 +251,22 @@
                                     <action selector="purchasePressed:" destination="x7X-3p-55I" eventType="touchUpInside" id="Zbu-Wq-j5F"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5pr-qw-mjn">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="E5o-rf-83J">
                                 <rect key="frame" x="20" y="261" width="984" height="30"/>
+                                <state key="normal" title="Restore previous purchase"/>
+                                <connections>
+                                    <action selector="restorePressed:" destination="x7X-3p-55I" eventType="touchUpInside" id="BNf-SQ-2yf"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5pr-qw-mjn">
+                                <rect key="frame" x="20" y="331" width="984" height="30"/>
                                 <state key="normal" title="Preview customised Texts"/>
                                 <connections>
                                     <segue destination="rFd-VX-DBN" kind="show" id="j8D-KD-yVI"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your texts will not be saved" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N89-ze-5Fq">
-                                <rect key="frame" x="20" y="293" width="984" height="18"/>
+                                <rect key="frame" x="20" y="363" width="984" height="18"/>
                                 <fontDescription key="fontDescription" type="italicSystem" pointSize="15"/>
                                 <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -306,7 +313,6 @@
                             <constraint firstItem="gXI-jq-ADA" firstAttribute="bottom" secondItem="s6d-Ry-af4" secondAttribute="bottom" id="8cS-mX-XPq"/>
                             <constraint firstItem="gXI-jq-ADA" firstAttribute="trailing" secondItem="N89-ze-5Fq" secondAttribute="trailing" constant="20" id="97S-rS-wy1"/>
                             <constraint firstItem="N89-ze-5Fq" firstAttribute="leading" secondItem="gXI-jq-ADA" secondAttribute="leading" constant="20" id="9ht-pv-zf3"/>
-                            <constraint firstItem="5pr-qw-mjn" firstAttribute="top" secondItem="Rhl-xl-k2K" secondAttribute="bottom" constant="40" id="EJW-FH-11z"/>
                             <constraint firstItem="5F5-qv-NPJ" firstAttribute="leading" secondItem="gXI-jq-ADA" secondAttribute="leading" constant="20" id="HK6-Yg-uLd"/>
                             <constraint firstItem="Rhl-xl-k2K" firstAttribute="leading" secondItem="gXI-jq-ADA" secondAttribute="leading" constant="20" id="Jra-tn-dPe"/>
                             <constraint firstItem="5pr-qw-mjn" firstAttribute="leading" secondItem="gXI-jq-ADA" secondAttribute="leading" constant="20" id="Oxi-SJ-J7e"/>
@@ -315,9 +321,13 @@
                             <constraint firstItem="gXI-jq-ADA" firstAttribute="trailing" secondItem="5pr-qw-mjn" secondAttribute="trailing" constant="20" id="aq0-wi-WRz"/>
                             <constraint firstItem="gXI-jq-ADA" firstAttribute="trailing" secondItem="Rhl-xl-k2K" secondAttribute="trailing" constant="20" id="bhr-nx-jJu"/>
                             <constraint firstItem="s6d-Ry-af4" firstAttribute="top" secondItem="gXI-jq-ADA" secondAttribute="top" id="esK-6b-TDK"/>
+                            <constraint firstItem="5pr-qw-mjn" firstAttribute="top" secondItem="E5o-rf-83J" secondAttribute="bottom" constant="40" id="g4S-3I-NI4"/>
                             <constraint firstItem="s6d-Ry-af4" firstAttribute="leading" secondItem="gXI-jq-ADA" secondAttribute="leading" id="iFL-Pn-8S4"/>
                             <constraint firstItem="gXI-jq-ADA" firstAttribute="trailing" secondItem="5F5-qv-NPJ" secondAttribute="trailing" constant="20" id="iom-Cw-vsN"/>
                             <constraint firstItem="Rhl-xl-k2K" firstAttribute="top" secondItem="5F5-qv-NPJ" secondAttribute="bottom" constant="40" id="iqu-xv-NrF"/>
+                            <constraint firstItem="E5o-rf-83J" firstAttribute="leading" secondItem="gXI-jq-ADA" secondAttribute="leading" constant="20" id="jSn-wM-t6s"/>
+                            <constraint firstItem="gXI-jq-ADA" firstAttribute="trailing" secondItem="E5o-rf-83J" secondAttribute="trailing" constant="20" id="sxA-65-Cgj"/>
+                            <constraint firstItem="E5o-rf-83J" firstAttribute="top" secondItem="Rhl-xl-k2K" secondAttribute="bottom" constant="40" id="t1S-wl-vX9"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="gXI-jq-ADA"/>
                     </view>
@@ -327,6 +337,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="22f-v6-JIg" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Uhu-wN-Het">
+                    <rect key="frame" x="0.0" y="0.0" width="984" height="30"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <state key="normal" title="Restore my previous purchase"/>
+                </button>
             </objects>
             <point key="canvasLocation" x="1786" y="884"/>
         </scene>
