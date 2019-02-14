@@ -85,8 +85,8 @@
             </subviews>
             <constraints>
                 <constraint firstItem="nDj-eL-2W2" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="9cg-ft-Ams"/>
-                <constraint firstItem="nDj-eL-2W2" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="mwS-q3-51m"/>
-                <constraint firstItem="nDj-eL-2W2" firstAttribute="bottom" secondItem="vUN-kp-3ea" secondAttribute="bottom" id="rZl-mr-6cg"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="nDj-eL-2W2" secondAttribute="trailing" id="mwS-q3-51m"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="nDj-eL-2W2" secondAttribute="bottom" id="rZl-mr-6cg"/>
                 <constraint firstItem="nDj-eL-2W2" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="wNt-oa-iHa"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>

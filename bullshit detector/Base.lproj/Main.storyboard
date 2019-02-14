@@ -72,10 +72,10 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="upm-fL-yTe" userLabel="stampConstainerView">
-                                <rect key="frame" x="0.0" y="732.5" width="1024" height="473.5"/>
+                                <rect key="frame" x="0.0" y="752.5" width="1024" height="433.5"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Jgx-FL-XlB" userLabel="rubberstamp" customClass="Rubberstamp" customModule="bullshit_detector" customModuleProvider="target">
-                                        <rect key="frame" x="157" y="0.0" width="710" height="473.5"/>
+                                        <rect key="frame" x="20" y="-111" width="984" height="656"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="Jgx-FL-XlB" secondAttribute="height" multiplier="1.5:1" id="g6b-Nm-Fc8"/>
                                         </constraints>
@@ -97,9 +97,9 @@
                                     </view>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstItem="Jgx-FL-XlB" firstAttribute="top" secondItem="upm-fL-yTe" secondAttribute="top" id="1Pf-fx-lmK"/>
-                                    <constraint firstAttribute="bottom" secondItem="Jgx-FL-XlB" secondAttribute="bottom" id="P4r-su-DKU"/>
-                                    <constraint firstItem="Jgx-FL-XlB" firstAttribute="centerX" secondItem="upm-fL-yTe" secondAttribute="centerX" id="R1m-ie-hjX"/>
+                                    <constraint firstItem="Jgx-FL-XlB" firstAttribute="centerY" secondItem="upm-fL-yTe" secondAttribute="centerY" id="NKP-xk-L9Q"/>
+                                    <constraint firstItem="Jgx-FL-XlB" firstAttribute="leading" secondItem="upm-fL-yTe" secondAttribute="leading" constant="20" id="lzl-aW-SlZ"/>
+                                    <constraint firstAttribute="trailing" secondItem="Jgx-FL-XlB" secondAttribute="trailing" constant="20" id="na6-xf-3Xf"/>
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OGM-9E-Dzw" userLabel="settingsButton">
@@ -127,7 +127,7 @@
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="4ji-Hs-27j" secondAttribute="trailing" constant="40" id="PQU-o0-aT6"/>
                             <constraint firstItem="H2G-W8-t0f" firstAttribute="top" secondItem="4ji-Hs-27j" secondAttribute="top" id="PhV-4H-x9W"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="4ji-Hs-27j" secondAttribute="bottom" constant="40" id="QIm-x7-lqF"/>
-                            <constraint firstItem="upm-fL-yTe" firstAttribute="bottom" secondItem="cg0-M1-bYk" secondAttribute="bottom" id="SO4-9y-JiX"/>
+                            <constraint firstItem="upm-fL-yTe" firstAttribute="bottom" secondItem="cg0-M1-bYk" secondAttribute="bottom" constant="-20" id="SO4-9y-JiX"/>
                             <constraint firstAttribute="trailing" secondItem="OGM-9E-Dzw" secondAttribute="trailing" constant="8" id="Z1M-iK-kWM"/>
                             <constraint firstItem="4ji-Hs-27j" firstAttribute="top" secondItem="cg0-M1-bYk" secondAttribute="bottom" constant="60" id="Z9B-Tr-b1A"/>
                             <constraint firstItem="Oue-lw-g9O" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="a10-Xj-EDb"/>
@@ -141,7 +141,7 @@
                             <constraint firstItem="H2G-W8-t0f" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="mbW-6C-Q22"/>
                             <constraint firstItem="4ji-Hs-27j" firstAttribute="leading" secondItem="u4M-eL-yea" secondAttribute="leading" id="nLM-Vn-IPt"/>
                             <constraint firstItem="3ki-0X-gGI" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="25" id="pyo-Ua-Sya"/>
-                            <constraint firstItem="upm-fL-yTe" firstAttribute="top" secondItem="cg0-M1-bYk" secondAttribute="top" id="rbr-n2-6qm"/>
+                            <constraint firstItem="upm-fL-yTe" firstAttribute="top" secondItem="cg0-M1-bYk" secondAttribute="top" constant="20" id="rbr-n2-6qm"/>
                             <constraint firstItem="4ji-Hs-27j" firstAttribute="trailing" secondItem="u4M-eL-yea" secondAttribute="trailing" id="rld-Z4-Mc8"/>
                             <constraint firstItem="4ji-Hs-27j" firstAttribute="bottom" secondItem="Oue-lw-g9O" secondAttribute="bottom" id="w4G-Ri-wYR"/>
                             <constraint firstItem="cg0-M1-bYk" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="60" id="zs5-Md-VKL"/>

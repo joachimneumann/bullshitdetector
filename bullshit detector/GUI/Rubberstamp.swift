@@ -139,9 +139,9 @@ class Rubberstamp: UIView {
         let scalingFactor = extended_d / D
 
         stampViewLeadingConstraint.constant  = 0.5 * (1.0 - scalingFactor) * A
-        stampViewTrailingConstraint.constant = -0.5 * (1.0 - scalingFactor) * A
+        stampViewTrailingConstraint.constant = 0.5 * (1.0 - scalingFactor) * A
         stampViewTopConstraint.constant      = 0.5 * (1.0 - scalingFactor) * B
-        stampViewBottomConstraint.constant   = -0.5 * (1.0 - scalingFactor) * B
+        stampViewBottomConstraint.constant   = 0.5 * (1.0 - scalingFactor) * B
         stampView.transform = CGAffineTransform(rotationAngle: angle)
     }
     
