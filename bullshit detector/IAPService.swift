@@ -114,6 +114,15 @@ extension IAPService: SKPaymentTransactionObserver {
         Model.shared.customizationHasBeenPurchased = true
         NotificationCenter.default.post(name: Notification.Name(customizablePurchasedNotification), object: nil)
     }
+
+    private func paymentQueue(_ queue: SKPaymentQueue, shouldAddStorePayment payment: SKPayment, for product: SKProduct) -> Bool {
+        if UserDefaults.standard.bool(forKey: customizationHasBeenPurchasedKey) {
+            return false
+        } else {
+            return true
+        }
+    }
+
 }
 
 extension SKPaymentTransactionState {
