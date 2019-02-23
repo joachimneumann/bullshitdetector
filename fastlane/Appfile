@@ -1,0 +1,8 @@
+app_identifier("com.joachimneumann.bullshitdetector") # The bundle identifier of your app
+apple_id("joachim@joachimneumann.com") # Your Apple email address
+
+itc_team_id("292346") # App Store Connect Team ID
+team_id("8A4DL788W9") # Developer Portal Team ID
+
+# For more information about the Appfile, see:
+#     https://docs.fastlane.tools/advanced/#appfile
