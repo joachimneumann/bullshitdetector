@@ -15,6 +15,7 @@ class IAPService: NSObject {
     let paymentQueue = SKPaymentQueue.default()
     var priceString: String?
     var products = [SKProduct]()
+    
     func getProducts() {
         let products: Set = [IAPProduct.customisation.rawValue]
         let request = SKProductsRequest(productIdentifiers: products)
