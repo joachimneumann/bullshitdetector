@@ -35,8 +35,10 @@ class settingsViewController: UIViewController, UITableViewDelegate, UITableView
         self.navigationController?.setNavigationBarHidden(false, animated: false)
         
         themeTableView.register(UITableViewCell.self, forCellReuseIdentifier: "themeCell")
-        
+        let indexPath = IndexPath(row: Model.shared.themeIndex, section: 0)
+        themeTableView.selectRow(at: indexPath, animated: false, scrollPosition: .none)
     }
+    
     @IBAction func fastSlowChanged(_ sender: Any) {
         if let fastSlow = sender as? UISegmentedControl {
             Model.shared.fastResponseTime = fastSlow.selectedSegmentIndex
@@ -53,15 +55,18 @@ class settingsViewController: UIViewController, UITableViewDelegate, UITableView
         if section == 0 { return "Theme" } else { return nil }
     }
     
-    func tableView(_ tableView: UITableView, accessoryButtonTappedForRowWith indexPath: IndexPath) {
+    @objc func showDetail() {
+        let indexPath = IndexPath(row: Model.shared.themeIndex, section: 0)
         if Model.shared.theme(index: indexPath.row).readonly || Model.shared.customizationHasBeenPurchased {
             performSegue(withIdentifier: "displaySettingsSegue", sender: indexPath)
         } else {
             performSegue(withIdentifier: "purchaseSegue", sender: indexPath)
         }
     }
-    
-    
+
+    func tableView(_ tableView: UITableView, accessoryButtonTappedForRowWith indexPath: IndexPath) {
+        showDetail()
+    }
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
@@ -76,12 +81,25 @@ class settingsViewController: UIViewController, UITableViewDelegate, UITableView
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "themeCell", for: indexPath)
         
-        cell.textLabel?.textColor = UIColor.black
-        
         if indexPath.row == Model.shared.themeIndex {
-            cell.accessoryType = .detailButton
+            if Model.shared.theme().readonly {
+                cell.accessoryType = .detailButton
+                cell.tintColor = bullshitRed
+                cell.accessoryView = nil
+            } else {
+                cell.accessoryType = .none
+                cell.accessoryType = .none
+                cell.accessoryType = UITableViewCell.AccessoryType.none
+                let b = UIButton(frame: CGRect(x: 0, y: 0, width: 60, height: 20))
+                b.setTitle("Edit", for: .normal)
+                b.setTitleColor(bullshitRed, for: .normal)
+                b.contentHorizontalAlignment = .right
+                b.addTarget(self, action: #selector(showDetail), for: .touchDown)
+                cell.accessoryView = b
+            }
         } else {
             cell.accessoryType = .none
+            cell.accessoryView = nil
         }
         
         cell.textLabel?.text = Model.shared.themeName(n: indexPath.row)
