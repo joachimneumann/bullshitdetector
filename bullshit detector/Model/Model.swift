@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import SecureStore
 
 class Model: NSObject {
     private override init() {
@@ -47,12 +48,45 @@ class Model: NSObject {
     }
     
 
+    func setPurchasedInKeychain() {
+        var secureStoreWithGenericPwd: SecureStore!
+        let genericPwdQueryable = GenericPasswordQueryable(service: customizationHasBeenPurchasedKey)
+        secureStoreWithGenericPwd = SecureStore(secureStoreQueryable: genericPwdQueryable)
+        do {
+            try secureStoreWithGenericPwd.setValue("true", for: customizationHasBeenPurchasedKey)
+        } catch (let e) {
+            NSLog("Saving customizationHasBeenPurchasedKey failed with \(e.localizedDescription)")
+        }
+    }
+    
+    func getPurchasedInKeychain() -> Bool {
+        let secureStoreWithGenericPwd: SecureStore!
+        let genericPwdQueryable = GenericPasswordQueryable(service: customizationHasBeenPurchasedKey)
+        secureStoreWithGenericPwd = SecureStore(secureStoreQueryable: genericPwdQueryable)
+        do {
+            try secureStoreWithGenericPwd.setValue("true", for: customizationHasBeenPurchasedKey)
+            let password = try secureStoreWithGenericPwd.getValue(for: customizationHasBeenPurchasedKey)
+            return password == "true"
+        } catch (let e) {
+            NSLog("Reading customizationHasBeenPurchasedKey failed with \(e.localizedDescription)")
+            return false
+        }
+    }
+
     var customizationHasBeenPurchased: Bool {
         get {
-            return UserDefaults.standard.bool(forKey: customizationHasBeenPurchasedKey)
+            // make sure previous customers keep their purchase
+            // true in UserDefaults? --> set keychain
+            if UserDefaults.standard.bool(forKey: customizationHasBeenPurchasedKey) {
+                setPurchasedInKeychain()
+                UserDefaults.standard.removeObject(forKey: customizationHasBeenPurchasedKey)
+                return true
+            } else {
+               return getPurchasedInKeychain()
+            }
         }
         set {
-            UserDefaults.standard.set(newValue, forKey: customizationHasBeenPurchasedKey)
+            setPurchasedInKeychain()
         }
     }
 

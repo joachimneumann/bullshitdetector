@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AA2391A72233D632007C1698 /* SecureStore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA2391A122339A2D007C1698 /* SecureStore.framework */; };
+		AA2391A82233D632007C1698 /* SecureStore.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = AA2391A122339A2D007C1698 /* SecureStore.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		AA2595402211877100D78844 /* settingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA25953F2211877100D78844 /* settingsViewController.swift */; };
 		AA35D763220D57BD001C1F99 /* bullshit_detectorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA35D762220D57BD001C1F99 /* bullshit_detectorTests.swift */; };
 		AA35D76B220D8466001C1F99 /* PurchaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA35D76A220D8466001C1F99 /* PurchaseViewController.swift */; };
@@ -34,6 +36,34 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		AA2391A022339A2D007C1698 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AA23919A22339A2D007C1698 /* SecureStore.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 1E105503218DFDB80032C4CA;
+			remoteInfo = SecureStore;
+		};
+		AA2391A222339A2D007C1698 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AA23919A22339A2D007C1698 /* SecureStore.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 1E10550C218DFDB80032C4CA;
+			remoteInfo = SecureStoreTests;
+		};
+		AA2391A422339A2D007C1698 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AA23919A22339A2D007C1698 /* SecureStore.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 1E105521218DFE050032C4CA;
+			remoteInfo = TestHost;
+		};
+		AA2391A92233D632007C1698 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AA23919A22339A2D007C1698 /* SecureStore.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 1E105502218DFDB80032C4CA;
+			remoteInfo = SecureStore;
+		};
 		AA35D765220D57BD001C1F99 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = AA61973C21E9BEB40069121A /* Project object */;
@@ -51,6 +81,17 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		AA2391AB2233D632007C1698 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				AA2391A82233D632007C1698 /* SecureStore.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		AAA9257222002A6400AB15B7 /* Embed App Extensions */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -65,6 +106,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		AA23919A22339A2D007C1698 /* SecureStore.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SecureStore.xcodeproj; path = SecureStore/SecureStore.xcodeproj; sourceTree = "<group>"; };
 		AA25953F2211877100D78844 /* settingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = settingsViewController.swift; sourceTree = "<group>"; };
 		AA35D760220D57BD001C1F99 /* bullshit detectorTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "bullshit detectorTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA35D762220D57BD001C1F99 /* bullshit_detectorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = bullshit_detectorTests.swift; sourceTree = "<group>"; };
@@ -108,6 +150,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AAB309B3220B4D0C002924FD /* StoreKit.framework in Frameworks */,
+				AA2391A72233D632007C1698 /* SecureStore.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -122,6 +165,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		AA23919B22339A2D007C1698 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				AA2391A122339A2D007C1698 /* SecureStore.framework */,
+				AA2391A322339A2D007C1698 /* SecureStoreTests.xctest */,
+				AA2391A522339A2D007C1698 /* TestHost.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		AA2595412211962E00D78844 /* GUI */ = {
 			isa = PBXGroup;
 			children = (
@@ -159,6 +212,7 @@
 		AA61973B21E9BEB40069121A = {
 			isa = PBXGroup;
 			children = (
+				AA23919A22339A2D007C1698 /* SecureStore.xcodeproj */,
 				AA61974621E9BEB40069121A /* bullshit detector */,
 				AAA9256522002A6400AB15B7 /* Truth-O-Meter Widget */,
 				AA35D761220D57BD001C1F99 /* bullshit detectorTests */,
@@ -241,11 +295,13 @@
 				AA61974121E9BEB40069121A /* Frameworks */,
 				AA61974221E9BEB40069121A /* Resources */,
 				AAA9257222002A6400AB15B7 /* Embed App Extensions */,
+				AA2391AB2233D632007C1698 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 				AAA9256D22002A6400AB15B7 /* PBXTargetDependency */,
+				AA2391AA2233D632007C1698 /* PBXTargetDependency */,
 			);
 			name = "bullshit detector";
 			productName = "bullshit detector";
@@ -308,6 +364,12 @@
 			mainGroup = AA61973B21E9BEB40069121A;
 			productRefGroup = AA61974521E9BEB40069121A /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = AA23919B22339A2D007C1698 /* Products */;
+					ProjectRef = AA23919A22339A2D007C1698 /* SecureStore.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				AA61974321E9BEB40069121A /* bullshit detector */,
@@ -316,6 +378,30 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		AA2391A122339A2D007C1698 /* SecureStore.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = SecureStore.framework;
+			remoteRef = AA2391A022339A2D007C1698 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		AA2391A322339A2D007C1698 /* SecureStoreTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = SecureStoreTests.xctest;
+			remoteRef = AA2391A222339A2D007C1698 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		AA2391A522339A2D007C1698 /* TestHost.app */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.application;
+			path = TestHost.app;
+			remoteRef = AA2391A422339A2D007C1698 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		AA35D75E220D57BD001C1F99 /* Resources */ = {
@@ -387,6 +473,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		AA2391AA2233D632007C1698 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = SecureStore;
+			targetProxy = AA2391A92233D632007C1698 /* PBXContainerItemProxy */;
+		};
 		AA35D766220D57BD001C1F99 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = AA61974321E9BEB40069121A /* bullshit detector */;
