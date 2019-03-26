@@ -33,11 +33,6 @@ public protocol SecureStoreQueryable {
 }
 
 public struct GenericPasswordQueryable {
-//  public init() {
-//    self.service = ""
-//    self.accessGroup = ""
-//  }
-  
   let service: String
   let accessGroup: String?
   public init(service: String, accessGroup: String? = nil) {

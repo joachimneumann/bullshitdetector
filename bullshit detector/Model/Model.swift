@@ -75,8 +75,8 @@ class Model: NSObject {
 
     var customizationHasBeenPurchased: Bool {
         get {
-            // make sure previous customers keep their purchase
-            // true in UserDefaults? --> set keychain
+            // Compatibility: make sure previous customers keep their purchase
+            // true in UserDefaults? --> set true in keychain
             if UserDefaults.standard.bool(forKey: customizationHasBeenPurchasedKey) {
                 setPurchasedInKeychain()
                 UserDefaults.standard.removeObject(forKey: customizationHasBeenPurchasedKey)
