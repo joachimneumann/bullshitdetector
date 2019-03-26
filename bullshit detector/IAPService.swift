@@ -78,6 +78,8 @@ extension IAPService: SKPaymentTransactionObserver {
                 break
             case .purchasing:
                 break
+            @unknown default:
+                break
             }
             if let transactionError = transaction.error as NSError?,
                 let localizedDescription = transaction.error?.localizedDescription,
@@ -134,6 +136,8 @@ extension SKPaymentTransactionState {
             case .purchased:  return "purchased"
             case .purchasing: return "purchasing"
             case .restored:   return "restored"
+        @unknown default:
+            return "restored"
         }
     }
 }
